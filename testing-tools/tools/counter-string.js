@@ -41,7 +41,7 @@ export const counterstringTool = {
 
     copyButton.addEventListener("click", () => {
       if (!output.textContent.trim()) {
-        copyButton.style.color = "red";
+        copyButton.style.color = "#F05BB5";
         copyButton.textContent = "Nothing to copy!";
         setTimeout(() => {
           copyButton.style.color = "";
@@ -50,14 +50,14 @@ export const counterstringTool = {
         return;
       }
       navigator.clipboard.writeText(output.textContent).then(() => {
-        copyButton.style.color = "green";
+        copyButton.style.color = "#02F5D4";
         copyButton.textContent = "Copied to clipboard!";
         setTimeout(() => {
           copyButton.style.color = "";
           copyButton.textContent = "Copy to Clipboard";
         }, 1500);
       }).catch(() => {
-        copyButton.style.color = "red";
+        copyButton.style.color = "#F05BB5";
         copyButton.textContent = "Failed to copy!";
         setTimeout(() => {
           copyButton.style.color = "";

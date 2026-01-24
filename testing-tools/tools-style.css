@@ -95,7 +95,7 @@ header p {
 }
 
 .tool-button {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
   background-color: #FEE440;
   color: #0A0A15;
@@ -148,8 +148,8 @@ header p {
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid #444;
-  background-color: #2a2a2a;
-  color: #f5f5f5;
+  background-color: #FFFFFF;
+  color: #0A0A15;
   resize: vertical;      /* Allow vertical resizing */
   box-sizing: border-box; /* Include padding in width */
 }
@@ -172,7 +172,7 @@ header p {
   max-width: 800px;
   padding: 0.5rem;
   color: #f5f5f5;
-  background-color: #2a2a2a;
+  background-color: transparent;
   border-radius: 4px;
   box-sizing: border-box;
   white-space: pre-wrap;
@@ -199,6 +199,52 @@ header p {
   white-space: pre-wrap;
   word-break: break-word;
   max-width: 100ch;
+}
+
+.text-counter-wrapper {
+  display: inline-block; /* shrink-wraps to textarea width */
+  text-align: left;
+}
+
+.text-counter-results {
+  margin-top: 1rem;
+}
+
+
+.text-counter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.text-counter-label {
+  color: inherit;
+}
+
+.text-counter-value {
+  text-align: right;
+  min-width: 3ch; /* keeps numbers aligned even as they grow */
+}
+
+.tool-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tool-input {
+  width: 100px;
+  margin-right: 1rem;
+}
+
+.tool-output {
+  margin-top: 1rem;
+  white-space: pre-wrap;
+  color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  min-height: 100px;
+  max-width: 800px;
 }
 
 footer {

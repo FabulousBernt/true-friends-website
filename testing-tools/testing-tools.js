@@ -32,4 +32,4 @@ buttons.forEach(btn => {
 });
 
 // default tool
-loadTool("counterstring");
+loadTool("counter-string");

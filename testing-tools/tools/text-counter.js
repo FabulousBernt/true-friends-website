@@ -3,27 +3,38 @@ export const textCounterTool = {
   name: 'Text Counter',
   render(container) {
     container.innerHTML = `
-      <div>
-        <label for="char-input">Enter text:</label><br/>
-        <textarea id="char-input" class="tool-textarea" rows="10" cols="50" style="font-family: monospace;"></textarea>
-      </div>
-      <div>
-        Word count: <span id="word-count">0</span>
-      </div>
-      <div>
-        Character count: <span id="char-count">0</span>
-      </div>
-      <div>
-        Letters (a-z, A-Z): <span id="letter-count">0</span>
-      </div>
-      <div>
-        Numbers (0-9): <span id="number-count">0</span>
-      </div>
-      <div>
-        Special characters: <span id="special-count">0</span>
-      </div>
-      <div>
-        Spaces/blanks: <span id="space-count">0</span>
+      <h2>Text counter</h2>
+      <div class="text-counter-wrapper">
+        <div>
+          <label for="char-input">Enter text</label><br/>
+          <textarea id="char-input" class="tool-textarea" rows="10" cols="50" style="font-family: monospace;"></textarea>
+        </div>
+        <div class="text-counter-results">
+          <div class="text-counter-row">
+            <span class="text-counter-label">Word count:</span>
+            <span class="text-counter-value"><span id="word-count">0</span></span>
+          </div>
+          <div class="text-counter-row">
+            <span class="text-counter-label">Character count:</span>
+            <span class="text-counter-value"><span id="char-count">0</span></span>
+          </div>
+          <div class="text-counter-row">
+            <span class="text-counter-label">Letters (a-z, A-Z):</span>
+            <span class="text-counter-value"><span id="letter-count">0</span></span>
+          </div>
+          <div class="text-counter-row">
+            <span class="text-counter-label">Numbers (0-9):</span>
+            <span class="text-counter-value"><span id="number-count">0</span></span>
+          </div>
+          <div class="text-counter-row">
+            <span class="text-counter-label">Special characters:</span>
+            <span class="text-counter-value"><span id="special-count">0</span></span>
+          </div>
+          <div class="text-counter-row">
+            <span class="text-counter-label">Spaces/blanks:</span>
+            <span class="text-counter-value"><span id="space-count">0</span></span>
+          </div>
+        </div>
       </div>
     `;
 

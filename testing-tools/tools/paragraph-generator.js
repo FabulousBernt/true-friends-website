@@ -3,55 +3,43 @@ export const paragraphGeneratorTool = {
   name: 'Paragraph Generator',
 
   render(container) {
-    container.innerHTML = '';
+    container.innerHTML = '<h2>Paragraph generator</h2>';
 
     // Input label and field
     const label = document.createElement('label');
     label.textContent = 'Number of words: ';
-    label.style.display = 'block';
-    label.style.marginBottom = '0.5rem';
+    label.classList.add('tool-label');
 
     const input = document.createElement('input');
     input.type = 'number';
     input.min = '1';
     input.value = '50';
-    input.style.width = '100px';
-    input.style.marginRight = '1rem';
+    input.classList.add('tool-input');
 
     label.appendChild(input);
 
     // Generate button
     const button = document.createElement('button');
     button.textContent = 'Generate';
-    button.className = 'tool-button generate';
+    button.className = 'tool-button generate shared-button';
 
     // Copy button
     const copyButton = document.createElement('button');
     copyButton.textContent = 'Copy to Clipboard';
-    copyButton.className = 'tool-button copy';
+    copyButton.className = 'tool-button copy shared-button';
 
-    // Confirmation message container
-    const confirmation = document.createElement('div');
-    confirmation.style.color = '#4caf50';
-    confirmation.style.minHeight = '1.2em';
-    confirmation.style.display = 'inline-block';
-    confirmation.style.marginLeft = '10px';
+    // Buttons container
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.className = 'counter-buttons';
+    buttonsContainer.appendChild(button);
+    buttonsContainer.appendChild(copyButton);
 
     // Output area
     const output = document.createElement('pre');
-    output.style.marginTop = '1rem';
-    output.style.whiteSpace = 'pre-wrap';
-    output.style.color = '#f5f5f5';
-    output.style.backgroundColor = '#2a2a2a';
-    output.style.padding = '1rem';
-    output.style.borderRadius = '4px';
-    output.style.minHeight = '100px';
-    output.style.maxWidth = '800px';
+    output.classList.add('tool-output');
 
     container.appendChild(label);
-    container.appendChild(button);
-    container.appendChild(copyButton);
-    container.appendChild(confirmation);
+    container.appendChild(buttonsContainer);
     container.appendChild(output);
 
     // Sample word pool
@@ -87,24 +75,34 @@ export const paragraphGeneratorTool = {
         return;
       }
       output.textContent = generateParagraph(count);
-      confirmation.textContent = '';
     });
 
     // Copy button click event
     copyButton.addEventListener('click', () => {
       if (!output.textContent) {
+        const originalText = copyButton.textContent;
+        copyButton.textContent = 'Nothing to copy';
+        copyButton.style.color = '#F05BB5';
+        setTimeout(() => {
+          copyButton.textContent = originalText;
+        }, 1500);
         return;
       }
       navigator.clipboard.writeText(output.textContent).then(() => {
-        confirmation.textContent = 'Copied to clipboard!';
+        const originalText = copyButton.textContent;
+        const originalColor = copyButton.style.color;
+        copyButton.textContent = 'Copied to clipboard!';
+        copyButton.style.color = '#02F5D4';
         setTimeout(() => {
-          confirmation.textContent = '';
-        }, 2000);
+          copyButton.textContent = originalText;
+          copyButton.style.color = originalColor;
+        }, 1500);
       }).catch(() => {
-        confirmation.textContent = 'Failed to copy.';
+        const originalText = copyButton.textContent;
+        copyButton.textContent = 'Failed';
         setTimeout(() => {
-          confirmation.textContent = '';
-        }, 2000);
+          copyButton.textContent = originalText;
+        }, 1500);
       });
     });
 
