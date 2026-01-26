@@ -13,6 +13,7 @@ export const paragraphGeneratorTool = {
     const input = document.createElement('input');
     input.type = 'number';
     input.min = '1';
+    input.max = '10000';
     input.value = '50';
     input.classList.add('tool-input');
 
@@ -72,6 +73,10 @@ export const paragraphGeneratorTool = {
       const count = parseInt(input.value, 10);
       if (isNaN(count) || count < 1) {
         output.textContent = 'Please enter a valid number greater than 0.';
+        return;
+      }
+      if (count > 10000) {
+        output.textContent = 'Maximum 10,000 words allowed.';
         return;
       }
       output.textContent = generateParagraph(count);

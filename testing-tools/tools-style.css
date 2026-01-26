@@ -227,6 +227,16 @@ header p {
   min-width: 3ch; /* keeps numbers aligned even as they grow */
 }
 
+.text-counter-limit-warning {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #5a2d2d;
+  color: #ff6b6b;
+  border-left: 4px solid #ff6b6b;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
 .tool-label {
   display: block;
   margin-bottom: 0.5rem;
@@ -245,6 +255,110 @@ header p {
   border-radius: 4px;
   min-height: 100px;
   max-width: 800px;
+}
+
+/* File Generator Styles */
+.file-checkboxes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background-color: #1a1a2e;
+  border-radius: 4px;
+  max-width: 800px;
+}
+
+.file-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #f5f5f5;
+  transition: color 0.2s;
+}
+
+.file-checkbox-label:hover {
+  color: #00d4ff;
+}
+
+.file-checkbox {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #00d4ff;
+}
+
+.file-buttons-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  margin: 1rem 0;
+  max-width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-buttons-container .shared-button {
+  padding: 0.75rem 1.5rem;
+  flex: 0 1 auto;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 2px solid;
+  box-shadow: none;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  border-color: #FFFFFF;
+}
+
+.file-buttons-container .shared-button:hover {
+  color: #0A0A15;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+
+.file-buttons-container .generate {
+  background-color: #FEE440;
+  color: #0A0A15;
+  border-color: #FEE440;
+  flex: 1;
+}
+
+.file-buttons-container .generate:hover {
+  color: #0A0A15;
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.file-status {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  max-width: 800px;
+}
+
+.file-status.success {
+  background-color: #2d5a2d;
+  color: #00ff00;
+  border-left: 4px solid #00ff00;
+}
+
+.file-status.error {
+  background-color: #5a2d2d;
+  color: #ff6b6b;
+  border-left: 4px solid #ff6b6b;
+}
+
+.file-status.processing {
+  background-color: #2d4a5a;
+  color: #00d4ff;
+  border-left: 4px solid #00d4ff;
 }
 
 footer {

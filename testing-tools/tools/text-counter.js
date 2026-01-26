@@ -45,8 +45,23 @@ export const textCounterTool = {
     const numberCountSpan = container.querySelector('#number-count');
     const specialCountSpan = container.querySelector('#special-count');
     const spaceCountSpan = container.querySelector('#space-count');
+    const MAX_LENGTH = 100000;
+
+    // Status message for limit warning
+    const statusDiv = document.createElement('div');
+    statusDiv.className = 'text-counter-limit-warning';
+    statusDiv.style.display = 'none';
+    statusDiv.textContent = `⚠️ Maximum length of ${MAX_LENGTH} characters reached`;
+    container.appendChild(statusDiv);
 
     textarea.addEventListener('input', () => {
+      const wasAtLimit = textarea.value.length >= MAX_LENGTH;
+      if (textarea.value.length > MAX_LENGTH) {
+        textarea.value = textarea.value.substring(0, MAX_LENGTH);
+        statusDiv.style.display = 'block';
+      } else if (wasAtLimit && textarea.value.length < MAX_LENGTH) {
+        statusDiv.style.display = 'none';
+      }
       const text = textarea.value;
       countSpan.textContent = text.length;
 

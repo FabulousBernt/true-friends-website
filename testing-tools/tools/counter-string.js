@@ -4,7 +4,7 @@ export const counterstringTool = {
   render(container) {
     container.innerHTML = `
       <h2>Counter string generator</h2>
-      <label>Length: <input id="length" type="number" value="35" min="1" class="shared-button"/></label>
+      <label>Length: <input id="length" type="number" value="35" min="1" max="50000" class="shared-button"/></label>
       <div class="counter-buttons">
         <button id="generate" class="tool-button generate shared-button">Generate</button>
         <button id="copy" class="tool-button copy shared-button">Copy to Clipboard</button>
@@ -34,6 +34,10 @@ export const counterstringTool = {
       const len = Number(input.value);
       if (isNaN(len) || len < 1) {
         output.textContent = "Please enter a valid number > 0";
+        return;
+      }
+      if (len > 50000) {
+        output.textContent = "Maximum 50,000 characters allowed.";
         return;
       }
       output.textContent = generateCounterstring(len);

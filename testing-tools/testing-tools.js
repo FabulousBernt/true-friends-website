@@ -1,11 +1,13 @@
 import { counterstringTool } from "./tools/counter-string.js";
 import { textCounterTool } from "./tools/text-counter.js";
 import { paragraphGeneratorTool } from "./tools/paragraph-generator.js";
+import { fileGeneratorTool } from "./tools/file-generator.js";
 
 const tools = {
   "counter-string": counterstringTool,
   "text-counter": textCounterTool,
   "paragraph-generator": paragraphGeneratorTool,
+  "files": fileGeneratorTool,
 };
 
 const container = document.getElementById("tool-container");
