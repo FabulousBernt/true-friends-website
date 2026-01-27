@@ -73,7 +73,7 @@ export const fileGeneratorTool = {
       if (selectedTypes.length === 0) {
         statusDiv.textContent = "Please select at least one file type";
         statusDiv.classList.add("error");
-        statusDiv.classList.remove("success", "processing");
+        statusDiv.classList.remove("success", "info");
         statusDiv.style.display = "block";
         return;
       }
