@@ -33,9 +33,9 @@ export const fileGeneratorTool = {
     });
 
     // Create buttons using utility
-    const selectAllButton = createButton('Select All', 'btn-secondary');
-    const deselectAllButton = createButton('Deselect All', 'btn-secondary');
-    const generateButton = createButton('Generate', 'btn-primary');
+    const selectAllButton = createButton('Select All', ['btn-secondary']);
+    const deselectAllButton = createButton('Deselect All', ['btn-secondary']);
+    const generateButton = createButton('Generate', ['btn-primary']);
 
     // Buttons container
     const buttonsContainer = document.createElement('div');
