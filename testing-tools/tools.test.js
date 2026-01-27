@@ -1,7 +1,7 @@
-import { counterstringTool } from "./counter-string.js";
-import { paragraphGeneratorTool } from "./paragraph-generator.js";
-import { textCounterTool } from "./text-counter.js";
-import { fileGeneratorTool } from "./file-generator.js";
+import { counterstringTool } from "./tools/counter-string.js";
+import { paragraphGeneratorTool } from "./tools/paragraph-generator.js";
+import { textCounterTool } from "./tools/text-counter.js";
+import { fileGeneratorTool } from "./tools/file-generator.js";
 
 // ============================================================
 // Counter String Tests
@@ -101,12 +101,12 @@ describe("Text Counter Tool", () => {
     const text = "Hello World 123!";
     textCounterTool.updateCounts(text, mockSpans.char, mockSpans.word, mockSpans.letter, mockSpans.number, mockSpans.special, mockSpans.space);
 
-    expect(mockSpans.char.textContent).toBe("15");
-    expect(mockSpans.word.textContent).toBe("2");
-    expect(mockSpans.letter.textContent).toBe("10");
-    expect(mockSpans.number.textContent).toBe("3");
-    expect(mockSpans.space.textContent).toBe("2");
-    expect(mockSpans.special.textContent).toBe("1");
+    expect(mockSpans.char.textContent).toBe(16);
+    expect(mockSpans.word.textContent).toBe(3);
+    expect(mockSpans.letter.textContent).toBe(10);
+    expect(mockSpans.number.textContent).toBe(3);
+    expect(mockSpans.space.textContent).toBe(2);
+    expect(mockSpans.special.textContent).toBe(1);
   });
 
   it("updateCounts with empty string", () => {
@@ -121,10 +121,10 @@ describe("Text Counter Tool", () => {
 
     textCounterTool.updateCounts("", mockSpans.char, mockSpans.word, mockSpans.letter, mockSpans.number, mockSpans.special, mockSpans.space);
 
-    expect(mockSpans.char.textContent).toBe("0");
-    expect(mockSpans.word.textContent).toBe("0");
-    expect(mockSpans.letter.textContent).toBe("0");
-    expect(mockSpans.number.textContent).toBe("0");
+    expect(mockSpans.char.textContent).toBe(0);
+    expect(mockSpans.word.textContent).toBe(0);
+    expect(mockSpans.letter.textContent).toBe(0);
+    expect(mockSpans.number.textContent).toBe(0);
   });
 
   it("updateCounts distinguishes letters and numbers", () => {
@@ -139,8 +139,8 @@ describe("Text Counter Tool", () => {
 
     textCounterTool.updateCounts("abc123", mockSpans.char, mockSpans.word, mockSpans.letter, mockSpans.number, mockSpans.special, mockSpans.space);
 
-    expect(mockSpans.letter.textContent).toBe("3");
-    expect(mockSpans.number.textContent).toBe("3");
+    expect(mockSpans.letter.textContent).toBe(3);
+    expect(mockSpans.number.textContent).toBe(3);
   });
 });
 
