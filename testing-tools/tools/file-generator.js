@@ -79,7 +79,7 @@ export const fileGeneratorTool = {
       }
 
       statusDiv.textContent = 'Generating files...';
-      statusDiv.classList.add('processing');
+      statusDiv.classList.add('info');
       statusDiv.classList.remove('error', 'success');
       statusDiv.style.display = 'block';
       generateButton.disabled = true;
@@ -156,11 +156,11 @@ export const fileGeneratorTool = {
 
         statusDiv.textContent = `✓ Successfully generated ${selectedTypes.length} file(s) and downloaded as test-files.zip`;
         statusDiv.classList.add('success');
-        statusDiv.classList.remove('error', 'processing');
+        statusDiv.classList.remove('error', 'info');
       } catch (error) {
         statusDiv.textContent = `Error: ${error.message}`;
         statusDiv.classList.add('error');
-        statusDiv.classList.remove('success', 'processing');
+        statusDiv.classList.remove('success', 'info');
       } finally {
         generateButton.disabled = false;
       }
