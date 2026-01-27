@@ -1,7 +1,7 @@
-import { counterstringTool } from "./tools/counter-string.js";
-import { paragraphGeneratorTool } from "./tools/paragraph-generator.js";
-import { textCounterTool } from "./tools/text-counter.js";
-import { fileGeneratorTool } from "./tools/file-generator.js";
+import { counterstringTool } from "../testing-tools/tools/counter-string.js";
+import { paragraphGeneratorTool } from "../testing-tools/tools/paragraph-generator.js";
+import { textCounterTool } from "../testing-tools/tools/text-counter.js";
+import { fileGeneratorTool } from "../testing-tools/tools/file-generator.js";
 
 // ============================================================
 // Counter String Tests
