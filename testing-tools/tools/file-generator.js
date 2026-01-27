@@ -1,3 +1,5 @@
+import { createButton, createStatusMessage } from './utils.js';
+
 export const fileGeneratorTool = {
   id: 'files',
   name: 'File Generator',
@@ -30,20 +32,10 @@ export const fileGeneratorTool = {
       checkboxesDiv.appendChild(label);
     });
 
-    // Generate button
-    const generateButton = document.createElement('button');
-    generateButton.textContent = 'Generate';
-    generateButton.className = 'tool-button generate shared-button';
-
-    // Select all button
-    const selectAllButton = document.createElement('button');
-    selectAllButton.textContent = 'Select All';
-    selectAllButton.className = 'tool-button shared-button';
-
-    // Deselect all button
-    const deselectAllButton = document.createElement('button');
-    deselectAllButton.textContent = 'Deselect All';
-    deselectAllButton.className = 'tool-button shared-button';
+    // Create buttons using utility
+    const selectAllButton = createButton('Select All', 'btn-secondary');
+    const deselectAllButton = createButton('Deselect All', 'btn-secondary');
+    const generateButton = createButton('Generate', 'btn-primary');
 
     // Buttons container
     const buttonsContainer = document.createElement('div');
@@ -53,8 +45,7 @@ export const fileGeneratorTool = {
     buttonsContainer.appendChild(generateButton);
 
     // Status message
-    const statusDiv = document.createElement('div');
-    statusDiv.className = 'file-status';
+    const statusDiv = createStatusMessage('');
     statusDiv.style.display = 'none';
 
     container.appendChild(checkboxesDiv);
@@ -81,13 +72,15 @@ export const fileGeneratorTool = {
 
       if (selectedTypes.length === 0) {
         statusDiv.textContent = 'Please select at least one file type';
+        statusDiv.classList.add('error');
+        statusDiv.classList.remove('success', 'processing');
         statusDiv.style.display = 'block';
-        statusDiv.className = 'file-status error';
         return;
       }
 
       statusDiv.textContent = 'Generating files...';
-      statusDiv.className = 'file-status processing';
+      statusDiv.classList.add('processing');
+      statusDiv.classList.remove('error', 'success');
       statusDiv.style.display = 'block';
       generateButton.disabled = true;
 
@@ -162,10 +155,12 @@ export const fileGeneratorTool = {
         URL.revokeObjectURL(url);
 
         statusDiv.textContent = `✓ Successfully generated ${selectedTypes.length} file(s) and downloaded as test-files.zip`;
-        statusDiv.className = 'file-status success';
+        statusDiv.classList.add('success');
+        statusDiv.classList.remove('error', 'processing');
       } catch (error) {
         statusDiv.textContent = `Error: ${error.message}`;
-        statusDiv.className = 'file-status error';
+        statusDiv.classList.add('error');
+        statusDiv.classList.remove('success', 'processing');
       } finally {
         generateButton.disabled = false;
       }

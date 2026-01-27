@@ -1,73 +1,65 @@
+import { copyToClipboard, createButton, createOutput, validateNumberInput } from "./utils.js";
+
 export const counterstringTool = {
   id: "counter-string",
   name: "Counter string",
-  render(container) {
-    container.innerHTML = `
-      <h2>Counter string generator</h2>
-      <label>Length: <input id="length" type="number" value="35" min="1" max="50000" class="shared-button"/></label>
-      <div class="counter-buttons">
-        <button id="generate" class="tool-button generate shared-button">Generate</button>
-        <button id="copy" class="tool-button copy shared-button">Copy to Clipboard</button>
-      </div>
-      <pre id="output"></pre>
-    `;
 
-    const input = container.querySelector("#length");
-    const button = container.querySelector("#generate");
-    const copyButton = container.querySelector("#copy");
-    const output = container.querySelector("#output");
-
-    // Generate a proper counterstring
-    function generateCounterstring(length) {
-      let str = "";
-      let nextNum = 2; // first number represents 2nd char
-      while (str.length < length) {
-        let token = nextNum + "*";
-        str += token;
-        // next number = current length of string + length of next number + 1 (for the *)
-        nextNum = str.length + (String(nextNum + 2).length) + 1;
-      }
-      return str.slice(0, length);
+  generateCounterstring(length) {
+    let str = "";
+    let nextNum = 2;
+    while (str.length < length) {
+      let token = nextNum + "*";
+      str += token;
+      nextNum = str.length + String(nextNum + 2).length + 1;
     }
+    return str.slice(0, length);
+  },
 
-    button.addEventListener("click", () => {
-      const len = Number(input.value);
-      if (isNaN(len) || len < 1) {
-        output.textContent = "Please enter a valid number > 0";
+  render(container) {
+    container.innerHTML = "<h2>Counter string generator</h2>";
+
+    // Input
+    const label = document.createElement("label");
+    label.classList.add("tool-label");
+    label.textContent = "Length: ";
+    
+    const input = document.createElement("input");
+    input.type = "number";
+    input.value = "35";
+    input.min = "1";
+    input.max = "50000";
+    input.classList.add("tool-input");
+    label.appendChild(input);
+
+    // Buttons
+    const generateBtn = createButton("Generate", ["tool-button", "generate"]);
+    const copyBtn = createButton("Copy to Clipboard", ["tool-button", "copy"]);
+
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("btn-group");
+    buttonsContainer.appendChild(generateBtn);
+    buttonsContainer.appendChild(copyBtn);
+
+    // Output
+    const output = createOutput();
+
+    // Append to container
+    container.appendChild(label);
+    container.appendChild(buttonsContainer);
+    container.appendChild(output);
+
+    // Event handlers
+    generateBtn.addEventListener("click", () => {
+      const validation = validateNumberInput(input.value, 1, 50000);
+      if (!validation.isValid) {
+        output.textContent = validation.error;
         return;
       }
-      if (len > 50000) {
-        output.textContent = "Maximum 50,000 characters allowed.";
-        return;
-      }
-      output.textContent = generateCounterstring(len);
+      output.textContent = this.generateCounterstring(Number(input.value));
     });
 
-    copyButton.addEventListener("click", () => {
-      if (!output.textContent.trim()) {
-        copyButton.style.color = "#F05BB5";
-        copyButton.textContent = "Nothing to copy!";
-        setTimeout(() => {
-          copyButton.style.color = "";
-          copyButton.textContent = "Copy to Clipboard";
-        }, 1500);
-        return;
-      }
-      navigator.clipboard.writeText(output.textContent).then(() => {
-        copyButton.style.color = "#02F5D4";
-        copyButton.textContent = "Copied to clipboard!";
-        setTimeout(() => {
-          copyButton.style.color = "";
-          copyButton.textContent = "Copy to Clipboard";
-        }, 1500);
-      }).catch(() => {
-        copyButton.style.color = "#F05BB5";
-        copyButton.textContent = "Failed to copy!";
-        setTimeout(() => {
-          copyButton.style.color = "";
-          copyButton.textContent = "Copy to Clipboard";
-        }, 1500);
-      });
+    copyBtn.addEventListener("click", () => {
+      copyToClipboard(output.textContent, copyBtn);
     });
-  }
+  },
 };

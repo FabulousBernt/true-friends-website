@@ -1,6 +1,10 @@
+import { createStatusMessage } from './utils.js';
+
 export const textCounterTool = {
   id: 'text-counter',
   name: 'Text Counter',
+  MAX_LENGTH: 100000,
+
   render(container) {
     container.innerHTML = `
       <h2>Text counter</h2>
@@ -45,51 +49,49 @@ export const textCounterTool = {
     const numberCountSpan = container.querySelector('#number-count');
     const specialCountSpan = container.querySelector('#special-count');
     const spaceCountSpan = container.querySelector('#space-count');
-    const MAX_LENGTH = 100000;
 
-    // Status message for limit warning
-    const statusDiv = document.createElement('div');
-    statusDiv.className = 'text-counter-limit-warning';
+    const statusDiv = createStatusMessage('', 'error');
     statusDiv.style.display = 'none';
-    statusDiv.textContent = `⚠️ Maximum length of ${MAX_LENGTH} characters reached`;
     container.appendChild(statusDiv);
 
     textarea.addEventListener('input', () => {
-      const wasAtLimit = textarea.value.length >= MAX_LENGTH;
-      if (textarea.value.length > MAX_LENGTH) {
-        textarea.value = textarea.value.substring(0, MAX_LENGTH);
+      const wasAtLimit = textarea.value.length >= this.MAX_LENGTH;
+      if (textarea.value.length > this.MAX_LENGTH) {
+        textarea.value = textarea.value.substring(0, this.MAX_LENGTH);
+        statusDiv.textContent = `⚠️ Maximum length of ${this.MAX_LENGTH} characters reached`;
         statusDiv.style.display = 'block';
-      } else if (wasAtLimit && textarea.value.length < MAX_LENGTH) {
+      } else if (wasAtLimit && textarea.value.length < this.MAX_LENGTH) {
         statusDiv.style.display = 'none';
       }
-      const text = textarea.value;
-      countSpan.textContent = text.length;
 
-      const words = text.trim().split(/\s+/).filter(word => word.length > 0);
-      wordCountSpan.textContent = words.length;
-
-      let letters = 0;
-      let numbers = 0;
-      let specials = 0;
-      let spaces = 0;
-
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        if (/[a-zA-Z]/.test(char)) {
-          letters++;
-        } else if (/[0-9]/.test(char)) {
-          numbers++;
-        } else if (char === ' ') {
-          spaces++;
-        } else if (/\S/.test(char)) {
-          specials++;
-        }
-      }
-
-      letterCountSpan.textContent = letters;
-      numberCountSpan.textContent = numbers;
-      specialCountSpan.textContent = specials;
-      spaceCountSpan.textContent = spaces;
+      this.updateCounts(textarea.value, countSpan, wordCountSpan, letterCountSpan, numberCountSpan, specialCountSpan, spaceCountSpan);
     });
+  },
+
+  updateCounts(text, charSpan, wordSpan, letterSpan, numberSpan, specialSpan, spaceSpan) {
+    charSpan.textContent = text.length;
+
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    wordSpan.textContent = words.length;
+
+    let letters = 0, numbers = 0, specials = 0, spaces = 0;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      if (/[a-zA-Z]/.test(char)) {
+        letters++;
+      } else if (/[0-9]/.test(char)) {
+        numbers++;
+      } else if (char === ' ') {
+        spaces++;
+      } else if (/\S/.test(char)) {
+        specials++;
+      }
+    }
+
+    letterSpan.textContent = letters;
+    numberSpan.textContent = numbers;
+    specialSpan.textContent = specials;
+    spaceSpan.textContent = spaces;
   }
 };
