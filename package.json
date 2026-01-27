@@ -1,0 +1,21 @@
+{
+  "name": "true-friends-website",
+  "version": "1.0.0",
+  "description": "True Friends website with testing tools",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "testing",
+    "tools",
+    "generator"
+  ],
+  "author": "Johnny Vigersten",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
