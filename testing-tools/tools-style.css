@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Passion+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Passion+One&display=swap');
 
 /* ============================================================
    DESIGN SYSTEM VARIABLES (Using CSS properties for consistency)
@@ -29,7 +29,7 @@
   --transition-fast: 0.2s;
   
   --font-mono: 'JetBrains Mono', monospace;
-  --font-display: 'Passion One', sans-serif;
+  --font-display: 'JetBrains Mono', monospace;
   --font-size-base: 1rem;
   --font-weight-normal: 400;
   --font-weight-bold: 600;
@@ -42,6 +42,7 @@ body {
   font-family: var(--font-mono);
   margin: 0;
   padding: 0;
+  padding-bottom: 80px;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-size: var(--font-size-base);
@@ -60,11 +61,12 @@ header {
 header h1,
 header h2 {
   margin: 0;
-  font-family: var(--font-display);
 }
 
 header h1 {
+  font-family: var(--font-mono);
   font-size: 4rem;
+  font-weight: 800;
 }
 
 header h2 {
@@ -424,4 +426,253 @@ footer {
   right: 0;
   bottom: 0;
   background-color: var(--color-bg-primary);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 0.95rem;
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1rem;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
+
+  /* Header adjustments */
+  header {
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header h2 {
+    font-size: 1.5rem;
+  }
+
+  header img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  /* Navigation adjustments */
+  .tools-nav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tools-nav button {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Main container adjustments */
+  #tool-container {
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  /* Button adjustments */
+  button,
+  .btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Button containers */
+  .btn-group,
+  .counter-buttons,
+  .file-buttons-container {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .file-buttons-container {
+    max-width: 100%;
+    padding: 0 var(--spacing-sm);
+  }
+
+  .file-buttons-container .generate {
+    min-width: 100%;
+  }
+
+  .file-buttons-container .shared-button {
+    flex: 1 1 auto;
+    min-width: 80px;
+    white-space: normal;
+  }
+
+  /* Input adjustments */
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  .tool-input,
+  .tool-textarea {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+
+  .tool-input {
+    width: 80px;
+    margin-right: var(--spacing-sm);
+  }
+
+  .tool-textarea {
+    max-width: 100%;
+    min-height: 120px;
+  }
+
+  /* Output adjustments */
+  .tool-output,
+  #output,
+  .paragraph-output {
+    max-width: 100%;
+    min-height: 80px;
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  /* Text counter adjustments */
+  .text-counter-row {
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) 0;
+  }
+
+  #text-counter #word-count,
+  #text-counter #char-count,
+  #text-counter #letter-count,
+  #text-counter #number-count,
+  #text-counter #special-count,
+  #text-counter #space-count {
+    min-width: 50px;
+    font-size: 0.9rem;
+  }
+
+  /* File checkboxes adjustments */
+  .file-checkboxes-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    max-width: 100%;
+  }
+
+  .file-checkbox-label {
+    font-size: 0.85rem;
+  }
+
+  /* Status messages adjustments */
+  .file-status,
+  .status-message {
+    max-width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  /* Footer adjustments */
+  footer {
+    padding: var(--spacing-sm) var(--spacing-xs);
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 0.9rem;
+    --spacing-md: 0.6rem;
+    --spacing-lg: 0.9rem;
+  }
+
+  body {
+    padding-bottom: 110px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header h2 {
+    font-size: 1.2rem;
+  }
+
+  header img {
+    width: 70px;
+    height: 70px;
+  }
+
+  header p {
+    font-size: 0.8rem;
+  }
+
+  .tools-nav button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  #tool-container {
+    margin-top: var(--spacing-sm);
+  }
+
+  button,
+  .btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .tool-input {
+    width: 70px;
+    margin-right: var(--spacing-xs);
+  }
+
+  .tool-textarea {
+    min-height: 100px;
+  }
+
+  .text-counter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .file-checkboxes-container {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-sm);
+  }
+
+  footer {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs);
+  }
+}
+
+/* Large screens (tablets and desktops) - optimization */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 4.5rem;
+  }
+
+  header h2 {
+    font-size: 2.2rem;
+  }
+
+  .tools-nav {
+    gap: var(--spacing-lg);
+  }
+
+  .file-checkboxes-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
 }
