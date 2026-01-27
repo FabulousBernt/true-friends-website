@@ -1,29 +1,29 @@
-import { createButton, createStatusMessage } from './utils.js';
+import { createButton, createStatusMessage } from "./utils.js";
 
 export const fileGeneratorTool = {
-  id: 'files',
-  name: 'File Generator',
+  id: "files",
+  name: "File Generator",
 
   render(container) {
-    container.innerHTML = '<h2>File Generator</h2><p>Generate test files in various formats for compatibility testing</p>';
+    container.innerHTML = "<h2>File Generator</h2><p>Generate test files in various formats for compatibility testing</p>";
 
     // File type options
-    const fileTypes = ['PNG', 'JPG', 'GIF', 'PDF', 'SVG', 'TIFF', 'DOCX', 'XLSX', 'PPTX', 'XML', 'CSV'];
+    const fileTypes = ["PNG", "JPG", "GIF", "PDF", "SVG", "TIFF", "DOCX", "XLSX", "PPTX", "XML", "CSV"];
 
     // Checkboxes container
-    const checkboxesDiv = document.createElement('div');
-    checkboxesDiv.className = 'file-checkboxes-container';
+    const checkboxesDiv = document.createElement("div");
+    checkboxesDiv.className = "file-checkboxes-container";
 
     const checkboxes = {};
 
     fileTypes.forEach(type => {
-      const label = document.createElement('label');
-      label.className = 'file-checkbox-label';
+      const label = document.createElement("label");
+      label.className = "file-checkbox-label";
 
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
       checkbox.value = type;
-      checkbox.className = 'file-checkbox';
+      checkbox.className = "file-checkbox";
       checkboxes[type] = checkbox;
 
       label.appendChild(checkbox);
@@ -33,67 +33,67 @@ export const fileGeneratorTool = {
     });
 
     // Create buttons using utility
-    const selectAllButton = createButton('Select All', ['btn-secondary']);
-    const deselectAllButton = createButton('Deselect All', ['btn-secondary']);
-    const generateButton = createButton('Generate', ['btn-primary']);
+    const selectAllButton = createButton("Select All", ["btn-secondary"]);
+    const deselectAllButton = createButton("Deselect All", ["btn-secondary"]);
+    const generateButton = createButton("Generate", ["btn-primary"]);
 
     // Buttons container
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.className = 'file-buttons-container';
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = "file-buttons-container";
     buttonsContainer.appendChild(selectAllButton);
     buttonsContainer.appendChild(deselectAllButton);
     buttonsContainer.appendChild(generateButton);
 
     // Status message
-    const statusDiv = createStatusMessage('');
-    statusDiv.style.display = 'none';
+    const statusDiv = createStatusMessage("");
+    statusDiv.style.display = "none";
 
     container.appendChild(checkboxesDiv);
     container.appendChild(buttonsContainer);
     container.appendChild(statusDiv);
 
     // Select all handler
-    selectAllButton.addEventListener('click', () => {
+    selectAllButton.addEventListener("click", () => {
       fileTypes.forEach(type => {
         checkboxes[type].checked = true;
       });
     });
 
     // Deselect all handler
-    deselectAllButton.addEventListener('click', () => {
+    deselectAllButton.addEventListener("click", () => {
       fileTypes.forEach(type => {
         checkboxes[type].checked = false;
       });
     });
 
     // Generate handler
-    generateButton.addEventListener('click', async () => {
+    generateButton.addEventListener("click", async () => {
       const selectedTypes = fileTypes.filter(type => checkboxes[type].checked);
 
       if (selectedTypes.length === 0) {
-        statusDiv.textContent = 'Please select at least one file type';
-        statusDiv.classList.add('error');
-        statusDiv.classList.remove('success', 'processing');
-        statusDiv.style.display = 'block';
+        statusDiv.textContent = "Please select at least one file type";
+        statusDiv.classList.add("error");
+        statusDiv.classList.remove("success", "processing");
+        statusDiv.style.display = "block";
         return;
       }
 
-      statusDiv.textContent = 'Generating files...';
-      statusDiv.classList.add('info');
-      statusDiv.classList.remove('error', 'success');
-      statusDiv.style.display = 'block';
+      statusDiv.textContent = "Generating files...";
+      statusDiv.classList.add("info");
+      statusDiv.classList.remove("error", "success");
+      statusDiv.style.display = "block";
       generateButton.disabled = true;
 
       try {
         // Dynamically load JSZip library
         if (!window.JSZip) {
-          const script = document.createElement('script');
-          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+          const script = document.createElement("script");
+          script.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
           document.head.appendChild(script);
           await new Promise(resolve => {
             script.onload = resolve;
             script.onerror = () => {
-              throw new Error('Failed to load JSZip library');
+              throw new Error("Failed to load JSZip library");
             };
           });
         }
@@ -115,23 +115,23 @@ export const fileGeneratorTool = {
               const innerZip = new JSZip();
               
               // Add [Content_Types].xml first and uncompressed (required for OOXML files)
-              const contentTypesFile = fileData.content.files.find(f => f.path === '[Content_Types].xml');
+              const contentTypesFile = fileData.content.files.find(f => f.path === "[Content_Types].xml");
               if (contentTypesFile) {
                 innerZip.file(contentTypesFile.path, contentTypesFile.content, { 
                   binary: true, 
-                  compression: 'STORE',
+                  compression: "STORE",
                   compressionOptions: { level: 0 }
                 });
               }
               
               // Add all other files
               for (const file of fileData.content.files) {
-                if (file.path !== '[Content_Types].xml') {
+                if (file.path !== "[Content_Types].xml") {
                   innerZip.file(file.path, file.content, { binary: true });
                 }
               }
               
-              const innerZipBlob = await innerZip.generateAsync({ type: 'uint8array' });
+              const innerZipBlob = await innerZip.generateAsync({ type: "uint8array" });
               zip.file(`test-file.${fileData.extension}`, innerZipBlob, { binary: true });
             } else {
               zip.file(`test-file.${fileData.extension}`, fileData.content, { binary: true });
@@ -142,25 +142,25 @@ export const fileGeneratorTool = {
         }
 
         // Generate zip
-        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        const zipBlob = await zip.generateAsync({ type: "blob" });
 
         // Download zip
         const url = URL.createObjectURL(zipBlob);
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
-        link.download = 'test-files.zip';
+        link.download = "test-files.zip";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
 
         statusDiv.textContent = `✓ Successfully generated ${selectedTypes.length} file(s) and downloaded as test-files.zip`;
-        statusDiv.classList.add('success');
-        statusDiv.classList.remove('error', 'info');
+        statusDiv.classList.add("success");
+        statusDiv.classList.remove("error", "info");
       } catch (error) {
         statusDiv.textContent = `Error: ${error.message}`;
-        statusDiv.classList.add('error');
-        statusDiv.classList.remove('success', 'info');
+        statusDiv.classList.add("error");
+        statusDiv.classList.remove("success", "info");
       } finally {
         generateButton.disabled = false;
       }
@@ -169,59 +169,59 @@ export const fileGeneratorTool = {
 
   async generateFile(type) {
     switch (type) {
-      case 'PNG':
+      case "PNG":
         return {
-          extension: 'png',
+          extension: "png",
           content: await this.generatePNG()
         };
-      case 'JPG':
+      case "JPG":
         return {
-          extension: 'jpg',
+          extension: "jpg",
           content: await this.generateJPG()
         };
-      case 'GIF':
+      case "GIF":
         return {
-          extension: 'gif',
+          extension: "gif",
           content: await this.generateGIF()
         };
-      case 'PDF':
+      case "PDF":
         return {
-          extension: 'pdf',
+          extension: "pdf",
           content: this.generatePDF()
         };
-      case 'SVG':
+      case "SVG":
         return {
-          extension: 'svg',
+          extension: "svg",
           content: this.generateSVG()
         };
-      case 'TIFF':
+      case "TIFF":
         return {
-          extension: 'tiff',
+          extension: "tiff",
           content: await this.generateTIFF()
         };
-      case 'DOCX':
+      case "DOCX":
         return {
-          extension: 'docx',
+          extension: "docx",
           content: this.generateDOCX()
         };
-      case 'XLSX':
+      case "XLSX":
         return {
-          extension: 'xlsx',
+          extension: "xlsx",
           content: this.generateXLSX()
         };
-      case 'PPTX':
+      case "PPTX":
         return {
-          extension: 'pptx',
+          extension: "pptx",
           content: this.generatePPT()
         };
-      case 'XML':
+      case "XML":
         return {
-          extension: 'xml',
+          extension: "xml",
           content: this.generateXML()
         };
-      case 'CSV':
+      case "CSV":
         return {
-          extension: 'csv',
+          extension: "csv",
           content: this.generateCSV()
         };
       default:
@@ -232,12 +232,12 @@ export const fileGeneratorTool = {
   // Image generators
   async generatePNG() {
     // 100x100 red pixel PNG generated via canvas
-    return this.createCanvasImage('png');
+    return this.createCanvasImage("png");
   },
 
   async generateJPG() {
     // 100x100 JPEG generated via canvas
-    return this.createCanvasImage('jpg');
+    return this.createCanvasImage("jpg");
   },
 
   async generateGIF() {
@@ -247,30 +247,30 @@ export const fileGeneratorTool = {
 
   async generateTIFF() {
     // 100x100 TIFF generated via canvas
-    return this.createCanvasImage('tiff');
+    return this.createCanvasImage("tiff");
   },
 
   async createCanvasImage(format) {
     // Create canvas and draw the True Friends logo
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = 100;
     canvas.height = 100;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     // White background
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, 100, 100);
 
     // Draw True Friends smiley logo on canvas
     // This is a simplified representation of the logo
     // Yellow face
-    ctx.fillStyle = '#FEE440';
+    ctx.fillStyle = "#FEE440";
     ctx.beginPath();
     ctx.arc(50, 50, 45, 0, Math.PI * 2);
     ctx.fill();
 
     // Left eye
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = "#000000";
     ctx.beginPath();
     ctx.ellipse(35, 40, 6, 8, 0, 0, Math.PI * 2);
     ctx.fill();
@@ -281,7 +281,7 @@ export const fileGeneratorTool = {
     ctx.fill();
 
     // Smile (curved line)
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = "#000000";
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(50, 50, 20, 0, Math.PI, false);
@@ -289,31 +289,31 @@ export const fileGeneratorTool = {
 
     // Convert canvas to blob
     return new Promise((resolve) => {
-      if (format === 'jpg') {
+      if (format === "jpg") {
         canvas.toBlob((blob) => {
           const reader = new FileReader();
           reader.onloadend = () => {
             resolve(new Uint8Array(reader.result));
           };
           reader.readAsArrayBuffer(blob);
-        }, 'image/jpeg');
-      } else if (format === 'png') {
+        }, "image/jpeg");
+      } else if (format === "png") {
         canvas.toBlob((blob) => {
           const reader = new FileReader();
           reader.onloadend = () => {
             resolve(new Uint8Array(reader.result));
           };
           reader.readAsArrayBuffer(blob);
-        }, 'image/png');
-      } else if (format === 'tiff') {
-        // TIFF is complex, so we'll use PNG converted to TIFF-like format
+        }, "image/png");
+      } else if (format === "tiff") {
+        // TIFF is complex, so we"ll use PNG converted to TIFF-like format
         canvas.toBlob((blob) => {
           const reader = new FileReader();
           reader.onloadend = () => {
             resolve(new Uint8Array(reader.result));
           };
           reader.readAsArrayBuffer(blob);
-        }, 'image/png');
+        }, "image/png");
       }
     });
   },
@@ -332,22 +332,22 @@ export const fileGeneratorTool = {
 
   async createGIF100x100() {
     // Use canvas to generate GIF-compatible image data
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = 100;
     canvas.height = 100;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     // White background
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, 100, 100);
 
     // Draw True Friends smiley logo
-    ctx.fillStyle = '#FEE440';
+    ctx.fillStyle = "#FEE440";
     ctx.beginPath();
     ctx.arc(50, 50, 45, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = "#000000";
     ctx.beginPath();
     ctx.ellipse(35, 40, 6, 8, 0, 0, Math.PI * 2);
     ctx.fill();
@@ -356,7 +356,7 @@ export const fileGeneratorTool = {
     ctx.ellipse(65, 40, 6, 8, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = "#000000";
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(50, 50, 20, 0, Math.PI, false);
@@ -370,13 +370,13 @@ export const fileGeneratorTool = {
           resolve(new Uint8Array(reader.result));
         };
         reader.readAsArrayBuffer(blob);
-      }, 'image/png'); // Use PNG format for better compatibility
+      }, "image/png"); // Use PNG format for better compatibility
     });
   },
 
   generatePDF() {
     // Minimal valid PDF with True Friends text
-    const textLine = 'This file was generated at www.truefriends.se/testing-tools';
+    const textLine = "This file was generated at www.truefriends.se/testing-tools";
     const pdfContent = `%PDF-1.4
 1 0 obj
 << /Type /Catalog /Pages 2 0 R >>
@@ -455,7 +455,7 @@ startxref
     // Create a minimal PPTX file with text
     const files = {};
 
-    files['[Content_Types].xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["[Content_Types].xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
 <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
 <Default Extension="xml" ContentType="application/xml"/>
@@ -470,14 +470,14 @@ startxref
 <Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>
 </Types>`;
 
-    files['_rels/.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["_rels/.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>
 <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
 <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>
 </Relationships>`;
 
-    files['ppt/_rels/presentation.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/_rels/presentation.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide1.xml"/>
 <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="slideMasters/slideMaster1.xml"/>
@@ -489,14 +489,14 @@ startxref
 <Relationship Id="rId8" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/viewProps" Target="viewProps.xml"/>
 </Relationships>`;
 
-    files['ppt/presentation.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/presentation.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:presentation xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:rel="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 <p:sldIdLst><p:sldId id="256" rel:id="rId1"/></p:sldIdLst>
 <p:sldSz cx="9144000" cy="6858000"/>
 <p:notesSz cx="6858000" cy="9144000"/>
 </p:presentation>`;
 
-    files['ppt/slides/slide1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slides/slide1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
 <p:cSld>
 <p:bg><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>
@@ -508,60 +508,60 @@ startxref
 </p:cSld>
 </p:sld>`;
 
-    files['ppt/slides/_rels/slide1.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slides/_rels/slide1.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 </Relationships>`;
 
-    files['ppt/slideMasters/slideMaster1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slideMasters/slideMaster1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:sldMaster xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
 <p:cSld><p:bg><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="9144000" cy="6858000"/><a:chOff x="0" y="0"/><a:chExt cx="9144000" cy="6858000"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld>
 <p:clrMap accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" bg1="bg1" bg2="bg2" dk1="dk1" dk2="dk2" folHlink="folHlink" lk1="lk1" lt1="lt1" lt2="lt2"/>
 </p:sldMaster>`;
 
-    files['ppt/slideMasters/_rels/slideMaster1.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slideMasters/_rels/slideMaster1.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="../theme/theme1.xml"/>
 <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>
 </Relationships>`;
 
-    files['ppt/slideLayouts/slideLayout1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slideLayouts/slideLayout1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:sldLayout xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
 <p:cSld><p:bg><p:bgPr><a:solidFill><a:schemeClr val="bg1"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="9144000" cy="6858000"/><a:chOff x="0" y="0"/><a:chExt cx="9144000" cy="6858000"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld>
 <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
 </p:sldLayout>`;
 
-    files['ppt/slideLayouts/_rels/slideLayout1.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/slideLayouts/_rels/slideLayout1.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="../slideMasters/slideMaster1.xml"/>
 </Relationships>`;
 
-    files['ppt/notesMasters/notesMaster1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/notesMasters/notesMaster1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:notesMaster xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
 <p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="6858000" cy="9144000"/><a:chOff x="0" y="0"/><a:chExt cx="6858000" cy="9144000"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld>
 </p:notesMaster>`;
 
-    files['ppt/handoutMasters/handoutMaster1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/handoutMasters/handoutMaster1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:handoutMaster xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
 <p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="9144000" cy="6858000"/><a:chOff x="0" y="0"/><a:chExt cx="9144000" cy="6858000"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld>
 </p:handoutMaster>`;
 
-    files['ppt/theme/theme1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/theme/theme1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Office Theme">
 <a:themeElements>
 <a:clrScheme name="Office"><a:dk1><a:srgbClr val="000000"/></a:dk1><a:lt1><a:srgbClr val="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="44546A"/></a:dk2><a:lt2><a:srgbClr val="D9E1F2"/></a:lt2><a:accent1><a:srgbClr val="5B9BD5"/></a:accent1><a:accent2><a:srgbClr val="ED7D31"/></a:accent2><a:accent3><a:srgbClr val="A5A5A5"/></a:accent3><a:accent4><a:srgbClr val="FFC000"/></a:accent4><a:accent5><a:srgbClr val="5B9BD5"/></a:accent5><a:accent6><a:srgbClr val="70AD47"/></a:accent6><a:hyperlink><a:srgbClr val="0563C1"/></a:hyperlink><a:folHyperlink><a:srgbClr val="954F72"/></a:folHyperlink></a:clrScheme>
 </a:themeElements>
 </a:theme>`;
 
-    files['ppt/presProps.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/presProps.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:presProps xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>`;
 
-    files['ppt/viewProps.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/viewProps.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:viewPr xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:normalViewPr><p:restoredLeft sz="15000"/><p:restoredTop sz="94860"/></p:normalViewPr><p:slideViewPr/><p:outlineViewPr/><p:notesViewPr/><p:handoutViewPr/></p:viewPr>`;
 
-    files['ppt/tableStyles.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["ppt/tableStyles.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:tblStyleLst xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"/>`;
 
-    files['docProps/core.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["docProps/core.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/officeDocument/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <dc:creator>True Friends Generator</dc:creator>
 <cp:lastModifiedBy>True Friends Generator</cp:lastModifiedBy>
@@ -569,7 +569,7 @@ startxref
 <dcterms:modified xsi:type="dcterms:W3CDTF">${new Date().toISOString()}</dcterms:modified>
 </cp:coreProperties>`;
 
-    files['docProps/app.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["docProps/app.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
 <TotalTime>0</TotalTime>
 <Application>Microsoft PowerPoint</Application>
@@ -600,7 +600,7 @@ startxref
     const files = {};
 
     // [Content_Types].xml - MUST be first and uncompressed
-    files['[Content_Types].xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["[Content_Types].xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
 <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
 <Default Extension="xml" ContentType="application/xml"/>
@@ -612,7 +612,7 @@ startxref
 </Types>`;
 
     // _rels/.rels
-    files['_rels/.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["_rels/.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
 <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
@@ -620,14 +620,14 @@ startxref
 </Relationships>`;
 
     // xl/_rels/workbook.xml.rels
-    files['xl/_rels/workbook.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["xl/_rels/workbook.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
 <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
 </Relationships>`;
 
     // xl/workbook.xml
-    files['xl/workbook.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["xl/workbook.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x15">
 <fileVersion appName="xl" lastEdited="5" lowestEdited="5" rupBuild="19030"/>
 <workbookPr defaultTheme="1"/>
@@ -637,7 +637,7 @@ startxref
 </workbook>`;
 
     // xl/worksheets/sheet1.xml
-    files['xl/worksheets/sheet1.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["xl/worksheets/sheet1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac">
 <sheetViews><sheetView tabSelected="1" workbookViewId="0"/></sheetViews>
 <sheetFormatPr defaultRowHeight="15"/>
@@ -650,7 +650,7 @@ startxref
 </worksheet>`;
 
     // xl/styles.xml
-    files['xl/styles.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["xl/styles.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac">
 <fonts count="1"><font><sz val="11"/><color theme="1"/><name val="Calibri"/><family val="2"/><scheme val="minor"/></font></fonts>
 <fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills>
@@ -661,7 +661,7 @@ startxref
 </styleSheet>`;
 
     // docProps/core.xml
-    files['docProps/core.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["docProps/core.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/officeDocument/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <dc:creator>True Friends Generator</dc:creator>
 <cp:lastModifiedBy>True Friends Generator</cp:lastModifiedBy>
@@ -670,7 +670,7 @@ startxref
 </cp:coreProperties>`;
 
     // docProps/app.xml
-    files['docProps/app.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    files["docProps/app.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
 <TotalTime>0</TotalTime>
 <Application>Microsoft Excel</Application>
@@ -692,7 +692,7 @@ This file was generated at www.truefriends.se/testing-tools`;
     const zipContent = {};
 
     // [Content_Types].xml
-    zipContent['[Content_Types].xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    zipContent["[Content_Types].xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
 <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
 <Default Extension="xml" ContentType="application/xml"/>
@@ -700,13 +700,13 @@ This file was generated at www.truefriends.se/testing-tools`;
 </Types>`;
 
     // _rels/.rels
-    zipContent['_rels/.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    zipContent["_rels/.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
 </Relationships>`;
 
     // word/document.xml
-    zipContent['word/document.xml'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    zipContent["word/document.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
 <w:body>
 <w:p>
@@ -718,7 +718,7 @@ This file was generated at www.truefriends.se/testing-tools`;
 </w:document>`;
 
     // word/_rels/document.xml.rels
-    zipContent['word/_rels/document.xml.rels'] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    zipContent["word/_rels/document.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 </Relationships>`;
 
@@ -733,7 +733,7 @@ This file was generated at www.truefriends.se/testing-tools`;
     for (const [path, content] of Object.entries(fileStructure)) {
       fileArray.push({
         path: path,
-        content: typeof content === 'string' ? new TextEncoder().encode(content) : content
+        content: typeof content === "string" ? new TextEncoder().encode(content) : content
       });
     }
 
