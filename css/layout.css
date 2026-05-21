@@ -1,0 +1,177 @@
+/* True Friends — Page layout & sections (mobile-first, responsive) */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem var(--container-padding);
+  overflow: hidden;
+  text-align: left;
+  --hero-photo-url: url("../img/hero-bg.jpg");
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--gradient-hero);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Optional: drop a real photo into /img/hero-bg.jpg
+   and it will layer over the gradient automatically. */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--hero-photo-url, none);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 55% 60% at 50% 55%, rgba(10, 10, 21, 0.7) 0%, rgba(10, 10, 21, 0) 70%),
+    linear-gradient(180deg, rgba(10, 10, 21, 0.4) 0%, rgba(10, 10, 21, 0.1) 35%, rgba(10, 10, 21, 0.6) 100%);
+}
+
+.hero__content {
+  display: grid;
+  gap: 0;
+  justify-items: start;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.hero__welcome,
+.hero__location {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--color-cream-soft);
+  margin: 0;
+}
+
+.hero__title { margin-top: 8px; }
+.hero__location { margin-top: 8px; }
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(2.5rem, 9vw, 96px);
+  line-height: 0.85;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+
+.hero__cta {
+  margin-top: 32px;
+  justify-self: center;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 92vh;
+  }
+}
+
+/* ---------- Section template ---------- */
+.section {
+  padding: var(--section-gap) 0;
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+@media (min-width: 768px) {
+  :root { --nav-height: 96px; }
+}
+
+.section + .section { padding-top: 0; }
+
+.section__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.section__label {
+  /* Stays at top on mobile; sticky label column on desktop */
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.section__body {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 880px) {
+  .section__grid {
+    grid-template-columns: 180px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .section__label {
+    position: sticky;
+    top: 120px;
+    padding-top: 0.4rem;
+  }
+}
+
+/* ---------- Contact section ---------- */
+.contact__head {
+  margin-bottom: 0.5rem;
+}
+
+.contact__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  margin-top: 1rem;
+}
+
+.contact__side {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+@media (min-width: 768px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}

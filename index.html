@@ -3,58 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>True Friends</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #0A0A15;
-        }
+    <meta name="theme-color" content="#0a0a15">
+    <title data-i18n="meta.title">True Friends — Creative & Technical Studio</title>
+    <meta name="description" content="True Friends is a creative and technical studio delivering visual design, user experience, testing and web development for ambitious projects." data-i18n-content="meta.description">
 
-        .container {
-            text-align: center;
-        }
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://formsubmit.co https://api.country.is; img-src 'self' data:; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="index,follow">
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #CCD5E1;
-        }
+    <link rel="icon" type="image/svg+xml" href="img/tf-smiley-logo-transparent-coloured.svg">
 
-        header h2 {
-            margin-top: 0.5em;
-            font-weight: normal;
-            color: #CCD5E1;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap">
 
-        main {
-            color: #CCD5E1;
-        }
-
-        footer {
-            margin-top: 2em;
-            font-size: 0.9em;
-            color: #888;
-        }
-    </style>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="True Friends Logo" width="100" height="100">
-        <h1>TRUE FRIENDS</h1>
-        <h2>Consulting / Studio</h2>
-    </header>
-    <main>
-        <p>This website is under construction.</p>
-    </main>
-    <footer>
-        <p>&copy; 2025 True Friends. All rights reserved.</p>
-    </footer>
-</div>
+
+<a href="#main" class="sr-only" data-i18n="aria.skip">Skip to content</a>
+
+<header class="nav" id="site-nav" data-open="false">
+    <div class="nav__inner">
+        <a href="#top" class="nav__brand" aria-label="True Friends home" data-i18n-aria-label="aria.home">
+            <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="28" height="28">
+            <span>True Friends</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
+            <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
+            <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
+            <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
+            <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <div class="nav__right">
+            <div class="nav__socials" aria-label="Social links" data-i18n-aria-label="aria.socialLinks">
+                <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.38-1.86 3.61 0 4.27 2.38 4.27 5.47v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0z"/></svg>
+                </a>
+                <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.07 2.13 1.38.76.29 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56.79-.31 1.46-.72 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-10.4a1.44 1.44 0 100-2.88 1.44 1.44 0 000 2.88z"/></svg>
+                </a>
+                <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.12C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.48A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.12C4.4 20.4 12 20.4 12 20.4s7.6 0 9.4-.48a3 3 0 002.1-2.12A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"/></svg>
+                </a>
+            </div>
+
+            <div class="nav__langs" role="group" aria-label="Switch language" data-i18n-aria-label="aria.langSwitch">
+                <button type="button" class="nav__lang" data-lang="en" aria-pressed="true">EN</button>
+                <span class="nav__lang-divider" aria-hidden="true">/</span>
+                <button type="button" class="nav__lang" data-lang="sv" aria-pressed="false">SV</button>
+            </div>
+
+            <button class="nav__toggle" aria-label="Toggle navigation menu" aria-controls="mobile-drawer" aria-expanded="false" data-i18n-aria-label="aria.mobileMenu">
+                <span class="icon-bar" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="nav__drawer" id="mobile-drawer">
+        <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
+        <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
+        <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
+        <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
+        <div class="nav__langs nav__langs--drawer" role="group" aria-label="Switch language">
+            <button type="button" class="nav__lang" data-lang="en" aria-pressed="true">EN</button>
+            <span class="nav__lang-divider" aria-hidden="true">/</span>
+            <button type="button" class="nav__lang" data-lang="sv" aria-pressed="false">SV</button>
+        </div>
+        <div class="nav__socials" aria-label="Social links" data-i18n-aria-label="aria.socialLinks">
+            <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.38-1.86 3.61 0 4.27 2.38 4.27 5.47v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0z"/></svg>
+            </a>
+            <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.07 2.13 1.38.76.29 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56.79-.31 1.46-.72 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-10.4a1.44 1.44 0 100-2.88 1.44 1.44 0 000 2.88z"/></svg>
+            </a>
+            <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.12C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.48A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.12C4.4 20.4 12 20.4 12 20.4s7.6 0 9.4-.48a3 3 0 002.1-2.12A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"/></svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+    <section class="hero" id="top">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__photo" aria-hidden="true"></div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="hero__content">
+            <p class="hero__welcome" data-i18n="hero.welcome">Welcome to TRUE FRIENDS, we are a</p>
+            <h1 class="hero__title" data-i18n-html="hero.titleHTML">Creative<span class="accent">&amp;</span><br>Technical<br>Studio</h1>
+            <p class="hero__location" data-i18n="hero.location">based in Motala, Sweden, but available world wide.</p>
+            <div class="hero__cta">
+                <button type="button" class="btn" data-modal-open="contact-modal" data-i18n="hero.cta">say hi</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-label">
+        <div class="container">
+            <div class="section__grid">
+                <p class="section__label" id="about-label" data-i18n="about.label">About</p>
+                <div class="section__body">
+                    <p class="lede" data-i18n-html="about.ledeHTML">Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.</p>
+                    <p data-i18n="about.body1">We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build high‑quality software solutions.</p>
+                    <p data-i18n="about.body2">To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-label">
+        <div class="container">
+            <div class="section__grid">
+                <p class="section__label" id="services-label" data-i18n="services.label">Services</p>
+                <div class="section__body">
+                    <ul class="service-list" role="list">
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/web-development.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.webDev.title">Web development</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.webDev.body">
+                                    Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/web-design.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.webDesign.title">Web design</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.webDesign.body">
+                                    Interfaces and design systems that balance brand expression with everyday usability — research, IA, prototypes and final visual design.
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/market-communication.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.market.title">Market communication</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.market.body">
+                                    Campaigns, content and brand collateral that connect your product to the right audience across digital and print.
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/photography.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.photo.title">Photography</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.photo.body">
+                                    Editorial and commercial photography — product, portrait and on‑location work.
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/video-production.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.video.title">Video &amp; Production</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.video.body">
+                                    From concept to final cut: short‑form social, brand films and product video, with full production support.
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="service-item">
+                                <summary class="service-item__summary">
+                                    <img class="service-item__icon" src="img/icons/editing-retouch.svg" alt="" width="32" height="32">
+                                    <span class="service-item__title" data-i18n="services.items.editing.title">Editing &amp; Retouch</span>
+                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                                </summary>
+                                <div class="service-item__body" data-i18n="services.items.editing.body">
+                                    Post‑production for photo and video — colour, retouch and finishing that keep your visuals consistent.
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-label">
+        <div class="container">
+            <div class="section__grid">
+                <p class="section__label" id="contact-label" data-i18n="contact.label">Contact</p>
+                <div class="section__body">
+                    <div class="contact__head">
+                        <p class="lede" data-i18n="contact.lede">Find us on our social media channels, reach out via email or send a message through the form below.</p>
+                    </div>
+
+                    <div class="contact__grid">
+                        <form class="form" id="contact-form" novalidate
+                              data-endpoint="https://formsubmit.co/ajax/info@truefriends.se"
+                              aria-describedby="form-status">
+                            <div class="form__row">
+                                <label class="field">
+                                    <span class="sr-only" data-i18n="aria.firstName">First name</span>
+                                    <input class="field__input" type="text" name="firstName" placeholder="first name" data-i18n-placeholder="contact.placeholders.firstName" autocomplete="given-name" maxlength="50" required>
+                                </label>
+                                <label class="field">
+                                    <span class="sr-only" data-i18n="aria.lastName">Last name</span>
+                                    <input class="field__input" type="text" name="lastName" placeholder="last name" data-i18n-placeholder="contact.placeholders.lastName" autocomplete="family-name" maxlength="50" required>
+                                </label>
+                            </div>
+                            <label class="field">
+                                <span class="sr-only" data-i18n="aria.email">Email</span>
+                                <input class="field__input" type="email" name="email" placeholder="email" data-i18n-placeholder="contact.placeholders.email" autocomplete="email" maxlength="254" required>
+                            </label>
+                            <label class="field">
+                                <span class="sr-only" data-i18n="aria.message">Message</span>
+                                <textarea class="field__textarea" name="message" placeholder="message" data-i18n-placeholder="contact.placeholders.message" maxlength="2000" required></textarea>
+                            </label>
+                            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="table">
+                            <div>
+                                <button class="btn" type="submit" data-i18n="contact.submit">send</button>
+                            </div>
+                            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+                        </form>
+
+                        <aside class="contact__side" aria-label="Other ways to reach us" data-i18n-aria-label="contact.otherWays">
+                            <div class="socials-row" role="list">
+                                <a role="listitem" class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.38-1.86 3.61 0 4.27 2.38 4.27 5.47v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0z"/></svg>
+                                </a>
+                                <a role="listitem" class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.07 2.13 1.38.76.29 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56.79-.31 1.46-.72 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-10.4a1.44 1.44 0 100-2.88 1.44 1.44 0 000 2.88z"/></svg>
+                                </a>
+                                <a role="listitem" class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.12C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.48A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.12C4.4 20.4 12 20.4 12 20.4s7.6 0 9.4-.48a3 3 0 002.1-2.12A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"/></svg>
+                                </a>
+                            </div>
+                            <a class="email-row" href="tel:+46705424677">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                                <span>+46 705 424 677</span>
+                            </a>
+                            <a class="email-row" href="mailto:info@truefriends.se">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                                <span>info@truefriends.se</span>
+                            </a>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <img class="site-footer__logo" src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="24" height="24">
+    <p class="site-footer__copyright" data-i18n="footer.copyright">&copy; True Friends 2026</p>
+</footer>
+
+<dialog class="modal" id="contact-modal" aria-labelledby="modal-title">
+    <div class="modal__inner">
+        <div class="modal__heading">
+            <h2 class="modal__title" id="modal-title" data-i18n="modal.title">Say hi!</h2>
+            <p class="modal__desc" data-i18n="modal.desc">Please fill out the contact form and we will get back to you as soon as we can.</p>
+        </div>
+
+        <form class="modal__form" id="modal-contact-form" novalidate
+              data-endpoint="https://formsubmit.co/ajax/info@truefriends.se"
+              aria-describedby="modal-form-status">
+            <div class="form__row">
+                <label class="field">
+                    <span class="sr-only" data-i18n="aria.firstName">First name</span>
+                    <input class="field__input" type="text" name="firstName" placeholder="first name" data-i18n-placeholder="contact.placeholders.firstName" autocomplete="given-name" maxlength="50" required>
+                </label>
+                <label class="field">
+                    <span class="sr-only" data-i18n="aria.lastName">Last name</span>
+                    <input class="field__input" type="text" name="lastName" placeholder="last name" data-i18n-placeholder="contact.placeholders.lastName" autocomplete="family-name" maxlength="50" required>
+                </label>
+            </div>
+            <label class="field">
+                <span class="sr-only" data-i18n="aria.email">Email</span>
+                <input class="field__input" type="email" name="email" placeholder="email" data-i18n-placeholder="contact.placeholders.email" autocomplete="email" maxlength="254" required>
+            </label>
+            <label class="field">
+                <span class="sr-only" data-i18n="aria.message">Message</span>
+                <textarea class="field__textarea" name="message" placeholder="message" data-i18n-placeholder="contact.placeholders.message" maxlength="2000" required></textarea>
+            </label>
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_template" value="table">
+            <div class="modal__actions">
+                <button type="button" class="btn btn--outline" data-modal-close data-i18n="modal.close">close</button>
+                <button type="submit" class="btn" data-i18n="modal.send">send</button>
+            </div>
+            <p class="form__status" id="modal-form-status" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+</dialog>
+
+<script src="js/translations.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

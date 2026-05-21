@@ -1,0 +1,105 @@
+/*
+ * True Friends — Design Tokens
+ * Source of truth for colors, typography, spacing, radii, motion.
+ * Derived from True Friend Website File in Figma + brand logo (#FEE440).
+ */
+
+:root {
+  /* ---------- Color ---------- */
+  --color-bg: #0a0a15;
+  --color-bg-elevated: #11121f;
+  --color-bg-input: #14152300;
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+
+  --color-border: rgba(204, 213, 225, 0.18);
+  --color-border-strong: rgba(204, 213, 225, 0.35);
+  --color-border-input: rgba(204, 213, 225, 0.22);
+
+  --color-text: #e8e6dc;
+  --color-text-strong: #ffffff;
+  --color-text-muted: rgba(232, 230, 220, 0.65);
+  --color-text-subtle: rgba(232, 230, 220, 0.45);
+
+  --color-cream: #faf9f5;
+  --color-cream-soft: #e8e6dc;
+  --color-nav-fg: var(--color-cream);
+  --color-nav-fg-hover: #fee440;
+
+  --color-accent: #fee440;
+  --color-accent-hover: #ffeb6b;
+  --color-accent-pressed: #e6cf3a;
+  --color-accent-ink: #0a0a15;
+
+  --color-focus-ring: #fee440;
+
+  /* Hero scrim gradient (placeholder until hero photo is provided) */
+  --gradient-hero:
+    radial-gradient(ellipse 80% 60% at 70% 65%, rgba(255, 140, 60, 0.35), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 20% 30%, rgba(20, 25, 50, 0.85), transparent 70%),
+    linear-gradient(180deg, #0a0a15 0%, #1a1208 55%, #0a0a15 100%);
+
+  /* ---------- Typography ---------- */
+  --font-display: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+  --font-body: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  --fs-display-xl: clamp(3rem, 9vw, 7.5rem);
+  --fs-display-lg: clamp(2.25rem, 6vw, 4.5rem);
+  --fs-h2: clamp(1.5rem, 2.4vw, 2rem);
+  --fs-h3: clamp(1.125rem, 1.6vw, 1.375rem);
+  --fs-body-lg: clamp(1rem, 1.2vw, 1.125rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.8125rem;
+  --fs-caption: 0.75rem;
+
+  --lh-tight: 0.95;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  --tracking-label: 0.18em;
+  --tracking-display: -0.02em;
+
+  /* ---------- Layout / spacing ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --container-max: 1000px;
+  --container-padding: clamp(1.25rem, 4vw, 2.5rem);
+  --section-gap: clamp(3.5rem, 7vw, 5rem);
+  --nav-height: 72px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 360ms;
+
+  /* ---------- Z-index ---------- */
+  --z-nav: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
