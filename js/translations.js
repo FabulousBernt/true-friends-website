@@ -84,7 +84,7 @@ window.TF_TRANSLATIONS = {
       send: "send",
     },
     footer: {
-      copyright: "© True Friends 2026",
+      copyright: "© 2026 True Friends. All rights reserved.",
     },
     status: {
       sending: "Sending…",
@@ -186,7 +186,7 @@ window.TF_TRANSLATIONS = {
       send: "skicka",
     },
     footer: {
-      copyright: "© True Friends 2026",
+      copyright: "© 2026 True Friends. All rights reserved.",
     },
     status: {
       sending: "Skickar…",
