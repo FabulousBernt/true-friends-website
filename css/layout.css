@@ -54,8 +54,16 @@
     linear-gradient(180deg, rgba(10, 10, 21, 0.4) 0%, rgba(10, 10, 21, 0.1) 35%, rgba(10, 10, 21, 0.6) 100%);
 }
 
-.hero--landing { --hero-photo-url: url("../img/landing-page-hero.jpg"); }
-.hero--landing .hero__photo { opacity: 0.55; }
+.landing-stage {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  --hero-photo-url: url("../img/landing-page-hero.jpg");
+}
+.landing-stage .hero__photo { opacity: 0.55; }
 
 .hero--studio .hero__scrim {
   background:
@@ -79,9 +87,14 @@
 
 .hero p { max-width: 60ch; }
 
-body.landing { display: flex; flex-direction: column; }
-body.landing main { flex: 1; display: flex; flex-direction: column; }
-body.landing .hero--landing { flex: 1; min-height: 0; }
+body.landing { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+body.landing main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+body.landing .hero { flex: 1; min-height: 0; }
+
+.landing-email {
+  align-self: center;
+  padding: 0.5rem 0;
+}
 
 .hero__content {
   display: grid;

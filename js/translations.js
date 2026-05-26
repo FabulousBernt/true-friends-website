@@ -92,7 +92,7 @@ window.TF_TRANSLATIONS = {
       network: "Network error. Please try again.",
       rateLimited: "Please wait {wait}s before sending again.",
       notConfigured:
-        "Form endpoint not configured. Email info@truefriends.se directly.",
+        "Form endpoint not configured. Email hello@truefriends.se directly.",
     },
     aria: {
       skip: "Skip to content",
@@ -193,7 +193,7 @@ window.TF_TRANSLATIONS = {
       network: "Nätverksfel. Vänligen försök igen.",
       rateLimited: "Vänta {wait}s innan du skickar igen.",
       notConfigured:
-        "Formulärets adress är inte konfigurerad. Mejla info@truefriends.se direkt.",
+        "Formulärets adress är inte konfigurerad. Mejla hello@truefriends.se direkt.",
     },
     aria: {
       skip: "Hoppa till innehåll",
