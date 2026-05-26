@@ -57,6 +57,12 @@
 .hero--landing { --hero-photo-url: url("../img/landing-page-hero.jpg"); }
 .hero--landing .hero__photo { opacity: 0.55; }
 
+.hero--studio .hero__scrim {
+  background:
+    radial-gradient(ellipse 65% 70% at 50% 55%, rgba(10, 10, 21, 0.9) 0%, rgba(10, 10, 21, 0) 75%),
+    linear-gradient(180deg, rgba(10, 10, 21, 0.55) 0%, rgba(10, 10, 21, 0.25) 35%, rgba(10, 10, 21, 0.7) 100%);
+}
+
 .hero--center .hero__content {
   justify-items: center;
   text-align: center;
@@ -70,6 +76,8 @@
 .hero--center .hero__title { font-style: normal; }
 
 .hero__logo { width: 140px; height: auto; }
+
+.hero p { max-width: 60ch; }
 
 body.landing { display: flex; flex-direction: column; }
 body.landing main { flex: 1; display: flex; flex-direction: column; }
@@ -193,8 +201,8 @@ body.landing .hero--landing { flex: 1; min-height: 0; }
 
 @media (min-width: 768px) {
   .contact__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 4rem;
   }
 }
 
