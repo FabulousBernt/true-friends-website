@@ -25,6 +25,8 @@ window.TF_TRANSLATIONS = {
       titleHTML: 'Creative<span class="accent">&amp;</span><br>Technical<br>Studio',
       location: "based in Motala, Sweden, but available world wide.",
       cta: "say hi",
+      consulting: "Consulting",
+      studio: "Studio",
     },
     about: {
       label: "About",
@@ -39,15 +41,11 @@ window.TF_TRANSLATIONS = {
       label: "Services",
       items: {
         webDev: {
-          title: "Web development",
+          title: "Web Production",
           body: "Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.",
         },
-        webDesign: {
-          title: "Web design",
-          body: "Interfaces and design systems that balance brand expression with everyday usability — research, IA, prototypes and final visual design.",
-        },
         market: {
-          title: "Market communication",
+          title: "Market Communication",
           body: "Campaigns, content and brand collateral that connect your product to the right audience across digital and print.",
         },
         photo: {
@@ -127,6 +125,8 @@ window.TF_TRANSLATIONS = {
       titleHTML: 'Kreativ<span class="accent">&amp;</span><br>Teknisk<br>Studio',
       location: "baserad i Motala, Sverige, men tillgänglig över hela världen.",
       cta: "säg hej",
+      consulting: "Konsulting",
+      studio: "Studio",
     },
     about: {
       label: "Om oss",
@@ -141,12 +141,8 @@ window.TF_TRANSLATIONS = {
       label: "Tjänster",
       items: {
         webDev: {
-          title: "Webbutveckling",
+          title: "Webbproduktion",
           body: "Produktionsfärdiga webbapplikationer och marknadssidor, byggda med moderna ramverk, tillgängliga från första början och redo att skalas med ditt team.",
-        },
-        webDesign: {
-          title: "Webbdesign",
-          body: "Gränssnitt och designsystem som balanserar varumärkesuttryck med vardaglig användbarhet — research, IA, prototyper och slutlig visuell design.",
         },
         market: {
           title: "Marknadskommunikation",
