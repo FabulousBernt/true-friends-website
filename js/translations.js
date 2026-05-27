@@ -17,9 +17,13 @@ window.TF_TRANSLATIONS = {
     nav: {
       start: "Start",
       about: "About",
+      clients: "Clients",
       services: "Services",
       gallery: "Gallery",
       contact: "Contact",
+    },
+    clients: {
+      label: "Clients",
     },
     gallery: {
       label: "Gallery",
@@ -130,9 +134,13 @@ window.TF_TRANSLATIONS = {
     nav: {
       start: "Start",
       about: "Om oss",
+      clients: "Kunder",
       services: "Tjänster",
       gallery: "Galleri",
       contact: "Kontakt",
+    },
+    clients: {
+      label: "Kunder",
     },
     gallery: {
       label: "Galleri",

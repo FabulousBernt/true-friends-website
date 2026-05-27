@@ -594,6 +594,32 @@ body:has(dialog[open]) { overflow: hidden; }
 
 .address-row > span { display: flex; flex-direction: column; }
 
+/* ---------- Clients (logo wall) ---------- */
+.clients__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem 2.5rem;
+}
+
+/* Logos are silhouettes — the SVG/PNG is used as a CSS mask, and the
+   visible colour comes from `background-color`. That gives one knob
+   (subtle → accent) for the hover state regardless of the source file. */
+.clients__logo {
+  display: block;
+  width: 140px;
+  height: 40px;
+  background-color: var(--color-text-subtle);
+  -webkit-mask: var(--logo-url, none) center / contain no-repeat;
+          mask: var(--logo-url, none) center / contain no-repeat;
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.clients__logo:hover,
+.clients__logo:focus-visible {
+  background-color: var(--color-accent);
+}
+
 /* ---------- Gallery ---------- */
 .gallery { display: grid; gap: 1.5rem; }
 

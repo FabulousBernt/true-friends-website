@@ -36,6 +36,7 @@
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
             <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
             <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
+            <a class="nav__link" href="#clients" data-i18n="nav.clients">Clients</a>
             <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
             <a class="nav__link" href="#gallery" data-i18n="nav.gallery">Gallery</a>
             <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
@@ -69,6 +70,7 @@
     <div class="nav__drawer" id="mobile-drawer">
         <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
         <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
+        <a class="nav__link" href="#clients" data-i18n="nav.clients">Clients</a>
         <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
         <a class="nav__link" href="#gallery" data-i18n="nav.gallery">Gallery</a>
         <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
@@ -114,6 +116,35 @@
                     <p class="lede" data-i18n-html="about.ledeHTML">Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.</p>
                     <p data-i18n="about.body1">We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build high‑quality software solutions.</p>
                     <p data-i18n="about.body2">To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="clients" aria-labelledby="clients-label">
+        <div class="container">
+            <div class="section__grid">
+                <p class="section__label" id="clients-label" data-i18n="clients.label">Clients</p>
+                <div class="section__body">
+                    <!--
+                      To add a client: drop a monochrome SVG (or any silhouette
+                      image) into /img/clients/, then add an <li> below with:
+                        - href: the client's website
+                        - aria-label: the client name (used by screen readers
+                          and shown as a tooltip)
+                        - style="--logo-url: url('img/clients/your-file.svg')"
+                      Image colour is controlled by CSS — the logo is used as
+                      a mask, so any monochrome silhouette will pick up the
+                      subtle/accent colour automatically.
+                    -->
+                    <ul class="clients__list" role="list">
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="ACME"   style="--logo-url: url('img/clients/acme.svg')"></a></li>
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="STELLA" style="--logo-url: url('img/clients/stella.svg')"></a></li>
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="NIMBUS" style="--logo-url: url('img/clients/nimbus.svg')"></a></li>
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="VERSO"  style="--logo-url: url('img/clients/verso.svg')"></a></li>
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="KOBALT" style="--logo-url: url('img/clients/kobalt.svg')"></a></li>
+                        <li><a class="clients__logo" href="https://example.com" target="_blank" rel="noopener" aria-label="FYRA"   style="--logo-url: url('img/clients/fyra.svg')"></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
