@@ -594,48 +594,30 @@ body:has(dialog[open]) { overflow: hidden; }
 
 .address-row > span { display: flex; flex-direction: column; }
 
-/* ---------- Trusted by ---------- */
-.trusted-by {
-  margin-top: 2.5rem;
-  display: grid;
-  gap: 1rem;
-}
-
-.trusted-by__label {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--fs-caption);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-subtle);
-}
-
-.trusted-by__list {
+/* ---------- Clients (logo wall) ---------- */
+.clients__list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem 2.5rem;
 }
 
-/* Placeholder wordmark style — replace with `<img>` when real logos arrive.
-   The hover color transition will still work as long as the swap-in uses
-   currentColor (inline SVG) or an opacity/filter shift. */
-.trusted-by__logo {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-subtle);
-  text-decoration: none;
-  transition: color var(--duration-base) var(--ease-out);
+/* Logos are silhouettes — the SVG/PNG is used as a CSS mask, and the
+   visible colour comes from `background-color`. That gives one knob
+   (subtle → accent) for the hover state regardless of the source file. */
+.clients__logo {
+  display: block;
+  width: 140px;
+  height: 40px;
+  background-color: var(--color-text-subtle);
+  -webkit-mask: var(--logo-url, none) center / contain no-repeat;
+          mask: var(--logo-url, none) center / contain no-repeat;
+  transition: background-color var(--duration-base) var(--ease-out);
 }
 
-.trusted-by__logo:hover,
-.trusted-by__logo:focus-visible {
-  color: var(--color-accent);
+.clients__logo:hover,
+.clients__logo:focus-visible {
+  background-color: var(--color-accent);
 }
 
 /* ---------- Gallery ---------- */
