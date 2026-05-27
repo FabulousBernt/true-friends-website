@@ -54,8 +54,8 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 55% 60% at 50% 55%, rgba(10, 10, 21, 0.7) 0%, rgba(10, 10, 21, 0) 70%),
-    linear-gradient(180deg, rgba(10, 10, 21, 0.4) 0%, rgba(10, 10, 21, 0.1) 35%, rgba(10, 10, 21, 0.6) 100%);
+    radial-gradient(ellipse 55% 60% at 50% 55%, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0) 70%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.1) 35%, rgba(10, 10, 10, 0.6) 100%);
 }
 
 .hero__content {
@@ -106,8 +106,8 @@
 
 .hero--studio .hero__scrim {
   background:
-    radial-gradient(ellipse 65% 70% at 50% 55%, rgba(10, 10, 21, 0.9) 0%, rgba(10, 10, 21, 0) 75%),
-    linear-gradient(180deg, rgba(10, 10, 21, 0.55) 0%, rgba(10, 10, 21, 0.25) 35%, rgba(10, 10, 21, 0.7) 100%);
+    radial-gradient(ellipse 65% 70% at 50% 55%, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0) 75%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.25) 35%, rgba(10, 10, 10, 0.7) 100%);
 }
 
 /* ---------- Landing page layout ---------- */

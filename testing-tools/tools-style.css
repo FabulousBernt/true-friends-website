@@ -4,13 +4,13 @@
    DESIGN SYSTEM VARIABLES (Using CSS properties for consistency)
    ============================================================ */
 :root {
-  --color-bg-primary: #0A0A15;
+  --color-bg-primary: #0A0A0A;
   --color-bg-secondary: #1a1a2e;
   --color-text-primary: #f5f5f5;
   --color-text-secondary: #ccc;
   --color-border: #929BA7;
   --color-accent: #FEE440;
-  --color-accent-text: #0A0A15;
+  --color-accent-text: #0A0A0A;
   --color-cyan: #00d4ff;
   --color-error: #ff6b6b;
   --color-error-bg: #5a2d2d;

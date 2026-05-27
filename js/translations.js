@@ -47,6 +47,10 @@ window.TF_TRANSLATIONS = {
           title: "Web Production",
           body: "Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.",
         },
+        graphicDesign: {
+          title: "Graphic Design",
+          body: "Brand identity, visual systems and print-ready design — logos, typography, layout and finishing that hold up across every medium.",
+        },
         market: {
           title: "Market Communication",
           body: "Campaigns, content and brand collateral that connect your product to the right audience across digital and print.",
@@ -155,6 +159,10 @@ window.TF_TRANSLATIONS = {
         webDev: {
           title: "Webbproduktion",
           body: "Produktionsfärdiga webbapplikationer och marknadssidor, byggda med moderna ramverk, tillgängliga från första början och redo att skalas med ditt team.",
+        },
+        graphicDesign: {
+          title: "Grafisk design",
+          body: "Varumärkesidentitet, visuella system och tryckfärdig design — logotyper, typografi, layout och finish som håller över hela linjen.",
         },
         market: {
           title: "Marknadskommunikation",
