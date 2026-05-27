@@ -39,6 +39,7 @@ window.TF_TRANSLATIONS = {
         "We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build high‑quality software solutions.",
       body2:
         "To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
+      trustedBy: "Trusted by",
     },
     services: {
       label: "Services",
@@ -152,6 +153,7 @@ window.TF_TRANSLATIONS = {
         "Vi har lång erfarenhet av test, visuell design och användarupplevelse från ett stort antal projekt inom både privat och offentlig sektor. Vår vision är att vara en nära och genuin partner — en sann vän — till dig som kund, och hjälpa dig att bygga kvalitativa mjukvarulösningar.",
       body2:
         "För att lyckas med det fokuserar vi på att skapa en djup förståelse för din verksamhet, dina mål, kunder, användare, problem och utmaningar. True Friends vilar på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa pelare är avgörande för vårt arbete och vår gemensamma framgång.",
+      trustedBy: "Anlitad av",
     },
     services: {
       label: "Tjänster",

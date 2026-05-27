@@ -594,6 +594,50 @@ body:has(dialog[open]) { overflow: hidden; }
 
 .address-row > span { display: flex; flex-direction: column; }
 
+/* ---------- Trusted by ---------- */
+.trusted-by {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.trusted-by__label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.trusted-by__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem 2.5rem;
+}
+
+/* Placeholder wordmark style — replace with `<img>` when real logos arrive.
+   The hover color transition will still work as long as the swap-in uses
+   currentColor (inline SVG) or an opacity/filter shift. */
+.trusted-by__logo {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.trusted-by__logo:hover,
+.trusted-by__logo:focus-visible {
+  color: var(--color-accent);
+}
+
 /* ---------- Gallery ---------- */
 .gallery { display: grid; gap: 1.5rem; }
 
