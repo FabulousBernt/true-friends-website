@@ -42,16 +42,6 @@
   cursor: not-allowed;
 }
 
-.btn--ghost {
-  --btn-bg: transparent;
-  --btn-fg: var(--color-text-strong);
-  border: 1px solid var(--color-border-strong);
-}
-
-.btn--ghost:hover {
-  --btn-bg: var(--color-surface-hover);
-}
-
 .btn--outline {
   --btn-bg: transparent;
   --btn-fg: var(--color-cream);
@@ -61,10 +51,6 @@
 .btn--outline:hover {
   --btn-bg: var(--color-cream);
   --btn-fg: var(--color-bg);
-}
-
-.btn--block {
-  width: 100%;
 }
 
 /* ---------- Form ---------- */
@@ -439,7 +425,7 @@
   width: 24px;
   height: 24px;
   color: var(--color-cream);
-  transition: transform var(--duration-base) var(--ease-out),
+  transition: transform 420ms var(--ease-out),
               color var(--duration-base) var(--ease-out);
 }
 
@@ -449,24 +435,30 @@
   color: var(--color-accent);
 }
 
+/* Override UA `display: none` on closed details so the body stays in flow
+   and the grid-row animation can interpolate from 0fr → 1fr. */
 .service-item__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms var(--ease-out);
+}
+
+.service-item[open] .service-item__body {
+  grid-template-rows: 1fr;
+}
+
+.service-item__body-inner {
+  overflow: hidden;
+  min-height: 0;
   padding: 0 1.25rem 1.25rem calc(1.25rem + 32px + 1rem);
   color: var(--color-text);
   line-height: var(--lh-relaxed);
 }
 
 @media (max-width: 540px) {
-  .service-item__body {
+  .service-item__body-inner {
     padding-left: 1.25rem;
   }
-}
-
-/* ---------- Card ---------- */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 /* ---------- Footer ---------- */
@@ -474,12 +466,6 @@
   margin-top: 0;
   padding: 1rem var(--container-padding);
   text-align: center;
-}
-
-.site-footer__logo {
-  width: 24px;
-  height: 24px;
-  margin: 0 auto 0.75rem;
 }
 
 .site-footer__copyright {
@@ -607,3 +593,322 @@ body:has(dialog[open]) { overflow: hidden; }
 .address-row svg { width: 20px; height: 20px; flex: none; margin-top: 0.125rem; }
 
 .address-row > span { display: flex; flex-direction: column; }
+
+/* ---------- Gallery ---------- */
+.gallery { display: grid; gap: 1.5rem; }
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: 6px;
+}
+
+.gallery__item[hidden] { display: none; }
+
+/* Page 1 layout — 1 feature + 2 wide + 1 tall + 2 plain = 12 cells, no gaps:
+   F F W W
+   F F T p
+   W W T p
+*/
+.gallery__item:nth-child(1) { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+.gallery__item:nth-child(2) { grid-column: 3 / span 2; grid-row: 1; }
+.gallery__item:nth-child(3) { grid-column: 3;          grid-row: 2 / span 2; }
+.gallery__item:nth-child(4) { grid-column: 4;          grid-row: 2; }
+.gallery__item:nth-child(5) { grid-column: 1 / span 2; grid-row: 3; }
+.gallery__item:nth-child(6) { grid-column: 4;          grid-row: 3; }
+
+/* Page 2 layout — 1 feature + 3 wide + 2 plain = 12 cells, no gaps:
+   W W W W
+   F F W W
+   F F p p
+*/
+.gallery__item:nth-child(7)  { grid-column: 1 / span 2; grid-row: 1; }
+.gallery__item:nth-child(8)  { grid-column: 3 / span 2; grid-row: 1; }
+.gallery__item:nth-child(9)  { grid-column: 1 / span 2; grid-row: 2 / span 2; }
+.gallery__item:nth-child(10) { grid-column: 3 / span 2; grid-row: 2; }
+.gallery__item:nth-child(11) { grid-column: 3;          grid-row: 3; }
+.gallery__item:nth-child(12) { grid-column: 4;          grid-row: 3; }
+
+.gallery__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  /* The icon is shown at a fixed pixel size so it stays subtle on big tiles
+     and doesn't dominate small ones. Surface fill makes empty tiles feel
+     intentional. Real photos sit on top via the <img> element. */
+  background:
+    rgba(255, 255, 255, 0.05)
+    url("../img/gallery/placeholder.svg") center / 56px no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery__tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.gallery__tile:hover img { transform: scale(1.04); }
+
+.gallery__tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  transition: border-color var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.gallery__tile:hover::after,
+.gallery__tile:focus-visible::after { border-color: var(--color-accent); }
+
+.gallery__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.gallery__viewall {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-strong);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.gallery__viewall:hover { color: var(--color-accent); }
+
+.gallery__pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gallery__page-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-strong);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.gallery__page-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.gallery__page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.gallery__page-btn svg { width: 18px; height: 18px; }
+
+.gallery__page-indicator {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 720px) {
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+  }
+  /* On mobile collapse every tile back to a single cell and let them flow.
+     6 tiles in 2 columns = 3 perfectly-filled rows. */
+  .gallery__item { grid-column: auto !important; grid-row: auto !important; }
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  width: min(1100px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  border: 0;
+  background: #0a0a0a;
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox__inner {
+  display: grid;
+  /* minmax(0, 1fr) lets the stage row shrink below its min-content so the
+     thumbnail row always has room — without it, a tall image stretches the
+     stage and pushes the thumbnails out of view. */
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0;
+  height: min(80vh, 720px);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 21, 0.6);
+  color: var(--color-cream);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.lightbox__close:hover { color: var(--color-accent); }
+.lightbox__close svg { width: 22px; height: 22px; }
+
+.lightbox__stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  /* Image row absorbs available height; caption row sits in its own slot
+     so it can never collide with the thumbnail strip below. */
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 16px;
+  min-height: 0;
+}
+
+.lightbox__image {
+  grid-column: 2;
+  grid-row: 1;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background:
+    var(--color-surface)
+    url("../img/gallery/placeholder.svg") center / 96px no-repeat;
+}
+
+.lightbox__caption {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.lightbox__nav {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--color-cream);
+  border-radius: 0;
+  cursor: pointer;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.lightbox__nav:hover { color: var(--color-accent); }
+.lightbox__nav svg { width: 22px; height: 22px; }
+
+.lightbox__thumbs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px 16px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.lightbox__thumb {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 2px solid transparent;
+  background:
+    var(--color-surface)
+    url("../img/gallery/placeholder.svg") center / 28px no-repeat;
+  cursor: pointer;
+  opacity: 0.6;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.lightbox__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__thumb:hover { opacity: 0.85; }
+.lightbox__thumb[aria-current="true"] {
+  opacity: 1;
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 720px) {
+  .lightbox__inner { height: min(85vh, 600px); }
+  .lightbox__image { max-height: calc(85vh - 200px); }
+  .lightbox__nav { width: 36px; height: 36px; }
+  .lightbox__thumb { width: 52px; height: 52px; }
+}
+
+/* ---------- Back-to-top button ---------- */
+.back-to-top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: var(--z-nav);
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover { background: var(--color-cream); }
+
+.back-to-top svg { width: 22px; height: 22px; }

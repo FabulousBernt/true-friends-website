@@ -22,6 +22,12 @@
   --hero-photo-url: url("../img/hero-bg.jpg");
 }
 
+@media (min-width: 768px) {
+  .hero {
+    min-height: 92vh;
+  }
+}
+
 .hero__bg {
   position: absolute;
   inset: 0;
@@ -31,8 +37,6 @@
   background-position: center;
 }
 
-/* Optional: drop a real photo into /img/hero-bg.jpg
-   and it will layer over the gradient automatically. */
 .hero__photo {
   position: absolute;
   inset: 0;
@@ -54,48 +58,6 @@
     linear-gradient(180deg, rgba(10, 10, 21, 0.4) 0%, rgba(10, 10, 21, 0.1) 35%, rgba(10, 10, 21, 0.6) 100%);
 }
 
-.landing-stage {
-  position: relative;
-  isolation: isolate;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  --hero-photo-url: url("../img/landing-page-hero.jpg");
-}
-.landing-stage .hero__photo { opacity: 0.55; }
-
-.hero--studio .hero__scrim {
-  background:
-    radial-gradient(ellipse 65% 70% at 50% 55%, rgba(10, 10, 21, 0.9) 0%, rgba(10, 10, 21, 0) 75%),
-    linear-gradient(180deg, rgba(10, 10, 21, 0.55) 0%, rgba(10, 10, 21, 0.25) 35%, rgba(10, 10, 21, 0.7) 100%);
-}
-
-.hero--center .hero__content {
-  justify-items: center;
-  text-align: center;
-  max-width: 720px;
-  gap: 32px;
-}
-
-.hero--center .hero__title,
-.hero--center .hero__cta { margin-top: 0; }
-
-.hero--center .hero__title { font-style: normal; }
-
-.hero__logo { width: 140px; height: auto; }
-
-.hero p { max-width: 60ch; }
-
-body.landing { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-body.landing main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-body.landing .hero { flex: 1; min-height: 0; }
-
-.landing-email {
-  align-self: center;
-  padding: 0.5rem 0;
-}
-
 .hero__content {
   display: grid;
   gap: 0;
@@ -104,18 +66,7 @@ body.landing .hero { flex: 1; min-height: 0; }
   max-width: 100%;
 }
 
-.hero__welcome,
-.hero__location {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.2;
-  color: var(--color-cream-soft);
-  margin: 0;
-}
-
-.hero__title { margin-top: 8px; }
-.hero__location { margin-top: 8px; }
+.hero__logo { width: 140px; height: auto; }
 
 .hero__title {
   font-family: var(--font-display);
@@ -127,7 +78,6 @@ body.landing .hero { flex: 1; min-height: 0; }
   text-transform: uppercase;
   color: var(--color-cream);
 }
-
 
 .hero__cta {
   margin-top: 32px;
@@ -141,10 +91,46 @@ body.landing .hero { flex: 1; min-height: 0; }
   gap: 40px;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    min-height: 92vh;
-  }
+.hero p { max-width: 60ch; }
+
+/* Hero modifiers */
+.hero--center .hero__content {
+  justify-items: center;
+  text-align: center;
+  max-width: 720px;
+  gap: 32px;
+}
+
+.hero--center .hero__title { font-style: normal; }
+.hero--center .hero__cta { margin-top: 0; }
+
+.hero--studio .hero__scrim {
+  background:
+    radial-gradient(ellipse 65% 70% at 50% 55%, rgba(10, 10, 21, 0.9) 0%, rgba(10, 10, 21, 0) 75%),
+    linear-gradient(180deg, rgba(10, 10, 21, 0.55) 0%, rgba(10, 10, 21, 0.25) 35%, rgba(10, 10, 21, 0.7) 100%);
+}
+
+/* ---------- Landing page layout ---------- */
+/* Single-viewport page: header + stage + footer fits exactly in 100vh, no scroll. */
+body.landing { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+body.landing main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+body.landing .hero { flex: 1; min-height: 0; }
+
+/* Wraps main + email so the hero photo fills the space between nav and footer. */
+.landing-stage {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  --hero-photo-url: url("../img/landing-page-hero.jpg");
+}
+.landing-stage .hero__photo { opacity: 0.55; }
+
+.landing-email {
+  align-self: center;
+  padding: 0.5rem 0;
 }
 
 /* ---------- Section template ---------- */
@@ -166,7 +152,6 @@ body.landing .hero { flex: 1; min-height: 0; }
 }
 
 .section__label {
-  /* Stays at top on mobile; sticky label column on desktop */
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.2;
@@ -187,6 +172,7 @@ body.landing .hero { flex: 1; min-height: 0; }
     gap: 3rem;
     align-items: start;
   }
+  /* Label sticks alongside the body content on desktop. */
   .section__label {
     position: sticky;
     top: 120px;
@@ -195,9 +181,7 @@ body.landing .hero { flex: 1; min-height: 0; }
 }
 
 /* ---------- Contact section ---------- */
-.contact__head {
-  margin-bottom: 0.5rem;
-}
+.contact__head { margin-bottom: 0.5rem; }
 
 .contact__grid {
   display: grid;
@@ -213,6 +197,7 @@ body.landing .hero { flex: 1; min-height: 0; }
 }
 
 @media (min-width: 768px) {
+  /* Form gets the wider column; aside is naturally compact. */
   .contact__grid {
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: 4rem;

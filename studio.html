@@ -37,6 +37,7 @@
             <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
             <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
             <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
+            <a class="nav__link" href="#gallery" data-i18n="nav.gallery">Gallery</a>
             <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
 
@@ -69,6 +70,7 @@
         <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
         <a class="nav__link" href="#about" data-i18n="nav.about">About</a>
         <a class="nav__link" href="#services" data-i18n="nav.services">Services</a>
+        <a class="nav__link" href="#gallery" data-i18n="nav.gallery">Gallery</a>
         <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
         <div class="nav__langs nav__langs--drawer" role="group" aria-label="Switch language">
             <button type="button" class="nav__lang" data-lang="en" aria-pressed="true">EN</button>
@@ -130,8 +132,10 @@
                                     <span class="service-item__title" data-i18n="services.items.webDev.title">Web production</span>
                                     <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                                 </summary>
-                                <div class="service-item__body" data-i18n="services.items.webDev.body">
-                                    Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.
+                                <div class="service-item__body">
+                                    <div class="service-item__body-inner" data-i18n="services.items.webDev.body">
+                                        Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.
+                                    </div>
                                 </div>
                             </details>
                         </li>
@@ -142,8 +146,10 @@
                                     <span class="service-item__title" data-i18n="services.items.market.title">Market communication</span>
                                     <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                                 </summary>
-                                <div class="service-item__body" data-i18n="services.items.market.body">
-                                    Campaigns, content and brand collateral that connect your product to the right audience across digital and print.
+                                <div class="service-item__body">
+                                    <div class="service-item__body-inner" data-i18n="services.items.market.body">
+                                        Campaigns, content and brand collateral that connect your product to the right audience across digital and print.
+                                    </div>
                                 </div>
                             </details>
                         </li>
@@ -154,8 +160,10 @@
                                     <span class="service-item__title" data-i18n="services.items.photo.title">Photography</span>
                                     <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                                 </summary>
-                                <div class="service-item__body" data-i18n="services.items.photo.body">
-                                    Editorial and commercial photography — product, portrait and on‑location work.
+                                <div class="service-item__body">
+                                    <div class="service-item__body-inner" data-i18n="services.items.photo.body">
+                                        Editorial and commercial photography — product, portrait and on‑location work.
+                                    </div>
                                 </div>
                             </details>
                         </li>
@@ -166,8 +174,10 @@
                                     <span class="service-item__title" data-i18n="services.items.video.title">Video &amp; Production</span>
                                     <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                                 </summary>
-                                <div class="service-item__body" data-i18n="services.items.video.body">
-                                    From concept to final cut: short‑form social, brand films and product video, with full production support.
+                                <div class="service-item__body">
+                                    <div class="service-item__body-inner" data-i18n="services.items.video.body">
+                                        From concept to final cut: short‑form social, brand films and product video, with full production support.
+                                    </div>
                                 </div>
                             </details>
                         </li>
@@ -178,12 +188,101 @@
                                     <span class="service-item__title" data-i18n="services.items.editing.title">Editing &amp; Retouch</span>
                                     <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                                 </summary>
-                                <div class="service-item__body" data-i18n="services.items.editing.body">
-                                    Post‑production for photo and video — colour, retouch and finishing that keep your visuals consistent.
+                                <div class="service-item__body">
+                                    <div class="service-item__body-inner" data-i18n="services.items.editing.body">
+                                        Post‑production for photo and video — colour, retouch and finishing that keep your visuals consistent.
+                                    </div>
                                 </div>
                             </details>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery" aria-labelledby="gallery-label">
+        <div class="container">
+            <div class="section__grid">
+                <p class="section__label" id="gallery-label" data-i18n="gallery.label">Gallery</p>
+                <div class="section__body">
+                    <div class="gallery" data-current-page="1" data-page-size="6">
+                        <ol class="gallery__grid" role="list">
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="0" aria-label="Open photo 1 in lightbox">
+                                    <img src="img/gallery/01.jpg" alt="Gallery photo 1" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="1" aria-label="Open photo 2 in lightbox">
+                                    <img src="img/gallery/02.jpg" alt="Gallery photo 2" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="2" aria-label="Open photo 3 in lightbox">
+                                    <img src="img/gallery/03.jpg" alt="Gallery photo 3" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="3" aria-label="Open photo 4 in lightbox">
+                                    <img src="img/gallery/04.jpg" alt="Gallery photo 4" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="4" aria-label="Open photo 5 in lightbox">
+                                    <img src="img/gallery/05.jpg" alt="Gallery photo 5" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="1">
+                                <button type="button" class="gallery__tile" data-index="5" aria-label="Open photo 6 in lightbox">
+                                    <img src="img/gallery/06.jpg" alt="Gallery photo 6" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="6" aria-label="Open photo 7 in lightbox">
+                                    <img src="img/gallery/07.jpg" alt="Gallery photo 7" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="7" aria-label="Open photo 8 in lightbox">
+                                    <img src="img/gallery/08.jpg" alt="Gallery photo 8" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="8" aria-label="Open photo 9 in lightbox">
+                                    <img src="img/gallery/09.jpg" alt="Gallery photo 9" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="9" aria-label="Open photo 10 in lightbox">
+                                    <img src="img/gallery/10.jpg" alt="Gallery photo 10" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="10" aria-label="Open photo 11 in lightbox">
+                                    <img src="img/gallery/11.jpg" alt="Gallery photo 11" loading="lazy">
+                                </button>
+                            </li>
+                            <li class="gallery__item" data-page="2" hidden>
+                                <button type="button" class="gallery__tile" data-index="11" aria-label="Open photo 12 in lightbox">
+                                    <img src="img/gallery/12.jpg" alt="Gallery photo 12" loading="lazy">
+                                </button>
+                            </li>
+                        </ol>
+
+                        <div class="gallery__controls">
+                            <button type="button" class="gallery__viewall" data-gallery-viewall data-i18n="gallery.viewAll">View all</button>
+                            <nav class="gallery__pagination" aria-label="Gallery pages">
+                                <button type="button" class="gallery__page-btn" data-gallery-prev aria-label="Previous page" data-i18n-aria-label="aria.prevPage">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg>
+                                </button>
+                                <span class="gallery__page-indicator" aria-live="polite"><span data-gallery-current>1</span> / <span data-gallery-total>2</span></span>
+                                <button type="button" class="gallery__page-btn" data-gallery-next aria-label="Next page" data-i18n-aria-label="aria.nextPage">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -265,9 +364,14 @@
 </main>
 
 <footer class="site-footer">
-    <img class="site-footer__logo" src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="24" height="24">
     <p class="site-footer__copyright" data-i18n="footer.copyright">&copy; 2026 True Friends. All rights reserved.</p>
 </footer>
+
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top" data-i18n-aria-label="aria.backToTop" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 15 12 9 18 15"/>
+    </svg>
+</button>
 
 <dialog class="modal" id="contact-modal" aria-labelledby="modal-title">
     <div class="modal__inner">
@@ -306,6 +410,27 @@
             </div>
             <p class="form__status" id="modal-form-status" role="status" aria-live="polite"></p>
         </form>
+    </div>
+</dialog>
+
+<dialog class="lightbox" id="gallery-lightbox" aria-label="Photo gallery" data-i18n-aria-label="aria.lightbox">
+    <div class="lightbox__inner">
+        <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close" data-i18n-aria-label="aria.closeLightbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <div class="lightbox__stage">
+            <button type="button" class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="Previous" data-i18n-aria-label="aria.prevPhoto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg>
+            </button>
+            <img class="lightbox__image" alt="">
+            <button type="button" class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next" data-i18n-aria-label="aria.nextPhoto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <p class="lightbox__caption" aria-live="polite"></p>
+        </div>
+
+        <ol class="lightbox__thumbs" role="list" data-lightbox-thumbs></ol>
     </div>
 </dialog>
 

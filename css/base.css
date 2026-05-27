@@ -86,38 +86,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Typography utilities */
-.display-xl {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-style: italic;
-  font-size: var(--fs-display-xl);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--tracking-display);
-  text-transform: uppercase;
-  color: var(--color-text-strong);
-}
-
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  line-height: 1;
-}
-
 .lede {
   font-family: var(--font-body);
   font-size: 24px;
   line-height: var(--lh-snug);
   color: var(--color-text-strong);
   font-weight: 700;
-}
-
-.muted {
-  color: var(--color-text-muted);
 }
 
 .accent {

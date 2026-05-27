@@ -174,6 +174,145 @@
   });
 
   /* ====================================================================
+   * Gallery: pagination + lightbox
+   * ==================================================================== */
+  const gallery = document.querySelector(".gallery");
+  const lightbox = document.getElementById("gallery-lightbox");
+
+  if (gallery && lightbox) {
+    const tiles = Array.from(gallery.querySelectorAll(".gallery__tile"));
+    const photos = tiles.map((btn) => {
+      const img = btn.querySelector("img");
+      // If the photo file is missing, hide the broken <img> so the tile's CSS
+      // placeholder background shows through cleanly.
+      img.addEventListener("error", () => { img.style.display = "none"; }, { once: true });
+      return { src: img.getAttribute("src"), alt: img.getAttribute("alt") };
+    });
+
+    const pageSize = parseInt(gallery.dataset.pageSize, 10) || 6;
+    const totalPages = Math.max(1, Math.ceil(photos.length / pageSize));
+    let currentPage = 1;
+
+    const prevPageBtn = gallery.querySelector("[data-gallery-prev]");
+    const nextPageBtn = gallery.querySelector("[data-gallery-next]");
+    const currentEl = gallery.querySelector("[data-gallery-current]");
+    const totalEl = gallery.querySelector("[data-gallery-total]");
+    const viewAllBtn = gallery.querySelector("[data-gallery-viewall]");
+
+    totalEl.textContent = String(totalPages);
+
+    const renderPage = (page) => {
+      currentPage = Math.min(Math.max(page, 1), totalPages);
+      currentEl.textContent = String(currentPage);
+      gallery.querySelectorAll(".gallery__item").forEach((item) => {
+        item.hidden = Number(item.dataset.page) !== currentPage;
+      });
+      prevPageBtn.disabled = currentPage === 1;
+      nextPageBtn.disabled = currentPage === totalPages;
+    };
+
+    prevPageBtn.addEventListener("click", () => renderPage(currentPage - 1));
+    nextPageBtn.addEventListener("click", () => renderPage(currentPage + 1));
+    renderPage(1);
+
+    /* ---------- Lightbox ---------- */
+    const lbImage = lightbox.querySelector(".lightbox__image");
+    const lbCaption = lightbox.querySelector(".lightbox__caption");
+    const lbThumbs = lightbox.querySelector("[data-lightbox-thumbs]");
+    const lbPrev = lightbox.querySelector("[data-lightbox-prev]");
+    const lbNext = lightbox.querySelector("[data-lightbox-next]");
+    const lbClose = lightbox.querySelector("[data-lightbox-close]");
+
+    // Build the thumbnail strip once
+    photos.forEach((photo, idx) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "lightbox__thumb";
+      btn.dataset.index = String(idx);
+      btn.setAttribute("aria-label", `Photo ${idx + 1}`);
+      const img = document.createElement("img");
+      img.addEventListener("error", () => { img.style.display = "none"; }, { once: true });
+      img.src = photo.src;
+      img.alt = "";
+      img.loading = "lazy";
+      btn.appendChild(img);
+      li.appendChild(btn);
+      lbThumbs.appendChild(li);
+    });
+
+    lbImage.addEventListener("error", () => { lbImage.style.visibility = "hidden"; });
+    lbImage.addEventListener("load", () => { lbImage.style.visibility = ""; });
+
+    let activeIndex = 0;
+    const showPhoto = (index) => {
+      activeIndex = (index + photos.length) % photos.length;
+      const photo = photos[activeIndex];
+      lbImage.src = photo.src;
+      lbImage.alt = photo.alt;
+      lbCaption.textContent = `${activeIndex + 1} / ${photos.length}`;
+      lbThumbs.querySelectorAll(".lightbox__thumb").forEach((thumb, i) => {
+        const isActive = i === activeIndex;
+        thumb.setAttribute("aria-current", String(isActive));
+        if (isActive) thumb.scrollIntoView({ inline: "center", block: "nearest" });
+      });
+    };
+
+    const openLightbox = (index) => {
+      showPhoto(index);
+      if (typeof lightbox.showModal === "function") lightbox.showModal();
+      else lightbox.setAttribute("open", "");
+    };
+
+    // Tile click → open at that photo's index
+    tiles.forEach((tile) => {
+      tile.addEventListener("click", () => {
+        openLightbox(parseInt(tile.dataset.index, 10) || 0);
+      });
+    });
+
+    viewAllBtn.addEventListener("click", () => openLightbox(0));
+    lbPrev.addEventListener("click", () => showPhoto(activeIndex - 1));
+    lbNext.addEventListener("click", () => showPhoto(activeIndex + 1));
+    lbClose.addEventListener("click", () => lightbox.close());
+
+    lbThumbs.addEventListener("click", (event) => {
+      const thumb = event.target.closest(".lightbox__thumb");
+      if (thumb) showPhoto(parseInt(thumb.dataset.index, 10) || 0);
+    });
+
+    // Backdrop click closes (clicking the dialog element itself, not its inner box)
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) lightbox.close();
+    });
+
+    // Keyboard: ←/→ navigate while open; Esc closes (native dialog handles Esc)
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.open) return;
+      if (event.key === "ArrowLeft") { event.preventDefault(); showPhoto(activeIndex - 1); }
+      else if (event.key === "ArrowRight") { event.preventDefault(); showPhoto(activeIndex + 1); }
+    });
+  }
+
+  /* ====================================================================
+   * Back-to-top button
+   * Reveals after the user scrolls past ~60% of the viewport.
+   * ==================================================================== */
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    backToTop.hidden = false;
+    const threshold = () => window.innerHeight * 0.6;
+    const updateVisibility = () => {
+      backToTop.setAttribute("data-visible", String(window.scrollY > threshold()));
+    };
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ====================================================================
    * Modal
    * ==================================================================== */
   document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
