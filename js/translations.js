@@ -10,9 +10,9 @@
 window.TF_TRANSLATIONS = {
   en: {
     meta: {
-      title: "True Friends — Creative & Technical Studio",
+      title: "True Friends — Creative & Technical Studio and Consulting firm",
       description:
-        "True Friends is a creative and technical studio delivering visual design, user experience, testing and web development for ambitious projects.",
+        "True Friends is a creative and technical studio & consulting firm delivering services in software testing, web development, UI/UX design, graphic design, market communication, photography, video production and editing. We are based in Motala, Sweden, but available worldwide.",
     },
     nav: {
       start: "Start",
@@ -30,7 +30,7 @@ window.TF_TRANSLATIONS = {
       viewAll: "View all",
     },
     hero: {
-      lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
+      lede: "A creative and technical studio based in Motala, Sweden, but available worldwide.",
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
@@ -40,36 +40,37 @@ window.TF_TRANSLATIONS = {
       ledeHTML:
         'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
       body1:
-        "We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build high‑quality software solutions.",
+        "We have a long experience in web development, digital and graphical elements, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
       body2:
         "To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
     services: {
       label: "Services",
+      note: "Our media services are available to both businesses and private individuals. We also collaborate with various partners for larger and more complex projects.",
       items: {
         webDev: {
           title: "Web Production",
-          body: "Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.",
+          body: "We deliver high-end websites and web applications tailored to your needs. We follow international standards in accessibility, usability and security, and make every decision based on the context of your business needs.",
         },
         graphicDesign: {
           title: "Graphic Design",
-          body: "Brand identity, visual systems and print-ready design — logos, typography, layout and finishing that hold up across every medium.",
+          body: "Using visual design principles and design thinking processes we create graphical profiles, logotypes, posters, clothing and other digital and printable media. ",
         },
         market: {
-          title: "Market Communication",
-          body: "Campaigns, content and brand collateral that connect your product to the right audience across digital and print.",
+          title: "Branding/Marketing",
+          body: "Brand identity, campaign strategy and content that connects your business to the world across digital and printable medias.",
         },
         photo: {
           title: "Photography",
-          body: "Editorial and commercial photography — product, portrait and on‑location work.",
+          body: "Our photography services ranges from products, food, interiors, landscapes, real estate, portraits, weddings, concerts, sports and other events.",
         },
         video: {
           title: "Video & Production",
-          body: "From concept to final cut: short‑form social, brand films and product video, with full production support.",
+          body: "A complete video production solution. From analysing your needs to concept, script writing, filming and editing. Whether it’s simpler productions for web and social media to more advanced commercials, we take care of the entire process, from idea to finished video.",
         },
         editing: {
           title: "Editing & Retouch",
-          body: "Post‑production for photo and video — colour, retouch and finishing that keep your visuals consistent.",
+          body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch for portraits, products, and events.",
         },
       },
     },
@@ -163,6 +164,7 @@ window.TF_TRANSLATIONS = {
     },
     services: {
       label: "Tjänster",
+      note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner. Vi samarbetar även med olika partners för större och mer komplexa projekt.",
       items: {
         webDev: {
           title: "Webbproduktion",

@@ -146,8 +146,34 @@
   padding: 0 var(--container-padding);
 }
 
-.nav__brand { justify-self: start; }
-.nav__links { justify-self: center; }
+.nav__brand  { justify-self: start; }
+.nav__crumbs { justify-self: start; display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.nav__links  { justify-self: center; }
+
+.nav__crumb-sep {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-text-subtle);
+  user-select: none;
+}
+
+.nav__crumb-current {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* On narrow viewports the breadcrumb crumbs get squeezed against the
+   hamburger; drop the separator + current page to keep the brand readable. */
+@media (max-width: 480px) {
+  .nav__crumb-sep,
+  .nav__crumb-current { display: none; }
+}
 
 .nav__right {
   grid-column: 3;
@@ -459,6 +485,13 @@
   .service-item__body-inner {
     padding-left: 1.25rem;
   }
+}
+
+/* Supplementary note shown beneath the services list. */
+.services__note {
+  margin-top: 0.5rem;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
 }
 
 /* ---------- Footer ---------- */

@@ -28,10 +28,14 @@
 
 <header class="nav" id="site-nav" data-open="false">
     <div class="nav__inner">
-        <a href="index.html" class="nav__brand" aria-label="True Friends home" data-i18n-aria-label="aria.home">
-            <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="28" height="28">
-            <span>True Friends</span>
-        </a>
+        <div class="nav__crumbs">
+            <a href="index.html" class="nav__brand" aria-label="True Friends home" data-i18n-aria-label="aria.home">
+                <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="28" height="28">
+                <span>True Friends</span>
+            </a>
+            <span class="nav__crumb-sep" aria-hidden="true">/</span>
+            <span class="nav__crumb-current" data-i18n="hero.studio" aria-current="page">Studio</span>
+        </div>
 
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
             <a class="nav__link" href="#top" data-i18n="nav.start">Start</a>
@@ -241,6 +245,7 @@
                             </details>
                         </li>
                     </ul>
+                    <p class="services__note" data-i18n="services.note">Our media services are available to both businesses and private individuals. We also collaborate with various partners for larger and more complex projects.</p>
                 </div>
             </div>
         </div>
