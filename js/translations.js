@@ -30,7 +30,7 @@ window.TF_TRANSLATIONS = {
       viewAll: "View all",
     },
     hero: {
-      lede: "A creative and technical studio based in Motala, Sweden, but available worldwide.",
+      lede: "A creative and technical studio based in Motala, Sweden,<br>but available worldwide.",
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
@@ -46,7 +46,7 @@ window.TF_TRANSLATIONS = {
     },
     services: {
       label: "Services",
-      note: "Our media services are available to both businesses and private individuals. We also collaborate with various partners for larger and more complex projects.",
+      note: "Our media services are available to both businesses and private individuals.<br>We also collaborate with various partners for larger and more complex projects.",
       items: {
         webDev: {
           title: "Web Production",
@@ -62,7 +62,7 @@ window.TF_TRANSLATIONS = {
         },
         photo: {
           title: "Photography",
-          body: "Our photography services ranges from products, food, interiors, landscapes, real estate, portraits, weddings, concerts, sports and other events.",
+          body: "Our photography services ranges from portraits, products, landscapes, real estate, food & drinks, weddings, concerts, sports and other events.",
         },
         video: {
           title: "Video & Production",
@@ -70,7 +70,7 @@ window.TF_TRANSLATIONS = {
         },
         editing: {
           title: "Editing & Retouch",
-          body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch for portraits, products, and events.",
+          body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch.",
         },
       },
     },
@@ -148,7 +148,7 @@ window.TF_TRANSLATIONS = {
       viewAll: "Visa alla",
     },
     hero: {
-      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
+      lede: "En kreativ och teknisk studio baserad i Motala, Sverige,<br>men tillgänglig världen över.",
       cta: "Säg hej",
       consulting: "Konsulttjänster",
       studio: "Studio",
@@ -164,7 +164,7 @@ window.TF_TRANSLATIONS = {
     },
     services: {
       label: "Tjänster",
-      note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner. Vi samarbetar även med olika partners för större och mer komplexa projekt.",
+      note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi även med olika partners.",
       items: {
         webDev: {
           title: "Webbproduktion",
