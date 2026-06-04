@@ -30,7 +30,7 @@ window.TF_TRANSLATIONS = {
       viewAll: "View all",
     },
     hero: {
-      lede: "A creative and technical studio based in Motala, Sweden,<br>but available worldwide.",
+      lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
@@ -148,9 +148,9 @@ window.TF_TRANSLATIONS = {
       viewAll: "Visa alla",
     },
     hero: {
-      lede: "En kreativ och teknisk studio baserad i Motala, Sverige,<br>men tillgänglig världen över.",
+      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige,<br>men tillgänglig världen över.",
       cta: "Säg hej",
-      consulting: "Konsulttjänster",
+      consulting: "Konsult",
       studio: "Studio",
     },
     about: {

@@ -104,19 +104,49 @@
 .hero--center .hero__title { font-style: normal; }
 .hero--center .hero__cta { margin-top: 0; }
 
-.hero--studio .hero__scrim {
+.hero--studio .hero__scrim,
+body.landing .hero__scrim {
   background:
     radial-gradient(ellipse 80% 55% at 50% 48%, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0) 75%),
     linear-gradient(180deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.2) 35%, rgba(10, 10, 10, 0.6) 100%);
 }
 
-.hero--studio .hero__title {
-  font-size: clamp(3.25rem, 13vw, 144px);
+.hero--studio .hero__title,
+body.landing .hero__title {
   letter-spacing: -0.02em;
 }
 
-.hero--studio .hero__content {
+.hero--studio .hero__title {
+  font-size: clamp(3.25rem, 13vw, 144px);
+}
+
+body.landing .hero__title {
+  font-size: clamp(2.75rem, 10vw, 104px);
+}
+
+.hero--studio .hero__content,
+body.landing .hero__content {
   gap: clamp(20px, 2.2vw, 32px);
+}
+
+body.landing .hero__content {
+  max-width: 800px;
+}
+
+.hero__title-group {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.hero__eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 /* ---------- Landing page layout ---------- */
