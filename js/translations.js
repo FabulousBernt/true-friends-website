@@ -34,7 +34,6 @@ window.TF_TRANSLATIONS = {
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
-      soon: "Coming soon",
     },
     about: {
       label: "About",
@@ -153,7 +152,6 @@ window.TF_TRANSLATIONS = {
       cta: "Säg hej",
       consulting: "Konsult",
       studio: "Studio",
-      soon: "Kommer snart",
     },
     about: {
       label: "Om oss",
