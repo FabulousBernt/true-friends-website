@@ -42,6 +42,12 @@
   cursor: not-allowed;
 }
 
+.btn[aria-disabled="true"]:hover,
+.btn[aria-disabled="true"]:active {
+  --btn-bg: var(--color-accent);
+  transform: none;
+}
+
 .btn--outline {
   --btn-bg: transparent;
   --btn-fg: var(--color-cream);

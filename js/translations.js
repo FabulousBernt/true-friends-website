@@ -34,13 +34,14 @@ window.TF_TRANSLATIONS = {
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
+      soon: "Coming soon",
     },
     about: {
       label: "About",
       ledeHTML:
         'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
       body1:
-        "We have a long experience in web development, digital and graphical elements, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
+        "We have a long experience in web development, digital and graphical design, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
       body2:
         "To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
@@ -54,7 +55,7 @@ window.TF_TRANSLATIONS = {
         },
         graphicDesign: {
           title: "Graphic Design",
-          body: "Using visual design principles and design thinking processes we create graphical profiles, logotypes, posters, clothing and other digital and printable media. ",
+          body: "Using visual design principles and design thinking processes we create graphical profiles, logotypes, posters, clothing and other digital and printable media.",
         },
         market: {
           title: "Branding/Marketing",
@@ -130,7 +131,7 @@ window.TF_TRANSLATIONS = {
     meta: {
       title: "True Friends — Kreativ & Teknisk Studio",
       description:
-        "True Friends är en kreativ och teknisk studio som levererar visuell design, användarupplevelse, test och webbutveckling för ambitiösa projekt.",
+        "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retouch. VI är baserade i Motala, Sverige, men tillgängliga världen över.",
     },
     nav: {
       start: "Start",
@@ -152,43 +153,44 @@ window.TF_TRANSLATIONS = {
       cta: "Säg hej",
       consulting: "Konsult",
       studio: "Studio",
+      soon: "Kommer snart",
     },
     about: {
       label: "Om oss",
       ledeHTML:
-        'Hos True Friends levererar vi både en <span class="accent">kreativ</span> vision och <span class="accent">teknisk</span> expertis i varje projekt och roll vi tar oss an.',
+        'Vi på True Friends levererar både en <span class="accent">kreativ</span> vision och <span class="accent">teknisk</span> expertis i varje projekt och roll som vi tar oss an.',
       body1:
-        "Vi har lång erfarenhet av test, visuell design och användarupplevelse från ett stort antal projekt inom både privat och offentlig sektor. Vår vision är att vara en nära och genuin partner — en sann vän — till dig som kund, och hjälpa dig att bygga kvalitativa mjukvarulösningar.",
+        "Vi har en lång erfarenhet inom webbutveckling, digital och grafisk design, fotografering och videoproduktion. Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet.",
       body2:
-        "För att lyckas med det fokuserar vi på att skapa en djup förståelse för din verksamhet, dina mål, kunder, användare, problem och utmaningar. True Friends vilar på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa pelare är avgörande för vårt arbete och vår gemensamma framgång.",
+        "För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er verksamhet, era mål, kunder, användare, problem och utmaningar. True Friends är byggt på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa grundpelare är avgörande för vårt arbete och vår gemensamma framgång.",
     },
     services: {
       label: "Tjänster",
-      note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi även med olika partners.",
+      note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi ibland med olika partners.",
       items: {
         webDev: {
           title: "Webbproduktion",
-          body: "Produktionsfärdiga webbapplikationer och marknadssidor, byggda med moderna ramverk, tillgängliga från första början och redo att skalas med ditt team.",
+          body: "Vi levererar moderna webbsidor och webbapplikationer skräddarsydda utefter era behov och önskemål. Vi följer alltid internationella standarder för tillgänglighet, användbarhet och säkerhet, och baserar varje beslut på kontexten kring er verksamhet.",
         },
         graphicDesign: {
-          title: "Grafisk design",
-          body: "Varumärkesidentitet, visuella system och tryckfärdig design — logotyper, typografi, layout och finish som håller över hela linjen.",
+          title: "Grafisk Design",
+          body: "Med visuella design principer och design tänkandets processer skapar vi grafiska profiler, logotyper, affischer, klädestryck och andra digitala och tryckbara medier.",
         },
         market: {
           title: "Marknadskommunikation",
-          body: "Kampanjer, innehåll och varumärkesmaterial som kopplar din produkt till rätt målgrupp, både digitalt och i tryck.",
+          body: "Med varumärkesidentitet, kampanjstrategier och olika typer av innehåll kopplar vi ihop din verksamhet med omvärlden genom digitala och tryckbara medier.",
         },
         photo: {
           title: "Fotografering",
-          body: "Redaktionell och kommersiell fotografering — produkt, porträtt och fotografering på plats.",
+          body: "Våra fotograferingstjänster täcker allt från porträtt, produkter, landskap, fastigheter, mat & dryck, bröllop, konserter, sport och andra event.",
         },
         video: {
           title: "Video & Produktion",
-          body: "Från idé till färdig film: kortformat för sociala medier, varumärkesfilmer och produktvideo, med full produktionssupport.",
+          body: "Från idé till färdig video - Genom att analysera era behov och koncept till manus, filma och redigera. Oavsett om det är en enklare produktion för webben och sociala medier till mer avancerade reklamfilmer så tar vi hand om hela processen från ide till färdig video.",
         },
         editing: {
           title: "Redigering & Retusch",
-          body: "Efterbearbetning för foto och video — färg, retusch och finputs som håller dina bilder konsekventa.",
+          body: "Vi erbjuder professionell bildbehandling och videoredigering för att säkerställa att allt visas och ser ut som det är tänkt - Från färgkorrigering, vitbalans och exponering till detaljerad retusch.",
         },
       },
     },
