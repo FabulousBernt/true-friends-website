@@ -175,11 +175,45 @@
 
   /* ====================================================================
    * Gallery: pagination + lightbox
+   *
+   * To add a photo: drop the file into img/gallery/ and add its filename
+   * to the GALLERY_IMAGES array below. Tiles auto-render in array order,
+   * with 6 per page (or whatever data-page-size is on the .gallery div).
    * ==================================================================== */
+  const GALLERY_IMAGES = [];
+
   const gallery = document.querySelector(".gallery");
   const lightbox = document.getElementById("gallery-lightbox");
 
   if (gallery && lightbox) {
+    if (GALLERY_IMAGES.length === 0) {
+      gallery.querySelector(".gallery__controls").hidden = true;
+    }
+    const grid = gallery.querySelector(".gallery__grid");
+    const initialPageSize = parseInt(gallery.dataset.pageSize, 10) || 6;
+    GALLERY_IMAGES.forEach((file, i) => {
+      const page = Math.floor(i / initialPageSize) + 1;
+      const li = document.createElement("li");
+      li.className = "gallery__item";
+      li.dataset.page = String(page);
+      if (page > 1) li.hidden = true;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "gallery__tile";
+      btn.dataset.index = String(i);
+      btn.setAttribute("aria-label", `Open photo ${i + 1} in lightbox`);
+
+      const img = document.createElement("img");
+      img.src = `img/gallery/${file}`;
+      img.alt = `Gallery photo ${i + 1}`;
+      img.loading = "lazy";
+
+      btn.appendChild(img);
+      li.appendChild(btn);
+      grid.appendChild(li);
+    });
+
     const tiles = Array.from(gallery.querySelectorAll(".gallery__tile"));
     const photos = tiles.map((btn) => {
       const img = btn.querySelector("img");
