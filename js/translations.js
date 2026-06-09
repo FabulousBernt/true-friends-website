@@ -22,7 +22,7 @@ window.TF_TRANSLATIONS = {
       about: "About",
       clients: "Clients",
       services: "Services",
-      team: "Who are we",
+      team: "Consultants",
       gallery: "Gallery",
       contact: "Contact",
     },
@@ -91,7 +91,7 @@ window.TF_TRANSLATIONS = {
       },
     },
     team: {
-      label: "Who are we",
+      label: "Consultants",
       referenceCases: "Reference cases",
       cv: "Download resumé",
       members: {
@@ -167,7 +167,7 @@ window.TF_TRANSLATIONS = {
       about: "Om oss",
       clients: "Kunder",
       services: "Tjänster",
-      team: "Vilka är vi",
+      team: "Konsulter",
       gallery: "Galleri",
       contact: "Kontakt",
     },
@@ -236,7 +236,7 @@ window.TF_TRANSLATIONS = {
       },
     },
     team: {
-      label: "Vilka är vi",
+      label: "Konsulter",
       referenceCases: "Referensuppdrag",
       cv: "Ladda ner CV",
       members: {
