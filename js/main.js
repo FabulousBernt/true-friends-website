@@ -64,6 +64,10 @@
       const v = getNested(dict, el.getAttribute("data-i18n-content"));
       if (typeof v === "string") el.setAttribute("content", v);
     });
+    document.querySelectorAll("[data-i18n-href]").forEach((el) => {
+      const v = getNested(dict, el.getAttribute("data-i18n-href"));
+      if (typeof v === "string") el.setAttribute("href", v);
+    });
 
     // Language switcher button state
     document.querySelectorAll("[data-lang]").forEach((btn) => {

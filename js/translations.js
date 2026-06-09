@@ -6,11 +6,14 @@
  *   data-i18n-html      → sets innerHTML (use sparingly — only for trusted markup like accent spans)
  *   data-i18n-placeholder → sets placeholder attribute
  *   data-i18n-aria-label  → sets aria-label attribute
+ *   data-i18n-content     → sets content attribute (meta tags)
+ *   data-i18n-href        → sets href attribute (per-language links/files)
  */
 window.TF_TRANSLATIONS = {
   en: {
     meta: {
-      title: "True Friends — Creative & Technical Studio and Consulting firm",
+      title: "True Friends — Creative & Technical Studio",
+      titleConsulting: "True Friends — Consulting",
       description:
         "True Friends is a creative and technical studio & consulting firm delivering services in software testing, web development, UI/UX design, graphic design, market communication, photography, video production and editing. We are based in Motala, Sweden, but available worldwide.",
     },
@@ -19,6 +22,7 @@ window.TF_TRANSLATIONS = {
       about: "About",
       clients: "Clients",
       services: "Services",
+      team: "Who are we",
       gallery: "Gallery",
       contact: "Contact",
     },
@@ -71,6 +75,31 @@ window.TF_TRANSLATIONS = {
         editing: {
           title: "Editing & Retouch",
           body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch.",
+        },
+        testing: {
+          title: "Testing",
+          body: "Placeholder description — to be updated.",
+        },
+        uxDesign: {
+          title: "UX Design",
+          body: "Placeholder description — to be updated.",
+        },
+        uiDesign: {
+          title: "UI Design",
+          body: "Placeholder description — to be updated.",
+        },
+      },
+    },
+    team: {
+      label: "Who are we",
+      referenceCases: "Reference cases",
+      cv: "Download resumé",
+      members: {
+        johnny: {
+          name: "Johnny Vigersten",
+          role: "Tester / Designer",
+          bio: "I'm a driven and dedicated Testing Consultant and UI/UX designer with a strong focus on problem solving, usability, aesthetics, and security.",
+          cvHref: "cv/johnny-vigersten-cv-EN.pdf",
         },
       },
     },
@@ -129,6 +158,7 @@ window.TF_TRANSLATIONS = {
   sv: {
     meta: {
       title: "True Friends — Kreativ & Teknisk Studio",
+      titleConsulting: "True Friends — Konsult",
       description:
         "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retouch. VI är baserade i Motala, Sverige, men tillgängliga världen över.",
     },
@@ -137,6 +167,7 @@ window.TF_TRANSLATIONS = {
       about: "Om oss",
       clients: "Kunder",
       services: "Tjänster",
+      team: "Vilka är vi",
       gallery: "Galleri",
       contact: "Kontakt",
     },
@@ -189,6 +220,31 @@ window.TF_TRANSLATIONS = {
         editing: {
           title: "Redigering & Retusch",
           body: "Vi erbjuder professionell bildbehandling och videoredigering för att säkerställa att allt visas och ser ut som det är tänkt - Från färgkorrigering, vitbalans och exponering till detaljerad retusch.",
+        },
+        testing: {
+          title: "Testning",
+          body: "Platshållartext — kommer att uppdateras.",
+        },
+        uxDesign: {
+          title: "UX-design",
+          body: "Platshållartext — kommer att uppdateras.",
+        },
+        uiDesign: {
+          title: "UI-design",
+          body: "Platshållartext — kommer att uppdateras.",
+        },
+      },
+    },
+    team: {
+      label: "Vilka är vi",
+      referenceCases: "Referensuppdrag",
+      cv: "Ladda ner CV",
+      members: {
+        johnny: {
+          name: "Johnny Vigersten",
+          role: "Testare / Designer",
+          bio: "Jag är en driven och engagerad testkonsult och UI/UX-designer med ett starkt fokus på problemlösning, användbarhet, estetik och säkerhet.",
+          cvHref: "cv/johnny-vigersten-cv-SE.pdf",
         },
       },
     },
