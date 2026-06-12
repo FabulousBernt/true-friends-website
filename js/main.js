@@ -16,7 +16,9 @@
   const COUNTRY_TIMEOUT_MS = 2000;
 
   const getNested = (obj, path) =>
-    path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
+    path
+      .split(".")
+      .reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
 
   // Current language, exposed so other modules below can read it
   let currentLang = DEFAULT_LANG;
@@ -71,7 +73,10 @@
 
     // Language switcher button state
     document.querySelectorAll("[data-lang]").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-lang") === lang));
+      btn.setAttribute(
+        "aria-pressed",
+        String(btn.getAttribute("data-lang") === lang),
+      );
     });
   }
 
@@ -258,7 +263,13 @@
       const img = btn.querySelector("img");
       // If the photo file is missing, hide the broken <img> so the tile's CSS
       // placeholder background shows through cleanly.
-      img.addEventListener("error", () => { img.style.display = "none"; }, { once: true });
+      img.addEventListener(
+        "error",
+        () => {
+          img.style.display = "none";
+        },
+        { once: true },
+      );
       return { src: img.getAttribute("src"), alt: img.getAttribute("alt") };
     });
 
@@ -305,7 +316,13 @@
       btn.dataset.index = String(idx);
       btn.setAttribute("aria-label", `Photo ${idx + 1}`);
       const img = document.createElement("img");
-      img.addEventListener("error", () => { img.style.display = "none"; }, { once: true });
+      img.addEventListener(
+        "error",
+        () => {
+          img.style.display = "none";
+        },
+        { once: true },
+      );
       img.src = photo.src;
       img.alt = "";
       img.loading = "lazy";
@@ -314,8 +331,12 @@
       lbThumbs.appendChild(li);
     });
 
-    lbImage.addEventListener("error", () => { lbImage.style.visibility = "hidden"; });
-    lbImage.addEventListener("load", () => { lbImage.style.visibility = ""; });
+    lbImage.addEventListener("error", () => {
+      lbImage.style.visibility = "hidden";
+    });
+    lbImage.addEventListener("load", () => {
+      lbImage.style.visibility = "";
+    });
 
     let activeIndex = 0;
     const showPhoto = (index) => {
@@ -327,7 +348,8 @@
       lbThumbs.querySelectorAll(".lightbox__thumb").forEach((thumb, i) => {
         const isActive = i === activeIndex;
         thumb.setAttribute("aria-current", String(isActive));
-        if (isActive) thumb.scrollIntoView({ inline: "center", block: "nearest" });
+        if (isActive)
+          thumb.scrollIntoView({ inline: "center", block: "nearest" });
       });
     };
 
@@ -362,8 +384,13 @@
     // Keyboard: ←/→ navigate while open; Esc closes (native dialog handles Esc)
     document.addEventListener("keydown", (event) => {
       if (!lightbox.open) return;
-      if (event.key === "ArrowLeft") { event.preventDefault(); showPhoto(activeIndex - 1); }
-      else if (event.key === "ArrowRight") { event.preventDefault(); showPhoto(activeIndex + 1); }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPhoto(activeIndex - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showPhoto(activeIndex + 1);
+      }
     });
   }
 
@@ -376,7 +403,10 @@
     backToTop.hidden = false;
     const threshold = () => window.innerHeight * 0.6;
     const updateVisibility = () => {
-      backToTop.setAttribute("data-visible", String(window.scrollY > threshold()));
+      backToTop.setAttribute(
+        "data-visible",
+        String(window.scrollY > threshold()),
+      );
     };
     updateVisibility();
     window.addEventListener("scroll", updateVisibility, { passive: true });
@@ -406,6 +436,10 @@
       event.preventDefault();
       const dialog = trigger.closest("dialog");
       if (dialog) dialog.close();
+      const status = dialog.querySelector(".form__status");
+      if (status) {
+        status.textContent = "";
+      }
     });
   });
 
@@ -442,7 +476,10 @@
     const out = {};
     for (const [key, val] of Object.entries(raw)) {
       const capped = String(val).slice(0, MAX_LENGTHS[key] || 5000);
-      out[key] = key === "message" ? sanitizeMultiline(capped) : sanitizeSingleLine(capped);
+      out[key] =
+        key === "message"
+          ? sanitizeMultiline(capped)
+          : sanitizeSingleLine(capped);
     }
     return out;
   };
@@ -491,7 +528,7 @@
 
       const userKeys = ["firstName", "lastName", "email", "message"];
       const sanitized = sanitizePayload(
-        Object.fromEntries(userKeys.map((k) => [k, raw[k] ?? ""]))
+        Object.fromEntries(userKeys.map((k) => [k, raw[k] ?? ""])),
       );
       const payload = { ...raw, ...sanitized };
       delete payload._honey;
