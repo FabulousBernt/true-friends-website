@@ -26,6 +26,12 @@
   --hero-photo-url: url("../img/consulting-hero-bg.jpg");
 }
 
+/* Reference case modifiers — set the per-case hero photo here so the URL
+   stays out of inline `style` attributes (blocked by the page CSP). */
+.hero--epiroc {
+  --hero-photo-url: url("../img/reference-cases/epiroc/epiroc-hero.jpg");
+}
+
 @media (min-width: 768px) {
   .hero {
     min-height: 92vh;
@@ -131,6 +137,63 @@ body.landing .hero__title {
 .hero--studio .hero__content,
 body.landing .hero__content {
   gap: clamp(20px, 2.2vw, 32px);
+}
+
+/* Reference case hero — same height ramp as the base hero (matches studio /
+   consulting). Padding tightened a touch so the logo doesn't feel lost in a
+   tall section. */
+.hero--blog {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.hero--blog .hero__title {
+  font-size: clamp(2.25rem, 6.5vw, 72px);
+  letter-spacing: -0.01em;
+}
+
+/* Studio + consulting hero photos: full opacity and no bottom fade. The
+   `.hero--studio` modifier is present on both pages (consulting also carries
+   `.hero--consulting`), so one selector covers them both. Landing has
+   neither modifier, so its `.hero__photo` keeps the base fade and opacity. */
+.hero--studio .hero__photo {
+  opacity: 1;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* Reference case scrim: lighter, smaller pool of darkness behind the logo so
+   the photo shows through more clearly. */
+.hero--blog .hero__scrim {
+  background:
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0) 70%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.05) 35%, rgba(10, 10, 10, 0.3) 100%);
+}
+
+/* Reference case hero photo: full opacity, no bottom fade. Image fills the
+   hero width (height proportional) and is centered, so the whole horizontal
+   image is always visible — top/bottom letterbox or crop depending on hero
+   aspect. background-position: center is inherited from .hero__photo. */
+.hero--blog .hero__photo {
+  opacity: 1;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* Client logo replaces the headline on reference case heros. Height matches
+   the old title font-size so it lands with similar visual weight. */
+.hero__case-heading {
+  margin: 0;
+  line-height: 0;
+}
+
+.hero__case-logo {
+  display: block;
+  width: auto;
+  height: clamp(36px, 6.5vw, 72px);
+  object-fit: contain;
 }
 
 body.landing .hero__content {

@@ -98,8 +98,29 @@ window.TF_TRANSLATIONS = {
         johnny: {
           name: "Johnny Vigersten",
           role: "Tester / Designer",
-          bio: "I'm a driven and dedicated Testing Consultant and UI/UX designer with a strong focus on problem solving, usability, aesthetics, and security.",
+          bio: "I'm a Testing Consultant and UI/UX Designer with a strong focus on exploration, investigation, problem solving, usability, aesthetics, and security.",
           cvHref: "cv/johnny-vigersten-cv-EN.pdf",
+        },
+      },
+    },
+    refCase: {
+      label: "Reference case",
+      eyebrow: "Reference case",
+      about: "About",
+      myRole: "My role",
+      workflow: "Workflow",
+    },
+    refCases: {
+      epiroc: {
+        about: {
+          lede: "Short summary of the engagement — who the client is, what we worked on, and the headline outcome.",
+          body1: "Body paragraph — context, scope, and any constraints worth calling out.",
+        },
+        myRole: {
+          body1: "What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.",
+        },
+        workflow: {
+          body1: "How the work was structured — process, tools, cadence, and decisions worth highlighting.",
         },
       },
     },
@@ -245,6 +266,28 @@ window.TF_TRANSLATIONS = {
           role: "Testare / Designer",
           bio: "Jag är en driven och engagerad testkonsult och UI/UX-designer med ett starkt fokus på problemlösning, användbarhet, estetik och säkerhet.",
           cvHref: "cv/johnny-vigersten-cv-SE.pdf",
+        },
+      },
+    },
+    refCase: {
+      label: "Referensuppdrag",
+      eyebrow: "Referensuppdrag",
+      about: "Om uppdraget",
+      myRole: "Min roll",
+      workflow: "Arbetsprocess",
+    },
+    refCases: {
+      epiroc: {
+        about: {
+          // TODO: translate to Swedish — currently mirrors the English placeholder.
+          lede: "Short summary of the engagement — who the client is, what we worked on, and the headline outcome.",
+          body1: "Body paragraph — context, scope, and any constraints worth calling out.",
+        },
+        myRole: {
+          body1: "What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.",
+        },
+        workflow: {
+          body1: "How the work was structured — process, tools, cadence, and decisions worth highlighting.",
         },
       },
     },
