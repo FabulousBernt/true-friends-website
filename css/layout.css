@@ -29,7 +29,11 @@
 /* Reference case modifiers — set the per-case hero photo here so the URL
    stays out of inline `style` attributes (blocked by the page CSP). */
 .hero--epiroc {
-  --hero-photo-url: url("../img/reference-cases/epiroc/epiroc-hero.jpg");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/epiroc/epiroc-hero.jpg");
+}
+
+.hero--kopparbergs-brewery {
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-hero.jpg");
 }
 
 @media (min-width: 768px) {
@@ -270,6 +274,58 @@ body.landing .hero { flex: 1; min-height: 0; }
 .section__body {
   display: grid;
   gap: 1.25rem;
+}
+
+/* Inline links inside body paragraphs — underlined at rest so they read as
+   links, accent yellow on hover / focus. `.btn` is excluded so buttons keep
+   their own treatment. Scoped to <p> so structured list/row links
+   (.email-row, .team-card__ref, etc.) aren't double-underlined. */
+.section__body p a:not(.btn) {
+  text-decoration: underline;
+}
+
+.section__body a:not(.btn):hover,
+.section__body a:not(.btn):focus-visible {
+  color: var(--color-accent);
+}
+
+/* Inline image + caption block for use inside section bodies (e.g. reference
+   case studies). Caption styling mirrors the studio services note. */
+.section__figure {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.section__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.section__figure-caption {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* Small muted note inside a section body (e.g. footnotes / disclaimers).
+   Same visual weight as a figure caption. */
+.section__note {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* Row of figures (e.g. two images side by side). Stacks on narrow viewports. */
+.section__figure-row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .section__figure-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 880px) {

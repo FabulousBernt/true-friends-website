@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0a">
-    <!-- TODO: customise the page title per case (e.g. "True Friends — Epiroc"). -->
-    <title>True Friends — Reference case</title>
-    <!-- TODO: customise the description per case. -->
-    <meta name="description" content="True Friends reference case — short summary of the engagement, role and outcome.">
+    <title>True Friends — Kopparbergs Brewery</title>
+    <meta name="description" content="True Friends reference case — Kopparbergs Brewery. Short summary of the engagement, role and outcome.">
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://formsubmit.co https://api.country.is; img-src 'self' data:; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -38,11 +36,9 @@
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
             <a href="../consulting.html" class="nav__crumb-link" data-i18n="hero.consulting">Consulting</a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
-            <!-- TODO: swap the consultant name + data-i18n key if the case is by a different consultant. -->
             <a href="../consulting.html#team" class="nav__crumb-link" data-i18n="team.members.johnny.name">Johnny Vigersten</a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
-            <!-- TODO: replace with the case name, e.g. "Epiroc". -->
-            <span class="nav__crumb-current" aria-current="page">Reference case</span>
+            <span class="nav__crumb-current" aria-current="page">Kopparbergs Brewery</span>
         </div>
 
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
@@ -106,61 +102,32 @@
 </header>
 
 <main id="main">
-    <!-- Hero — blog-post sized. Per-case photo is set via a modifier class
-         (e.g. `hero--epiroc`) defined in css/layout.css. The page CSP blocks
-         inline `style` attributes, so the photo URL has to live in the CSS. -->
-    <section class="hero hero--center hero--blog" id="top">
+    <!-- Hero photo set via `.hero--kopparbergs-brewery` in css/layout.css.
+         Drop the brewery hero photo at
+         img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-brewery-hero.jpg
+         and the modifier will pick it up. -->
+    <section class="hero hero--center hero--blog hero--kopparbergs-brewery" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
 
         <div class="hero__content">
-            <!-- TODO: swap the logo path + alt to match the case
-                 (e.g. ../img/reference-cases/<consultant-slug>/<slug>/<slug>-logo.png). -->
             <h1 class="hero__case-heading">
-                <img class="hero__case-logo" src="../img/tf-smiley-logo-transparent-coloured.svg" alt="Client name">
+                <img class="hero__case-logo" src="../img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-logo.png" alt="Kopparbergs Brewery">
             </h1>
         </div>
     </section>
 
-    <!--
-      Per-case body copy goes through translations.js, same pattern as the rest
-      of the site. For each new case:
-        1. Add `refCases.<slug>.<section>.<key>` entries under both `en` and
-           `sv` in js/translations.js (body1, body2, ..., caption1, ...).
-        2. Reference them on each tag here via `data-i18n="..."` — or
-           `data-i18n-html="..."` if the string contains markup such as <a>.
-      The inline text below is the fallback shown if a key is missing.
-
-      Available content patterns inside any .section__body:
-        • Multiple paragraphs: <p>body1</p><p>body2</p> ...
-        • Lede paragraph: <p class="lede">...</p>
-        • Image with caption: <figure class="section__figure">
-              <img src="..." alt="..." loading="lazy">
-              <figcaption class="section__figure-caption">...</figcaption>
-            </figure>
-        • Two images side by side: wrap two .section__figure blocks in
-            <div class="section__figure-row">...</div>
-        • Muted footnote / disclaimer: <p class="section__note">...</p>
-        • Inline link in a paragraph: use data-i18n-html and embed the
-            <a href="..." target="_blank" rel="noopener">...</a> in the string.
-
-      To add a section other than About / My role / Workflow, follow the same
-      <section class="section" id="<slug>" aria-labelledby="<slug>-label">
-      structure, add `refCase.<key>` for the label and any per-case body keys.
-    -->
     <section class="section" id="about" aria-labelledby="about-label">
         <div class="container">
             <div class="section__grid">
                 <p class="section__label" id="about-label" data-i18n="refCase.about">About</p>
                 <div class="section__body">
-                    <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                    <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                    <!-- Example: image + caption. Replace src/alt + the
-                         figcaption text (or wire data-i18n to a caption key). -->
+                    <p class="lede" data-i18n="refCases.kopparbergsBrewery.about.lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
+                    <p data-i18n="refCases.kopparbergsBrewery.about.body1">Body paragraph — context, scope, and any constraints worth calling out.</p>
                     <figure class="section__figure">
-                        <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                        <figcaption class="section__figure-caption">Caption text.</figcaption>
+                        <img src="../img/reference-cases/johnny-vigersten/kopparbergs-brewery/hololens.jpg" alt="Microsoft HoloLens" loading="lazy">
+                        <figcaption class="section__figure-caption" data-i18n="refCases.kopparbergsBrewery.about.caption">Microsoft HoloLens</figcaption>
                     </figure>
                 </div>
             </div>
@@ -172,8 +139,7 @@
             <div class="section__grid">
                 <p class="section__label" id="my-role-label" data-i18n="refCase.myRole">My role</p>
                 <div class="section__body">
-                    <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                    <p>Additional paragraph if needed (body2, body3, ...).</p>
+                    <p data-i18n="refCases.kopparbergsBrewery.myRole.body1">What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
                 </div>
             </div>
         </div>
@@ -184,27 +150,7 @@
             <div class="section__grid">
                 <p class="section__label" id="workflow-label" data-i18n="refCase.workflow">Workflow</p>
                 <div class="section__body">
-                    <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                    <!-- Example: two images side by side. Each <figure>
-                         keeps its own caption; the row stacks on mobile. -->
-                    <div class="section__figure-row">
-                        <figure class="section__figure">
-                            <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption A.</figcaption>
-                        </figure>
-                        <figure class="section__figure">
-                            <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption B.</figcaption>
-                        </figure>
-                    </div>
-                    <p>Follow-up paragraph after the visuals.</p>
-                    <!-- Example: muted footnote (.section__note) — same
-                         visual weight as a figure caption. -->
-                    <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                    <!-- Example: inline hyperlink inside a section__note.
-                         Switch the attribute to data-i18n-html so the <a>
-                         renders as markup, and put the link in the string. -->
-                    <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
+                    <p data-i18n="refCases.kopparbergsBrewery.workflow.body1">How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
                 </div>
             </div>
         </div>
