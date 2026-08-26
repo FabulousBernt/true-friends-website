@@ -121,12 +121,18 @@
     </section>
 
     <!--
-      Per-case body copy goes through translations.js, same pattern as the rest
-      of the site. For each new case:
-        1. Add `refCases.<slug>.<section>.<key>` entries under both `en` and
-           `sv` in js/translations.js (body1, body2, ..., caption1, ...).
-        2. Reference them on each tag here via `data-i18n="..."` — or
-           `data-i18n-html="..."` if the string contains markup such as <a>.
+      Per-case body copy goes through a per-case translation file, same
+      pattern as the rest of the site. For each new case:
+        1. Create js/translations/<slug>.js by copying an existing case
+           file (epiroc.js / kopparbergs-brewery.js) and swap the slug.
+        2. Add `refCases.<slug>.<section>.<key>` entries under both `en`
+           and `sv` inside that file (body1, body2, ..., caption1, ...).
+        3. Load it in this page's <head> alongside common.js:
+             <script src="../js/translations/common.js" defer></script>
+             <script src="../js/translations/<slug>.js" defer></script>
+        4. Reference each entry on the corresponding tag here via
+           `data-i18n="..."` — or `data-i18n-html="..."` if the string
+           contains markup such as <a>.
       The inline text below is the fallback shown if a key is missing.
 
       Available content patterns inside any .section__body:
@@ -218,7 +224,7 @@
     </svg>
 </button>
 
-<script src="../js/translations.js" defer></script>
+<script src="../js/translations/common.js" defer></script>
 <script src="../js/main.js" defer></script>
 </body>
 </html>
