@@ -37,7 +37,28 @@ window.TF_TRANSLATIONS = {
       lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
       cta: "Say hi",
       consulting: "Consulting",
+      consultingSubhead:
+        "A senior tester and designer, embedded with your team — helping you build software you're proud of.",
       studio: "Studio",
+      terminal: {
+        title: {
+          landing: "Home",
+          consulting: "Consulting",
+          studio: "Studio",
+        },
+        tagline: "(^_^) TRUE FRIENDS",
+        taglineLanding: "(^_^) Welcome to",
+        ascii: {
+          landing: " _____ ___ _   _ ___   ___ ___ ___ ___ _  _ ___  ___ \n|_   _| _ \\ | | | __| | __| _ \\_ _| __| \\| |   \\/ __|\n  | | |   / |_| | _|  | _||   /| || _|| .` | |) \\__ \\\n  |_| |_|_\\\\___/|___| |_| |_|_\\___|___|_|\\_|___/|___/",
+          consulting: "  ___ ___  _  _ ___ _   _ _  _____ ___ _  _  ___ \n / __/ _ \\| \\| / __| | | | ||_   _|_ _| \\| |/ __|\n| (_| (_) | .` \\__ \\ |_| | |__| |  | || .` | (_ |\n \\___\\___/|_|\\_|___/\\___/|____|_| |___|_|\\_|\\___|",
+          studio: " ___ _____ _   _ ___ ___ ___  \n/ __|_   _| | | |   \\_ _/ _ \\ \n\\__ \\ | | | |_| | |) | | (_) |\n|___/ |_|  \\___/|___/___\\___/ ",
+        },
+        services: {
+          landing: ["A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide."],
+          consulting: ["We consult in testing, ux/ui design, web/software dev and cybersecurity."],
+          studio: ["Everything from web, design, marketing, photo, video and editing."],
+        },
+      },
     },
     about: {
       label: "About",
@@ -232,7 +253,28 @@ window.TF_TRANSLATIONS = {
       lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
       cta: "Säg hej",
       consulting: "Konsult",
+      consultingSubhead:
+        "En senior testare och designer på plats hos ert team — hjälper er bygga mjukvara ni är stolta över.",
       studio: "Studio",
+      terminal: {
+        title: {
+          landing: "Terminal hem",
+          consulting: "Terminal konsult",
+          studio: "Terminal studio",
+        },
+        tagline: "(^_^) TRUE FRIENDS",
+        taglineLanding: "(^_^)",
+        ascii: {
+          landing: " _____ ___ _   _ ___   ___ ___ ___ ___ _  _ ___  ___ \n|_   _| _ \\ | | | __| | __| _ \\_ _| __| \\| |   \\/ __|\n  | | |   / |_| | _|  | _||   /| || _|| .` | |) \\__ \\\n  |_| |_|_\\\\___/|___| |_| |_|_\\___|___|_|\\_|___/|___/",
+          consulting: " _  _____  _  _ ___ _   _ _  _____ \n| |/ / _ \\| \\| / __| | | | ||_   _|\n| ' < (_) | .` \\__ \\ |_| | |__| |  \n|_|\\_\\___/|_|\\_|___/\\___/|____|_|  ",
+          studio: " ___ _____ _   _ ___ ___ ___  \n/ __|_   _| | | |   \\_ _/ _ \\ \n\\__ \\ | | | |_| | |) | | (_) |\n|___/ |_|  \\___/|___/___\\___/ ",
+        },
+        services: {
+          landing: ["En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över."],
+          consulting: ["testning", "ux", "ui", "kvalitet", "leverera"],
+          studio: ["webb", "design", "varumärke", "foto", "video", "redigering"],
+        },
+      },
     },
     about: {
       label: "Om oss",

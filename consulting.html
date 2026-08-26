@@ -11,8 +11,6 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="index,follow">
 
-    <link rel="icon" type="image/svg+xml" href="img/tf-smiley-favicon-dark.svg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap">
@@ -30,7 +28,6 @@
     <div class="nav__inner">
         <div class="nav__crumbs">
             <a href="index.html" class="nav__brand" aria-label="True Friends home" data-i18n-aria-label="aria.home">
-                <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="28" height="28">
                 <span>True Friends</span>
             </a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
@@ -98,16 +95,40 @@
 </header>
 
 <main id="main">
-    <section class="hero hero--center hero--studio hero--consulting" id="top">
+    <section class="hero hero--terminal hero--consulting" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
 
-        <div class="hero__content">
-            <div class="hero__title-group">
-                <p class="hero__eyebrow">True Friends</p>
-                <h1 class="hero__title" data-i18n="hero.consulting">Consulting</h1>
+        <h1 class="sr-only" data-i18n="hero.consulting">Consulting</h1>
+
+        <div class="container">
+            <div class="hero__terminal" aria-hidden="true">
+                <div class="hero__terminal-chrome">
+                    <span class="hero__terminal-title" data-i18n="hero.terminal.title.consulting">Terminal consulting</span>
+                    <span class="hero__terminal-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                </div>
+                <div class="hero__terminal-body">
+                    <div class="hero__terminal-tagline">
+                        <span class="hero__terminal-prompt">$</span>
+                        <span data-i18n="hero.terminal.tagline">(^_^) TRUE FRIENDS</span>
+                    </div>
+                    <pre class="hero__terminal-ascii hero__terminal-ascii--accent" data-i18n="hero.terminal.ascii.consulting">  ___ ___  _  _ ___ _   _ _  _____ ___ _  _  ___ 
+ / __/ _ \| \| / __| | | | ||_   _|_ _| \| |/ __|
+| (_| (_) | .` \__ \ |_| | |__| |  | || .` | (_ |
+ \___\___/|_|\_|___/\___/|____|_| |___|_|\_|\___|</pre>
+                    <div class="hero__terminal-services">
+                        <span class="hero__terminal-prompt">$</span>
+                        <span class="hero__terminal-services-body">
+                            <span class="hero__terminal-services-ghost" aria-hidden="true"></span>
+                            <span class="hero__terminal-services-live"><span class="hero__terminal-services-text" data-services-loop data-services-i18n="hero.terminal.services.consulting"></span><span class="hero__terminal-caret">█</span></span>
+                        </span>
+                    </div>
+                </div>
             </div>
+
             <div class="hero__cta">
                 <button type="button" class="btn" data-modal-open="contact-modal" data-i18n="hero.cta">say hi</button>
             </div>

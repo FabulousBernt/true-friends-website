@@ -221,10 +221,57 @@ body.landing .hero__content {
 }
 
 /* ---------- Landing page layout ---------- */
-/* Single-viewport page: header + stage + footer fits exactly in 100vh, no scroll. */
-body.landing { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-body.landing main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-body.landing .hero { flex: 1; min-height: 0; }
+/* Sticky footer: body fills at least the viewport, main flex-grows so the
+   footer always sits at the bottom of the screen (or bottom of the page
+   if content pushes past it). The hero itself also flex-grows inside main
+   so the hero photo (position: absolute inset: 0 inside the hero) fills
+   the whole area between the nav and the email/footer row. Content is
+   vertically centred inside the hero via align-items: center. */
+body.landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  isolation: isolate;
+  --hero-photo-url: url("../img/landing-page-hero.jpg");
+}
+body.landing main { flex: 1; display: flex; flex-direction: column; }
+body.landing .hero { flex: 1; align-items: center; }
+
+/* Photo/scrim/gradient divs are promoted to top-level children of body and
+   positioned fixed to the viewport so they cover the entire screen — under
+   the nav, behind the hero, and behind the email + footer. Isolation on
+   body.landing keeps their negative z-index rendered between body's own
+   background and the flow content above. */
+body.landing > .hero__bg,
+body.landing > .hero__photo,
+body.landing > .hero__scrim {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body.landing > .hero__photo {
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
+}
+
+/* Terminal-hero nav mirrors the terminal chrome's semi-transparent dark
+   tint, subtle border, and frosted-glass backdrop. Positioned fixed so it
+   floats over the hero photo — the photo extends up to the top of the
+   viewport under the nav. Applies to any page with a .hero--terminal
+   (landing, consulting, studio); reference-case pages keep the default
+   sticky nav treatment. */
+body:has(.hero--terminal) .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.5);
+  border-bottom: 1px solid var(--color-border);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+          backdrop-filter: blur(6px) saturate(120%);
+}
 
 /* Wraps main + email so the hero photo fills the space between nav and footer. */
 .landing-stage {
@@ -370,4 +417,403 @@ body.landing .hero { flex: 1; min-height: 0; }
   .form__row {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Split hero (Boulder-style two-column) ----------
+   Consulting / Studio hero: text-left column and typewriter loop right column
+   over a solid dark background. Overrides the default hero photo/scrim setup
+   by suppressing them (the elements are simply omitted in the markup) and
+   dropping the flex-center in favor of a grid container. */
+.hero--split {
+  min-height: auto;
+  padding: clamp(6rem, 12vw, 10rem) 0;
+  background: var(--color-bg);
+  text-align: left;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .hero--split { min-height: auto; }
+}
+
+.hero__split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .hero__split {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(3rem, 7vw, 6rem);
+  }
+}
+
+.hero--split .hero__content {
+  justify-items: start;
+  text-align: left;
+  gap: clamp(1.25rem, 2vw, 1.75rem);
+  max-width: 60ch;
+}
+
+.hero--split .hero__title-group {
+  justify-items: start;
+  gap: 12px;
+}
+
+.hero--split .hero__title {
+  font-style: normal;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-align: left;
+}
+
+.hero--split .hero__eyebrow {
+  color: var(--color-accent);
+}
+
+.hero--split .hero__subhead {
+  margin: 0;
+  max-width: 52ch;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text);
+}
+
+.hero--split .hero__cta {
+  margin-top: 0.5rem;
+  justify-self: start;
+}
+
+/* ---------- Typewriter loop ----------
+   Right column of the split hero. Fixed min-height so the row doesn't jump
+   as words type in / out. Renders in monospace at display scale with a
+   blinking accent-yellow caret. */
+.hero__loop {
+  display: flex;
+  align-items: center;
+  min-height: clamp(4rem, 8vw, 7rem);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+.hero__loop-word {
+  white-space: nowrap;
+}
+
+.hero__loop-caret {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--color-accent);
+  animation: hero-loop-caret 1s steps(1, end) infinite;
+}
+
+@keyframes hero-loop-caret {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__loop-caret { animation: none; opacity: 1; }
+}
+
+/* Studio split hero: uppercase the title and mute the background photo
+   further so the typewriter + copy stay readable over the image. */
+.hero--split.hero--studio .hero__title {
+  text-transform: uppercase;
+  font-size: clamp(2.75rem, 10vw, 104px);
+}
+
+.hero--terminal .hero__photo {
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
+}
+
+/* ---------- Terminal loop ----------
+   Fake-terminal scrolling log used on the studio hero right column. Lines
+   are appended by JS (see [data-terminal-loop] in main.js). Container has
+   a fixed vertical envelope with a top/bottom mask fade so lines feel like
+   they scroll out of view instead of hard-cutting. */
+/* Outer terminal shell — semi-transparent dark tint over the hero photo
+   with a subtle backdrop blur (frosted-glass) and thin border. Sharp
+   corners match the site's flat/hard-edged aesthetic. */
+.hero__terminal {
+  align-self: center;
+  width: 100%;
+  height: clamp(260px, 36vh, 380px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.5);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: clamp(0.875rem, 1.15vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+          backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Chrome bar — reads as a terminal window header. Title on the left,
+   three muted dots on the right (colour-matched to the palette instead
+   of the classic red/yellow/green). */
+.hero__terminal-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex: none;
+  padding: 0.5rem 0.875rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero__terminal-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero__terminal-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.hero__terminal-dots > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(232, 230, 220, 0.28);
+}
+
+/* Body — where lines scroll. Mask fade at the top so old lines dissolve
+   into the terminal's dark tint as they push off-screen. */
+.hero__terminal-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
+}
+
+/* Inner sits absolute-bottom so the newest line is always visible at the
+   bottom and older lines push up and out of the top, clipped by the body.
+   Absolute positioning avoids the flex safe-alignment heuristic that
+   silently switches `justify-content: flex-end` to flex-start once
+   content overflows. */
+.hero__terminal-inner {
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: 0.75rem;
+}
+
+/* ---------- Terminal hero variant ----------
+   Full-width hero centred around the terminal window. TRUE FRIENDS +
+   STUDIO ASCII inside; a single row of services types below with a
+   blinking caret; CTA sits under the terminal. */
+.hero--terminal {
+  min-height: auto;
+  padding: clamp(6rem, 12vw, 10rem) 0;
+  text-align: left;
+  align-items: stretch;
+}
+
+.hero--terminal .hero__terminal {
+  height: auto;
+  align-self: auto;
+}
+
+.hero--terminal .hero__terminal-body {
+  flex: none;
+  overflow: visible;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  -webkit-mask-image: none;
+          mask-image: none;
+}
+
+/* Tagline — small monospace line above the STUDIO ASCII, mirroring the
+   look of the services line at the bottom so the ASCII is framed by two
+   matching prompt rows and a pair of dashed dividers. */
+.hero__terminal-tagline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+  padding-bottom: clamp(0.75rem, 1.25vw, 1rem);
+  border-bottom: 1px dashed var(--color-border);
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* ASCII banner. STUDIO is 30 chars × 4 lines; bumped a bit larger now
+   that it stands alone. Horizontal overflow hides a scrollbar rather than
+   wrapping so the shape stays intact on narrow viewports. */
+.hero__terminal-ascii {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  line-height: 1.05;
+  color: var(--color-cream);
+  white-space: pre;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.hero__terminal-ascii::-webkit-scrollbar { display: none; }
+
+.hero__terminal-ascii--accent {
+  color: var(--color-accent);
+}
+
+/* Consulting's word is 49 chars wide vs Studio's 30 — shrink a step so it
+   comfortably fits the same terminal width. */
+.hero--consulting .hero__terminal-ascii {
+  font-size: clamp(0.5rem, 1.35vw, 1.375rem);
+}
+
+/* Services row — one horizontal line that types the service list in with
+   a dotted separator. Sits below the ASCII with a subtle divider. */
+.hero__terminal-services {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  padding-top: clamp(0.75rem, 1.25vw, 1rem);
+  border-top: 1px dashed var(--color-border);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--color-text);
+  min-height: 1.7em;
+}
+
+.hero__terminal-prompt {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Body wraps text + caret so they share a single line box and reserves
+   its final height via an invisible ghost copy of the text — that keeps
+   the terminal from expanding as the animation types past the first line
+   wrap. Ghost and live stack in the same grid cell so the cell sizes to
+   the taller of the two (always the ghost while typing). */
+.hero__terminal-services-body {
+  display: grid;
+  grid-template-areas: "stack";
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__terminal-services-body > * {
+  grid-area: stack;
+  min-width: 0;
+}
+
+.hero__terminal-services-ghost {
+  visibility: hidden;
+}
+
+.hero__terminal-services-text {
+  white-space: normal;
+}
+
+/* Reuse the same blink animation as the other caret. Keep at least an em
+   of width so the services line doesn't collapse before any text is typed. */
+.hero__terminal-services .hero__terminal-caret {
+  display: inline-block;
+  min-width: 0.55em;
+}
+
+/* CTA sits below the terminal, centered in the container. */
+.hero--terminal .hero__cta {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  justify-content: center;
+}
+
+/* Landing hero photo — set the URL via a page-specific modifier so the
+   default studio/consulting photos don't leak through. */
+.hero--landing {
+  --hero-photo-url: url("../img/landing-page-hero.jpg");
+}
+
+/* TRUE FRIENDS ASCII on landing is 52 chars wide (like CONSULTING) — use
+   the same shrunk font-scale so it fits comfortably in the terminal. */
+.hero--landing .hero__terminal-ascii {
+  font-size: clamp(0.5rem, 1.35vw, 1.375rem);
+}
+
+/* Terminal action links — [ CONSULTING ] / [ STUDIO ] on the landing.
+   Reverse-video hover (accent bg, ink text) reads as classic terminal
+   selection. Padding is em-based so it scales with the type. */
+.hero__terminal-links {
+  margin-top: clamp(1.25rem, 2.25vw, 1.75rem);
+  padding-top: clamp(0.75rem, 1.25vw, 1rem);
+  border-top: 1px dashed var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
+  font-weight: 700;
+  color: var(--color-cream);
+}
+
+.hero__terminal-link {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  color: var(--color-cream);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.hero__terminal-link:hover,
+.hero__terminal-link:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+  outline: none;
+}
+
+.hero__terminal-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.hero__terminal-line--prompt { color: var(--color-cream); }
+.hero__terminal-line--ok     { color: var(--color-text); }
+.hero__terminal-line--ok::first-letter { color: var(--color-accent); }
+.hero__terminal-line--log    { color: var(--color-text-muted); }
+.hero__terminal-line--warn   { color: #ffb454; }
+
+.hero__terminal-caret {
+  display: inline-block;
+  width: 0.55em;
+  color: var(--color-accent);
+  animation: hero-loop-caret 1s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__terminal-caret { animation: none; opacity: 1; }
 }

@@ -11,8 +11,6 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="index,follow">
 
-    <link rel="icon" type="image/svg+xml" href="img/tf-smiley-favicon-dark.svg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap">
@@ -24,12 +22,15 @@
 </head>
 <body class="landing">
 
+<div class="hero__bg" aria-hidden="true"></div>
+<div class="hero__photo" aria-hidden="true"></div>
+<div class="hero__scrim" aria-hidden="true"></div>
+
 <a href="#main" class="sr-only" data-i18n="aria.skip">Skip to content</a>
 
 <header class="nav" id="site-nav" data-open="false">
     <div class="nav__inner">
         <a href="#top" class="nav__brand" aria-label="True Friends home" data-i18n-aria-label="aria.home">
-            <img src="img/tf-smiley-logo-transparent-coloured.svg" alt="" width="28" height="28">
             <span>True Friends</span>
         </a>
 
@@ -55,29 +56,48 @@
     </div>
 </header>
 
-<div class="landing-stage">
-    <div class="hero__bg" aria-hidden="true"></div>
-    <div class="hero__photo" aria-hidden="true"></div>
-    <div class="hero__scrim" aria-hidden="true"></div>
+<main id="main">
+    <section class="hero hero--terminal hero--landing" id="top">
+        <h1 class="sr-only">True Friends</h1>
 
-    <main id="main">
-        <section class="hero hero--center" id="top">
-            <div class="hero__content">
-                <img class="hero__logo" src="img/tf-smiley-logo-transparent-coloured.svg" alt="True Friends" width="140" height="140">
-                <h1 class="hero__title">True Friends</h1>
-                <p data-i18n-html="hero.lede">A creative and technical studio & consulting firm based in Motala, Sweden but available worldwide.</p>
-                <div class="hero__cta hero__cta--row">
-                    <a class="btn" aria-disabled="true" tabindex="-1" data-i18n="hero.consulting">Consulting</a>
-                    <a class="btn" href="studio.html" data-i18n="hero.studio">Studio</a>
+        <div class="container">
+            <div class="hero__terminal" aria-hidden="true">
+                <div class="hero__terminal-chrome">
+                    <span class="hero__terminal-title" data-i18n="hero.terminal.title.landing">Terminal home</span>
+                    <span class="hero__terminal-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                </div>
+                <div class="hero__terminal-body">
+                    <div class="hero__terminal-tagline">
+                        <span class="hero__terminal-prompt">$</span>
+                        <span data-i18n="hero.terminal.taglineLanding">(^_^)</span>
+                    </div>
+                    <pre class="hero__terminal-ascii hero__terminal-ascii--accent" data-i18n="hero.terminal.ascii.landing"> _____ ___ _   _ ___   ___ ___ ___ ___ _  _ ___  ___ 
+|_   _| _ \ | | | __| | __| _ \_ _| __| \| |   \/ __|
+  | | |   / |_| | _|  | _||   /| || _|| .` | |) \__ \
+  |_| |_|_\\___/|___| |_| |_|_\___|___|_|\_|___/|___/</pre>
+                    <div class="hero__terminal-services">
+                        <span class="hero__terminal-prompt">$</span>
+                        <span class="hero__terminal-services-body">
+                            <span class="hero__terminal-services-ghost" aria-hidden="true"></span>
+                            <span class="hero__terminal-services-live"><span class="hero__terminal-services-text" data-services-loop data-services-i18n="hero.terminal.services.landing"></span><span class="hero__terminal-caret">█</span></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <a class="email-row landing-email" href="mailto:hello@truefriends.se">
-        <span>hello@truefriends.se</span>
-    </a>
-</div>
+            <div class="hero__cta hero__cta--row">
+                <a class="btn" href="consulting.html" data-i18n="hero.consulting">Consulting</a>
+                <a class="btn" href="studio.html" data-i18n="hero.studio">Studio</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<a class="email-row landing-email" href="mailto:hello@truefriends.se">
+    <span>hello@truefriends.se</span>
+</a>
 
 <footer class="site-footer">
     <p class="site-footer__copyright" data-i18n="footer.copyright">&copy; True Friends 2026</p>

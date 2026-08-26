@@ -386,6 +386,114 @@
   }
 
   /* ====================================================================
+   * Typewriter loop (split hero, right column)
+   *
+   * Any element with data-typewriter='["Word.","Next."]' will cycle its
+   * word list: type in char-by-char, hold, delete, next. Reduced motion
+   * shows only the first word statically.
+   * ==================================================================== */
+  const reducedMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll("[data-typewriter]").forEach((el) => {
+    let words;
+    try {
+      words = JSON.parse(el.dataset.typewriter);
+    } catch (e) {
+      return;
+    }
+    if (!Array.isArray(words) || words.length === 0) return;
+
+    if (reducedMotion) {
+      el.textContent = words[0];
+      return;
+    }
+
+    const TYPE_MS = 90;
+    const DELETE_MS = 45;
+    const HOLD_MS = 1400;
+    const BETWEEN_MS = 300;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const tick = () => {
+      const word = words[wordIndex];
+      if (deleting) {
+        charIndex -= 1;
+        el.textContent = word.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(tick, BETWEEN_MS);
+          return;
+        }
+        setTimeout(tick, DELETE_MS);
+      } else {
+        charIndex += 1;
+        el.textContent = word.slice(0, charIndex);
+        if (charIndex === word.length) {
+          deleting = true;
+          setTimeout(tick, HOLD_MS);
+          return;
+        }
+        setTimeout(tick, TYPE_MS);
+      }
+    };
+
+    tick();
+  });
+
+  /* ====================================================================
+   * Services loop (hero terminal)
+   *
+   * Any element with [data-services-loop] reads its list from a translation
+   * key given by [data-services-i18n] (e.g. "hero.terminal.services.studio")
+   * — falls back to a sibling <script type="application/json"
+   * data-services-script> if the attribute is missing. The list is joined
+   * with " · " and typed into a single row, then held, cleared, and
+   * retyped in a loop. The list is re-read each cycle so a language
+   * switch takes effect on the next iteration. Reduced motion renders the
+   * fully-joined string statically.
+   * ==================================================================== */
+  document.querySelectorAll("[data-services-loop]").forEach((el) => {
+    const i18nKey = el.dataset.servicesI18n;
+    const container = el.closest(".hero__terminal-services") || el.parentElement;
+    const scriptEl = container && container.querySelector("[data-services-script]");
+    const ghost = container && container.querySelector(".hero__terminal-services-ghost");
+
+    const readItems = () => {
+      if (i18nKey) {
+        const dicts = window.TF_TRANSLATIONS || {};
+        let value = getNested(dicts[currentLang], i18nKey);
+        if (!Array.isArray(value)) value = getNested(dicts[DEFAULT_LANG], i18nKey);
+        if (Array.isArray(value) && value.length > 0) return value;
+      }
+      if (scriptEl) {
+        try {
+          const parsed = JSON.parse(scriptEl.textContent);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch (e) {}
+      }
+      return null;
+    };
+
+    const first = readItems();
+    if (!first) return;
+
+    const fullFirst = first.join("  ·  ");
+
+    // Populate the ghost so the container reserves its final wrapped height
+    // from the start — otherwise the terminal grows as the animation wraps
+    // to a second line.
+    if (ghost) ghost.textContent = fullFirst;
+
+    // Static text — no typing animation. Caret still blinks via CSS.
+    el.textContent = fullFirst;
+  });
+
+  /* ====================================================================
    * Modal
    * ==================================================================== */
   document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
