@@ -44,7 +44,7 @@ window.TF_ADD_TRANSLATIONS({
     team: {
       label: "Consultants",
       referenceCases: "Reference cases",
-      cv: "Download resumé",
+      cv: "Download cv",
       members: {
         johnny: {
           name: "Johnny Vigersten",
