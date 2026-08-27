@@ -459,6 +459,205 @@ body:has(.hero--terminal) .nav {
   font-weight: 700;
 }
 
+/* ---------- Service list (package-list style) ----------
+   Each service renders as an expandable row: `[+] name  brief-summary`.
+   Clicking the row swaps [+] for [-] and reveals the longer body copy
+   beneath, aligned to the name column. Uses native <details>/<summary>
+   so no JS. */
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list > li + li {
+  border-top: 1px dashed rgba(255, 255, 255, 0.04);
+}
+
+.service-line {
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.service-line__summary {
+  display: grid;
+  grid-template-columns: 2.5em minmax(9ch, 14ch) 1fr;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.6rem 0.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.service-line__summary::-webkit-details-marker { display: none; }
+.service-line__summary::marker { content: ""; }
+
+.service-line__summary:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.service-line__toggle {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.service-line__toggle::before { content: "[+]"; }
+.service-line[open] > .service-line__summary .service-line__toggle::before { content: "[-]"; }
+
+.service-line__name {
+  color: var(--color-cream);
+  font-weight: 700;
+}
+
+.service-line__brief {
+  color: var(--color-text-muted);
+}
+
+.service-line__body {
+  padding: 0 0.25rem 1rem calc(2.5em + 0.75rem + 0.25rem);
+  color: var(--color-text);
+}
+
+.service-line__body > p { margin: 0; }
+
+/* On very narrow viewports let the name and brief stack under the toggle so
+   nothing gets crushed. */
+@media (max-width: 540px) {
+  .service-line__summary {
+    grid-template-columns: 2.5em 1fr;
+  }
+  .service-line__brief {
+    grid-column: 2 / -1;
+  }
+  .service-line__body {
+    padding-left: calc(2.5em + 0.75rem + 0.25rem);
+  }
+}
+
+/* ---------- Consultant card (portrait + key/value profile) ----------
+   Photo left, dl-style metadata right. Keys in accent yellow, values in
+   cream. Reads like `id` / `whoami` output next to the portrait. */
+.consultant-list {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.consultant-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (min-width: 720px) {
+  .consultant-card {
+    grid-template-columns: minmax(0, 220px) 1fr;
+    align-items: start;
+  }
+}
+
+.consultant-card__portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.consultant-card__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.consultant-card__meta {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.05vw, 1rem);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.consultant-card__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+}
+
+@media (min-width: 480px) {
+  .consultant-card__row {
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1rem;
+  }
+}
+
+.consultant-card__key {
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.consultant-card__val {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.consultant-card__val--strong {
+  color: var(--color-cream);
+  font-weight: 700;
+}
+
+.consultant-card__ref {
+  color: var(--color-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.consultant-card__ref:hover,
+.consultant-card__ref:focus-visible {
+  color: var(--color-accent);
+}
+
+.consultant-card__ref-sep {
+  color: var(--color-text-subtle);
+  margin: 0 0.15rem;
+  user-select: none;
+}
+
+.consultant-card__cv {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.consultant-card__cv:hover,
+.consultant-card__cv:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+  outline: none;
+}
+
 /* ---------- Contact section ---------- */
 .contact__head { margin-bottom: 0.5rem; }
 

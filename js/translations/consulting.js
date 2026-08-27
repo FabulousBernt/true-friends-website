@@ -28,15 +28,21 @@ window.TF_ADD_TRANSLATIONS({
     services: {
       items: {
         testing: {
+          name: "testing",
           title: "Testing",
+          summary: "quality assurance & test strategy",
           body: "Placeholder description — to be updated.",
         },
         uxDesign: {
+          name: "ux-design",
           title: "UX Design",
+          summary: "user research & flow design",
           body: "Placeholder description — to be updated.",
         },
         uiDesign: {
+          name: "ui-design",
           title: "UI Design",
+          summary: "interface systems & prototypes",
           body: "Placeholder description — to be updated.",
         },
       },
@@ -78,15 +84,21 @@ window.TF_ADD_TRANSLATIONS({
     services: {
       items: {
         testing: {
+          name: "testning",
           title: "Testning",
+          summary: "kvalitetssäkring & teststrategi",
           body: "Platshållartext — kommer att uppdateras.",
         },
         uxDesign: {
+          name: "ux-design",
           title: "UX-design",
+          summary: "användarforskning & flödesdesign",
           body: "Platshållartext — kommer att uppdateras.",
         },
         uiDesign: {
+          name: "ui-design",
           title: "UI-design",
+          summary: "gränssnittssystem & prototyper",
           body: "Platshållartext — kommer att uppdateras.",
         },
       },
