@@ -49,7 +49,7 @@ window.TF_ADD_TRANSLATIONS({
         johnny: {
           name: "Johnny Vigersten",
           role: "Tester / Designer",
-          bio: "I'm a Testing Consultant and UI/UX Designer. I like exploring and investigating software, problem solving, usability, aesthetics and security.",
+          bio: "I like exploring and investigating software and solving problems for users. I advocate usability, security and aesthetics.",
           cvHref: "cv/johnny-vigersten-cv-EN.pdf",
         },
       },
