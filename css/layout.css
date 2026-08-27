@@ -486,7 +486,7 @@ body:has(.hero--terminal) .nav {
 
 .service-line__summary {
   display: grid;
-  grid-template-columns: 32px 1fr auto;
+  grid-template-columns: 22px 1fr auto;
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 0.25rem;
@@ -503,8 +503,8 @@ body:has(.hero--terminal) .nav {
 }
 
 .service-line__icon {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 
@@ -523,7 +523,7 @@ body:has(.hero--terminal) .nav {
 .service-line[open] > .service-line__summary .service-line__toggle::before { content: "[-]"; }
 
 .service-line__body {
-  padding: 0.25rem 0.25rem 1rem calc(32px + 0.75rem + 0.25rem);
+  padding: 0.25rem 0.25rem 1rem calc(22px + 0.75rem + 0.25rem);
   color: var(--color-text);
 }
 
