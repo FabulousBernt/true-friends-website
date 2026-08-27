@@ -425,18 +425,6 @@ body:has(.hero--terminal) .nav {
   color: var(--color-text-muted);
 }
 
-.section__terminal-dots {
-  display: inline-flex;
-  gap: 6px;
-}
-
-.section__terminal-dots > span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(232, 230, 220, 0.28);
-}
-
 .section__terminal-body {
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
@@ -856,18 +844,6 @@ body:has(.hero--terminal) .nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-}
-
-.hero__terminal-dots {
-  display: inline-flex;
-  gap: 6px;
-}
-
-.hero__terminal-dots > span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(232, 230, 220, 0.28);
 }
 
 /* Body — where lines scroll. Mask fade at the top so old lines dissolve
