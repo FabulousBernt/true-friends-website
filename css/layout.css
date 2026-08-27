@@ -486,8 +486,8 @@ body:has(.hero--terminal) .nav {
 
 .service-line__summary {
   display: grid;
-  grid-template-columns: 2.5em 1fr;
-  align-items: baseline;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 0.25rem;
   cursor: pointer;
@@ -502,7 +502,19 @@ body:has(.hero--terminal) .nav {
   background: rgba(255, 255, 255, 0.03);
 }
 
+.service-line__icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.service-line__name {
+  color: var(--color-cream);
+  font-weight: 700;
+}
+
 .service-line__toggle {
+  justify-self: end;
   color: var(--color-accent);
   font-weight: 700;
 }
@@ -510,23 +522,12 @@ body:has(.hero--terminal) .nav {
 .service-line__toggle::before { content: "[+]"; }
 .service-line[open] > .service-line__summary .service-line__toggle::before { content: "[-]"; }
 
-.service-line__name {
-  color: var(--color-cream);
-  font-weight: 700;
-}
-
 .service-line__body {
-  padding: 0.25rem 0.25rem 1rem calc(2.5em + 0.75rem + 0.25rem);
+  padding: 0.25rem 0.25rem 1rem calc(32px + 0.75rem + 0.25rem);
   color: var(--color-text);
 }
 
 .service-line__body > p { margin: 0; }
-
-@media (max-width: 540px) {
-  .service-line__body {
-    padding-left: calc(2.5em + 0.75rem + 0.25rem);
-  }
-}
 
 /* ---------- Consultant card (portrait + key/value profile) ----------
    Photo left, dl-style metadata right. Keys in accent yellow, values in
