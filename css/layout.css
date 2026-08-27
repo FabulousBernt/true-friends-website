@@ -631,8 +631,35 @@ body:has(.hero--terminal) .nav {
   user-select: none;
 }
 
-/* .consultant-card__cv reuses the site-wide .btn styling — no overrides
-   needed here beyond keeping the class as an extension point. */
+/* CV link — hyperlink treatment with a leading download-arrow icon so the
+   user knows this link downloads a file rather than navigating away. */
+.consultant-card__cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.consultant-card__cv-text {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consultant-card__cv:hover,
+.consultant-card__cv:focus-visible {
+  color: var(--color-accent);
+  outline: none;
+}
+
+.consultant-card__cv-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
 
 /* ---------- Contact section ---------- */
 .contact__head { margin-bottom: 0.5rem; }
