@@ -523,16 +523,17 @@ body:has(.hero--terminal) .nav {
   padding: 0 0.25rem 1rem calc(2.5em + 0.75rem + 0.25rem);
   color: var(--color-text);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   gap: clamp(1rem, 2vw, 1.75rem);
   align-items: start;
 }
 
-.service-line__body > p { margin: 0; }
+.service-line__body > p { margin: 0; grid-column: 1; }
 
 .service-line__icon {
   margin: 0;
   padding: 0;
+  grid-column: 2;
   font-family: var(--font-display);
   font-size: 0.7rem;
   line-height: 1.15;
