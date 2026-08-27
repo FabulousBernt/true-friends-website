@@ -610,6 +610,7 @@ body:has(.hero--terminal) .nav {
 .consultant-card__val--strong {
   color: var(--color-cream);
   font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .consultant-card__ref {
@@ -631,21 +632,17 @@ body:has(.hero--terminal) .nav {
 }
 
 .consultant-card__cv {
-  display: inline-block;
-  padding: 0.15em 0.4em;
   color: var(--color-cream);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  transition:
-    background-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+  transition: color var(--duration-base) var(--ease-out);
 }
 
 .consultant-card__cv:hover,
 .consultant-card__cv:focus-visible {
-  background-color: var(--color-accent);
-  color: var(--color-accent-ink);
+  color: var(--color-accent);
   outline: none;
 }
 
