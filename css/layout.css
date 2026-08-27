@@ -892,6 +892,13 @@ body:has(.hero--terminal) .nav {
   align-items: stretch;
 }
 
+/* Consulting hero sits closer to the fixed nav than its bottom padding
+   suggests — bump the top padding a step so the terminal has more breathing
+   room beneath the nav. */
+.hero--terminal.hero--consulting {
+  padding-top: clamp(8rem, 14vw, 12rem);
+}
+
 .hero--terminal .hero__terminal {
   height: auto;
   align-self: auto;
