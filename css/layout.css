@@ -518,16 +518,6 @@ body:has(.hero--terminal) .nav {
 .service-line__body {
   padding: 0.25rem 0.25rem 1rem calc(2.5em + 0.75rem + 0.25rem);
   color: var(--color-text);
-  display: grid;
-  gap: 0.5rem;
-}
-
-.service-line__title {
-  margin: 0;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-cream);
 }
 
 .service-line__body > p { margin: 0; }

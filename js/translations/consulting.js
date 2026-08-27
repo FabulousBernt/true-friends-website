@@ -29,17 +29,14 @@ window.TF_ADD_TRANSLATIONS({
       items: {
         testing: {
           name: "testing",
-          title: "Testing",
           body: "Placeholder description — to be updated.",
         },
         uxDesign: {
           name: "ux-design",
-          title: "UX Design",
           body: "Placeholder description — to be updated.",
         },
         uiDesign: {
           name: "ui-design",
-          title: "UI Design",
           body: "Placeholder description — to be updated.",
         },
       },
@@ -82,17 +79,14 @@ window.TF_ADD_TRANSLATIONS({
       items: {
         testing: {
           name: "testning",
-          title: "Testning",
           body: "Platshållartext — kommer att uppdateras.",
         },
         uxDesign: {
           name: "ux-design",
-          title: "UX-design",
           body: "Platshållartext — kommer att uppdateras.",
         },
         uiDesign: {
           name: "ui-design",
-          title: "UI-design",
           body: "Platshållartext — kommer att uppdateras.",
         },
       },
