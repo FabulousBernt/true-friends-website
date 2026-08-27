@@ -489,7 +489,7 @@ body:has(.hero--terminal) .nav {
   grid-template-columns: 24px 1fr auto;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.6rem 0.25rem;
+  padding: 1.25rem 0.25rem;
   cursor: pointer;
   list-style: none;
   transition: background-color var(--duration-fast) var(--ease-out);
