@@ -447,6 +447,141 @@ body:has(.hero--terminal) .nav {
   font-weight: 700;
 }
 
+/* ---------- Gallery listing ($ ls img/gallery/) ----------
+   Reframes the gallery as directory-listing output: header line with a
+   `$ ls img/gallery/` prompt, per-image rows with thumbnail + filename,
+   and terminal-style pagination controls. */
+.gallery-listing {
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.05vw, 1rem);
+  color: var(--color-text);
+}
+
+.gallery-listing__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-bottom: clamp(0.75rem, 1.25vw, 1rem);
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.gallery-listing__prompt {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.gallery-listing__cmd {
+  color: var(--color-cream);
+}
+
+.gallery-listing__count {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+}
+
+/* Rows override the default gallery grid styles — reset the grid to a
+   simple column list. */
+.gallery-listing__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: none;
+  grid-auto-rows: auto;
+}
+
+.gallery-listing__rows > li {
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
+
+.gallery-listing__rows > li + li {
+  border-top: 1px dashed var(--color-border);
+}
+
+/* Each tile is now a horizontal listing row: thumb | filename. */
+.gallery-listing .gallery__tile {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  padding: 0.5rem 0.25rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.gallery-listing .gallery__tile:hover,
+.gallery-listing .gallery__tile:focus-visible {
+  background: rgba(254, 228, 64, 0.06);
+  outline: none;
+}
+
+.gallery-listing .gallery__tile img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-listing .gallery__tile::after { content: none; }
+
+.gallery-listing__filename {
+  color: var(--color-cream);
+  font-family: var(--font-display);
+}
+
+.gallery-listing .gallery__tile:hover .gallery-listing__filename,
+.gallery-listing .gallery__tile:focus-visible .gallery-listing__filename {
+  color: var(--color-accent);
+}
+
+/* Footer controls */
+.gallery-listing__controls {
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+  padding-top: clamp(0.75rem, 1.25vw, 1rem);
+  border-top: 1px dashed var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gallery-listing__nav {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.gallery-listing__nav:hover:not(:disabled),
+.gallery-listing__nav:focus-visible:not(:disabled) {
+  color: var(--color-accent);
+  outline: none;
+}
+
+.gallery-listing__nav:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.gallery-listing__pageinfo {
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+}
+
 /* ---------- Service list (package-list style) ----------
    Each service renders as an expandable row: `[+] name  brief-summary`.
    Clicking the row swaps [+] for [-] and reveals the longer body copy
@@ -880,10 +1015,11 @@ body:has(.hero--terminal) .nav {
   align-items: stretch;
 }
 
-/* Consulting hero sits closer to the fixed nav than its bottom padding
-   suggests — bump the top padding a step so the terminal has more breathing
-   room beneath the nav. */
-.hero--terminal.hero--consulting {
+/* Consulting + studio heros sit closer to the fixed nav than their bottom
+   padding suggests — bump the top padding a step so the terminal has more
+   breathing room beneath the nav. */
+.hero--terminal.hero--consulting,
+.hero--terminal.hero--studio {
   padding-top: clamp(8rem, 14vw, 12rem);
 }
 

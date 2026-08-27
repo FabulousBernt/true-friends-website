@@ -134,12 +134,16 @@
 
     <section class="section" id="about" aria-labelledby="about-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="about-label" data-i18n="about.label">About</p>
-                <div class="section__body">
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="about-label" data-i18n="about.label">About</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
                     <p class="lede" data-i18n-html="about.ledeHTML">Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.</p>
                     <p data-i18n="about.body1">We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build high‑quality software solutions.</p>
                     <p data-i18n="about.body2">To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,96 +177,88 @@
 
     <section class="section" id="services" aria-labelledby="services-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="services-label" data-i18n="services.label">Services</p>
-                <div class="section__body">
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="services-label" data-i18n="services.label">Services</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
                     <ul class="service-list" role="list">
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/web-development.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.webDev.title">Web production</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/web-development.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.webDev.name">web-production</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.webDev.body">
-                                        Production-grade web applications and marketing sites, built with modern frameworks, accessible from day one and ready to scale with your team.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.webDev.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/graphic-design.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.graphicDesign.title">Graphic design</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/graphic-design.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.graphicDesign.name">graphic-design</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.graphicDesign.body">
-                                        Brand identity, visual systems and print-ready design — logos, typography, layout and finishing that hold up across every medium.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.graphicDesign.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/market-communication.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.market.title">Market communication</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/market-communication.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.market.name">branding</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.market.body">
-                                        Campaigns, content and brand collateral that connect your product to the right audience across digital and print.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.market.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/photography.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.photo.title">Photography</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/photography.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.photo.name">photography</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.photo.body">
-                                        Editorial and commercial photography — product, portrait and on‑location work.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.photo.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/video-production.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.video.title">Video &amp; Production</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/video-production.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.video.name">video-production</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.video.body">
-                                        From concept to final cut: short‑form social, brand films and product video, with full production support.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.video.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                         <li>
-                            <details class="service-item">
-                                <summary class="service-item__summary">
-                                    <img class="service-item__icon" src="img/icons/editing-retouch.svg" alt="" width="32" height="32">
-                                    <span class="service-item__title" data-i18n="services.items.editing.title">Editing &amp; Retouch</span>
-                                    <svg class="service-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            <details class="service-line">
+                                <summary class="service-line__summary">
+                                    <img class="service-line__icon" src="img/icons/editing-retouch.svg" alt="" width="32" height="32">
+                                    <span class="service-line__name" data-i18n="services.items.editing.name">editing-retouch</span>
+                                    <span class="service-line__toggle" aria-hidden="true"></span>
                                 </summary>
-                                <div class="service-item__body">
-                                    <div class="service-item__body-inner" data-i18n="services.items.editing.body">
-                                        Post‑production for photo and video — colour, retouch and finishing that keep your visuals consistent.
-                                    </div>
+                                <div class="service-line__body">
+                                    <p data-i18n="services.items.editing.body">Placeholder description — to be updated.</p>
                                 </div>
                             </details>
                         </li>
                     </ul>
                     <p class="services__note" data-i18n-html="services.note">Our media services are available to both businesses and private individuals. We also collaborate with various partners for larger and more complex projects.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -270,25 +266,28 @@
 
     <section class="section" id="gallery" aria-labelledby="gallery-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="gallery-label" data-i18n="gallery.label">Gallery</p>
-                <div class="section__body">
-                    <div class="gallery" data-current-page="1" data-page-size="6">
-                        <!-- Tiles are rendered from window.GALLERY_IMAGES (see js/main.js). -->
-                        <ol class="gallery__grid" role="list"></ol>
-
-                        <div class="gallery__controls">
-                            <button type="button" class="gallery__viewall" data-gallery-viewall data-i18n="gallery.viewAll">View all</button>
-                            <nav class="gallery__pagination" aria-label="Gallery pages">
-                                <button type="button" class="gallery__page-btn" data-gallery-prev aria-label="Previous page" data-i18n-aria-label="aria.prevPage">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"/></svg>
-                                </button>
-                                <span class="gallery__page-indicator" aria-live="polite"><span data-gallery-current>1</span> / <span data-gallery-total>2</span></span>
-                                <button type="button" class="gallery__page-btn" data-gallery-next aria-label="Next page" data-i18n-aria-label="aria.nextPage">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
-                                </button>
-                            </nav>
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="gallery-label" data-i18n="gallery.label">Gallery</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
+                    <div class="gallery gallery-listing" data-current-page="1" data-page-size="8">
+                        <div class="gallery-listing__header">
+                            <span class="gallery-listing__prompt">$</span>
+                            <span class="gallery-listing__cmd">ls img/gallery/</span>
+                            <span class="gallery-listing__count"><span data-gallery-total-files>0</span> files</span>
                         </div>
+
+                        <!-- Rows rendered from window.GALLERY_IMAGES (see js/main.js). -->
+                        <ol class="gallery-listing__rows gallery__grid" role="list"></ol>
+
+                        <div class="gallery-listing__controls gallery__controls">
+                            <button type="button" class="gallery-listing__nav" data-gallery-prev aria-label="Previous page" data-i18n-aria-label="aria.prevPage">[&larr; prev]</button>
+                            <span class="gallery-listing__pageinfo" aria-live="polite">page <span data-gallery-current>1</span>/<span data-gallery-total>1</span></span>
+                            <button type="button" class="gallery-listing__nav" data-gallery-next aria-label="Next page" data-i18n-aria-label="aria.nextPage">[next &rarr;]</button>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -297,9 +296,12 @@
 
     <section class="section" id="contact" aria-labelledby="contact-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="contact-label" data-i18n="contact.label">Contact</p>
-                <div class="section__body">
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="contact-label" data-i18n="contact.label">Contact</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
                     <div class="contact__head">
                         <p class="lede" data-i18n="contact.lede">Find us on our social media channels, reach out via email or send a message through the form below.</p>
                     </div>
@@ -363,6 +365,7 @@
                                 <span>hello@truefriends.se</span>
                             </a>
                         </aside>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -249,9 +249,22 @@
       img.loading = "lazy";
 
       btn.appendChild(img);
+
+      // Filename next to the thumbnail — turns the tile into a listing
+      // row so the gallery reads like directory output.
+      const label = document.createElement("span");
+      label.className = "gallery-listing__filename";
+      label.textContent = file;
+      btn.appendChild(label);
+
       li.appendChild(btn);
       grid.appendChild(li);
     });
+
+    // Populate the "$ ls" file-count in the header, if the listing chrome
+    // is present on this page.
+    const totalFilesEl = gallery.querySelector("[data-gallery-total-files]");
+    if (totalFilesEl) totalFilesEl.textContent = String(GALLERY_IMAGES.length);
 
     const tiles = Array.from(gallery.querySelectorAll(".gallery__tile"));
     const photos = tiles.map((btn) => {
@@ -344,7 +357,7 @@
       });
     });
 
-    viewAllBtn.addEventListener("click", () => openLightbox(0));
+    if (viewAllBtn) viewAllBtn.addEventListener("click", () => openLightbox(0));
     lbPrev.addEventListener("click", () => showPhoto(activeIndex - 1));
     lbNext.addEventListener("click", () => showPhoto(activeIndex + 1));
     lbClose.addEventListener("click", () => lightbox.close());
