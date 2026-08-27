@@ -952,10 +952,15 @@ body:has(.hero--terminal) .nav {
   color: var(--color-accent);
 }
 
-/* Consulting's word is 49 chars wide vs Studio's 30 — shrink a step so it
-   comfortably fits the same terminal width. */
-.hero--consulting .hero__terminal-ascii {
-  font-size: clamp(0.5rem, 1.35vw, 1.375rem);
+/* Alligator-font ASCII on all three hero pages. Sized so the widest
+   variant (CONSULTING, 104 chars) still fits inside the ~1000px terminal
+   with breathing room, while STUDIO (63 chars) doesn't feel lost. Landing
+   sits between the two at 85 chars. */
+.hero--landing .hero__terminal-ascii,
+.hero--consulting .hero__terminal-ascii,
+.hero--studio .hero__terminal-ascii {
+  font-size: clamp(0.3125rem, 0.75vw, 0.875rem);
+  line-height: 1.1;
 }
 
 /* Services row — one horizontal line that types the service list in with
@@ -1022,12 +1027,6 @@ body:has(.hero--terminal) .nav {
    default studio/consulting photos don't leak through. */
 .hero--landing {
   --hero-photo-url: url("../img/landing-page-hero.jpg");
-}
-
-/* TRUE FRIENDS ASCII on landing is 52 chars wide (like CONSULTING) — use
-   the same shrunk font-scale so it fits comfortably in the terminal. */
-.hero--landing .hero__terminal-ascii {
-  font-size: clamp(0.5rem, 1.35vw, 1.375rem);
 }
 
 /* Terminal action links — [ CONSULTING ] / [ STUDIO ] on the landing.
