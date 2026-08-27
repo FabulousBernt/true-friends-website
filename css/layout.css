@@ -418,7 +418,7 @@ body:has(.hero--terminal) .nav {
 
 .section__terminal-title {
   font-family: var(--font-body);
-  font-size: var(--fs-caption);
+  font-size: var(--fs-small);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -839,7 +839,7 @@ body:has(.hero--terminal) .nav {
 
 .hero__terminal-title {
   font-family: var(--font-body);
-  font-size: var(--fs-caption);
+  font-size: var(--fs-small);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
