@@ -21,22 +21,22 @@ window.TF_ADD_TRANSLATIONS({
           consulting: "      ::::::::  :::::::: ::::    ::: :::::::: :::    ::::::   ::::::::::::::::::::::::::    ::: ::::::::\n    :+:    :+::+:    :+::+:+:   :+::+:    :+::+:    :+::+:       :+:        :+:    :+:+:   :+::+:    :+:\n   +:+       +:+    +:+:+:+:+  +:++:+       +:+    +:++:+       +:+        +:+    :+:+:+  +:++:+\n  +#+       +#+    +:++#+ +:+ +#++#++:++#+++#+    +:++#+       +#+        +#+    +#+ +:+ +#+:#:\n +#+       +#+    +#++#+  +#+#+#       +#++#+    +#++#+       +#+        +#+    +#+  +#+#+#+#+   +#+#\n#+#    #+##+#    #+##+#   #+#+##+#    #+##+#    #+##+#       #+#        #+#    #+#   #+#+##+#    #+#\n########  ######## ###    #### ########  ######## #############    ##############    #### ########",
         },
         services: {
-          consulting: ["We consult in testing, ux/ui design, web/software dev and cybersecurity."],
+          consulting: ["We provide consulting services in testing, ux/ui design, web production, software development and cybersecurity."],
         },
       },
     },
     services: {
       items: {
         testing: {
-          name: "testing",
+          name: "Testing",
           body: "Placeholder description — to be updated.",
         },
         uxDesign: {
-          name: "ux-design",
+          name: "UX Design",
           body: "Placeholder description — to be updated.",
         },
         uiDesign: {
-          name: "ui-design",
+          name: "UI Design",
           body: "Placeholder description — to be updated.",
         },
       },
@@ -49,7 +49,7 @@ window.TF_ADD_TRANSLATIONS({
         johnny: {
           name: "Johnny Vigersten",
           role: "Tester / Designer",
-          bio: "I'm a Testing Consultant and UI/UX Designer with a strong focus on exploration, investigation, problem solving, usability, aesthetics, and security.",
+          bio: "I'm a Testing Consultant and UI/UX Designer. I like exploring and investigating software, problem solving, usability, aesthetics and security.",
           cvHref: "cv/johnny-vigersten-cv-EN.pdf",
         },
       },
