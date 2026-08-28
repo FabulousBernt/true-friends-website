@@ -80,19 +80,6 @@
   max-width: 100%;
 }
 
-.hero__logo { width: 140px; height: auto; }
-
-.hero__title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-style: italic;
-  font-size: clamp(2.5rem, 9vw, 96px);
-  line-height: 0.85;
-  letter-spacing: normal;
-  text-transform: uppercase;
-  color: var(--color-cream);
-}
-
 .hero__cta {
   margin-top: 32px;
   justify-self: center;
@@ -115,7 +102,6 @@
   gap: 32px;
 }
 
-.hero--center .hero__title { font-style: normal; }
 .hero--center .hero__cta { margin-top: 0; }
 
 .hero--studio .hero__scrim,
@@ -123,19 +109,6 @@ body.landing .hero__scrim {
   background:
     radial-gradient(ellipse 80% 55% at 50% 48%, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0) 75%),
     linear-gradient(180deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.2) 35%, rgba(10, 10, 10, 0.6) 100%);
-}
-
-.hero--studio .hero__title,
-body.landing .hero__title {
-  letter-spacing: -0.02em;
-}
-
-.hero--studio .hero__title {
-  font-size: clamp(3.25rem, 13vw, 144px);
-}
-
-body.landing .hero__title {
-  font-size: clamp(2.75rem, 10vw, 104px);
 }
 
 .hero--studio .hero__content,
@@ -149,11 +122,6 @@ body.landing .hero__content {
 .hero--blog {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-
-.hero--blog .hero__title {
-  font-size: clamp(2.25rem, 6.5vw, 72px);
-  letter-spacing: -0.01em;
 }
 
 /* Studio + consulting hero photos: full opacity and no bottom fade. The
@@ -202,22 +170,6 @@ body.landing .hero__content {
 
 body.landing .hero__content {
   max-width: 800px;
-}
-
-.hero__title-group {
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-}
-
-.hero__eyebrow {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
 }
 
 /* ---------- Landing page layout ---------- */
@@ -273,18 +225,6 @@ body:has(.hero--terminal) .nav {
           backdrop-filter: blur(6px) saturate(120%);
 }
 
-/* Wraps main + email so the hero photo fills the space between nav and footer. */
-.landing-stage {
-  position: relative;
-  isolation: isolate;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  --hero-photo-url: url("../img/landing-page-hero.jpg");
-}
-.landing-stage .hero__photo { opacity: 0.55; }
-
 .landing-email {
   align-self: center;
   padding: 0.5rem 0;
@@ -326,7 +266,7 @@ body:has(.hero--terminal) .nav {
 /* Inline links inside body paragraphs — underlined at rest so they read as
    links, accent yellow on hover / focus. `.btn` is excluded so buttons keep
    their own treatment. Scoped to <p> so structured list/row links
-   (.email-row, .team-card__ref, etc.) aren't double-underlined. */
+   (.email-row, .consultant-card__ref, etc.) aren't double-underlined. */
 .section__body p a:not(.btn) {
   text-decoration: underline;
 }
@@ -427,24 +367,6 @@ body:has(.hero--terminal) .nav {
 
 .section__terminal-body {
   padding: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-.section__terminal-prompt-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
-  padding-bottom: clamp(0.75rem, 1.25vw, 1rem);
-  border-bottom: 1px dashed var(--color-border);
-  font-family: var(--font-display);
-  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
-  line-height: 1.5;
-  color: var(--color-text);
-}
-
-.section__terminal-prompt {
-  color: var(--color-accent);
-  font-weight: 700;
 }
 
 /* ---------- Gallery listing ($ ls img/gallery/) ----------
@@ -791,121 +713,6 @@ body:has(.hero--terminal) .nav {
   }
 }
 
-/* ---------- Split hero (Boulder-style two-column) ----------
-   Consulting / Studio hero: text-left column and typewriter loop right column
-   over a solid dark background. Overrides the default hero photo/scrim setup
-   by suppressing them (the elements are simply omitted in the markup) and
-   dropping the flex-center in favor of a grid container. */
-.hero--split {
-  min-height: auto;
-  padding: clamp(6rem, 12vw, 10rem) 0;
-  background: var(--color-bg);
-  text-align: left;
-  align-items: stretch;
-}
-
-@media (min-width: 768px) {
-  .hero--split { min-height: auto; }
-}
-
-.hero__split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2.5rem, 6vw, 4rem);
-  align-items: center;
-  width: 100%;
-}
-
-@media (min-width: 900px) {
-  .hero__split {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: clamp(3rem, 7vw, 6rem);
-  }
-}
-
-.hero--split .hero__content {
-  justify-items: start;
-  text-align: left;
-  gap: clamp(1.25rem, 2vw, 1.75rem);
-  max-width: 60ch;
-}
-
-.hero--split .hero__title-group {
-  justify-items: start;
-  gap: 12px;
-}
-
-.hero--split .hero__title {
-  font-style: normal;
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: none;
-  text-align: left;
-}
-
-.hero--split .hero__eyebrow {
-  color: var(--color-accent);
-}
-
-.hero--split .hero__subhead {
-  margin: 0;
-  max-width: 52ch;
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  line-height: var(--lh-relaxed);
-  color: var(--color-text);
-}
-
-.hero--split .hero__cta {
-  margin-top: 0.5rem;
-  justify-self: start;
-}
-
-/* ---------- Typewriter loop ----------
-   Right column of the split hero. Fixed min-height so the row doesn't jump
-   as words type in / out. Renders in monospace at display scale with a
-   blinking accent-yellow caret. */
-.hero__loop {
-  display: flex;
-  align-items: center;
-  min-height: clamp(4rem, 8vw, 7rem);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--color-cream);
-  overflow: hidden;
-}
-
-.hero__loop-word {
-  white-space: nowrap;
-}
-
-.hero__loop-caret {
-  display: inline-block;
-  margin-left: 2px;
-  color: var(--color-accent);
-  animation: hero-loop-caret 1s steps(1, end) infinite;
-}
-
-@keyframes hero-loop-caret {
-  0%, 50%   { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__loop-caret { animation: none; opacity: 1; }
-}
-
-/* Studio split hero: uppercase the title and mute the background photo
-   further so the typewriter + copy stay readable over the image. */
-.hero--split.hero--studio .hero__title {
-  text-transform: uppercase;
-  font-size: clamp(2.75rem, 10vw, 104px);
-}
-
 .hero--terminal .hero__photo {
   opacity: 0.5;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
@@ -969,18 +776,6 @@ body:has(.hero--terminal) .nav {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
           mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
-}
-
-/* Inner sits absolute-bottom so the newest line is always visible at the
-   bottom and older lines push up and out of the top, clipped by the body.
-   Absolute positioning avoids the flex safe-alignment heuristic that
-   silently switches `justify-content: flex-end` to flex-start once
-   content overflows. */
-.hero__terminal-inner {
-  position: absolute;
-  left: 0.875rem;
-  right: 0.875rem;
-  bottom: 0.75rem;
 }
 
 /* ---------- Terminal hero variant ----------
