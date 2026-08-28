@@ -55,7 +55,6 @@ window.TF_ADD_TRANSLATIONS({
         workflow: {
           body1: "How the work was structured — process, tools, cadence, and decisions worth highlighting.",
           caption1: "Wireframe — early concept.",
-          caption2: "Wireframe — refined iteration.",
         },
       },
     },

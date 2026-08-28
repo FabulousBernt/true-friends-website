@@ -53,8 +53,6 @@ window.TF_TRANSLATIONS = {
       label: "Services",
     },
     refCase: {
-      label: "Reference case",
-      eyebrow: "Reference case",
       about: "About",
       myRole: "My role",
       workflow: "Design & Testing Workflow",
@@ -62,7 +60,6 @@ window.TF_TRANSLATIONS = {
     },
     contact: {
       label: "Contact",
-      title: "Say hi.",
       lede: "Find us on our social media channels, reach out via email or send a message through the form below.",
       placeholders: {
         firstName: "First name",
@@ -150,8 +147,6 @@ window.TF_TRANSLATIONS = {
       label: "Tjänster",
     },
     refCase: {
-      label: "Referensuppdrag",
-      eyebrow: "Referensuppdrag",
       about: "Om uppdraget",
       myRole: "Min roll",
       workflow: "Arbetsprocess",
@@ -159,7 +154,6 @@ window.TF_TRANSLATIONS = {
     },
     contact: {
       label: "Kontakt",
-      title: "Säg hej.",
       lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post eller skicka ett meddelande via formuläret nedan.",
       placeholders: {
         firstName: "Förnamn",

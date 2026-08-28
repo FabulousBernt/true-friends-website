@@ -7,7 +7,6 @@
 window.TF_ADD_TRANSLATIONS({
   en: {
     hero: {
-      lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
       terminal: {
         taglineLanding: "(^_^) Welcome to",
         title: {
@@ -25,7 +24,6 @@ window.TF_ADD_TRANSLATIONS({
 
   sv: {
     hero: {
-      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
       terminal: {
         taglineLanding: "(^_^)",
         title: {

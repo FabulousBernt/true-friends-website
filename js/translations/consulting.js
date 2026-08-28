@@ -11,8 +11,6 @@ window.TF_ADD_TRANSLATIONS({
       titleConsulting: "True Friends — Consulting",
     },
     hero: {
-      consultingSubhead:
-        "A senior tester and designer, embedded with your team — helping you build software you're proud of.",
       terminal: {
         title: {
           consulting: "Consulting",
@@ -43,7 +41,6 @@ window.TF_ADD_TRANSLATIONS({
     },
     team: {
       label: "Consultants",
-      referenceCases: "Reference cases",
       cv: "Download cv",
       members: {
         johnny: {
@@ -61,8 +58,6 @@ window.TF_ADD_TRANSLATIONS({
       titleConsulting: "True Friends — Konsult",
     },
     hero: {
-      consultingSubhead:
-        "En senior testare och designer på plats hos ert team — hjälper er bygga mjukvara ni är stolta över.",
       terminal: {
         title: {
           consulting: "Terminal konsult",
@@ -93,7 +88,6 @@ window.TF_ADD_TRANSLATIONS({
     },
     team: {
       label: "Konsulter",
-      referenceCases: "Referensuppdrag",
       cv: "Ladda ner CV",
       members: {
         johnny: {
