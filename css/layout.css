@@ -219,10 +219,10 @@ body:has(.hero--terminal) .nav {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(10, 10, 10, 0.5);
+  background: var(--color-glass-tint);
   border-bottom: 1px solid var(--color-border);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
-          backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: var(--blur-glass);
+          backdrop-filter: var(--blur-glass);
 }
 
 .landing-email {
@@ -339,10 +339,10 @@ body:has(.hero--terminal) .nav {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: rgba(10, 10, 10, 0.5);
+  background: var(--color-glass-tint);
   border: 1px solid var(--color-border);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
-          backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: var(--blur-glass);
+          backdrop-filter: var(--blur-glass);
 }
 
 .section__terminal-chrome {
@@ -352,7 +352,7 @@ body:has(.hero--terminal) .nav {
   gap: 0.75rem;
   flex: none;
   padding: 0.5rem 0.875rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-glass-highlight);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -523,7 +523,7 @@ body:has(.hero--terminal) .nav {
 .service-line__summary::marker { content: ""; }
 
 .service-line__summary:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-glass-highlight);
 }
 
 .service-line__icon {
@@ -734,14 +734,14 @@ body:has(.hero--terminal) .nav {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: rgba(10, 10, 10, 0.5);
+  background: var(--color-glass-tint);
   border: 1px solid var(--color-border);
   font-family: var(--font-display);
   font-size: clamp(0.875rem, 1.15vw, 1.0625rem);
   line-height: 1.7;
   color: var(--color-text-muted);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
-          backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: var(--blur-glass);
+          backdrop-filter: var(--blur-glass);
 }
 
 /* Chrome bar — reads as a terminal window header. Title on the left,
@@ -754,7 +754,7 @@ body:has(.hero--terminal) .nav {
   gap: 0.75rem;
   flex: none;
   padding: 0.5rem 0.875rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-glass-highlight);
   border-bottom: 1px solid var(--color-border);
 }
 
