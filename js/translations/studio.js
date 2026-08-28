@@ -31,32 +31,32 @@ window.TF_ADD_TRANSLATIONS({
       note: "Our media services are available to both businesses and private individuals.<br>We also collaborate with various partners for larger and more complex projects.",
       items: {
         webDev: {
-          name: "web-production",
+          name: "Web Production",
           title: "Web Production",
           body: "We deliver high-end websites and web applications tailored to your needs. We follow international standards in accessibility, usability and security, and make every decision based on the context of your business needs.",
         },
         graphicDesign: {
-          name: "graphic-design",
+          name: "Graphic Design",
           title: "Graphic Design",
           body: "Using visual design principles and design thinking processes we create graphical profiles, logotypes, posters, clothing and other digital and printable media.",
         },
         market: {
-          name: "branding",
+          name: "Branding/Marketing",
           title: "Branding/Marketing",
           body: "Brand identity, campaign strategy and content that connects your business to the world across digital and printable medias.",
         },
         photo: {
-          name: "photography",
+          name: "Photography",
           title: "Photography",
           body: "Our photography services ranges from portraits, products, landscapes, real estate, food & drinks, weddings, concerts, sports and other events.",
         },
         video: {
-          name: "video-production",
+          name: "Video & Production",
           title: "Video & Production",
           body: "A complete video production solution. From analysing your needs to concept, script writing, filming and editing. Whether it’s simpler productions for web and social media to more advanced commercials, we take care of the entire process, from idea to finished video.",
         },
         editing: {
-          name: "editing-retouch",
+          name: "Editing & Retouch",
           title: "Editing & Retouch",
           body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch.",
         },
