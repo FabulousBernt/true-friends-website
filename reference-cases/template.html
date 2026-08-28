@@ -132,14 +132,17 @@
 
     <!--
       Per-case body copy goes through a per-case translation file, same
-      pattern as the rest of the site. For each new case:
-        1. Create js/translations/<slug>.js by copying an existing case
-           file (epiroc.js / kopparbergs-brewery.js) and swap the slug.
+      pattern as the rest of the site. Translation files are grouped by
+      consultant, mirroring the reference-cases/ folder structure. For
+      each new case:
+        1. Create js/translations/<consultant-slug>/<slug>.js by copying
+           an existing case file (e.g. johnny-vigersten/epiroc.js or
+           johnny-vigersten/kopparbergs-brewery.js) and swap the slug.
         2. Add `refCases.<slug>.<section>.<key>` entries under both `en`
            and `sv` inside that file (body1, body2, ..., caption1, ...).
-        3. Load it in this page's <head> alongside common.js:
-             <script src="../js/translations/common.js" defer></script>
-             <script src="../js/translations/<slug>.js" defer></script>
+        3. Load it at the bottom of this page alongside common.js:
+             <script src="../../js/translations/common.js" defer></script>
+             <script src="../../js/translations/<consultant-slug>/<slug>.js" defer></script>
         4. Reference each entry on the corresponding tag here via
            `data-i18n="..."` — or `data-i18n-html="..."` if the string
            contains markup such as <a>.
