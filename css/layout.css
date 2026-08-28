@@ -457,30 +457,6 @@ body:has(.hero--terminal) .nav {
   color: var(--color-text);
 }
 
-.gallery-listing__header {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding-bottom: clamp(0.75rem, 1.25vw, 1rem);
-  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
-  border-bottom: 1px dashed var(--color-border);
-}
-
-.gallery-listing__prompt {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.gallery-listing__cmd {
-  color: var(--color-cream);
-}
-
-.gallery-listing__count {
-  margin-left: auto;
-  color: var(--color-text-muted);
-  font-size: var(--fs-small);
-}
-
 /* Rows override the default gallery grid — switch to a responsive
    file-browser-style icon grid: larger square thumbnails with the
    filename centered underneath. */
