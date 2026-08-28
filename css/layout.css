@@ -973,7 +973,12 @@ body:has(.hero--terminal) .nav {
   display: inline-block;
   width: 0.55em;
   color: var(--color-accent);
-  animation: hero-loop-caret 1s steps(1, end) infinite;
+  animation: hero-caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes hero-caret-blink {
+  0%, 50%      { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
