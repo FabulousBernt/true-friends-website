@@ -18,6 +18,11 @@
   const getNested = (obj, path) =>
     path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
 
+  // Substituted into any translation string containing `{year}` — used for
+  // the footer copyright so it rolls over automatically on New Year's Eve.
+  const CURRENT_YEAR = new Date().getFullYear();
+  const substitute = (s) => s.replace("{year}", CURRENT_YEAR);
+
   // Current language, exposed so other modules below can read it
   let currentLang = DEFAULT_LANG;
 
@@ -46,11 +51,11 @@
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const v = getNested(dict, el.getAttribute("data-i18n"));
-      if (typeof v === "string") el.textContent = v;
+      if (typeof v === "string") el.textContent = substitute(v);
     });
     document.querySelectorAll("[data-i18n-html]").forEach((el) => {
       const v = getNested(dict, el.getAttribute("data-i18n-html"));
-      if (typeof v === "string") el.innerHTML = v;
+      if (typeof v === "string") el.innerHTML = substitute(v);
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
       const v = getNested(dict, el.getAttribute("data-i18n-placeholder"));
