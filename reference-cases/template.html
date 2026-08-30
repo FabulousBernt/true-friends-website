@@ -161,23 +161,33 @@
         • Inline link in a paragraph: use data-i18n-html and embed the
             <a href="..." target="_blank" rel="noopener">...</a> in the string.
 
+      Every section is wrapped in a `.section__terminal` chrome window — same
+      style used across the consulting and studio pages, so the ref case reads
+      as part of the same terminal aesthetic. The chrome bar carries the
+      section title; the body sits below it.
+
       To add a section other than About / My role / Workflow, follow the same
       <section class="section" id="<slug>" aria-labelledby="<slug>-label">
-      structure, add `refCase.<key>` for the label and any per-case body keys.
+      structure, add `refCase.<key>` for the chrome title and any per-case
+      body keys.
     -->
     <section class="section" id="about" aria-labelledby="about-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="about-label" data-i18n="refCase.about">About</p>
-                <div class="section__body">
-                    <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                    <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                    <!-- Example: image + caption. Replace src/alt + the
-                         figcaption text (or wire data-i18n to a caption key). -->
-                    <figure class="section__figure">
-                        <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                        <figcaption class="section__figure-caption">Caption text.</figcaption>
-                    </figure>
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="about-label" data-i18n="refCase.about">About</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
+                        <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
+                        <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
+                        <!-- Example: image + caption. Replace src/alt + the
+                             figcaption text (or wire data-i18n to a caption key). -->
+                        <figure class="section__figure">
+                            <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
+                            <figcaption class="section__figure-caption">Caption text.</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,11 +195,15 @@
 
     <section class="section" id="my-role" aria-labelledby="my-role-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="my-role-label" data-i18n="refCase.myRole">My role</p>
-                <div class="section__body">
-                    <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                    <p>Additional paragraph if needed (body2, body3, ...).</p>
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="my-role-label" data-i18n="refCase.myRole">My role</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
+                        <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
+                        <p>Additional paragraph if needed (body2, body3, ...).</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -197,30 +211,34 @@
 
     <section class="section" id="workflow" aria-labelledby="workflow-label">
         <div class="container">
-            <div class="section__grid">
-                <p class="section__label" id="workflow-label" data-i18n="refCase.workflow">Workflow</p>
-                <div class="section__body">
-                    <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                    <!-- Example: two images side by side. Each <figure>
-                         keeps its own caption; the row stacks on mobile. -->
-                    <div class="section__figure-row">
-                        <figure class="section__figure">
-                            <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption A.</figcaption>
-                        </figure>
-                        <figure class="section__figure">
-                            <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption B.</figcaption>
-                        </figure>
+            <div class="section__terminal">
+                <div class="section__terminal-chrome">
+                    <span class="section__terminal-title" id="workflow-label" data-i18n="refCase.workflow">Workflow</span>
+                </div>
+                <div class="section__terminal-body">
+                    <div class="section__body">
+                        <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
+                        <!-- Example: two images side by side. Each <figure>
+                             keeps its own caption; the row stacks on mobile. -->
+                        <div class="section__figure-row">
+                            <figure class="section__figure">
+                                <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
+                                <figcaption class="section__figure-caption">Caption A.</figcaption>
+                            </figure>
+                            <figure class="section__figure">
+                                <img src="../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
+                                <figcaption class="section__figure-caption">Caption B.</figcaption>
+                            </figure>
+                        </div>
+                        <p>Follow-up paragraph after the visuals.</p>
+                        <!-- Example: muted footnote (.section__note) — same
+                             visual weight as a figure caption. -->
+                        <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
+                        <!-- Example: inline hyperlink inside a section__note.
+                             Switch the attribute to data-i18n-html so the <a>
+                             renders as markup, and put the link in the string. -->
+                        <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
                     </div>
-                    <p>Follow-up paragraph after the visuals.</p>
-                    <!-- Example: muted footnote (.section__note) — same
-                         visual weight as a figure caption. -->
-                    <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                    <!-- Example: inline hyperlink inside a section__note.
-                         Switch the attribute to data-i18n-html so the <a>
-                         renders as markup, and put the link in the string. -->
-                    <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
                 </div>
             </div>
         </div>

@@ -105,6 +105,7 @@
 .hero--center .hero__cta { margin-top: 0; }
 
 .hero--studio .hero__scrim,
+.hero--blog .hero__scrim,
 body.landing .hero__scrim {
   background:
     radial-gradient(ellipse 80% 55% at 50% 48%, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0) 75%),
@@ -116,12 +117,14 @@ body.landing .hero__content {
   gap: clamp(20px, 2.2vw, 32px);
 }
 
-/* Reference case hero — same height ramp as the base hero (matches studio /
-   consulting). Padding tightened a touch so the logo doesn't feel lost in a
-   tall section. */
+/* Reference case hero — mirrors the terminal-hero size + rhythm used on
+   consulting / studio so the header reads as the same section, minus the
+   terminal chrome. Same content-driven height, same padding stack, same
+   left/right zero padding as `.hero--terminal`. */
 .hero--blog {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  min-height: auto;
+  padding: clamp(8rem, 14vw, 12rem) 0 clamp(6rem, 12vw, 10rem);
+  align-items: stretch;
 }
 
 /* Studio + consulting hero photos: full opacity and no bottom fade. The
@@ -134,24 +137,13 @@ body.landing .hero__content {
           mask-image: none;
 }
 
-/* Reference case scrim: lighter, smaller pool of darkness behind the logo so
-   the photo shows through more clearly. */
-.hero--blog .hero__scrim {
-  background:
-    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0) 70%),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.05) 35%, rgba(10, 10, 10, 0.3) 100%);
-}
-
-/* Reference case hero photo: full opacity, no bottom fade. Image fills the
-   hero width (height proportional) and is centered, so the whole horizontal
-   image is always visible — top/bottom letterbox or crop depending on hero
-   aspect. background-position: center is inherited from .hero__photo. */
+/* Reference case hero photo: mirrors `.hero--terminal .hero__photo` so the
+   photo covers the hero, extends behind the fixed nav, and fades out with
+   the same 60% linear mask used on consulting / landing. */
 .hero--blog .hero__photo {
-  opacity: 1;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  -webkit-mask-image: none;
-          mask-image: none;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
 }
 
 /* Client logo replaces the headline on reference case heros. Height matches
@@ -208,13 +200,14 @@ body.landing > .hero__photo {
           mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
 }
 
-/* Terminal-hero nav mirrors the terminal chrome's semi-transparent dark
-   tint, subtle border, and frosted-glass backdrop. Positioned fixed so it
-   floats over the hero photo — the photo extends up to the top of the
-   viewport under the nav. Applies to any page with a .hero--terminal
-   (landing, consulting, studio); reference-case pages keep the default
-   sticky nav treatment. */
-body:has(.hero--terminal) .nav {
+/* Chrome nav mirrors the terminal chrome's semi-transparent dark tint,
+   subtle border, and frosted-glass backdrop. Positioned fixed so it floats
+   over the hero photo — the photo extends up to the top of the viewport
+   under the nav. Applies to every page that has a hero photo behind the
+   nav: landing, consulting, studio (all `.hero--terminal`) plus reference
+   cases (`.hero--blog`). */
+body:has(.hero--terminal) .nav,
+body:has(.hero--blog) .nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -223,6 +216,38 @@ body:has(.hero--terminal) .nav {
   border-bottom: 1px solid var(--color-border);
   -webkit-backdrop-filter: var(--blur-glass);
           backdrop-filter: var(--blur-glass);
+}
+
+/* Promote the hero backdrop (bg + photo + scrim) to fixed positioning on
+   consulting / studio (`.hero--terminal`) and reference case (`.hero--blog`)
+   pages so the photo fills the viewport and reads as one continuous image
+   behind the fixed frosted nav — mirroring the landing page pattern where
+   the photo already covers the whole screen. Isolation on the body keeps
+   the z-index: -1 backdrop rendered between body's dark background and the
+   flow content above. Isolation on `.hero` is turned off here (the base
+   rule sets it) so the fixed photo participates directly in body's
+   stacking context — otherwise `.hero` traps the photo in its own atom
+   which paints on top of later flow siblings like sections and footer,
+   hiding them. */
+body:has(.hero--terminal:not(.hero--landing)),
+body:has(.hero--blog) {
+  isolation: isolate;
+}
+
+.hero--terminal:not(.hero--landing),
+.hero--blog {
+  isolation: auto;
+}
+
+.hero--terminal:not(.hero--landing) .hero__bg,
+.hero--terminal:not(.hero--landing) .hero__photo,
+.hero--terminal:not(.hero--landing) .hero__scrim,
+.hero--blog .hero__bg,
+.hero--blog .hero__photo,
+.hero--blog .hero__scrim {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
 .landing-email {
