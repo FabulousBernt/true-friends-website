@@ -42,6 +42,13 @@ window.TF_ADD_TRANSLATIONS({
     team: {
       label: "Consultants",
       cv: "Download cv",
+      status: {
+        ariaLabel: "Availability",
+        available: "Available",
+        partly: "Partly available",
+        sidework: "Side work OK",
+        hired: "Hired",
+      },
       members: {
         johnny: {
           name: "Johnny Vigersten",
@@ -89,6 +96,13 @@ window.TF_ADD_TRANSLATIONS({
     team: {
       label: "Konsulter",
       cv: "Ladda ner CV",
+      status: {
+        ariaLabel: "Tillgänglighet",
+        available: "Tillgänglig",
+        partly: "Delvis tillgänglig",
+        sidework: "Extra jobb OK",
+        hired: "Uppbokad",
+      },
       members: {
         johnny: {
           name: "Johnny Vigersten",

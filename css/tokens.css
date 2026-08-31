@@ -29,6 +29,15 @@
 
   --color-focus-ring: #fee440;
 
+  /* Status indicator colors — used by .status-badge on consultant cards
+     (green = free capacity, amber = mixed, cyan = side-work modifier,
+     muted grey = booked). Kept as distinct tokens so any future status
+     surface can reuse the same palette. */
+  --color-status-available: #7ed957;
+  --color-status-partly: #fee440;
+  --color-status-sidework: #6cc4d3;
+  --color-status-hired: rgba(232, 230, 220, 0.55);
+
   /* Frosted-glass surface used for the nav, hero terminal, and section
      terminals — a semi-transparent dark tint under a subtle warm-white
      highlight. Combined with --blur-glass below they read as one
