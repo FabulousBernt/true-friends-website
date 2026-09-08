@@ -1,8 +1,10 @@
 /* True Friends — Epiroc reference case translations
  *
- * Adds Epiroc-only case-study copy onto TF_TRANSLATIONS. Shared refCase
- * section labels ("About", "My role", "Workflow" …) live in
- * js/translations/common.js.
+ * Adds Epiroc-only case-study copy onto TF_TRANSLATIONS. Generic refCase
+ * section labels ("About", "My role", "Workflow") live in
+ * js/translations/common.js; the two labels that are specific to this
+ * case — Help Center and the design/testing spin on Workflow — carry a
+ * `label` key alongside their body copy below.
  */
 window.TF_ADD_TRANSLATIONS({
   en: {
@@ -18,9 +20,11 @@ window.TF_ADD_TRANSLATIONS({
           body2: "As a tester, I collaborated with two other testers, each responsible for the quality mindset and testing outcomes within our respective teams. We also worked cross-team to exchange ideas, align efforts, and address any dependencies that we might have to one another. In the next section, I will outline the workflow and outcomes of my design and testing work for a module of the system called Help Center.",
         },
         helpCenter: {
+          label: "Help Center",
           body1: "The Help Center was a newly introduced feature designed for both Epiroc employees and customers. It served as a centralised hub where users could access support for MyEpiroc, it’s tools, integration systems, equipment manuals, and more. Of course available in all supported languages.",
         },
         workflow: {
+          label: "Design & Testing Workflow",
           body1: "We began our research by interviewing reference customers and Epiroc back-office staff to gather insights into their needs, problems and challenges. This approach helped us empathise with them and better understand their requirements & needs.",
           body2: "We collected both quantitative and qualitative data from our research. Using Miro we organised and analysed the data with digital post-it’s, created clusters of metrics, defining user roles, created user story maps and identified functions and pain points.",
           body3: "After analysing the research data and having had brainstorming sessions regarding how we could solve the problems that our customer and users where facing I started creating prototypes. Firstly on paper that I quickly ran by the team, then I’d move on to create them in Figma for more detailed feedback sessions with the team, our reference customers and users. We iterated with prototypes and user testing sessions until we achieved a something that we felt worked.",
@@ -50,9 +54,11 @@ window.TF_ADD_TRANSLATIONS({
           body1: "What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.",
         },
         helpCenter: {
+          label: "Hjälpcenter",
           body1: "Placeholder — describe the Help Center module: scope, audience, and what made it distinctive.",
         },
         workflow: {
+          label: "Design- och testprocess",
           body1: "How the work was structured — process, tools, cadence, and decisions worth highlighting.",
           caption1: "Wireframe — early concept.",
         },

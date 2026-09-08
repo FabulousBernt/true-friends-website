@@ -55,8 +55,7 @@ window.TF_TRANSLATIONS = {
     refCase: {
       about: "About",
       myRole: "My role",
-      workflow: "Design & Testing Workflow",
-      helpCenter: "Help Center",
+      workflow: "Workflow",
     },
     contact: {
       label: "Contact",
@@ -150,7 +149,6 @@ window.TF_TRANSLATIONS = {
       about: "Om uppdraget",
       myRole: "Min roll",
       workflow: "Arbetsprocess",
-      helpCenter: "Hjälpcenter",
     },
     contact: {
       label: "Kontakt",
