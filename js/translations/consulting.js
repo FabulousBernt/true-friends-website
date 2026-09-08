@@ -27,15 +27,15 @@ window.TF_ADD_TRANSLATIONS({
       items: {
         testing: {
           name: "Testing",
-          body: "Placeholder description — to be updated.",
+          body: "In our testing efforts we like to be involved as early as possible, long before any code is written to help identify risks and potential problems. By working proactively instead of reactively we can increase our chances of eliminating late and costly problems. We explore, investigate, experiment, and verify the software/product based on requirements, risks and experience to uncover and deliver as much valuable information as possible.",
         },
         uxDesign: {
           name: "UX Design",
-          body: "Placeholder description — to be updated.",
+          body: "By applying a design thinking process, we put ourselves in your environment and that of your users to understand the root problem. Together with you and your users, we work iteratively with research, wireframes, prototypes, and interface design to create a solution that solves the problems and are user friendly.",
         },
         uiDesign: {
           name: "UI Design",
-          body: "Placeholder description — to be updated.",
+          body: "Using visual design principles, we design interfaces for systems, websites, and mobile applications that are not only visually appealing but also functional from both a usability and accessibility perspective. We always base our work on WCAG to ensure inclusive interfaces.",
         },
       },
     },
@@ -46,7 +46,7 @@ window.TF_ADD_TRANSLATIONS({
         johnny: {
           name: "Johnny Vigersten",
           role: "Tester / Designer",
-          bio: "I like exploring and investigating software and solving problems for users. I advocate usability, security and aesthetics.",
+          bio: "I like exploring and investigating software and solving problems for customers. I advocate usability, security and aesthetics.",
           cvHref: "cv/johnny-vigersten-cv-EN.pdf",
         },
       },
@@ -60,29 +60,29 @@ window.TF_ADD_TRANSLATIONS({
     hero: {
       terminal: {
         title: {
-          consulting: "Terminal konsult",
+          consulting: "Konsult",
         },
         ascii: {
           consulting: "      :::    ::::::::::: ::::    ::: :::::::: :::    ::::::   :::::::::::\n     :+:   :+::+:    :+::+:+:   :+::+:    :+::+:    :+::+:       :+:\n    +:+  +:+ +:+    +:+:+:+:+  +:++:+       +:+    +:++:+       +:+\n   +#++:++  +#+    +:++#+ +:+ +#++#++:++#+++#+    +:++#+       +#+\n  +#+  +#+ +#+    +#++#+  +#+#+#       +#++#+    +#++#+       +#+\n #+#   #+##+#    #+##+#   #+#+##+#    #+##+#    #+##+#       #+#\n###    ########### ###    #### ########  ######## #############",
         },
         services: {
-          consulting: ["testning", "ux", "ui", "kvalitet", "leverera"],
+          consulting: ["Vi erbjuder konsulttjänster inom testning, ux/ui-design, webbproduktion, mjukvaruutveckling och cybersäkerhet."],
         },
       },
     },
     services: {
       items: {
         testing: {
-          name: "testning",
-          body: "Platshållartext — kommer att uppdateras.",
+          name: "Testning",
+          body: "I vårt testarbete vill vi vara involverade så tidigt som möjligt, redan innan någon kod skrivs, för att hjälpa till att identifiera risker och potentiella problem. Genom att arbeta proaktivt snarare än reaktivt ökar vi möjligheterna att undvika sena och kostsamma problem. Vi utforskar, undersöker, experimenterar och verifierar mjukvaran eller produkten utifrån krav, risker och erfarenhet, i syfte att ta fram och leverera så mycket värdefull information som möjligt.",
         },
         uxDesign: {
-          name: "ux-design",
-          body: "Platshållartext — kommer att uppdateras.",
+          name: "UX-Design",
+          body: "Genom att tillämpa en designtänkande-process sätter vi oss in i både din och dina användares miljö för att förstå det grundläggande problemet. Tillsammans med dig och dina användare arbetar vi iterativt med research, wireframes, prototyper och gränssnittsdesign för att ta fram etty förslag som både löser problemen och är användarvänlig.",
         },
         uiDesign: {
-          name: "ui-design",
-          body: "Platshållartext — kommer att uppdateras.",
+          name: "UI-Design",
+          body: "Med principer för visuell design utformar vi gränssnitt för system, webbplatser och mobilappar som inte bara är visuellt tilltalande utan också funktionella ur både användbarhets- och tillgänglighetsperspektiv. Vi utgår alltid från WCAG för att säkerställa inkluderande gränssnitt.",
         },
       },
     },
@@ -93,7 +93,7 @@ window.TF_ADD_TRANSLATIONS({
         johnny: {
           name: "Johnny Vigersten",
           role: "Testare / Designer",
-          bio: "Jag är en driven och engagerad testkonsult och UI/UX-designer med ett starkt fokus på problemlösning, användbarhet, estetik och säkerhet.",
+          bio: "Jag tycker om att utforska och undersöka mjukvara samt att lösa problem åt mina kunder. Jag förespråkar användbarhet, säkerhet och estetik.",
           cvHref: "cv/johnny-vigersten-cv-SE.pdf",
         },
       },

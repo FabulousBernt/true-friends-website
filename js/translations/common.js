@@ -45,7 +45,7 @@ window.TF_TRANSLATIONS = {
       ledeHTML:
         'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
       body1:
-        "We have a long experience in web development, digital and graphical design, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
+        "We have a long experience in web development, graphical design, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
       body2:
         "To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
@@ -111,7 +111,7 @@ window.TF_TRANSLATIONS = {
   sv: {
     meta: {
       description:
-        "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retouch. VI är baserade i Motala, Sverige, men tillgängliga världen över.",
+        "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retouch. Vi är baserade i Motala, Sverige, men tillgängliga världen över.",
     },
     nav: {
       start: "Start",
@@ -138,7 +138,7 @@ window.TF_TRANSLATIONS = {
       ledeHTML:
         'Vi på True Friends levererar både en <span class="accent">kreativ</span> vision och <span class="accent">teknisk</span> expertis i varje projekt och roll som vi tar oss an.',
       body1:
-        "Vi har en lång erfarenhet inom webbutveckling, digital och grafisk design, fotografering och videoproduktion. Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet.",
+        "Vi har lång erfarenhet inom webbutveckling, grafisk design, fotografering och videoproduktion. Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet.",
       body2:
         "För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er verksamhet, era mål, kunder, användare, problem och utmaningar. True Friends är byggt på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa grundpelare är avgörande för vårt arbete och vår gemensamma framgång.",
     },
