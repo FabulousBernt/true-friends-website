@@ -1,7 +1,9 @@
 /* True Friends — common translation strings (EN + SV)
  *
  * This file holds strings shared across ALL pages: nav, footer, aria,
- * status messages, the contact modal, and site-wide labels. Each
+ * status messages, the contact modal, and site-wide labels. Page prose
+ * that differs per page — the about section included — lives in the
+ * per-page file instead. Each
  * per-page file (landing.js, consulting.js, studio.js, epiroc.js,
  * kopparbergs-brewery.js) loads AFTER this one and adds its own keys
  * via TF_ADD_TRANSLATIONS below.
@@ -39,15 +41,6 @@ window.TF_TRANSLATIONS = {
       terminal: {
         tagline: "(^_^) TRUE FRIENDS",
       },
-    },
-    about: {
-      label: "About",
-      ledeHTML:
-        'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
-      body1:
-        "We have a long experience in web development, graphical design, photography and video production. Our vision is to be a close and genuine partner — a true friend — to you as a customer, helping you build your brand/companies visual and digital profile.",
-      body2:
-        "To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges. True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
     services: {
       label: "Services",
@@ -132,15 +125,6 @@ window.TF_TRANSLATIONS = {
       terminal: {
         tagline: "(^_^) TRUE FRIENDS",
       },
-    },
-    about: {
-      label: "Om oss",
-      ledeHTML:
-        'Vi på True Friends levererar både en <span class="accent">kreativ</span> vision och <span class="accent">teknisk</span> expertis i varje projekt och roll som vi tar oss an.',
-      body1:
-        "Vi har lång erfarenhet inom webbutveckling, grafisk design, fotografering och videoproduktion. Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet.",
-      body2:
-        "För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er verksamhet, era mål, kunder, användare, problem och utmaningar. True Friends är byggt på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa grundpelare är avgörande för vårt arbete och vår gemensamma framgång.",
     },
     services: {
       label: "Tjänster",

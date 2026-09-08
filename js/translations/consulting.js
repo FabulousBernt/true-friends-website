@@ -1,9 +1,10 @@
 /* True Friends — consulting page translations
  *
  * Adds consulting-only keys onto TF_TRANSLATIONS. Site-wide labels
- * (nav, footer, aria, contact, modal, about section, hero.cta,
+ * (nav, footer, aria, contact, modal, hero.cta,
  * hero.consulting/studio labels, tagline, refCase labels) live in
- * js/translations/common.js.
+ * js/translations/common.js. The about section is page-specific —
+ * consulting and studio each carry their own copy.
  */
 window.TF_ADD_TRANSLATIONS({
   en: {
@@ -22,6 +23,17 @@ window.TF_ADD_TRANSLATIONS({
           consulting: ["We provide consulting services in testing, ux/ui design, web production, software development and cybersecurity."],
         },
       },
+    },
+    about: {
+      label: "About",
+      ledeHTML:
+        'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
+      body1:
+        "We have a long experience in testing, visual design, and user experience from numerous projects across both the private and public sectors.",
+      body2:
+        "Our vision is to be a close and genuine partner – a true friend – to you as a customer, helping you build high-quality software solutions. To achieve this, we focus on gaining a deep understanding of your business, goals, customers, users, problems and challenges.",
+      body3:
+        "True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
     services: {
       items: {
@@ -69,6 +81,19 @@ window.TF_ADD_TRANSLATIONS({
           consulting: ["Vi erbjuder konsulttjänster inom testning, ux/ui-design, webbproduktion, mjukvaruutveckling och cybersäkerhet."],
         },
       },
+    },
+    about: {
+      label: "Om oss",
+      ledeHTML:
+        'Vi på True Friends levererar både en <span class="accent">kreativ</span> vision och <span class="accent">teknisk</span> expertis i varje projekt och roll som vi tar oss an.',
+      // TODO: translate — still the previous shared Swedish copy,
+      // re-split to match the three English paragraphs.
+      body1:
+        "Vi har lång erfarenhet inom webbutveckling, grafisk design, fotografering och videoproduktion.",
+      body2:
+        "Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet. För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er verksamhet, era mål, kunder, användare, problem och utmaningar.",
+      body3:
+        "True Friends är byggt på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa grundpelare är avgörande för vårt arbete och vår gemensamma framgång.",
     },
     services: {
       items: {
