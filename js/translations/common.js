@@ -157,7 +157,7 @@ window.TF_TRANSLATIONS = {
     },
     status: {
       sending: "Skickar…",
-      success: "Tack — vi hör av oss snart.",
+      success: "Tack — vi hör av oss så snart vi kan.",
       error: "Något gick fel. Vänligen försök igen.",
       network: "Nätverksfel. Vänligen försök igen.",
       rateLimited: "Vänta {wait}s innan du skickar igen.",

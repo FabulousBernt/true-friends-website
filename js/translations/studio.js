@@ -20,7 +20,7 @@ window.TF_ADD_TRANSLATIONS({
           studio: "      ::::::::::::::::::::::    :::::::::::::::::::::::::::::::\n    :+:    :+:   :+:    :+:    :+::+:    :+:   :+:   :+:    :+:\n   +:+          +:+    +:+    +:++:+    +:+   +:+   +:+    +:+\n  +#++:++#++   +#+    +#+    +:++#+    +:+   +#+   +#+    +:+\n        +#+   +#+    +#+    +#++#+    +#+   +#+   +#+    +#+\n#+#    #+#   #+#    #+#    #+##+#    #+#   #+#   #+#    #+#\n########    ###     ######## ############################",
         },
         services: {
-          studio: ["Everything from web, design, marketing, photo, video and editing."],
+          studio: ["We offer services in web development, design, marketing, photo, video and editing."],
         },
       },
     },
@@ -29,9 +29,9 @@ window.TF_ADD_TRANSLATIONS({
       ledeHTML:
         'Here at True Friends, we deliver both a <span class="accent">creative</span> vision and <span class="accent">technical</span> expertise to every project and role we take on.',
       body1:
-        "We have a long experience in photography and video production, working with companies, organisations, bands and individuals in areas such as concerts, portraits of people and animals to property, food and services as well as commercials and promotional videos.",
+        "We have a long experience in web development, photography, video production and design. Working with companies, organisations, bands and individuals in numerous areas.",
       body2:
-        "Our vision is to be a close and genuine partner – a true friend – to you as a customer, helping you bring your projects, visions, and business forward with high quality and dedication. To achieve this, we focus on gaining a deep understanding of your work, goals, audience, and challenges.",
+        "Our vision is to be a close and genuine partner, a true friend to you as a customer, helping your projects, visions, and business forward with high quality and dedication. To achieve this, we focus on gaining a deep understanding of your work, goals, audience, and challenges.",
       body3:
         "True Friends rests on a foundation of honesty, creativity, responsibility, and commitment. These pillars are essential for our work and our shared success.",
     },
@@ -50,8 +50,8 @@ window.TF_ADD_TRANSLATIONS({
           body: "Using visual design principles and design thinking processes we create graphical profiles, logotypes, posters, clothing and other digital and printable media.",
         },
         market: {
-          name: "Branding/Marketing",
-          body: "Brand identity, campaign strategy and content that connects your business to the world across digital and printable medias.",
+          name: "Market communication",
+          body: "We help with brand identity, campaign strategy and content that connects your business to the world across digital and printable medias.",
         },
         photo: {
           name: "Photography",
@@ -63,7 +63,7 @@ window.TF_ADD_TRANSLATIONS({
         },
         editing: {
           name: "Editing & Retouch",
-          body: "We provide professional post-production for photo and video to ensure everything looks as intended – from colour and lighting adjustments to detailed retouch.",
+          body: "We provide professional post-production for photo and video to ensure everything looks as intended, from colour and lighting adjustments to detailed retouch.",
         },
       },
     },
@@ -76,13 +76,13 @@ window.TF_ADD_TRANSLATIONS({
     hero: {
       terminal: {
         title: {
-          studio: "Terminal studio",
+          studio: "Studio",
         },
         ascii: {
           studio: "      ::::::::::::::::::::::    :::::::::::::::::::::::::::::::\n    :+:    :+:   :+:    :+:    :+::+:    :+:   :+:   :+:    :+:\n   +:+          +:+    +:+    +:++:+    +:+   +:+   +:+    +:+\n  +#++:++#++   +#+    +#+    +:++#+    +:+   +#+   +#+    +:+\n        +#+   +#+    +#+    +#++#+    +#+   +#+   +#+    +#+\n#+#    #+#   #+#    #+#    #+##+#    #+#   #+#   #+#    #+#\n########    ###     ######## ############################",
         },
         services: {
-          studio: ["webb", "design", "varumärke", "foto", "video", "redigering"],
+          studio: ["Vi erbjuder tjänster inom webbproduktion, design, marknadsföring, foto, video och redigering."],
         },
       },
     },
@@ -93,9 +93,9 @@ window.TF_ADD_TRANSLATIONS({
       // TODO: translate — still the previous shared Swedish copy,
       // re-split to match the three English paragraphs.
       body1:
-        "Vi har lång erfarenhet inom webbutveckling, grafisk design, fotografering och videoproduktion.",
+        "Vi har lång erfarenhet av webbutveckling, fotografi, videoproduktion och design, och arbetar med företag, organisationer, band och privatpersoner inom en rad olika områden.",
       body2:
-        "Vår vision är att vara en nära och genuin partner - a true friend - till er som kund, och tillsammans bygga ert varumärke/företags visuella och digitala profil och identitet. För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er verksamhet, era mål, kunder, användare, problem och utmaningar.",
+        "Vår vision är att vara en nära och genuin partner, en true friend till dig som kund genom att med hög kvalitet och stort engagemang föra dina projekt, visioner och din verksamhet framåt. För att lyckas med detta fokuserar vi på att skapa en djup förståelse för er, ert arbete, era mål, målgrupp och utmaningar.",
       body3:
         "True Friends är byggt på en grund av ärlighet, kreativitet, ansvar och engagemang. Dessa grundpelare är avgörande för vårt arbete och vår gemensamma framgång.",
     },
@@ -106,28 +106,28 @@ window.TF_ADD_TRANSLATIONS({
       note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi ibland med olika partners.",
       items: {
         webDev: {
-          name: "webbproduktion",
+          name: "Webbproduktion",
           body: "Vi levererar moderna webbsidor och webbapplikationer skräddarsydda utefter era behov och önskemål. Vi följer alltid internationella standarder för tillgänglighet, användbarhet och säkerhet, och baserar varje beslut på kontexten kring er verksamhet.",
         },
         graphicDesign: {
-          name: "grafisk-design",
-          body: "Med visuella design principer och design tänkandets processer skapar vi grafiska profiler, logotyper, affischer, klädestryck och andra digitala och tryckbara medier.",
+          name: "Grafisk design",
+          body: "Med visuella design principer och design thinking processer skapar vi grafiska profiler, logotyper, affischer, klädestryck och andra digitala och tryckbara medier.",
         },
         market: {
-          name: "marknadskommunikation",
-          body: "Med varumärkesidentitet, kampanjstrategier och olika typer av innehåll kopplar vi ihop din verksamhet med omvärlden genom digitala och tryckbara medier.",
+          name: "Marknadskommunikation",
+          body: "Vi hjälper till med varumärkesidentitet, kampanjstrategi och innehåll som kopplar samman ditt företag med omvärlden i såväl digitala som tryckta medier.",
         },
         photo: {
-          name: "fotografering",
+          name: "Fotografering",
           body: "Våra fotograferingstjänster täcker allt från porträtt, produkter, landskap, fastigheter, mat & dryck, bröllop, konserter, sport och andra event.",
         },
         video: {
-          name: "video-produktion",
-          body: "Från idé till färdig video - Genom att analysera era behov och koncept till manus, filma och redigera. Oavsett om det är en enklare produktion för webben och sociala medier till mer avancerade reklamfilmer så tar vi hand om hela processen från ide till färdig video.",
+          name: "Videoproduktion",
+          body: "Från idé till färdig video. Genom att analysera era behov och koncept till manus, filma och redigera. Oavsett om det är en enklare produktion för webben och sociala medier till mer avancerade reklamfilmer så tar vi hand om hela processen från ide till färdig video.",
         },
         editing: {
-          name: "redigering-retusch",
-          body: "Vi erbjuder professionell bildbehandling och videoredigering för att säkerställa att allt visas och ser ut som det är tänkt - Från färgkorrigering, vitbalans och exponering till detaljerad retusch.",
+          name: "Redigering/Retusch",
+          body: "Vi erbjuder professionell bildbehandling och videoredigering för att säkerställa att allt visas och ser ut som det är tänkt. Från färgkorrigering, vitbalans och exponering till detaljerad retusch.",
         },
       },
     },
