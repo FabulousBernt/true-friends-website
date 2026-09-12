@@ -29,6 +29,16 @@
 
   --color-focus-ring: #fee440;
 
+  /* Frosted-glass surface used for the nav, hero terminal, and section
+     terminals — a semi-transparent dark tint under a subtle warm-white
+     highlight. Combined with --blur-glass below they read as one
+     consistent chrome. */
+  --color-glass-tint: rgba(10, 10, 10, 0.5);
+  --color-glass-highlight: rgba(255, 255, 255, 0.03);
+
+  /* Backdrop filter applied to every glass surface. */
+  --blur-glass: blur(6px) saturate(120%);
+
   /* Fallback gradient shown behind the hero photo. */
   --gradient-hero:
     radial-gradient(ellipse 80% 60% at 70% 65%, rgba(255, 140, 60, 0.35), transparent 70%),
