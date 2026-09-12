@@ -407,12 +407,20 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
-.social:hover { color: var(--color-accent); }
+.social:not([aria-disabled="true"]):hover { color: var(--color-accent); }
 
 .nav .social { color: var(--color-nav-fg); }
-.nav .social:hover { color: var(--color-nav-fg-hover); }
+.nav .social:not([aria-disabled="true"]):hover { color: var(--color-nav-fg-hover); }
 
-.social:active { transform: scale(0.95); }
+.social:not([aria-disabled="true"]):active { transform: scale(0.95); }
+
+/* Placeholder socials: the real profile URLs don't exist yet, so the markup
+   carries data-href instead of href (an <a> without href can't be activated
+   or focused). This is just the visual cue — matches .btn[aria-disabled]. */
+.social[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .social svg { width: 20px; height: 20px; }
 
