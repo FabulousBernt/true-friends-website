@@ -25,6 +25,9 @@
   --color-nav-fg-hover: #fee440;
 
   --color-accent: #fee440;
+  /* Flame red — the one hot note against the yellow/black ground. Rare by
+     design: button press, the stamped sticker, nothing else. */
+  --color-flame: #ff3b1f;
   --color-accent-pressed: #e6cf3a;
   --color-accent-ink: #0a0a0a;
 

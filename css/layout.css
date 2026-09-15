@@ -174,7 +174,12 @@ body.landing .hero__content {
 body.landing {
   display: flex;
   flex-direction: column;
+  /* svh is the *small* viewport height — the visible area with mobile
+     browser chrome showing. 100vh is the large one, which overshoots on
+     phones and puts the page into scroll before any content asks for it.
+     The vh line stays as the fallback for browsers without svh. */
   min-height: 100vh;
+  min-height: 100svh;
   isolation: isolate;
   --hero-photo-url: url("../img/landing-page-hero.jpg");
 }
@@ -204,9 +209,10 @@ body.landing > .hero__photo {
    subtle border, and frosted-glass backdrop. Positioned fixed so it floats
    over the hero photo — the photo extends up to the top of the viewport
    under the nav. Applies to every page that has a hero photo behind the
-   nav: landing, consulting, studio (all `.hero--terminal`) plus reference
-   cases (`.hero--blog`). */
+   nav: consulting and studio (`.hero--terminal`), the landing brand hero
+   (`.hero--brand`), plus reference cases (`.hero--blog`). */
 body:has(.hero--terminal) .nav,
+body:has(.hero--brand) .nav,
 body:has(.hero--blog) .nav {
   position: fixed;
   top: 0;
@@ -229,19 +235,19 @@ body:has(.hero--blog) .nav {
    stacking context — otherwise `.hero` traps the photo in its own atom
    which paints on top of later flow siblings like sections and footer,
    hiding them. */
-body:has(.hero--terminal:not(.hero--landing)),
+body:has(.hero--terminal),
 body:has(.hero--blog) {
   isolation: isolate;
 }
 
-.hero--terminal:not(.hero--landing),
+.hero--terminal,
 .hero--blog {
   isolation: auto;
 }
 
-.hero--terminal:not(.hero--landing) .hero__bg,
-.hero--terminal:not(.hero--landing) .hero__photo,
-.hero--terminal:not(.hero--landing) .hero__scrim,
+.hero--terminal .hero__bg,
+.hero--terminal .hero__photo,
+.hero--terminal .hero__scrim,
 .hero--blog .hero__bg,
 .hero--blog .hero__photo,
 .hero--blog .hero__scrim {
@@ -882,15 +888,10 @@ body:has(.hero--blog) {
    the terminal body is 864px wide at the 1000px container cap, so each
    banner's ceiling is 864 / (chars x 0.6). The vw term keeps the widest
    line just inside the terminal on fluid viewports (~0.88vw of usable
-   width, hence 1.47vw / chars). Widths: TRUE FRIENDS 90, CONSULTING 83
-   (Swedish KONSULT is 61, so consulting sizes to the English word),
-   STUDIO 46 — capped below its 31px ceiling so it reads as a sibling of
-   the other two rather than double their size. */
-.hero--landing .hero__terminal-ascii {
-  font-size: clamp(0.375rem, 1.6vw, 1rem);
-  line-height: 1.1;
-}
-
+   width, hence 1.47vw / chars). Widths: CONSULTING 83 (Swedish KONSULT is
+   61, so consulting sizes to the English word), STUDIO 46 — capped below
+   its 31px ceiling so it reads as a sibling rather than double the size.
+   The landing left the terminal behind; see the brand hero below. */
 .hero--consulting .hero__terminal-ascii {
   font-size: clamp(0.4rem, 1.75vw, 1.0625rem);
   line-height: 1.1;
@@ -960,45 +961,6 @@ body:has(.hero--blog) {
   justify-content: center;
 }
 
-/* Landing hero photo — set the URL via a page-specific modifier so the
-   default studio/consulting photos don't leak through. */
-.hero--landing {
-  --hero-photo-url: url("../img/landing-page-hero.jpg");
-}
-
-/* Terminal action links — [ CONSULTING ] / [ STUDIO ] on the landing.
-   Reverse-video hover (accent bg, ink text) reads as classic terminal
-   selection. Padding is em-based so it scales with the type. */
-.hero__terminal-links {
-  margin-top: clamp(1.25rem, 2.25vw, 1.75rem);
-  padding-top: clamp(0.75rem, 1.25vw, 1rem);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 1.4vw, 1.375rem);
-  font-weight: 700;
-  color: var(--color-cream);
-}
-
-.hero__terminal-link {
-  display: inline-block;
-  padding: 0.15em 0.4em;
-  color: var(--color-cream);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition:
-    background-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
-}
-
-.hero__terminal-link:hover,
-.hero__terminal-link:focus-visible {
-  background-color: var(--color-accent);
-  color: var(--color-accent-ink);
-  outline: none;
-}
-
 .hero__terminal-line {
   white-space: pre-wrap;
   word-break: break-word;
@@ -1025,4 +987,70 @@ body:has(.hero--blog) {
 
 @media (prefers-reduced-motion: reduce) {
   .hero__terminal-caret { animation: none; opacity: 1; }
+}
+
+/* ====================================================================
+   Brand hero (landing)
+   --------------------------------------------------------------------
+   The landing left the terminal behind: the logo carries the page on its
+   own, with main's own Consulting/Studio buttons beneath it. One bold
+   move only — a flame-red offset behind the mark, standing in for the
+   misregistration you get from a cheap two-colour screen print.
+   ==================================================================== */
+/* The hero is `flex: 1` inside body.landing, so it already fills whatever
+   the email row and footer leave behind — the 80vh floor it inherits from
+   `.hero` only ever forces the column past the window on short viewports,
+   so drop it. Padding stays modest for the same reason: content is
+   centred, and the fixed 72px nav is cleared by the centring rather than
+   by padding. */
+.hero--brand {
+  text-align: center;
+  min-height: 0;
+  padding-block: clamp(1.5rem, 4vh, 3rem);
+}
+
+.hero__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+/* The mark. drop-shadow follows the glyph outline rather than the box, so
+   the flame offset hugs the letterforms the way a second screen pass
+   would. Two stacked shadows: flame first, then a tight black bite to
+   stop the red vibrating against the yellow. Offsets are viewport-scaled
+   px, not em — this is an <h1>, so an em offset would key off the
+   inherited heading size rather than the artwork. The wordmark is roughly
+   8.2:1, so it spans the container instead of sitting as a small block. */
+.hero__mark {
+  margin: 0;
+  width: 100%;
+  max-width: 56rem;
+  filter:
+    drop-shadow(clamp(3px, 0.55vw, 7px) clamp(3px, 0.55vw, 7px) 0 var(--color-flame))
+    drop-shadow(1px 1px 0 rgba(10, 10, 10, 0.55));
+}
+
+.hero__mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero__lede {
+  max-width: 52ch;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-cream);
+  text-wrap: balance;
+}
+
+/* Short windows: the wordmark is the one element with room to give, so
+   shrink it rather than let the column overflow. */
+@media (max-height: 700px) {
+  .hero__mark { max-width: 40rem; }
+  .hero__brand { gap: clamp(1rem, 2.5vw, 1.5rem); }
 }
