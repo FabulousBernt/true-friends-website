@@ -43,39 +43,6 @@
     return value;
   }
 
-  /**
-   * Services line (hero terminal)
-   *
-   * Any element with [data-services-loop] reads its list from a translation
-   * key given by [data-services-i18n] (e.g. "hero.terminal.services.studio"),
-   * joins it with " · ", and sets it as the element's text. A sibling
-   * .hero__terminal-services-ghost is also populated so the container
-   * reserves its final wrapped height.
-   *
-   * The list is an array, so it can't ride along on [data-i18n] like the
-   * plain strings do — applyTranslations() calls this instead, which is what
-   * keeps the line in sync when the user switches language or the GeoIP
-   * lookup resolves after first paint.
-   */
-  function renderServiceLines(lang) {
-    document.querySelectorAll("[data-services-loop]").forEach((el) => {
-      const i18nKey = el.dataset.servicesI18n;
-      if (!i18nKey) return;
-
-      const container = el.closest(".hero__terminal-services");
-      const ghost = container && container.querySelector(".hero__terminal-services-ghost");
-
-      const dicts = window.TF_TRANSLATIONS || {};
-      let items = getNested(dicts[lang], i18nKey);
-      if (!Array.isArray(items)) items = getNested(dicts[DEFAULT_LANG], i18nKey);
-      if (!Array.isArray(items) || items.length === 0) return;
-
-      const joined = items.join("  ·  ");
-      el.textContent = joined;
-      if (ghost) ghost.textContent = joined;
-    });
-  }
-
   function applyTranslations(lang) {
     const dict = (window.TF_TRANSLATIONS || {})[lang];
     if (!dict) return;
@@ -107,7 +74,6 @@
       if (typeof v === "string") el.setAttribute("href", v);
     });
 
-    renderServiceLines(lang);
 
     // Language switcher button state
     document.querySelectorAll("[data-lang]").forEach((btn) => {

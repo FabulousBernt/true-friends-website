@@ -15,7 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/base.css">
@@ -108,38 +108,19 @@
 </header>
 
 <main id="main">
-    <section class="hero hero--terminal hero--consulting" id="top">
+    <section class="hero hero--brand hero--consulting" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
 
-        <h1 class="sr-only" data-i18n="hero.consulting">Consulting</h1>
+        <div class="container hero__brand">
+            <h1 class="hero__mark hero__mark--section">
+                <img src="img/tf-thrasher-yellow-transparent.svg" alt="True Friends"
+                     width="3956" height="484" decoding="async">
+                <span class="hero__section-name" data-i18n="hero.consulting">Consulting</span>
+            </h1>
 
-        <div class="container">
-            <div class="hero__terminal" aria-hidden="true">
-                <div class="hero__terminal-chrome">
-                    <span class="hero__terminal-title" data-i18n="hero.terminal.title.consulting">Terminal consulting</span>
-                </div>
-                <div class="hero__terminal-body">
-                    <div class="hero__terminal-tagline">
-                        <span class="hero__terminal-prompt">$</span>
-                        <span data-i18n="hero.terminal.tagline">(^_^) TRUE FRIENDS</span>
-                    </div>
-                    <pre class="hero__terminal-ascii hero__terminal-ascii--accent" data-i18n="hero.terminal.ascii.consulting"> ██████╗ ██████╗ ███╗   ██╗███████╗██╗   ██╗██╗     ████████╗██╗███╗   ██╗ ██████╗
-██╔════╝██╔═══██╗████╗  ██║██╔════╝██║   ██║██║     ╚══██╔══╝██║████╗  ██║██╔════╝
-██║     ██║   ██║██╔██╗ ██║███████╗██║   ██║██║        ██║   ██║██╔██╗ ██║██║  ███╗
-██║     ██║   ██║██║╚██╗██║╚════██║██║   ██║██║        ██║   ██║██║╚██╗██║██║   ██║
-╚██████╗╚██████╔╝██║ ╚████║███████║╚██████╔╝███████╗   ██║   ██║██║ ╚████║╚██████╔╝
- ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝</pre>
-                    <div class="hero__terminal-services">
-                        <span class="hero__terminal-prompt">$</span>
-                        <span class="hero__terminal-services-body">
-                            <span class="hero__terminal-services-ghost" aria-hidden="true"></span>
-                            <span class="hero__terminal-services-live"><span class="hero__terminal-services-text" data-services-loop data-services-i18n="hero.terminal.services.consulting"></span><span class="hero__terminal-caret">█</span></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <p class="hero__lede" data-i18n="hero.lede.consulting"></p>
 
             <div class="hero__cta">
                 <button type="button" class="btn" data-modal-open="contact-modal" data-i18n="hero.cta">say hi</button>
@@ -343,7 +324,7 @@
                             <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
                             <input type="hidden" name="_captcha" value="true">
                             <input type="hidden" name="_template" value="table">
-                            <div>
+                            <div class="form__actions">
                                 <button class="btn" type="submit" data-i18n="contact.submit">send</button>
                             </div>
                             <p class="form__status" id="form-status" role="status" aria-live="polite"></p>

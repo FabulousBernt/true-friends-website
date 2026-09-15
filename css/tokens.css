@@ -50,12 +50,27 @@
     linear-gradient(180deg, #0a0a0a 0%, #1a1208 55%, #0a0a0a 100%);
 
   /* ---------- Typography ---------- */
-  --font-display: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+  /* Two voices. Archivo does the shouting — page titles, headings, buttons
+     — variable in weight and width so it can go condensed and heavy to
+     echo the wordmark. JetBrains Mono does the talking: body copy, labels
+     and the 64 short strings that make up most of this site. Heavy
+     condensed display over monospace body is the technical-documentation
+     and zine pairing, and the two read as clearly different families,
+     which is the thing a two-font system has to get right. */
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
 
   --fs-h3: clamp(1.125rem, 1.6vw, 1.375rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
+  /* Tracking is optically sized, so display and labels get their own value
+     rather than one shared number. Big type has enormous counters and
+     sidebearings already, so it is pulled in; small caps have no ascenders
+     or descenders to set a rhythm, so they are opened up. Matching the two
+     numerically makes one of them wrong. */
+  --tracking-display: -0.04em;
+  --tracking-label: 0.03em;
+
   --fs-caption: 0.75rem;
 
   --lh-snug: 1.2;

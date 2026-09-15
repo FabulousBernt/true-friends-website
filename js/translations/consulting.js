@@ -12,16 +12,8 @@ window.TF_ADD_TRANSLATIONS({
       titleConsulting: "True Friends — Consulting",
     },
     hero: {
-      terminal: {
-        title: {
-          consulting: "Consulting",
-        },
-        ascii: {
-          consulting: " ██████╗ ██████╗ ███╗   ██╗███████╗██╗   ██╗██╗     ████████╗██╗███╗   ██╗ ██████╗\n██╔════╝██╔═══██╗████╗  ██║██╔════╝██║   ██║██║     ╚══██╔══╝██║████╗  ██║██╔════╝\n██║     ██║   ██║██╔██╗ ██║███████╗██║   ██║██║        ██║   ██║██╔██╗ ██║██║  ███╗\n██║     ██║   ██║██║╚██╗██║╚════██║██║   ██║██║        ██║   ██║██║╚██╗██║██║   ██║\n╚██████╗╚██████╔╝██║ ╚████║███████║╚██████╔╝███████╗   ██║   ██║██║ ╚████║╚██████╔╝\n ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝",
-        },
-        services: {
-          consulting: ["We provide consulting services in testing, ux/ui design, web production, software development and cybersecurity."],
-        },
+      lede: {
+        consulting: "We provide consulting services in testing, ux/ui design, web production, software development and cybersecurity.",
       },
     },
     about: {
@@ -70,16 +62,8 @@ window.TF_ADD_TRANSLATIONS({
       titleConsulting: "True Friends — Konsult",
     },
     hero: {
-      terminal: {
-        title: {
-          consulting: "Konsult",
-        },
-        ascii: {
-          consulting: "██╗  ██╗ ██████╗ ███╗   ██╗███████╗██╗   ██╗██╗     ████████╗\n██║ ██╔╝██╔═══██╗████╗  ██║██╔════╝██║   ██║██║     ╚══██╔══╝\n█████╔╝ ██║   ██║██╔██╗ ██║███████╗██║   ██║██║        ██║\n██╔═██╗ ██║   ██║██║╚██╗██║╚════██║██║   ██║██║        ██║\n██║  ██╗╚██████╔╝██║ ╚████║███████║╚██████╔╝███████╗   ██║\n╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚══════╝   ╚═╝",
-        },
-        services: {
-          consulting: ["Vi erbjuder konsulttjänster inom testning, ux/ui-design, webbproduktion, mjukvaruutveckling och cybersäkerhet."],
-        },
+      lede: {
+        consulting: "Vi erbjuder konsulttjänster inom testning, ux/ui-design, webbproduktion, mjukvaruutveckling och cybersäkerhet.",
       },
     },
     about: {
