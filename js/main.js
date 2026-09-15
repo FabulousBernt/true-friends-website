@@ -11,9 +11,6 @@
   const SUPPORTED = ["en", "sv"];
   const DEFAULT_LANG = "en";
   const STORAGE_KEY = "tf_lang";
-  const COUNTRY_CACHE_KEY = "tf_country";
-  const COUNTRY_API = "https://api.country.is/";
-  const COUNTRY_TIMEOUT_MS = 2000;
 
   const getNested = (obj, path) =>
     path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
@@ -82,59 +79,27 @@
   }
 
   /**
-   * Detect language synchronously from:
-   *   1. user's explicit choice (localStorage)
-   *   2. cached country (sessionStorage)
-   *   3. browser language
-   * Returns one of SUPPORTED.
+   * English is the default for everyone. The only thing that changes it is
+   * the visitor picking SV from the switcher, which is stored in
+   * localStorage and so carries across pages and return visits until they
+   * pick EN again.
+   *
+   * There is deliberately no locale guessing here — no IP lookup, no
+   * navigator.language. A Swedish-speaking visitor abroad, or an English
+   * speaker in Sweden, both got the wrong page under that scheme, and the
+   * IP lookup also meant a network round-trip that could swap the language
+   * out from under someone after first paint.
    */
   function detectLanguageSync() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (SUPPORTED.includes(stored)) return stored;
-    } catch (e) {}
-
-    try {
-      const cachedCountry = sessionStorage.getItem(COUNTRY_CACHE_KEY);
-      if (cachedCountry === "SE") return "sv";
-      if (cachedCountry) return "en";
-    } catch (e) {}
-
-    const browserLang = (navigator.language || "").toLowerCase();
-    return browserLang.startsWith("sv") ? "sv" : "en";
+    } catch (e) {} // storage blocked — fall through to the default
+    return DEFAULT_LANG;
   }
 
-  /**
-   * After initial render, refine via IP-based country lookup
-   * (only if the user hasn't made an explicit choice and we don't have a cache yet).
-   */
-  async function refineWithGeoIP() {
-    try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-      if (sessionStorage.getItem(COUNTRY_CACHE_KEY)) return;
-    } catch (e) {
-      return; // storage blocked, give up gracefully
-    }
-
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), COUNTRY_TIMEOUT_MS);
-      const res = await fetch(COUNTRY_API, { signal: controller.signal });
-      clearTimeout(timeout);
-      if (!res.ok) return;
-      const data = await res.json();
-      const country = (data && data.country) || "";
-      sessionStorage.setItem(COUNTRY_CACHE_KEY, country || "XX");
-      const next = country === "SE" ? "sv" : "en";
-      if (next !== currentLang) applyTranslations(next);
-    } catch (e) {
-      // Network error / blocked / timeout — keep the sync guess
-    }
-  }
-
-  // Apply translations immediately so users see correctly localized text on first paint
+  // Applied immediately so the first paint is already in the right language.
   applyTranslations(detectLanguageSync());
-  refineWithGeoIP();
 
   // Language switcher (desktop + drawer)
   document.querySelectorAll("[data-lang]").forEach((btn) => {
