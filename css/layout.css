@@ -1038,6 +1038,14 @@ body:has(.hero--blog) {
   height: auto;
 }
 
+/* The flex gap on .hero__brand already spaces the three rows. The base
+   .hero__cta adds margin-top: 32px on top of it, which stacked into a
+   lede-to-buttons gap nearly double the mark-to-lede one — zero it so the
+   rhythm is even, and the buttons sit with the text they belong to. */
+.hero--brand .hero__cta {
+  margin-top: 0;
+}
+
 .hero__lede {
   max-width: 52ch;
   margin: 0;

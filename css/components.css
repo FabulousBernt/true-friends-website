@@ -216,9 +216,8 @@
 }
 
 .nav__brand {
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
-  gap: 0.625rem;
   font-family: var(--font-body);
   font-weight: 700;
   font-style: normal;
@@ -227,13 +226,28 @@
   color: var(--color-nav-fg);
   font-size: 16px;
   white-space: nowrap;
-  transition: color var(--duration-base) var(--ease-out);
 }
 
-.nav__brand:hover { color: var(--color-nav-fg-hover); }
+/* Two copies of the wordmark stacked in the same grid cell: white
+   underneath, yellow on top at zero opacity. Hover fades the yellow in,
+   and because both are the identical artwork it lands exactly over the
+   white, with no fade — the swap is instant. No colour maths, no mask,
+   no filter either: CSS cannot recolour the
+   fills inside an <img>, and masking the SVG failed because its root is
+   width="100%" height="100%", so it carries no intrinsic size. Two files
+   sidesteps all of it. */
+.nav__brand:hover .nav__brand-logo--hover { opacity: 1; }
 
-.nav__brand img { width: 28px; height: 28px; }
+.nav__brand-logo {
+  grid-area: 1 / 1;
+  display: block;
+  height: clamp(15px, 2.4vw, 22px);
+  width: auto;
+}
 
+.nav__brand-logo--hover {
+  opacity: 0;
+}
 .nav__links {
   display: none;
   align-items: center;
