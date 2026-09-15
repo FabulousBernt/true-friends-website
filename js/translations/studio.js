@@ -12,16 +12,8 @@ window.TF_ADD_TRANSLATIONS({
       title: "True Friends — Creative & Technical Studio",
     },
     hero: {
-      terminal: {
-        title: {
-          studio: "Studio",
-        },
-        ascii: {
-          studio: "███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗\n██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗\n███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║\n╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║\n███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝\n╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝",
-        },
-        services: {
-          studio: ["We offer services in web development, design, marketing, photo, video and editing."],
-        },
+      lede: {
+        studio: "We offer services in web development, design, marketing, photo, video and editing.",
       },
     },
     about: {
@@ -74,16 +66,8 @@ window.TF_ADD_TRANSLATIONS({
       title: "True Friends — Kreativ & Teknisk Studio",
     },
     hero: {
-      terminal: {
-        title: {
-          studio: "Studio",
-        },
-        ascii: {
-          studio: "███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗\n██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗\n███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║\n╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║\n███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝\n╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝",
-        },
-        services: {
-          studio: ["Vi erbjuder tjänster inom webbproduktion, design, marknadsföring, foto, video och redigering."],
-        },
+      lede: {
+        studio: "Vi erbjuder tjänster inom webbproduktion, design, marknadsföring, foto, video och redigering.",
       },
     },
     about: {

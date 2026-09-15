@@ -15,11 +15,12 @@
   border-radius: 0;
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-family: var(--font-body);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.2;
-  letter-spacing: normal;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   cursor: pointer;
   transition:
     background-color var(--duration-base) var(--ease-out),
@@ -161,7 +162,7 @@
 .nav__links  { justify-self: center; }
 
 .nav__crumb-sep {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
   color: var(--color-text-subtle);
@@ -169,7 +170,7 @@
 }
 
 .nav__crumb-current {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
@@ -179,7 +180,7 @@
 }
 
 .nav__crumb-link {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
@@ -215,25 +216,35 @@
   .nav__inner { height: 96px; }
 }
 
+/* Holds the two stacked wordmark images and no text, so it carries no type
+   properties — those were left from when the brand was the words "True
+   Friends", and `color` lost its last consumer when the hover became an
+   opacity swap between two files. */
 .nav__brand {
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
-  gap: 0.625rem;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: normal;
-  color: var(--color-nav-fg);
-  font-size: 16px;
-  white-space: nowrap;
-  transition: color var(--duration-base) var(--ease-out);
 }
 
-.nav__brand:hover { color: var(--color-nav-fg-hover); }
+/* Two copies of the wordmark stacked in the same grid cell: white
+   underneath, yellow on top at zero opacity. Hover fades the yellow in,
+   and because both are the identical artwork it lands exactly over the
+   white, with no fade — the swap is instant. No colour maths, no mask,
+   no filter either: CSS cannot recolour the
+   fills inside an <img>, and masking the SVG failed because its root is
+   width="100%" height="100%", so it carries no intrinsic size. Two files
+   sidesteps all of it. */
+.nav__brand:hover .nav__brand-logo--hover { opacity: 1; }
 
-.nav__brand img { width: 28px; height: 28px; }
+.nav__brand-logo {
+  grid-area: 1 / 1;
+  display: block;
+  height: clamp(15px, 2.4vw, 22px);
+  width: auto;
+}
 
+.nav__brand-logo--hover {
+  opacity: 0;
+}
 .nav__links {
   display: none;
   align-items: center;
@@ -241,6 +252,7 @@
 }
 
 .nav__link {
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: normal;
@@ -285,7 +297,7 @@
 }
 
 .nav__lang {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: normal;
@@ -445,6 +457,7 @@
 }
 
 .site-footer__copyright {
+  font-family: var(--font-display);
   font-size: var(--fs-caption);
   color: var(--color-text-subtle);
   letter-spacing: 0.18em;
@@ -485,7 +498,7 @@
 }
 
 .modal__title {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 700;
   font-style: normal;
   font-size: 32px;
@@ -512,6 +525,19 @@
 .modal__form .field__textarea {
   min-height: 109px;
   height: 109px;
+}
+
+/* The contact form's submit spans the form, the way .modal__actions' pair
+   spans the modal — one action so the row is undivided, two actions so it
+   splits in half. Same structure either way, rather than a lone button
+   left stranded against one edge. */
+.form__actions {
+  display: flex;
+  width: 100%;
+}
+
+.form__actions .btn {
+  flex: 1;
 }
 
 .modal__actions {
@@ -685,6 +711,7 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 
 .lightbox__caption {
+  font-family: var(--font-body);
   grid-column: 1 / -1;
   grid-row: 2;
   margin: 0;

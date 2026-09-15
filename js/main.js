@@ -11,9 +11,6 @@
   const SUPPORTED = ["en", "sv"];
   const DEFAULT_LANG = "en";
   const STORAGE_KEY = "tf_lang";
-  const COUNTRY_CACHE_KEY = "tf_country";
-  const COUNTRY_API = "https://api.country.is/";
-  const COUNTRY_TIMEOUT_MS = 2000;
 
   const getNested = (obj, path) =>
     path
@@ -43,39 +40,6 @@
       }
     }
     return value;
-  }
-
-  /**
-   * Services line (hero terminal)
-   *
-   * Any element with [data-services-loop] reads its list from a translation
-   * key given by [data-services-i18n] (e.g. "hero.terminal.services.studio"),
-   * joins it with " · ", and sets it as the element's text. A sibling
-   * .hero__terminal-services-ghost is also populated so the container
-   * reserves its final wrapped height.
-   *
-   * The list is an array, so it can't ride along on [data-i18n] like the
-   * plain strings do — applyTranslations() calls this instead, which is what
-   * keeps the line in sync when the user switches language or the GeoIP
-   * lookup resolves after first paint.
-   */
-  function renderServiceLines(lang) {
-    document.querySelectorAll("[data-services-loop]").forEach((el) => {
-      const i18nKey = el.dataset.servicesI18n;
-      if (!i18nKey) return;
-
-      const container = el.closest(".hero__terminal-services");
-      const ghost = container && container.querySelector(".hero__terminal-services-ghost");
-
-      const dicts = window.TF_TRANSLATIONS || {};
-      let items = getNested(dicts[lang], i18nKey);
-      if (!Array.isArray(items)) items = getNested(dicts[DEFAULT_LANG], i18nKey);
-      if (!Array.isArray(items) || items.length === 0) return;
-
-      const joined = items.join("  ·  ");
-      el.textContent = joined;
-      if (ghost) ghost.textContent = joined;
-    });
   }
 
   function applyTranslations(lang) {
@@ -109,7 +73,6 @@
       if (typeof v === "string") el.setAttribute("href", v);
     });
 
-    renderServiceLines(lang);
 
     // Language switcher button state
     document.querySelectorAll("[data-lang]").forEach((btn) => {
@@ -121,59 +84,27 @@
   }
 
   /**
-   * Detect language synchronously from:
-   *   1. user's explicit choice (localStorage)
-   *   2. cached country (sessionStorage)
-   *   3. browser language
-   * Returns one of SUPPORTED.
+   * English is the default for everyone. The only thing that changes it is
+   * the visitor picking SV from the switcher, which is stored in
+   * localStorage and so carries across pages and return visits until they
+   * pick EN again.
+   *
+   * There is deliberately no locale guessing here — no IP lookup, no
+   * navigator.language. A Swedish-speaking visitor abroad, or an English
+   * speaker in Sweden, both got the wrong page under that scheme, and the
+   * IP lookup also meant a network round-trip that could swap the language
+   * out from under someone after first paint.
    */
   function detectLanguageSync() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (SUPPORTED.includes(stored)) return stored;
-    } catch (e) {}
-
-    try {
-      const cachedCountry = sessionStorage.getItem(COUNTRY_CACHE_KEY);
-      if (cachedCountry === "SE") return "sv";
-      if (cachedCountry) return "en";
-    } catch (e) {}
-
-    const browserLang = (navigator.language || "").toLowerCase();
-    return browserLang.startsWith("sv") ? "sv" : "en";
+    } catch (e) {} // storage blocked — fall through to the default
+    return DEFAULT_LANG;
   }
 
-  /**
-   * After initial render, refine via IP-based country lookup
-   * (only if the user hasn't made an explicit choice and we don't have a cache yet).
-   */
-  async function refineWithGeoIP() {
-    try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-      if (sessionStorage.getItem(COUNTRY_CACHE_KEY)) return;
-    } catch (e) {
-      return; // storage blocked, give up gracefully
-    }
-
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), COUNTRY_TIMEOUT_MS);
-      const res = await fetch(COUNTRY_API, { signal: controller.signal });
-      clearTimeout(timeout);
-      if (!res.ok) return;
-      const data = await res.json();
-      const country = (data && data.country) || "";
-      sessionStorage.setItem(COUNTRY_CACHE_KEY, country || "XX");
-      const next = country === "SE" ? "sv" : "en";
-      if (next !== currentLang) applyTranslations(next);
-    } catch (e) {
-      // Network error / blocked / timeout — keep the sync guess
-    }
-  }
-
-  // Apply translations immediately so users see correctly localized text on first paint
+  // Applied immediately so the first paint is already in the right language.
   applyTranslations(detectLanguageSync());
-  refineWithGeoIP();
 
   // Language switcher (desktop + drawer)
   document.querySelectorAll("[data-lang]").forEach((btn) => {
