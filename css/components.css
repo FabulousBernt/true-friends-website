@@ -216,17 +216,13 @@
   .nav__inner { height: 96px; }
 }
 
+/* Holds the two stacked wordmark images and no text, so it carries no type
+   properties — those were left from when the brand was the words "True
+   Friends", and `color` lost its last consumer when the hover became an
+   opacity swap between two files. */
 .nav__brand {
   display: inline-grid;
   align-items: center;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: normal;
-  color: var(--color-nav-fg);
-  font-size: 16px;
-  white-space: nowrap;
 }
 
 /* Two copies of the wordmark stacked in the same grid cell: white
