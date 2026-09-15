@@ -38,9 +38,6 @@ window.TF_TRANSLATIONS = {
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
-      terminal: {
-        tagline: "(^_^) TRUE FRIENDS",
-      },
     },
     services: {
       label: "Services",
@@ -122,9 +119,6 @@ window.TF_TRANSLATIONS = {
       cta: "Säg hej",
       consulting: "Konsult",
       studio: "Studio",
-      terminal: {
-        tagline: "(^_^) TRUE FRIENDS",
-      },
     },
     services: {
       label: "Tjänster",

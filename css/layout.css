@@ -92,7 +92,6 @@
   gap: 40px;
 }
 
-.hero p { max-width: 60ch; }
 
 /* Hero modifiers */
 .hero--center .hero__content {
@@ -117,10 +116,10 @@ body.landing .hero__content {
   gap: clamp(20px, 2.2vw, 32px);
 }
 
-/* Reference case hero — mirrors the terminal-hero size + rhythm used on
+/* Reference case hero — mirrors the brand-hero size + rhythm used on
    consulting / studio so the header reads as the same section, minus the
-   terminal chrome. Same content-driven height, same padding stack, same
-   left/right zero padding as `.hero--terminal`. */
+   chrome-box header. Same content-driven height, same padding stack, same
+   left/right zero padding as `.hero--brand`. */
 .hero--blog {
   min-height: auto;
   padding: clamp(8rem, 14vw, 12rem) 0 clamp(6rem, 12vw, 10rem);
@@ -137,7 +136,7 @@ body.landing .hero__content {
           mask-image: none;
 }
 
-/* Reference case hero photo: mirrors `.hero--terminal .hero__photo` so the
+/* Reference case hero photo: mirrors `.hero--brand .hero__photo` so the
    photo covers the hero, extends behind the fixed nav, and fades out with
    the same 60% linear mask used on consulting / landing. */
 .hero--blog .hero__photo {
@@ -174,7 +173,12 @@ body.landing .hero__content {
 body.landing {
   display: flex;
   flex-direction: column;
+  /* svh is the *small* viewport height — the visible area with mobile
+     browser chrome showing. 100vh is the large one, which overshoots on
+     phones and puts the page into scroll before any content asks for it.
+     The vh line stays as the fallback for browsers without svh. */
   min-height: 100vh;
+  min-height: 100svh;
   isolation: isolate;
   --hero-photo-url: url("../img/landing-page-hero.jpg");
 }
@@ -200,13 +204,13 @@ body.landing > .hero__photo {
           mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
 }
 
-/* Chrome nav mirrors the terminal chrome's semi-transparent dark tint,
+/* Chrome nav mirrors the chrome boxes' semi-transparent dark tint,
    subtle border, and frosted-glass backdrop. Positioned fixed so it floats
    over the hero photo — the photo extends up to the top of the viewport
    under the nav. Applies to every page that has a hero photo behind the
-   nav: landing, consulting, studio (all `.hero--terminal`) plus reference
-   cases (`.hero--blog`). */
-body:has(.hero--terminal) .nav,
+   nav: the landing, consulting and studio brand heroes (`.hero--brand`)
+   plus reference cases (`.hero--blog`). */
+body:has(.hero--brand) .nav,
 body:has(.hero--blog) .nav {
   position: fixed;
   top: 0;
@@ -219,7 +223,7 @@ body:has(.hero--blog) .nav {
 }
 
 /* Promote the hero backdrop (bg + photo + scrim) to fixed positioning on
-   consulting / studio (`.hero--terminal`) and reference case (`.hero--blog`)
+   consulting / studio (`.hero--brand`) and reference case (`.hero--blog`)
    pages so the photo fills the viewport and reads as one continuous image
    behind the fixed frosted nav — mirroring the landing page pattern where
    the photo already covers the whole screen. Isolation on the body keeps
@@ -229,19 +233,19 @@ body:has(.hero--blog) .nav {
    stacking context — otherwise `.hero` traps the photo in its own atom
    which paints on top of later flow siblings like sections and footer,
    hiding them. */
-body:has(.hero--terminal:not(.hero--landing)),
+body:has(.hero--brand),
 body:has(.hero--blog) {
   isolation: isolate;
 }
 
-.hero--terminal:not(.hero--landing),
+.hero--brand,
 .hero--blog {
   isolation: auto;
 }
 
-.hero--terminal:not(.hero--landing) .hero__bg,
-.hero--terminal:not(.hero--landing) .hero__photo,
-.hero--terminal:not(.hero--landing) .hero__scrim,
+.hero--brand .hero__bg,
+.hero--brand .hero__photo,
+.hero--brand .hero__scrim,
 .hero--blog .hero__bg,
 .hero--blog .hero__photo,
 .hero--blog .hero__scrim {
@@ -274,7 +278,7 @@ body:has(.hero--blog) {
 }
 
 .section__label {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 16px;
   line-height: 1.2;
   font-weight: 700;
@@ -316,6 +320,7 @@ body:has(.hero--blog) {
 }
 
 .section__figure-caption {
+  font-family: var(--font-body);
   margin: 0;
   font-size: var(--fs-small);
   color: var(--color-text-muted);
@@ -354,9 +359,12 @@ body:has(.hero--blog) {
   }
 }
 
-/* ---------- Section terminal (consulting page sections) ----------
-   Each section on the consulting page is wrapped in a terminal window
-   that mirrors the .hero__terminal chrome — same tint, border, and
+/* ---------- Section chrome box (consulting + studio sections) ----------
+   Each section is wrapped in a titled panel. These are the last of the
+   terminal look and are kept deliberately: a labelled bar, no traffic
+   lights, so with the prompts and monospace gone they read as structure
+   rather than costume. Class names still say `terminal` — renaming them
+   touches every page, so it is left as its own job. Same tint, border, and
    frosted backdrop. The chrome bar shows the section title, followed
    by a `$ <slug>` prompt row above the content. */
 .section__terminal {
@@ -382,7 +390,7 @@ body:has(.hero--blog) {
 }
 
 .section__terminal-title {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: clamp(0.875rem, 1.05vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -397,9 +405,9 @@ body:has(.hero--blog) {
 /* ---------- Gallery listing ($ ls img/gallery/) ----------
    Reframes the gallery as directory-listing output: header line with a
    `$ ls img/gallery/` prompt, per-image rows with thumbnail + filename,
-   and terminal-style pagination controls. */
+   and monospaced pagination controls. */
 .gallery-listing {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.05vw, 1rem);
   color: var(--color-text);
 }
@@ -458,7 +466,7 @@ body:has(.hero--blog) {
 
 .gallery-listing__filename {
   color: var(--color-cream);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--fs-small);
   line-height: 1.3;
   word-break: break-all;
@@ -486,7 +494,7 @@ body:has(.hero--blog) {
   border: 0;
   padding: 0;
   color: var(--color-cream);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 700;
   cursor: pointer;
   transition: color var(--duration-fast) var(--ease-out);
@@ -505,7 +513,7 @@ body:has(.hero--blog) {
 
 .gallery-listing__pageinfo {
   color: var(--color-text-muted);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
 }
 
 /* ---------- Service list (package-list style) ----------
@@ -527,7 +535,7 @@ body:has(.hero--blog) {
 }
 
 .service-line {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
   line-height: 1.5;
   color: var(--color-text);
@@ -626,7 +634,7 @@ body:has(.hero--blog) {
   display: grid;
   gap: 0.75rem;
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.05vw, 1rem);
   line-height: 1.55;
   color: var(--color-text);
@@ -746,283 +754,138 @@ body:has(.hero--blog) {
   }
 }
 
-.hero--terminal .hero__photo {
+.hero--brand .hero__photo {
   opacity: 0.5;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
           mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
 }
 
-/* ---------- Terminal loop ----------
-   Fake-terminal scrolling log used on the studio hero right column. Lines
-   are appended by JS (see [data-terminal-loop] in main.js). Container has
-   a fixed vertical envelope with a top/bottom mask fade so lines feel like
-   they scroll out of view instead of hard-cutting. */
-/* Outer terminal shell — semi-transparent dark tint over the hero photo
-   with a subtle backdrop blur (frosted-glass) and thin border. Sharp
-   corners match the site's flat/hard-edged aesthetic. */
-.hero__terminal {
-  align-self: center;
-  width: 100%;
-  height: clamp(260px, 36vh, 380px);
+/* ====================================================================
+   Brand hero — every page
+   --------------------------------------------------------------------
+   Every page opens on a drawn wordmark in the same hand: True Friends on
+   the landing, Consulting and Studio on their own pages. One bold move
+   only — a flame-red offset behind the mark, standing in for the
+   misregistration you get from a cheap two-colour screen print.
+   ==================================================================== */
+.hero--brand {
+  text-align: center;
+  min-height: auto;
+  align-items: center;
+  padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 8vw, 6rem);
+}
+
+/* The landing is the odd one out: it IS the page, so it has to fit the
+   window. It is `flex: 1` inside body.landing and so already fills what
+   the email row and footer leave behind — the 80vh floor inherited from
+   `.hero` only ever pushes the column past the window on short viewports.
+   Padding stays modest for the same reason; the fixed 72px nav is cleared
+   by the centring, not by padding. Consulting and studio keep the taller
+   stack above, because they open onto sections below. */
+body.landing .hero--brand {
+  min-height: 0;
+  padding-block: clamp(1.5rem, 4vh, 3rem);
+}
+
+/* Vertical rhythm. A single flex gap spaced every row equally, which made
+   the lede look as attached to the button below it as to the title above —
+   proximity was encoding nothing. The rows are now steps on one modular
+   scale, ratio 1.618, so the spacing states the relationships:
+
+     mark -> page title    1.000  one lockup, tightest
+     lockup -> lede        1.618  the lede explains the title
+     lede -> say hi        2.618  reading ends, acting begins
+
+   One variable drives all three, so the whole stack retunes from a single
+   number and the ratios survive. */
+.hero__brand {
+  --rhythm: clamp(0.75rem, 1.4vw, 1.25rem);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  background: var(--color-glass-tint);
-  border: 1px solid var(--color-border);
-  font-family: var(--font-display);
-  font-size: clamp(0.875rem, 1.15vw, 1.0625rem);
-  line-height: 1.7;
-  color: var(--color-text-muted);
-  -webkit-backdrop-filter: var(--blur-glass);
-          backdrop-filter: var(--blur-glass);
-}
-
-/* Chrome bar — reads as a terminal window header. Title on the left,
-   three muted dots on the right (colour-matched to the palette instead
-   of the classic red/yellow/green). */
-.hero__terminal-chrome {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex: none;
-  padding: 0.5rem 0.875rem;
-  background: var(--color-glass-highlight);
-  border-bottom: 1px solid var(--color-border);
+  gap: 0;
 }
 
-.hero__terminal-title {
-  font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.05vw, 1rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+/* The mark. drop-shadow follows the glyph outline rather than the box, so
+   the flame offset hugs the letterforms the way a second screen pass
+   would. Two stacked shadows: flame first, then a tight black bite to
+   stop the red vibrating against the yellow. Offsets are viewport-scaled
+   px, not em — this is an <h1>, so an em offset would key off the
+   inherited heading size rather than the artwork. The wordmark is roughly
+   8.2:1, so it spans the container instead of sitting as a small block. */
+/* --mark-offset is the flame shadow's distance. It lives here rather than
+   in the filter so each context can set its own: the offset is absolute px,
+   so the same value on a half-width mark reads twice as far from the
+   letterforms. */
+.hero__mark {
+  --mark-offset: clamp(2px, 0.4vw, 5px);
+  margin: 0;
+  width: 100%;
+  max-width: 56rem;
 }
 
-/* Body — where lines scroll. Mask fade at the top so old lines dissolve
-   into the terminal's dark tint as they push off-screen. */
-.hero__terminal-body {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
-          mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 100%);
-}
-
-/* ---------- Terminal hero variant ----------
-   Full-width hero centred around the terminal window. TRUE FRIENDS +
-   STUDIO ASCII inside; a single row of services types below with a
-   blinking caret; CTA sits under the terminal. */
-.hero--terminal {
-  min-height: auto;
-  padding: clamp(6rem, 12vw, 10rem) 0;
-  text-align: left;
-  align-items: stretch;
-}
-
-/* Consulting + studio heros sit closer to the fixed nav than their bottom
-   padding suggests — bump the top padding a step so the terminal has more
-   breathing room beneath the nav. */
-.hero--terminal.hero--consulting,
-.hero--terminal.hero--studio {
-  padding-top: clamp(8rem, 14vw, 12rem);
-}
-
-.hero--terminal .hero__terminal {
+/* The offset lives on the image, not the <h1>: on the section pages the
+   heading also holds the page name, and that reads better flat. */
+.hero__mark img {
+  display: block;
+  width: 100%;
   height: auto;
-  align-self: auto;
+  filter:
+    drop-shadow(var(--mark-offset) var(--mark-offset) 0 var(--color-flame))
+    drop-shadow(1px 1px 0 rgba(10, 10, 10, 0.55));
 }
 
-.hero--terminal .hero__terminal-body {
-  flex: none;
-  overflow: visible;
-  padding: clamp(1rem, 2vw, 1.75rem);
-  -webkit-mask-image: none;
-          mask-image: none;
-}
-
-/* Tagline — small monospace line above the ASCII, mirroring the look of
-   the services line at the bottom so the ASCII is framed by two matching
-   prompt rows. Spacing alone separates the rows; no rules. */
-.hero__terminal-tagline {
+/* Consulting and studio: the True Friends mark steps back so the page name
+   can lead, stacked directly beneath it. */
+.hero__mark--section {
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
-  padding-bottom: clamp(0.75rem, 1.25vw, 1rem);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--rhythm);
+  max-width: 28rem;
+  /* Half the landing's mark width, so half its offset to match. */
+  --mark-offset: clamp(1px, 0.2vw, 2.5px);
+}
+
+/* Archivo at 900 with the width axis pulled in, tracked to -0.04em — the
+   -40 of a design tool's tracking units, not -40% of an em, which would
+   overlap the letters by half. The negative tracking is why this is set in
+   type rather than drawn: it stays crisp at any size and translates by
+   swapping a string (Consulting / Konsult) instead of an SVG. */
+.hero__section-name {
   font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 88%;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+/* The widest step on the scale: the lede finishes reading, the button
+   starts acting. This also overrides the base .hero__cta margin-top, which
+   would otherwise stack on top of the rhythm. */
+.hero--brand .hero__cta {
+  margin-top: calc(var(--rhythm) * 2.618);
+}
+
+.hero__lede {
+  /* Was 52ch here plus a `.hero p { max-width: 60ch }` elsewhere, which
+     won on specificity (0,1,1 vs 0,1,0) and silently rendered 60ch. One
+     rule now, holding the value that was actually in effect. */
+  max-width: 60ch;
+  margin: calc(var(--rhythm) * 1.618) 0 0;
+  font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
-  line-height: 1.5;
-  color: var(--color-text);
-}
-
-/* ASCII banner (ANSI Shadow, 6 lines). Horizontal overflow hides a
-   scrollbar rather than wrapping so the shape stays intact on narrow
-   viewports. */
-.hero__terminal-ascii {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-display);
-  font-size: clamp(0.75rem, 2vw, 2rem);
-  line-height: 1.05;
+  line-height: 1.6;
   color: var(--color-cream);
-  white-space: pre;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.hero__terminal-ascii::-webkit-scrollbar { display: none; }
-
-.hero__terminal-ascii--accent {
-  color: var(--color-accent);
+  text-wrap: balance;
 }
 
-/* Per-page ASCII sizing. JetBrains Mono advances 0.6em per character, and
-   the terminal body is 864px wide at the 1000px container cap, so each
-   banner's ceiling is 864 / (chars x 0.6). The vw term keeps the widest
-   line just inside the terminal on fluid viewports (~0.88vw of usable
-   width, hence 1.47vw / chars). Widths: TRUE FRIENDS 90, CONSULTING 83
-   (Swedish KONSULT is 61, so consulting sizes to the English word),
-   STUDIO 46 — capped below its 31px ceiling so it reads as a sibling of
-   the other two rather than double their size. */
-.hero--landing .hero__terminal-ascii {
-  font-size: clamp(0.375rem, 1.6vw, 1rem);
-  line-height: 1.1;
-}
-
-.hero--consulting .hero__terminal-ascii {
-  font-size: clamp(0.4rem, 1.75vw, 1.0625rem);
-  line-height: 1.1;
-}
-
-.hero--studio .hero__terminal-ascii {
-  font-size: clamp(0.625rem, 3.1vw, 1.5rem);
-  line-height: 1.1;
-}
-
-/* Services row — one horizontal line that types the service list in with
-   a dotted separator. Sits below the ASCII, separated by spacing only. */
-.hero__terminal-services {
-  margin-top: clamp(1rem, 2vw, 1.5rem);
-  padding-top: clamp(0.75rem, 1.25vw, 1rem);
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
-  line-height: 1.5;
-  color: var(--color-text);
-  min-height: 1.7em;
-}
-
-.hero__terminal-prompt {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-/* Body wraps text + caret so they share a single line box and reserves
-   its final height via an invisible ghost copy of the text — that keeps
-   the terminal from expanding as the animation types past the first line
-   wrap. Ghost and live stack in the same grid cell so the cell sizes to
-   the taller of the two (always the ghost while typing). */
-.hero__terminal-services-body {
-  display: grid;
-  grid-template-areas: "stack";
-  flex: 1;
-  min-width: 0;
-}
-
-.hero__terminal-services-body > * {
-  grid-area: stack;
-  min-width: 0;
-}
-
-.hero__terminal-services-ghost {
-  visibility: hidden;
-}
-
-.hero__terminal-services-text {
-  white-space: normal;
-}
-
-/* Reuse the same blink animation as the other caret. Keep at least an em
-   of width so the services line doesn't collapse before any text is typed. */
-.hero__terminal-services .hero__terminal-caret {
-  display: inline-block;
-  min-width: 0.55em;
-}
-
-/* CTA sits below the terminal, centered in the container. */
-.hero--terminal .hero__cta {
-  margin-top: clamp(1.5rem, 3vw, 2rem);
-  display: flex;
-  justify-content: center;
-}
-
-/* Landing hero photo — set the URL via a page-specific modifier so the
-   default studio/consulting photos don't leak through. */
-.hero--landing {
-  --hero-photo-url: url("../img/landing-page-hero.jpg");
-}
-
-/* Terminal action links — [ CONSULTING ] / [ STUDIO ] on the landing.
-   Reverse-video hover (accent bg, ink text) reads as classic terminal
-   selection. Padding is em-based so it scales with the type. */
-.hero__terminal-links {
-  margin-top: clamp(1.25rem, 2.25vw, 1.75rem);
-  padding-top: clamp(0.75rem, 1.25vw, 1rem);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 1.4vw, 1.375rem);
-  font-weight: 700;
-  color: var(--color-cream);
-}
-
-.hero__terminal-link {
-  display: inline-block;
-  padding: 0.15em 0.4em;
-  color: var(--color-cream);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition:
-    background-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
-}
-
-.hero__terminal-link:hover,
-.hero__terminal-link:focus-visible {
-  background-color: var(--color-accent);
-  color: var(--color-accent-ink);
-  outline: none;
-}
-
-.hero__terminal-line {
-  white-space: pre-wrap;
-  word-break: break-word;
-  margin: 0;
-}
-
-.hero__terminal-line--prompt { color: var(--color-cream); }
-.hero__terminal-line--ok     { color: var(--color-text); }
-.hero__terminal-line--ok::first-letter { color: var(--color-accent); }
-.hero__terminal-line--log    { color: var(--color-text-muted); }
-.hero__terminal-line--warn   { color: #ffb454; }
-
-.hero__terminal-caret {
-  display: inline-block;
-  width: 0.55em;
-  color: var(--color-accent);
-  animation: hero-caret-blink 1s steps(1, end) infinite;
-}
-
-@keyframes hero-caret-blink {
-  0%, 50%      { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__terminal-caret { animation: none; opacity: 1; }
+/* Short windows: the wordmark is the one element with room to give, so
+   shrink it rather than let the column overflow. */
+@media (max-height: 700px) {
+  .hero__mark { max-width: 40rem; }
+  .hero__brand { gap: clamp(1rem, 2.5vw, 1.5rem); }
 }

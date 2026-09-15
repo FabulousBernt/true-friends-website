@@ -1,41 +1,19 @@
 /* True Friends — landing (index.html) translations
  *
- * Adds landing-only keys onto TF_TRANSLATIONS. Site-wide labels
- * (nav, footer, aria, hero.cta, hero.consulting/studio labels, tagline)
- * live in js/translations/common.js.
+ * Adds landing-only keys onto TF_TRANSLATIONS. The Consulting/Studio
+ * button labels come from js/translations/common.js; the lede under the
+ * mark is the one string that belongs to this page alone.
  */
 window.TF_ADD_TRANSLATIONS({
   en: {
     hero: {
-      terminal: {
-        taglineLanding: "(^_^) Welcome to",
-        title: {
-          landing: "Start",
-        },
-        ascii: {
-          landing: "████████╗██████╗ ██╗   ██╗███████╗   ███████╗██████╗ ██╗███████╗███╗   ██╗██████╗ ███████╗\n╚══██╔══╝██╔══██╗██║   ██║██╔════╝   ██╔════╝██╔══██╗██║██╔════╝████╗  ██║██╔══██╗██╔════╝\n   ██║   ██████╔╝██║   ██║█████╗     █████╗  ██████╔╝██║█████╗  ██╔██╗ ██║██║  ██║███████╗\n   ██║   ██╔══██╗██║   ██║██╔══╝     ██╔══╝  ██╔══██╗██║██╔══╝  ██║╚██╗██║██║  ██║╚════██║\n   ██║   ██║  ██║╚██████╔╝███████╗   ██║     ██║  ██║██║███████╗██║ ╚████║██████╔╝███████║\n   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝",
-        },
-        services: {
-          landing: ["A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide."],
-        },
-      },
+      lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
     },
   },
 
   sv: {
     hero: {
-      terminal: {
-        taglineLanding: "(^_^) Välkommen till",
-        title: {
-          landing: "Start",
-        },
-        ascii: {
-          landing: "████████╗██████╗ ██╗   ██╗███████╗   ███████╗██████╗ ██╗███████╗███╗   ██╗██████╗ ███████╗\n╚══██╔══╝██╔══██╗██║   ██║██╔════╝   ██╔════╝██╔══██╗██║██╔════╝████╗  ██║██╔══██╗██╔════╝\n   ██║   ██████╔╝██║   ██║█████╗     █████╗  ██████╔╝██║█████╗  ██╔██╗ ██║██║  ██║███████╗\n   ██║   ██╔══██╗██║   ██║██╔══╝     ██╔══╝  ██╔══██╗██║██╔══╝  ██║╚██╗██║██║  ██║╚════██║\n   ██║   ██║  ██║╚██████╔╝███████╗   ██║     ██║  ██║██║███████╗██║ ╚████║██████╔╝███████║\n   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝",
-        },
-        services: {
-          landing: ["En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över."],
-        },
-      },
+      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillg\u00e4nglig v\u00e4rlden \u00f6ver.",
     },
   },
 });
