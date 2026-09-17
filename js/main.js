@@ -72,6 +72,18 @@
       const v = getNested(dict, el.getAttribute("data-i18n-href"));
       if (typeof v === "string") el.setAttribute("href", v);
     });
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      const v = getNested(dict, el.getAttribute("data-i18n-alt"));
+      if (typeof v === "string") el.setAttribute("alt", v);
+    });
+    // The section heroes set their page name as drawn artwork rather than
+    // type, so translating one means swapping the file, not the string.
+    document.querySelectorAll("[data-i18n-src]").forEach((el) => {
+      const v = getNested(dict, el.getAttribute("data-i18n-src"));
+      if (typeof v === "string" && el.getAttribute("src") !== v) {
+        el.setAttribute("src", v);
+      }
+    });
 
 
     // Language switcher button state

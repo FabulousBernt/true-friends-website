@@ -50,23 +50,31 @@
     linear-gradient(180deg, #0a0a0a 0%, #1a1208 55%, #0a0a0a 100%);
 
   /* ---------- Typography ---------- */
-  /* Two voices. Archivo does the shouting — page titles, headings, buttons
-     — variable in weight and width so it can go condensed and heavy to
-     echo the wordmark. JetBrains Mono does the talking: body copy, labels
-     and the 64 short strings that make up most of this site. Heavy
-     condensed display over monospace body is the technical-documentation
-     and zine pairing, and the two read as clearly different families,
-     which is the thing a two-font system has to get right. */
-  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* One voice. JetBrains Mono sets everything that is live text — headings,
+     body, nav, buttons, labels. Archivo used to take the display half, on
+     the argument that a heavy condensed sans against a monospace body is
+     the technical-documentation pairing. What retired it was the brand
+     heroes: once each page opened on a drawn mark, the display drama moved
+     to artwork and Archivo was left setting h2s, nav links and buttons —
+     small sizes where its 900 weight and 88% width axis read as nothing
+     more than a bold sans, while still costing its entire weight-and-width
+     variable payload.
+
+     The two tokens are kept separate and identical rather than collapsed
+     into one. They name roles, not files, so the display half can be
+     re-pointed at a second face later without touching a rule.
+
+     Headings take their authority from weight, size, case and tracking
+     instead of from a second family. That works here because the mark above
+     them is already doing the shouting. */
+  --font-display: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
   --font-body: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
   --fs-body: 1rem;
   --fs-small: 0.875rem;
-  /* Tracking is optically sized, so display and labels get their own value
-     rather than one shared number. Big type has enormous counters and
-     sidebearings already, so it is pulled in; small caps have no ascenders
-     or descenders to set a rhythm, so they are opened up. Matching the two
-     numerically makes one of them wrong. */
-  --tracking-display: -0.04em;
+  /* Small caps have no ascenders or descenders to set a rhythm, so they are
+     opened up. There is no matching display value: --tracking-display was
+     -0.04em to pull in Archivo's generous sidebearings, and a monospace face
+     has a fixed advance width that negative tracking only crowds. */
   --tracking-label: 0.03em;
 
   --fs-caption: 0.75rem;

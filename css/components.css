@@ -225,7 +225,7 @@
   align-items: center;
 }
 
-/* Two copies of the wordmark stacked in the same grid cell: white
+/* Two copies of the mark stacked in the same grid cell: white
    underneath, yellow on top at zero opacity. Hover fades the yellow in,
    and because both are the identical artwork it lands exactly over the
    white, with no fade — the swap is instant. No colour maths, no mask,
@@ -235,10 +235,15 @@
    sidesteps all of it. */
 .nav__brand:hover .nav__brand-logo--hover { opacity: 1; }
 
+/* Sized by height, so the nav row stays put whatever the artwork's ratio.
+   The viewBox is cropped to the ink, so this height IS the glyph height —
+   no clear space to discount. The numbers are the old 26/3.4/34 scaled by
+   1058/1451, the fraction of the old box that was actually inked, so the
+   mark renders at exactly the size it did before the crop. */
 .nav__brand-logo {
   grid-area: 1 / 1;
   display: block;
-  height: clamp(15px, 2.4vw, 22px);
+  height: clamp(19px, 2.5vw, 25px);
   width: auto;
 }
 

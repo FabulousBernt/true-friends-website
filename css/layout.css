@@ -835,32 +835,89 @@ body.landing .hero--brand {
     drop-shadow(1px 1px 0 rgba(10, 10, 10, 0.55));
 }
 
-/* Consulting and studio: the True Friends mark steps back so the page name
-   can lead, stacked directly beneath it. */
-.hero__mark--section {
+/* The landing lockup: the monogram sits as a badge over the wordmark. The
+   two images need their own widths — .hero__mark img is width: 100%, which
+   would otherwise stretch the near-square monogram to the wordmark's span
+   and stand it 56rem tall. The wordmark keeps the full container; the
+   monogram is capped to a fraction of it.
+
+   Both share the one --mark-offset from .hero__mark rather than taking a
+   scaled-down value the way the section mark does. The rule there is
+   offset-follows-width, but what the eye actually reads is offset against
+   stroke weight, and the monogram's strokes are roughly as heavy at 7rem as
+   the wordmark's are at 56rem — its glyphs are a fifth the width but drawn
+   at ten times the weight. Same offset, same misregistration. */
+.hero__mark--lockup {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--rhythm);
-  max-width: 28rem;
-  /* Half the landing's mark width, so half its offset to match. */
-  --mark-offset: clamp(1px, 0.2vw, 2.5px);
 }
 
-/* Archivo at 900 with the width axis pulled in, tracked to -0.04em — the
-   -40 of a design tool's tracking units, not -40% of an em, which would
-   overlap the letters by half. The negative tracking is why this is set in
-   type rather than drawn: it stays crisp at any size and translates by
-   swapping a string (Consulting / Konsult) instead of an SVG. */
-.hero__section-name {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-stretch: 88%;
-  font-size: clamp(3rem, 9vw, 7rem);
-  line-height: 0.95;
-  letter-spacing: var(--tracking-display);
-  text-transform: uppercase;
-  color: var(--color-cream);
+/* A percentage of the lockup, not a vw clamp. The wordmark sizes off the
+   container (width: 100%, capped at 56rem) while the old clamp(4rem, 9vw,
+   7rem) sized off the viewport, so the two scaled on different bases and the
+   lockup's proportion drifted from roughly 5:1 to 10:1 as the window
+   resized — it was only ever "right" at one width. Both images now resolve
+   against the same box, so the ratio is fixed everywhere, and the monogram
+   follows .hero__mark down to 40rem on short windows for free rather than
+   needing its own entry in that media query.
+
+   18% of a 56rem wordmark is ~161px against the wordmark's 110px cap
+   height — enough for the monogram to read as the senior element in the
+   lockup rather than a tag sitting on top of it. The value survived the
+   viewBox crop untouched: the artwork never had horizontal padding, so
+   width drives the glyph size and only the dead space below it went away. */
+.hero__mark-monogram {
+  max-width: 18%;
+}
+
+/* Consulting and studio: the page name IS the hero. It used to sit under a
+   small True Friends wordmark, which put the loudest treatment on the
+   smallest element and left the title flat — the hierarchy read backwards.
+   The wordmark is gone (the nav mark, the <title> and the footer all still
+   carry the name) and the flame moved up onto the page name, so the biggest
+   thing on the page is also the boldest. The landing keeps the full
+   monogram-over-wordmark lockup; that is where the brand introduces itself.
+
+   Drawn artwork rather than type, so the page names carry the logo's own
+   face. That costs a file per word per language, which is the trade: the
+   face is not one we can serve as a webfont.
+
+   Yellow, not cream, so one rule covers every hero mark on the site — the
+   landing wordmark is yellow with the same flame behind it, and a cream
+   page name would have made the section pages the exception. It also costs
+   the "say hi" button its monopoly on the accent, but the landing already
+   sets a giant yellow wordmark above yellow buttons, so that price is
+   already paid there. And the flame is specified as the hot note against
+   the yellow (see --color-flame): red on yellow is the pairing it was
+   picked for, red on cream was never the plan.
+
+   Sized by HEIGHT, not width — the one thing that matters here. The word
+   changes length between languages (CONSULTING is 7.0:1, KONSULT is 5.6:1),
+   so sizing by width would set the Swedish title at a smaller cap height
+   than the English one and the two would not look like the same design.
+   Height-sizing holds one cap height and lets each word run as long as it
+   runs, which is exactly what type does.
+
+   max-width and object-fit are insurance, not the mechanism: the clamp is
+   already tuned to fit CONSULTING — the widest of the three — inside the
+   container at every viewport down to 320px. If the width ever did clamp,
+   contain letterboxes it rather than stretching the letterforms. */
+.hero__mark--section {
+  display: flex;
+  justify-content: center;
+  /* Drops the 56rem cap inherited from .hero__mark. That cap sizes the
+     landing lockup; here height is the lever and a width cap would only
+     fight it. */
+  max-width: 100%;
+}
+
+.hero__mark--section img {
+  width: auto;
+  height: clamp(2.25rem, 9vw, 7rem);
+  max-width: 100%;
+  object-fit: contain;
 }
 
 /* The widest step on the scale: the lede finishes reading, the button
@@ -883,9 +940,26 @@ body.landing .hero--brand {
   text-wrap: balance;
 }
 
-/* Short windows: the wordmark is the one element with room to give, so
-   shrink it rather than let the column overflow. */
+/* Short windows: on the landing the lockup is the one element with room to
+   give, so shrink it rather than let the column overflow. Scoped to the
+   landing because it is the only page that has to fit the window — the
+   section pages open onto content below and scroll. Left unscoped it would
+   also clamp the section mark's width, and since that one is sized by
+   height, object-fit would letterbox it inside a box taller than the
+   artwork rather than simply making it smaller.
+
+   820px, not the 700px the gap rule below uses. The monogram is 18% of this
+   width, so raising it to a proper lockup ratio made the whole column ~50px
+   taller and pushed the squeeze up into the 768px-tall laptops that used to
+   clear it. The wordmark takes the monogram down with it, so one cap still
+   does the whole job. */
+@media (max-height: 820px) {
+  body.landing .hero__mark { max-width: 40rem; }
+}
+
+/* Left at 700px deliberately. This one is not scoped to the landing, so
+   widening it would retune the consulting and studio hero rhythm on window
+   heights that were never the problem. */
 @media (max-height: 700px) {
-  .hero__mark { max-width: 40rem; }
   .hero__brand { gap: clamp(1rem, 2.5vw, 1.5rem); }
 }

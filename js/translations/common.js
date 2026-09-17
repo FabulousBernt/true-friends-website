@@ -38,6 +38,11 @@ window.TF_TRANSLATIONS = {
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
+      /* The consulting hero's page name is drawn artwork, so the translation
+         is a different file rather than a different string. Studio needs no
+         equivalent — the word is identical in both languages, so one file
+         serves both. */
+      consultingMark: "img/tf-consulting-ramen-yellow-transparent.svg",
     },
     services: {
       label: "Services",
@@ -119,6 +124,7 @@ window.TF_TRANSLATIONS = {
       cta: "Säg hej",
       consulting: "Konsult",
       studio: "Studio",
+      consultingMark: "img/tf-konsult-ramen-yellow-transparent.svg",
     },
     services: {
       label: "Tjänster",
