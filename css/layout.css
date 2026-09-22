@@ -863,13 +863,18 @@ body.landing .hero--brand {
    follows .hero__mark down to 40rem on short windows for free rather than
    needing its own entry in that media query.
 
-   18% of a 56rem wordmark is ~161px against the wordmark's 110px cap
+   17.45% of a 56rem wordmark is ~156px against the wordmark's 110px cap
    height — enough for the monogram to read as the senior element in the
-   lockup rather than a tag sitting on top of it. The value survived the
-   viewBox crop untouched: the artwork never had horizontal padding, so
-   width drives the glyph size and only the dead space below it went away. */
+   lockup rather than a tag sitting on top of it. The odd number is the
+   round 18% scaled by 1378.38/1422, the inked fraction of the old box:
+   unlike the ramen artwork, which was flush to its box horizontally, the
+   Archivo monogram carried 1.5% clear space left and right, and cropping
+   it away would otherwise have grown the glyph by that much. The crop's
+   real prize is vertical — 9.5% dead space top and bottom, which is what
+   used to inflate the gap below and leave the lockup reading looser than
+   --rhythm sets it. */
 .hero__mark-monogram {
-  max-width: 18%;
+  max-width: 17.45%;
 }
 
 /* Consulting and studio: the page name IS the hero. It used to sit under a

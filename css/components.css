@@ -237,13 +237,13 @@
 
 /* Sized by height, so the nav row stays put whatever the artwork's ratio.
    The viewBox is cropped to the ink, so this height IS the glyph height —
-   no clear space to discount. The numbers are the old 26/3.4/34 scaled by
-   1058/1451, the fraction of the old box that was actually inked, so the
-   mark renders at exactly the size it did before the crop. */
+   no clear space to discount. The numbers are the uncropped 26/3.4/34
+   scaled by 1174.876/1451, the fraction of the old box that was actually
+   inked, so the mark renders at the size it did before the crop. */
 .nav__brand-logo {
   grid-area: 1 / 1;
   display: block;
-  height: clamp(19px, 2.5vw, 25px);
+  height: clamp(21px, 2.75vw, 27.5px);
   width: auto;
 }
 
