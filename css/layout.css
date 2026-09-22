@@ -292,11 +292,13 @@ body:has(.hero--blog) {
   gap: 1.25rem;
 }
 
-/* Inline links inside body paragraphs — underlined at rest so they read as
-   links, accent yellow on hover / focus. `.btn` is excluded so buttons keep
-   their own treatment. Scoped to <p> so structured list/row links
-   (.email-row, .consultant-card__ref, etc.) aren't double-underlined. */
-.section__body p a:not(.btn) {
+/* Inline links inside body paragraphs and figure captions — underlined at rest
+   so they read as links, accent yellow on hover / focus. `.btn` is excluded so
+   buttons keep their own treatment. Listed selector by selector rather than
+   applied to the whole body so structured list/row links (.email-row,
+   .consultant-card__ref, etc.) aren't double-underlined. */
+.section__body p a:not(.btn),
+.section__figure-caption a:not(.btn) {
   text-decoration: underline;
 }
 
@@ -317,6 +319,15 @@ body:has(.hero--blog) {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Portrait variant — crops the photo to a 4:5 frame and holds the figure at a
+   third of the body column width, so a tall image sits alongside the copy
+   instead of dominating it. Goes full width on narrow viewports, where a third
+   of a column is too small to read. */
+.section__figure--portrait img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
 .section__figure-caption {
@@ -342,6 +353,10 @@ body:has(.hero--blog) {
 @media (min-width: 720px) {
   .section__figure-row {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .section__figure--portrait {
+    width: 33.333%;
   }
 }
 
