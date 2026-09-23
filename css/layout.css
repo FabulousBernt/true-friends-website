@@ -425,10 +425,10 @@ body:has(.hero--blog) {
 }
 
 /* ---------- Gallery listing ($ ls img/gallery/) ----------
-   Reframes the gallery as directory-listing output: a header line, a
-   dense grid of square thumbnails, and a monospaced file count beneath.
-   Tiles carry no visible filename — the whole run is on screen at once,
-   so the images are left to speak for themselves. */
+   Reframes the gallery as directory-listing output: a header line over a
+   dense grid of square thumbnails. Tiles carry no visible filename and
+   there is no footer — the whole run is on screen at once, so the images
+   are left to speak for themselves. */
 .gallery-listing {
   font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.05vw, 1rem);
@@ -484,22 +484,6 @@ body:has(.hero--blog) {
 }
 
 .gallery-listing .gallery__tile::after { content: none; }
-
-/* Footer count line */
-.gallery-listing__controls {
-  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
-  padding-top: clamp(0.75rem, 1.25vw, 1rem);
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.gallery-listing__count {
-  color: var(--color-text-muted);
-  font-family: var(--font-body);
-}
 
 /* ---------- Service list (package-list style) ----------
    Each service renders as an expandable row: `[+] name  brief-summary`.

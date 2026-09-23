@@ -228,16 +228,12 @@
     "42.webp",
     "43.webp",
     "44.webp",
-    "45.webp",
   ];
 
   const gallery = document.querySelector(".gallery");
   const lightbox = document.getElementById("gallery-lightbox");
 
   if (gallery && lightbox) {
-    if (GALLERY_IMAGES.length === 0) {
-      gallery.querySelector(".gallery__controls").hidden = true;
-    }
     const grid = gallery.querySelector(".gallery__grid");
     GALLERY_IMAGES.forEach((file, i) => {
       const li = document.createElement("li");
@@ -274,10 +270,6 @@
       );
       return { src: img.getAttribute("src"), alt: img.getAttribute("alt") };
     });
-
-    // Footer count, standing in for the old page indicator.
-    const countEl = gallery.querySelector("[data-gallery-count]");
-    if (countEl) countEl.textContent = String(photos.length);
 
     /* ---------- Lightbox ---------- */
     const lbImage = lightbox.querySelector(".lightbox__image");
