@@ -29,6 +29,7 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Gallery",
+      files: "files",
     },
     services: {
       note: "Our media services are available to both businesses and private individuals.<br>We also collaborate with various partners for larger and more complex projects.",
@@ -85,6 +86,7 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Galleri",
+      files: "filer",
     },
     services: {
       note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi ibland med olika partners.",

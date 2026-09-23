@@ -176,11 +176,12 @@
   });
 
   /* ====================================================================
-   * Gallery: pagination + lightbox
+   * Gallery: full listing + lightbox
    *
    * To add a photo: drop the file into img/gallery/ and add its filename
-   * to the GALLERY_IMAGES array below. Tiles auto-render in array order,
-   * with 6 per page (or whatever data-page-size is on the .gallery div).
+   * to the GALLERY_IMAGES array below. Every photo renders in array order
+   * as one tile — the listing shows the whole directory at once, the way
+   * `ls` does, and `loading="lazy"` keeps offscreen rows off the wire.
    * ==================================================================== */
   const GALLERY_IMAGES = [
     "01.webp",
@@ -238,13 +239,9 @@
       gallery.querySelector(".gallery__controls").hidden = true;
     }
     const grid = gallery.querySelector(".gallery__grid");
-    const initialPageSize = parseInt(gallery.dataset.pageSize, 10) || 6;
     GALLERY_IMAGES.forEach((file, i) => {
-      const page = Math.floor(i / initialPageSize) + 1;
       const li = document.createElement("li");
       li.className = "gallery__item";
-      li.dataset.page = String(page);
-      if (page > 1) li.hidden = true;
 
       const btn = document.createElement("button");
       btn.type = "button";
@@ -255,7 +252,7 @@
       const img = document.createElement("img");
       img.src = `img/gallery/${file}`;
       img.alt = `Gallery photo ${i + 1}`;
-      img.loading = "lazy";
+      img.setAttribute("loading", "lazy");
 
       btn.appendChild(img);
 
@@ -285,30 +282,9 @@
       return { src: img.getAttribute("src"), alt: img.getAttribute("alt") };
     });
 
-    const pageSize = parseInt(gallery.dataset.pageSize, 10) || 6;
-    const totalPages = Math.max(1, Math.ceil(photos.length / pageSize));
-    let currentPage = 1;
-
-    const prevPageBtn = gallery.querySelector("[data-gallery-prev]");
-    const nextPageBtn = gallery.querySelector("[data-gallery-next]");
-    const currentEl = gallery.querySelector("[data-gallery-current]");
-    const totalEl = gallery.querySelector("[data-gallery-total]");
-
-    totalEl.textContent = String(totalPages);
-
-    const renderPage = (page) => {
-      currentPage = Math.min(Math.max(page, 1), totalPages);
-      currentEl.textContent = String(currentPage);
-      gallery.querySelectorAll(".gallery__item").forEach((item) => {
-        item.hidden = Number(item.dataset.page) !== currentPage;
-      });
-      prevPageBtn.disabled = currentPage === 1;
-      nextPageBtn.disabled = currentPage === totalPages;
-    };
-
-    prevPageBtn.addEventListener("click", () => renderPage(currentPage - 1));
-    nextPageBtn.addEventListener("click", () => renderPage(currentPage + 1));
-    renderPage(1);
+    // Footer count, standing in for the old page indicator.
+    const countEl = gallery.querySelector("[data-gallery-count]");
+    if (countEl) countEl.textContent = String(photos.length);
 
     /* ---------- Lightbox ---------- */
     const lbImage = lightbox.querySelector(".lightbox__image");
@@ -336,7 +312,7 @@
       );
       img.src = photo.src;
       img.alt = "";
-      img.loading = "lazy";
+      img.setAttribute("loading", "lazy");
       btn.appendChild(img);
       li.appendChild(btn);
       lbThumbs.appendChild(li);
