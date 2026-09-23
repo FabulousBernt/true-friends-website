@@ -19,25 +19,25 @@
   padding: 6rem var(--container-padding);
   overflow: hidden;
   text-align: left;
-  --hero-photo-url: url("../img/studio-hero-bg.jpg");
+  --hero-photo-url: url("../img/studio-hero-bg.webp");
 }
 
 .hero--consulting {
-  --hero-photo-url: url("../img/consulting-hero-bg.jpg");
+  --hero-photo-url: url("../img/consulting-hero-bg.webp");
 }
 
 /* Reference case modifiers — set the per-case hero photo here so the URL
    stays out of inline `style` attributes (blocked by the page CSP). */
 .hero--epiroc {
-  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/epiroc/epiroc-hero.jpg");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/epiroc/epiroc-hero.webp");
 }
 
 .hero--kopparbergs-brewery {
-  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-hero.jpg");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-hero.webp");
 }
 
 .hero--ske-kraft {
-  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/ske-kraft/skelleftea-kommun-qnbH_XTAvpw-unsplash-scaled.jpg.webp");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/ske-kraft/ske-kraft-hero.webp");
 }
 
 .hero--avarn {
@@ -45,11 +45,11 @@
 }
 
 .hero--bufab {
-  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/bufab/bufab-bg.jpg");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/bufab/bufab-bg.webp");
 }
 
 .hero--sectra {
-  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/sectra/sectra-bg.jpg");
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/sectra/sectra-bg.webp");
 }
 
 @media (min-width: 768px) {
@@ -107,7 +107,6 @@
   justify-content: center;
   gap: 40px;
 }
-
 
 /* Hero modifiers */
 .hero--center .hero__content {
@@ -196,7 +195,7 @@ body.landing {
   min-height: 100vh;
   min-height: 100svh;
   isolation: isolate;
-  --hero-photo-url: url("../img/landing-page-hero.jpg");
+  --hero-photo-url: url("../img/landing-page-hero.webp");
 }
 body.landing main { flex: 1; display: flex; flex-direction: column; }
 body.landing .hero { flex: 1; align-items: center; }
@@ -286,22 +285,6 @@ body:has(.hero--blog) {
 }
 
 .section + .section { padding-top: 0; }
-
-.section__grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
-}
-
-.section__label {
-  font-family: var(--font-display);
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: normal;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
 
 .section__body {
   display: grid;
@@ -395,20 +378,6 @@ body:has(.hero--blog) {
   .section__figure--portrait,
   .section__figure--third {
     width: 33.333%;
-  }
-}
-
-@media (min-width: 880px) {
-  .section__grid {
-    grid-template-columns: 180px 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  /* Label sticks alongside the body content on desktop. */
-  .section__label {
-    position: sticky;
-    top: 120px;
-    padding-top: 0.4rem;
   }
 }
 

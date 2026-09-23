@@ -25,14 +25,10 @@ window.TF_TRANSLATIONS = {
     nav: {
       start: "Start",
       about: "About",
-      clients: "Clients",
       services: "Services",
       team: "Consultants",
       gallery: "Gallery",
       contact: "Contact",
-    },
-    clients: {
-      label: "Clients",
     },
     hero: {
       cta: "Say hi",
@@ -111,14 +107,10 @@ window.TF_TRANSLATIONS = {
     nav: {
       start: "Start",
       about: "Om oss",
-      clients: "Kunder",
       services: "Tjänster",
       team: "Konsulter",
       gallery: "Galleri",
       contact: "Kontakt",
-    },
-    clients: {
-      label: "Kunder",
     },
     hero: {
       cta: "Säg hej",
