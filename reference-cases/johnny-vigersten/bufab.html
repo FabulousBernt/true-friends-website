@@ -52,7 +52,7 @@
             <a href="../../consulting.html#team" class="nav__crumb-link" data-i18n="team.members.johnny.name">Johnny Vigersten</a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
             <!-- TODO: replace with the case name, e.g. "Epiroc". -->
-            <span class="nav__crumb-current" aria-current="page">Reference case</span>
+            <span class="nav__crumb-current" aria-current="page">Bufab</span>
         </div>
 
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
@@ -119,7 +119,7 @@
     <!-- Hero — blog-post sized. Per-case photo is set via a modifier class
          (e.g. `hero--epiroc`) defined in css/layout.css. The page CSP blocks
          inline `style` attributes, so the photo URL has to live in the CSS. -->
-    <section class="hero hero--center hero--blog" id="top">
+    <section class="hero hero--center hero--blog hero--bufab" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
@@ -128,7 +128,7 @@
             <!-- TODO: swap the logo path + alt to match the case
                  (e.g. ../../img/reference-cases/<consultant-slug>/<slug>/<slug>-logo.png). -->
             <h1 class="hero__case-heading">
-                <img class="hero__case-logo" src="../../img/tf-medival-yellow-logo-transparent.svg" alt="BUFAB">
+                <img class="hero__case-logo" src="../../img/reference-cases/johnny-vigersten/bufab/Bufab-logo-white.webp" alt="Bufab">
             </h1>
         </div>
     </section>
@@ -173,14 +173,11 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                        <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                        <!-- Example: image + caption. Replace src/alt + the
-                             figcaption text (or wire data-i18n to a caption key). -->
-                        <figure class="section__figure">
-                            <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption text.</figcaption>
-                        </figure>
+                        <p class="lede" data-i18n="refCases.bufab.about.lede">Bufab is a global full service partner for C-parts. They reached out to us when I was working at Nethouse and of course we answered.</p>
+                        <p data-i18n="refCases.bufab.about.body1">Bufab needed to solve many different problems.</p>
+                        <p data-i18n="refCases.bufab.about.body2">We quickly came to the conclusion that this would require two custom built systems that integrated with each other.</p>
+                        <p data-i18n="refCases.bufab.about.body3">One system would allow Bufab to add manufacturing suppliers in a portal.</p>
+                        <p data-i18n="refCases.bufab.about.body4">The other system replaced a huge Excel that they had worked with for a long time.</p>
                     </div>
                 </div>
             </div>
@@ -195,8 +192,7 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                        <p>Additional paragraph if needed (body2, body3, ...).</p>
+                        <p data-i18n="refCases.bufab.myRole.body1">My role in this project was to design the User Experience, User Interface and lead the testing. The system was branded according to Bufab’s styling guide.</p>
                     </div>
                 </div>
             </div>
@@ -211,27 +207,26 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                        <!-- Example: two images side by side. Each <figure>
-                             keeps its own caption; the row stacks on mobile. -->
-                        <div class="section__figure-row">
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption A.</figcaption>
-                            </figure>
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption B.</figcaption>
-                            </figure>
-                        </div>
-                        <p>Follow-up paragraph after the visuals.</p>
-                        <!-- Example: muted footnote (.section__note) — same
-                             visual weight as a figure caption. -->
-                        <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                        <!-- Example: inline hyperlink inside a section__note.
-                             Switch the attribute to data-i18n-html so the <a>
-                             renders as markup, and put the link in the string. -->
-                        <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
+                        <p data-i18n="refCases.bufab.workflow.body1">Our work started with a few days of workshops at our office together with the product owners from Bufab.</p>
+                        <figure class="section__figure">
+                            <img src="../../img/reference-cases/johnny-vigersten/bufab/Sprint-Timeline.png" alt="A timeline of one sprint, from sprint planning through to demo day." loading="lazy">
+                            <figcaption class="section__figure-caption" data-i18n="refCases.bufab.workflow.caption1">I created a fun little timeline that we put up in the team room to visualize our sprints and our various activities.</figcaption>
+                        </figure>
+                        <p data-i18n="refCases.bufab.workflow.body2">In the design process we analysed the insights that we had gathered during our workshops and field visits.</p>
+                        <p data-i18n="refCases.bufab.workflow.body3">The design process was continuous throughout the entire project.</p>
+                        <figure class="section__figure section__figure--third">
+                            <img src="../../img/reference-cases/johnny-vigersten/bufab/Skiss1_edited.png" alt="A hand-drawn interface sketch in a notebook." loading="lazy">
+                            <figcaption class="section__figure-caption" data-i18n="refCases.bufab.workflow.caption2">A picture of my very cluttered notebook, fully encrypted.</figcaption>
+                        </figure>
+                        <p data-i18n="refCases.bufab.workflow.body4">During all of this I also managed the testing part of this project.</p>
+                        <figure class="section__figure">
+                            <div class="section__figure-row section__figure-row--natural">
+                                <img src="../../img/reference-cases/johnny-vigersten/bufab/Mindmap-1.png" alt="A mind map covering the test plan." loading="lazy">
+                                <img src="../../img/reference-cases/johnny-vigersten/bufab/Mindmap-2.png" alt="A second mind map from the same project." loading="lazy">
+                            </div>
+                            <figcaption class="section__figure-caption" data-i18n="refCases.bufab.workflow.caption3">Two examples of my mind maps.</figcaption>
+                        </figure>
+                        <p data-i18n="refCases.bufab.workflow.body5">The end result of all this work was two systems that transformed Bufab's operations.</p>
                     </div>
                 </div>
             </div>

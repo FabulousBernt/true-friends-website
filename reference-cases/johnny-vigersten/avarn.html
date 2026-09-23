@@ -52,7 +52,7 @@
             <a href="../../consulting.html#team" class="nav__crumb-link" data-i18n="team.members.johnny.name">Johnny Vigersten</a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
             <!-- TODO: replace with the case name, e.g. "Epiroc". -->
-            <span class="nav__crumb-current" aria-current="page">Reference case</span>
+            <span class="nav__crumb-current" aria-current="page">Avarn</span>
         </div>
 
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
@@ -119,7 +119,7 @@
     <!-- Hero — blog-post sized. Per-case photo is set via a modifier class
          (e.g. `hero--epiroc`) defined in css/layout.css. The page CSP blocks
          inline `style` attributes, so the photo URL has to live in the CSS. -->
-    <section class="hero hero--center hero--blog" id="top">
+    <section class="hero hero--center hero--blog hero--avarn" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
@@ -128,7 +128,7 @@
             <!-- TODO: swap the logo path + alt to match the case
                  (e.g. ../../img/reference-cases/<consultant-slug>/<slug>/<slug>-logo.png). -->
             <h1 class="hero__case-heading">
-                <img class="hero__case-logo" src="../../img/tf-medival-yellow-logo-transparent.svg" alt="Avarn Security">
+                <img class="hero__case-logo" src="../../img/reference-cases/johnny-vigersten/avarn/avarn-logo.webp" alt="Avarn Security">
             </h1>
         </div>
     </section>
@@ -173,13 +173,15 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                        <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                        <!-- Example: image + caption. Replace src/alt + the
-                             figcaption text (or wire data-i18n to a caption key). -->
+                        <p class="lede" data-i18n="refCases.avarn.about.lede">Avarn Security Group (formerly known as Nokas) reached out to Nethouse while I was working there. They needed a system to help them improve their sales process of alarms and surveillance equipment.</p>
+                        <p data-i18n="refCases.avarn.about.body1">Their sales personnel where equipped with tablets on which they entered sale information and showed customers the equipment.</p>
+                        <p data-i18n="refCases.avarn.about.body2">The system that we built enabled the sales personnel to create new projects for each unique sale.</p>
+                        <p data-i18n="refCases.avarn.about.body3">The system also calculated pricing and materials in real-time, allowing the sales representatives to generate and send very detailed quotations and installation plans directly to customers on the spot.</p>
+                        <p data-i18n="refCases.avarn.about.body4">The sales configurator (as we called it) was also accompanied by a backend system where backend users could add new equipment.</p>
+                        <p data-i18n="refCases.avarn.about.body5">The end result and reception for this system from the users where great.</p>
                         <figure class="section__figure">
-                            <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption text.</figcaption>
+                            <img src="../../img/reference-cases/johnny-vigersten/avarn/tablet.webp" alt="A hand using a stylus on a tablet." loading="lazy">
+                            <figcaption class="section__figure-caption" data-i18n-html="refCases.avarn.about.caption">Image by <a href="https://unsplash.com/@samuelbryngelsson" target="_blank" rel="noopener">samuelbryngelsson</a></figcaption>
                         </figure>
                     </div>
                 </div>
@@ -195,8 +197,7 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                        <p>Additional paragraph if needed (body2, body3, ...).</p>
+                        <p data-i18n="refCases.avarn.myRole.body1">My role in this project was to design the User Experience, User Interface, the components used to build it and lead the testing. The system was branded according to Avarns styling guide.</p>
                     </div>
                 </div>
             </div>
@@ -211,27 +212,10 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                        <!-- Example: two images side by side. Each <figure>
-                             keeps its own caption; the row stacks on mobile. -->
-                        <div class="section__figure-row">
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption A.</figcaption>
-                            </figure>
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption B.</figcaption>
-                            </figure>
-                        </div>
-                        <p>Follow-up paragraph after the visuals.</p>
-                        <!-- Example: muted footnote (.section__note) — same
-                             visual weight as a figure caption. -->
-                        <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                        <!-- Example: inline hyperlink inside a section__note.
-                             Switch the attribute to data-i18n-html so the <a>
-                             renders as markup, and put the link in the string. -->
-                        <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
+                        <p data-i18n="refCases.avarn.workflow.body1">As usual in our team we worked iteratively in sprints in this project.</p>
+                        <p data-i18n="refCases.avarn.workflow.body2">The design process was as per usual heavily focused on understanding the user needs, mapping their workflows in user story maps.</p>
+                        <p data-i18n="refCases.avarn.workflow.body3">The testing process began at the same time as the design process started.</p>
+                        <p data-i18n="refCases.avarn.workflow.body4">The testing involved functional, backend, frontend, compatibility, hardware, usability, exploratory testing as well as test planning, test strategy and test design.</p>
                     </div>
                 </div>
             </div>

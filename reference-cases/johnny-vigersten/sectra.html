@@ -52,7 +52,7 @@
             <a href="../../consulting.html#team" class="nav__crumb-link" data-i18n="team.members.johnny.name">Johnny Vigersten</a>
             <span class="nav__crumb-sep" aria-hidden="true">/</span>
             <!-- TODO: replace with the case name, e.g. "Epiroc". -->
-            <span class="nav__crumb-current" aria-current="page">Reference case</span>
+            <span class="nav__crumb-current" aria-current="page">Sectra</span>
         </div>
 
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="aria.primary">
@@ -119,7 +119,7 @@
     <!-- Hero — blog-post sized. Per-case photo is set via a modifier class
          (e.g. `hero--epiroc`) defined in css/layout.css. The page CSP blocks
          inline `style` attributes, so the photo URL has to live in the CSS. -->
-    <section class="hero hero--center hero--blog" id="top">
+    <section class="hero hero--center hero--blog hero--sectra" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
@@ -128,7 +128,7 @@
             <!-- TODO: swap the logo path + alt to match the case
                  (e.g. ../../img/reference-cases/<consultant-slug>/<slug>/<slug>-logo.png). -->
             <h1 class="hero__case-heading">
-                <img class="hero__case-logo" src="../../img/tf-medival-yellow-logo-transparent.svg" alt="Sectra">
+                <img class="hero__case-logo" src="../../img/reference-cases/johnny-vigersten/sectra/sectra-logo.webp" alt="Sectra">
             </h1>
         </div>
     </section>
@@ -173,14 +173,7 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                        <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                        <!-- Example: image + caption. Replace src/alt + the
-                             figcaption text (or wire data-i18n to a caption key). -->
-                        <figure class="section__figure">
-                            <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption text.</figcaption>
-                        </figure>
+                        <p data-i18n="refCases.sectra.about.body1">Sectra Communications enhances cybersecurity by enabling secure information exchange for critical social functions, government officials, military and diplomats, protecting society’s most sensitive data and communications.</p>
                     </div>
                 </div>
             </div>
@@ -195,48 +188,20 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                        <p>Additional paragraph if needed (body2, body3, ...).</p>
+                        <p data-i18n="refCases.sectra.myRole.body1">My consultancy role is ongoing at Sectra and due to security restrictions I can't share specific project information. At Sectra Communications I consult in both design and testing. My responsibilities vary from:</p>
+                        <ul class="section__list" role="list">
+                            <li data-i18n="refCases.sectra.myRole.item1">Designing the user interface and user experience of products</li>
+                            <li data-i18n="refCases.sectra.myRole.item2">Prototyping ideas</li>
+                            <li data-i18n="refCases.sectra.myRole.item3">Conducting user testing on prototypes and wireframes</li>
+                            <li data-i18n="refCases.sectra.myRole.item4">Testing servers, VPN, Android and software</li>
+                            <li data-i18n="refCases.sectra.myRole.item5">Analysing network traffic</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="workflow" aria-labelledby="workflow-label">
-        <div class="container">
-            <div class="section__terminal">
-                <div class="section__terminal-chrome">
-                    <span class="section__terminal-title" id="workflow-label" data-i18n="refCase.workflow">Workflow</span>
-                </div>
-                <div class="section__terminal-body">
-                    <div class="section__body">
-                        <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                        <!-- Example: two images side by side. Each <figure>
-                             keeps its own caption; the row stacks on mobile. -->
-                        <div class="section__figure-row">
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption A.</figcaption>
-                            </figure>
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption B.</figcaption>
-                            </figure>
-                        </div>
-                        <p>Follow-up paragraph after the visuals.</p>
-                        <!-- Example: muted footnote (.section__note) — same
-                             visual weight as a figure caption. -->
-                        <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                        <!-- Example: inline hyperlink inside a section__note.
-                             Switch the attribute to data-i18n-html so the <a>
-                             renders as markup, and put the link in the string. -->
-                        <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 
 <footer class="site-footer">

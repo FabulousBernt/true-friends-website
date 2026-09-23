@@ -36,6 +36,22 @@
   --hero-photo-url: url("../img/reference-cases/johnny-vigersten/kopparbergs-brewery/kopparbergs-hero.jpg");
 }
 
+.hero--ske-kraft {
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/ske-kraft/skelleftea-kommun-qnbH_XTAvpw-unsplash-scaled.jpg.webp");
+}
+
+.hero--avarn {
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/avarn/avarn-bg.webp");
+}
+
+.hero--bufab {
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/bufab/bufab-bg.jpg");
+}
+
+.hero--sectra {
+  --hero-photo-url: url("../img/reference-cases/johnny-vigersten/sectra/sectra-bg.jpg");
+}
+
 @media (min-width: 768px) {
   .hero {
     min-height: 92vh;
@@ -145,8 +161,8 @@ body.landing .hero__content {
           mask-image: linear-gradient(180deg, #000 0%, #000 60%, transparent 100%);
 }
 
-/* Client logo replaces the headline on reference case heros. Height matches
-   the old title font-size so it lands with similar visual weight. */
+/* Client logo replaces the headline on reference case heros. Sized a step
+   above the old title font-size so the client mark carries the hero. */
 .hero__case-heading {
   margin: 0;
   line-height: 0;
@@ -155,7 +171,7 @@ body.landing .hero__content {
 .hero__case-logo {
   display: block;
   width: auto;
-  height: clamp(36px, 6.5vw, 72px);
+  height: clamp(44px, 8vw, 88px);
   object-fit: contain;
 }
 
@@ -309,6 +325,15 @@ body:has(.hero--blog) {
 
 /* Inline image + caption block for use inside section bodies (e.g. reference
    case studies). Caption styling mirrors the studio services note. */
+/* Bulleted list inside a section body. base.css strips list markers globally,
+   so this restores them rather than leaning on the browser default. */
+.section__list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
 .section__figure {
   display: grid;
   gap: 0.5rem;
@@ -328,6 +353,16 @@ body:has(.hero--blog) {
 .section__figure--portrait img {
   aspect-ratio: 4 / 5;
   object-fit: cover;
+}
+
+/* Figure row matched on height rather than stretched to equal column widths —
+   for a pair whose aspect ratios differ, where equal widths would upscale the
+   narrower image and leave it towering over its neighbour. */
+.section__figure-row--natural img {
+  width: auto;
+  max-width: 100%;
+  max-height: 500px;
+  margin-inline: auto;
 }
 
 .section__figure-caption {
@@ -355,7 +390,10 @@ body:has(.hero--blog) {
     grid-template-columns: 1fr 1fr;
   }
 
-  .section__figure--portrait {
+  /* --portrait also crops to 4:5; --third is width only, for images that
+     must keep their own aspect ratio. */
+  .section__figure--portrait,
+  .section__figure--third {
     width: 33.333%;
   }
 }

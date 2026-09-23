@@ -119,7 +119,7 @@
     <!-- Hero — blog-post sized. Per-case photo is set via a modifier class
          (e.g. `hero--epiroc`) defined in css/layout.css. The page CSP blocks
          inline `style` attributes, so the photo URL has to live in the CSS. -->
-    <section class="hero hero--center hero--blog" id="top">
+    <section class="hero hero--center hero--blog hero--ske-kraft" id="top">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__photo" aria-hidden="true"></div>
         <div class="hero__scrim" aria-hidden="true"></div>
@@ -128,7 +128,7 @@
             <!-- TODO: swap the logo path + alt to match the case
                  (e.g. ../../img/reference-cases/<consultant-slug>/<slug>/<slug>-logo.png). -->
             <h1 class="hero__case-heading">
-                <img class="hero__case-logo" src="../../img/tf-medival-yellow-logo-transparent.svg" alt="Skellefteå Kraft">
+                <img class="hero__case-logo" src="../../img/reference-cases/johnny-vigersten/ske-kraft/skelleftea-kraft.png" alt="Skellefteå Kraft">
             </h1>
         </div>
     </section>
@@ -173,14 +173,8 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p class="lede">Short summary of the engagement — who the client is, what we worked on, and the headline outcome.</p>
-                        <p>Body paragraph — context, scope, and any constraints worth calling out.</p>
-                        <!-- Example: image + caption. Replace src/alt + the
-                             figcaption text (or wire data-i18n to a caption key). -->
-                        <figure class="section__figure">
-                            <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename>.jpg" alt="Short description of the image" loading="lazy">
-                            <figcaption class="section__figure-caption">Caption text.</figcaption>
-                        </figure>
+                        <p class="lede" data-i18n="refCases.skeKraft.about.lede">Skellefteå Kraft is a big energy company located in the north of Sweden.</p>
+                        <p data-i18n="refCases.skeKraft.about.body1">With over 750 employees in various sectors they have many people starting, changing position and sometimes exiting the company. They identified a bottleneck in their onboarding/changes/exit processes for employees and wanted to streamline this for everyone involved. That’s where “Slussen” comes in.</p>
                     </div>
                 </div>
             </div>
@@ -195,8 +189,7 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>What I owned on the project — responsibilities, deliverables, and how I worked with the wider team.</p>
-                        <p>Additional paragraph if needed (body2, body3, ...).</p>
+                        <p data-i18n="refCases.skeKraft.myRole.body1">My role in this project was to design the User Experience, User Interface and the components used to build it. The system was branded according to Skellefteå Krafts styling guide.</p>
                     </div>
                 </div>
             </div>
@@ -211,27 +204,14 @@
                 </div>
                 <div class="section__terminal-body">
                     <div class="section__body">
-                        <p>How the work was structured — process, tools, cadence, and decisions worth highlighting.</p>
-                        <!-- Example: two images side by side. Each <figure>
-                             keeps its own caption; the row stacks on mobile. -->
-                        <div class="section__figure-row">
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-a>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption A.</figcaption>
-                            </figure>
-                            <figure class="section__figure">
-                                <img src="../../img/reference-cases/<consultant-slug>/<slug>/<filename-b>.jpg" alt="Short description" loading="lazy">
-                                <figcaption class="section__figure-caption">Caption B.</figcaption>
-                            </figure>
-                        </div>
-                        <p>Follow-up paragraph after the visuals.</p>
-                        <!-- Example: muted footnote (.section__note) — same
-                             visual weight as a figure caption. -->
-                        <p class="section__note">*Footnote or clarifying note in the muted caption style.</p>
-                        <!-- Example: inline hyperlink inside a section__note.
-                             Switch the attribute to data-i18n-html so the <a>
-                             renders as markup, and put the link in the string. -->
-                        <p class="section__note"><a href="https://example.com" target="_blank" rel="noopener">Linked footnote text.</a></p>
+                        <p data-i18n="refCases.skeKraft.workflow.body1">Skellefteå Kraft required a customised onboarding system, Nethouse provided me as a UX/UI designer and another developer to accompany and work closely with their software-department and super users for the development of the system.</p>
+                        <p data-i18n="refCases.skeKraft.workflow.body2">The design process began with analysing business needs, daily problems and challenges that the HR users experienced and trying to understand the point of view of the employee.</p>
+                        <p data-i18n="refCases.skeKraft.workflow.body3">I developed prototypes for each flow which was presented to the customer, this was iterated on until we had ironed out all identified pain points.</p>
+                        <p data-i18n="refCases.skeKraft.workflow.body4">The result was SLUSSEN, a user-friendly system that simplified onboarding and internal transitions.</p>
+                        <figure class="section__figure">
+                            <img src="../../img/reference-cases/johnny-vigersten/ske-kraft/ske-kraft-image.png" alt="The SLUSSEN onboarding checklist, styled in Skellefteå Kraft's brand." loading="lazy">
+                        </figure>
+                        <p class="section__note" data-i18n="refCases.skeKraft.workflow.caption">Quote from Anna-Maria is borrowed from my earlier employer Nethouse/Aspire/Ninetech.</p>
                     </div>
                 </div>
             </div>
