@@ -256,13 +256,6 @@
 
       btn.appendChild(img);
 
-      // Filename next to the thumbnail — turns the tile into a listing
-      // row so the gallery reads like directory output.
-      const label = document.createElement("span");
-      label.className = "gallery-listing__filename";
-      label.textContent = file;
-      btn.appendChild(label);
-
       li.appendChild(btn);
       grid.appendChild(li);
     });
