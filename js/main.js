@@ -226,8 +226,6 @@
     "40.webp",
     "41.webp",
     "42.webp",
-    "43.webp",
-    "44.webp",
   ];
 
   const gallery = document.querySelector(".gallery");
