@@ -178,8 +178,9 @@
   /* ====================================================================
    * Gallery: full listing + lightbox
    *
-   * To add a photo: drop the file into img/gallery/ and add its filename
-   * to the GALLERY_IMAGES array below. Every photo renders in array order
+   * To add a photo: drop the file into img/gallery/, run
+   * `bash tools/make-thumbs.sh`, and add its filename to the
+   * GALLERY_IMAGES array below. Every photo renders in array order
    * as one tile — the listing shows the whole directory at once, the way
    * `ls` does, and `loading="lazy"` keeps offscreen rows off the wire.
    * ==================================================================== */
@@ -232,8 +233,28 @@
   const lightbox = document.getElementById("gallery-lightbox");
 
   if (gallery && lightbox) {
+    // Two sources per photo: a 400px square thumbnail for the grid and the
+    // lightbox strip, and the full-size file, which is only fetched once the
+    // lightbox opens. Thumbnails are built by tools/make-thumbs.sh.
+    const photos = GALLERY_IMAGES.map((file, i) => ({
+      full: `img/gallery/${file}`,
+      thumb: `img/gallery/thumbs/${file}`,
+      alt: `Gallery photo ${i + 1}`,
+    }));
+
+    // If a file is missing, hide the broken <img> so the tile's CSS
+    // placeholder background shows through cleanly.
+    const hideIfBroken = (img) =>
+      img.addEventListener(
+        "error",
+        () => {
+          img.style.display = "none";
+        },
+        { once: true },
+      );
+
     const grid = gallery.querySelector(".gallery__grid");
-    GALLERY_IMAGES.forEach((file, i) => {
+    photos.forEach((photo, i) => {
       const li = document.createElement("li");
       li.className = "gallery__item";
 
@@ -244,8 +265,9 @@
       btn.setAttribute("aria-label", `Open photo ${i + 1} in lightbox`);
 
       const img = document.createElement("img");
-      img.src = `img/gallery/${file}`;
-      img.alt = `Gallery photo ${i + 1}`;
+      hideIfBroken(img);
+      img.src = photo.thumb;
+      img.alt = photo.alt;
       img.setAttribute("loading", "lazy");
 
       btn.appendChild(img);
@@ -255,19 +277,6 @@
     });
 
     const tiles = Array.from(gallery.querySelectorAll(".gallery__tile"));
-    const photos = tiles.map((btn) => {
-      const img = btn.querySelector("img");
-      // If the photo file is missing, hide the broken <img> so the tile's CSS
-      // placeholder background shows through cleanly.
-      img.addEventListener(
-        "error",
-        () => {
-          img.style.display = "none";
-        },
-        { once: true },
-      );
-      return { src: img.getAttribute("src"), alt: img.getAttribute("alt") };
-    });
 
     /* ---------- Lightbox ---------- */
     const lbImage = lightbox.querySelector(".lightbox__image");
@@ -286,14 +295,8 @@
       btn.dataset.index = String(idx);
       btn.setAttribute("aria-label", `Photo ${idx + 1}`);
       const img = document.createElement("img");
-      img.addEventListener(
-        "error",
-        () => {
-          img.style.display = "none";
-        },
-        { once: true },
-      );
-      img.src = photo.src;
+      hideIfBroken(img);
+      img.src = photo.thumb;
       img.alt = "";
       img.setAttribute("loading", "lazy");
       btn.appendChild(img);
@@ -312,7 +315,7 @@
     const showPhoto = (index) => {
       activeIndex = (index + photos.length) % photos.length;
       const photo = photos[activeIndex];
-      lbImage.src = photo.src;
+      lbImage.src = photo.full;
       lbImage.alt = photo.alt;
       lbCaption.textContent = `${activeIndex + 1} / ${photos.length}`;
       lbThumbs.querySelectorAll(".lightbox__thumb").forEach((thumb, i) => {
