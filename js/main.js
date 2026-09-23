@@ -210,11 +210,13 @@
     "25.webp",
     "26.webp",
     "27.webp",
+    "28.webp",
     "29.webp",
     "30.webp",
     "31.webp",
     "32.webp",
     "33.webp",
+    "34.webp",
     "35.webp",
     "36.webp",
     "37.webp",
@@ -222,6 +224,10 @@
     "39.webp",
     "40.webp",
     "41.webp",
+    "42.webp",
+    "43.webp",
+    "44.webp",
+    "45.webp",
   ];
 
   const gallery = document.querySelector(".gallery");
