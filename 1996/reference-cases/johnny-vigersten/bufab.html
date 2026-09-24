@@ -172,7 +172,6 @@
     <symbol id="i-reload" viewBox="0 0 22 22"><path d="M11 3a8 8 0 107.5 10.5" fill="none" stroke="#2b7fd4" stroke-width="3"/><path d="M11 0v6l5-3z" fill="#2b7fd4" stroke="#000" stroke-width=".6"/></symbol>
     <symbol id="i-stop" viewBox="0 0 22 22"><path d="M7 2h8l5 5v8l-5 5H7l-5-5V7z" fill="#d40000" stroke="#000"/><path d="M6 10h10v3H6z" fill="#fff"/></symbol>
     <symbol id="i-find" viewBox="0 0 22 22"><circle cx="9" cy="9" r="6" fill="#bfe3ff" stroke="#000"/><path d="M13.5 13.5L21 21" stroke="#000" stroke-width="3"/></symbol>
-    <symbol id="i-images" viewBox="0 0 22 22"><path d="M1 3h20v14H1z" fill="#fff" stroke="#000"/><path d="M2 4h18v12H2z" fill="#8fd0ff"/><circle cx="6" cy="7" r="1.8" fill="#ffe000"/><path d="M2 16l6-7 4 5 3-3 5 5z" fill="#2e7d32"/></symbol>
     <symbol id="i-lock-open" viewBox="0 0 16 16"><path d="M4 7h8v7H4z" fill="#ffd400" stroke="#000"/><path d="M6 7V5a2.5 2.5 0 015 0" fill="none" stroke="#000" stroke-width="1.4"/><path d="M7 9h2v3H7z" fill="#000"/></symbol>
     <symbol id="i-broken" viewBox="0 0 16 16"><path d="M1 2h14v12H1z" fill="#fff" stroke="#000"/><path d="M2 3h5v10H2z" fill="#e8e8e8"/><path d="M3 5l2 3-2 3M9 3l6 5-6 5" fill="none" stroke="#808080"/><path d="M11 5l3 3-3 3" fill="#d40000" stroke="#000" stroke-width=".7"/></symbol>
 
@@ -301,10 +300,6 @@
             <span class="tbtn__label" data-i18n="ui.tb.reload">Reload</span>
         </button>
         <div class="tbtn__sep" aria-hidden="true"></div>
-        <button type="button" class="tbtn" data-option="images" aria-pressed="true">
-            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-images"/></svg>
-            <span class="tbtn__label" data-i18n="ui.tb.images">Images</span>
-        </button>
         <button type="button" class="tbtn" data-nav="print">
             <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-print"/></svg>
             <span class="tbtn__label" data-i18n="ui.tb.print">Print</span>
@@ -318,9 +313,9 @@
             <span class="tbtn__label" data-i18n="ui.tb.stop">Stop</span>
         </button>
         <div class="tbtn__sep" aria-hidden="true"></div>
-        <a class="tbtn tbtn--travel" aria-label="Travel to 2026" data-i18n-aria-label="ui.tb.travelLabel" href="../../../index.html">
+        <a class="tbtn tbtn--travel" aria-label="Travel to the 2026 website" data-i18n-aria-label="ui.tb.travelLabel" href="../../../index.html">
             <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-travel"/></svg>
-            <span class="tbtn__label" data-year>2026</span>
+            <span class="tbtn__label" data-i18n="ui.tb.travel">2026 website</span>
         </a>
         <a class="throbber" href="../../index.html" aria-label="True Friends home" data-i18n-aria-label="aria.home">
             <span class="tflogo "><img class="tflogo__img" src="../../../img/tf-pc-logo-transparent.svg" alt="" width="1955" height="1491" decoding="async"><img class="tflogo__img tflogo__img--hover" src="../../../img/tf-pc-logo-yellow-transparent.svg" alt="" aria-hidden="true" decoding="async"></span>
@@ -337,9 +332,6 @@
         <a class="dirbtn" href="../../index.html" data-i18n="ui.dir.home">Home</a>
         <a class="dirbtn" href="../../consulting.html" data-i18n="ui.dir.consulting">Consulting</a>
         <a class="dirbtn" href="../../studio.html" data-i18n="ui.dir.studio">Studio</a>
-        <a class="dirbtn" href="../../studio.html#gallery" data-i18n="ui.dir.gallery">Gallery</a>
-        <a class="dirbtn" href="../../consulting.html#team" data-i18n="ui.dir.cases">Reference Cases</a>
-        <a class="dirbtn" href="../../consulting.html#contact" data-i18n="ui.dir.guestbook">Guestbook</a>
     </nav>
     </div>
 
@@ -352,7 +344,7 @@
                 </a>
             </div>
             <nav class="pagenav" aria-label="Page navigation" data-i18n-aria-label="aria.pagenav">
-                [ <a href="../../index.html" data-i18n="page.nav.home">Home</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html" data-i18n="page.nav.consulting">Consulting</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html" data-i18n="page.nav.studio">Studio</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html#gallery" data-i18n="page.nav.gallery">Gallery</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#contact" data-i18n="page.nav.guestbook">Guestbook</a> ]
+                [ <a href="../../index.html" data-i18n="page.nav.home">Home</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html" data-i18n="page.nav.consulting">Consulting</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html" data-i18n="page.nav.studio">Studio</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#contact" data-i18n="page.nav.contact">Contact</a> ]
             </nav>
 
             <div class="casebanner">
@@ -408,15 +400,12 @@
                 </div>
                 <p data-i18n="page.updated">Last updated: {year}</p>
                 <div class="badges">
-                    <span class="badge" data-i18n="page.badges.res">Best viewed at 800 &times; 600</span>
-                    <span class="badge" data-i18n="page.badges.handcoded">Hand-coded, no frames</span>
                     <span class="badge badge--hot" data-i18n="page.badges.motala">Made in Motala, Sweden</span>
                     <span class="badge" data-i18n="page.badges.modem">33.6 kbps friendly</span>
                 </div>
                 <p data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
                 <p class="timewarp">
-                    <a href="../../../index.html"><span data-i18n="page.travel">This site also exists in</span>
-                    <span data-year>2026</span></a>
+                    <a href="../../../index.html" data-i18n="page.travel">Back to the future (2026 website)</a>
                 </p>
         </article>
     </main>
@@ -712,12 +701,13 @@
         </div>
         <div class="dlg__body">
             <div class="dlg__msg">
-                <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-info"/></svg>
-                <p data-i18n="ui.dlg.shutDownBody">It is now safe to email hello@truefriends.se.</p>
+                <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-helpq"/></svg>
+                <p data-i18n="ui.dlg.shutDownBody">Do you want to travel back to the future?</p>
             </div>
         </div>
         <div class="dlg__actions">
-            <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
+            <button type="button" class="btn" data-close-dialog data-i18n="ui.dlg.cancel">Cancel</button>
+            <a class="btn btn--default" href="../../../index.html" data-i18n="ui.dlg.ok">OK</a>
         </div>
     </div>
 </dialog>

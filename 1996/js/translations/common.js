@@ -3,7 +3,7 @@
  * Strings shared across every page: the browser chrome (menus, toolbar,
  * location bar, directory buttons, status bar, taskbar, dialogs), the
  * document's own furniture (nav strip, footer, counter, badges), the
- * guestbook form, and the status messages. Page prose — the about text, the
+ * contact form, and the status messages. Page prose — the about text, the
  * service descriptions, the client work — lives in the per-page file, which
  * loads AFTER this one and merges in via TF_ADD_TRANSLATIONS at the bottom.
  *
@@ -92,8 +92,8 @@ window.TF_TRANSLATIONS = {
         print: "Print",
         find: "Find",
         stop: "Stop",
-        travel: "{year}",
-        travelLabel: "Travel to the {year} site",
+        travel: "{year} website",
+        travelLabel: "Travel to the {year} website",
       },
 
       location: "Location:",
@@ -105,7 +105,6 @@ window.TF_TRANSLATIONS = {
         studio: "Studio",
         gallery: "Gallery",
         cases: "Reference Cases",
-        guestbook: "Guestbook",
       },
 
       status: {
@@ -145,7 +144,7 @@ window.TF_TRANSLATIONS = {
         consulting: "Consulting",
         studio: "Studio",
         home: "Home page",
-        contact: "Sign the guestbook…",
+        contact: "Say hi…",
         readme: "Read Me",
         shortcuts: "Keyboard Shortcuts",
         travel: "Travel to",
@@ -176,7 +175,7 @@ window.TF_TRANSLATIONS = {
         exitTitle: "True Friends 96",
         exitBody:
           "This program cannot be closed. A true friend does not walk out on you.",
-        exitBody2: "Sign the guestbook instead — we answer faster than a modem.",
+        exitBody2: "Say hi instead — we answer faster than a modem.",
 
         notFoundTitle: "Error 404",
         notFoundBody: "The requested URL was not found on this server:",
@@ -198,10 +197,10 @@ window.TF_TRANSLATIONS = {
           "Based in Motala, Sweden. Available worldwide. Requires 640K of memory and a friend on the other end of the line.",
 
         shutDownTitle: "Shut Down",
-        shutDownBody: "It is now safe to email hello@truefriends.se.",
+        shutDownBody: "Do you want to travel back to the future?",
 
         viewerTitle: "Image Viewer",
-        contactTitle: "Guestbook Entry",
+        contactTitle: "Say hi!",
       },
 
       shortcuts: {
@@ -220,7 +219,7 @@ window.TF_TRANSLATIONS = {
         consulting: "Consulting",
         studio: "Studio",
         gallery: "Gallery",
-        guestbook: "Guestbook",
+        contact: "Contact",
       },
       counter: "You are visitor number",
       updated: "Last updated: {year}",
@@ -231,7 +230,7 @@ window.TF_TRANSLATIONS = {
         modem: "33.6 kbps friendly",
       },
       altOff: "Image not loaded — Auto Load Images is off.",
-      travel: "This site also exists in",
+      travel: "Back to the future ({year} website)",
     },
 
     /* ---------- Site-wide labels ---------- */
@@ -241,7 +240,7 @@ window.TF_TRANSLATIONS = {
       services: "Services",
       team: "Consultants",
       gallery: "Gallery",
-      contact: "Guestbook",
+      contact: "Contact",
     },
     hero: {
       cta: "Say hi",
@@ -256,20 +255,20 @@ window.TF_TRANSLATIONS = {
       back: "Back to Consulting",
     },
     contact: {
-      label: "Guestbook",
-      lede: "Find us on our social media channels, reach out via email, or sign the guestbook below and we will write back.",
+      label: "Contact",
+      lede: "Find us on our social media channels, reach out via email or send a message through the form below.",
       placeholders: {
         firstName: "First name",
         lastName: "Last name",
         email: "Email",
         message: "Message",
       },
-      submit: "Sign the guestbook",
+      submit: "Send",
       otherWays: "Other ways to reach us",
     },
     modal: {
-      title: "Guestbook Entry",
-      desc: "Leave your details and a message, and we will get back to you as soon as we can.",
+      title: "Say hi!",
+      desc: "Please fill out the contact form and we will get back to you as soon as we can.",
       close: "Close",
       send: "Send",
     },
@@ -388,7 +387,7 @@ window.TF_TRANSLATIONS = {
         print: "Skriv ut",
         find: "Sök",
         stop: "Stopp",
-        travel: "{year}",
+        travel: "{year} webbplats",
         travelLabel: "Res till {year} års webbplats",
       },
 
@@ -401,7 +400,6 @@ window.TF_TRANSLATIONS = {
         studio: "Studio",
         gallery: "Galleri",
         cases: "Referensuppdrag",
-        guestbook: "Gästbok",
       },
 
       status: {
@@ -441,7 +439,7 @@ window.TF_TRANSLATIONS = {
         consulting: "Konsult",
         studio: "Studio",
         home: "Startsida",
-        contact: "Skriv i gästboken…",
+        contact: "Säg hej…",
         readme: "Läs mig",
         shortcuts: "Kortkommandon",
         travel: "Res till",
@@ -472,7 +470,7 @@ window.TF_TRANSLATIONS = {
         exitTitle: "True Friends 96",
         exitBody: "Programmet kan inte avslutas. En true friend lämnar dig inte.",
         exitBody2:
-          "Skriv i gästboken i stället — vi svarar snabbare än ett modem.",
+          "Säg hej i stället — vi svarar snabbare än ett modem.",
 
         notFoundTitle: "Fel 404",
         notFoundBody: "Den begärda adressen finns inte på den här servern:",
@@ -494,10 +492,10 @@ window.TF_TRANSLATIONS = {
           "Baserade i Motala, Sverige. Tillgängliga världen över. Kräver 640K minne och en vän i andra änden av linjen.",
 
         shutDownTitle: "Avsluta",
-        shutDownBody: "Det är nu säkert att mejla hello@truefriends.se.",
+        shutDownBody: "Vill du resa tillbaka till framtiden?",
 
         viewerTitle: "Bildvisare",
-        contactTitle: "Gästboksinlägg",
+        contactTitle: "Säg hej!",
       },
 
       shortcuts: {
@@ -515,7 +513,7 @@ window.TF_TRANSLATIONS = {
         consulting: "Konsult",
         studio: "Studio",
         gallery: "Galleri",
-        guestbook: "Gästbok",
+        contact: "Kontakt",
       },
       counter: "Du är besökare nummer",
       updated: "Senast uppdaterad: {year}",
@@ -526,7 +524,7 @@ window.TF_TRANSLATIONS = {
         modem: "Modemvänlig i 33,6 kbit/s",
       },
       altOff: "Bilden är inte inläst — automatisk bildinläsning är av.",
-      travel: "Den här sidan finns även i",
+      travel: "Tillbaka till framtiden ({year} webbplats)",
     },
 
     nav: {
@@ -535,7 +533,7 @@ window.TF_TRANSLATIONS = {
       services: "Tjänster",
       team: "Konsulter",
       gallery: "Galleri",
-      contact: "Gästbok",
+      contact: "Kontakt",
     },
     hero: {
       cta: "Säg hej",
@@ -550,20 +548,20 @@ window.TF_TRANSLATIONS = {
       back: "Tillbaka till Konsult",
     },
     contact: {
-      label: "Gästbok",
-      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post, eller skriv i gästboken nedan så hör vi av oss.",
+      label: "Kontakt",
+      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post eller skicka ett meddelande via formuläret nedan.",
       placeholders: {
         firstName: "Förnamn",
         lastName: "Efternamn",
         email: "E‑post",
         message: "Meddelande",
       },
-      submit: "Skriv i gästboken",
+      submit: "Skicka",
       otherWays: "Andra sätt att nå oss",
     },
     modal: {
-      title: "Gästboksinlägg",
-      desc: "Lämna dina uppgifter och ett meddelande så återkommer vi så snart vi kan.",
+      title: "Säg hej!",
+      desc: "Fyll i kontaktformuläret så återkommer vi så snart vi kan.",
       close: "Stäng",
       send: "Skicka",
     },
