@@ -214,13 +214,6 @@ window.TF_TRANSLATIONS = {
 
     /* ---------- The document's own furniture ---------- */
     page: {
-      nav: {
-        home: "Home",
-        consulting: "Consulting",
-        studio: "Studio",
-        gallery: "Gallery",
-        contact: "Contact",
-      },
       counter: "You are visitor number",
       updated: "Last updated: {year}",
       badges: {
@@ -235,7 +228,7 @@ window.TF_TRANSLATIONS = {
 
     /* ---------- Site-wide labels ---------- */
     nav: {
-      start: "Home",
+      start: "Start",
       about: "About",
       services: "Services",
       team: "Consultants",
@@ -508,13 +501,6 @@ window.TF_TRANSLATIONS = {
     },
 
     page: {
-      nav: {
-        home: "Hem",
-        consulting: "Konsult",
-        studio: "Studio",
-        gallery: "Galleri",
-        contact: "Kontakt",
-      },
       counter: "Du är besökare nummer",
       updated: "Senast uppdaterad: {year}",
       badges: {
@@ -528,7 +514,7 @@ window.TF_TRANSLATIONS = {
     },
 
     nav: {
-      start: "Hem",
+      start: "Start",
       about: "Om oss",
       services: "Tjänster",
       team: "Konsulter",

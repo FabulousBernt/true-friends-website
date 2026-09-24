@@ -794,7 +794,7 @@ body.hide-dirbar .dirbar { display: none; }
 .door:hover .door__name { color: var(--doc-active); }
 .door__desc { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--doc-fg); }
 
-/* ---------- Guestbook form ----------
+/* ---------- Contact form ----------
  * Form controls belonged to the operating system in 1996, so these are the
  * only part of the document drawn in the chrome's language.
  * ------------------------------------------------------------------------ */
@@ -933,18 +933,20 @@ body.hide-dirbar .dirbar { display: none; }
 .timewarp { font-size: var(--fs-small); }
 .timewarp a { text-decoration: underline; }
 
-.badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+/* The 88x31 web badge: a flat block with a hairline rule around it. The
+   outset border it used to carry made these read as buttons you could press,
+   which is the one thing a badge never was. */
 .badge {
-  padding: 3px 8px;
-  border: 2px outset var(--w-face);
-  background: var(--w-face);
+  padding: 4px 10px;
+  border: 1px solid var(--w-ink);
+  background: var(--tf-yellow);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #222;
+  color: var(--w-ink);
 }
-.badge--hot { background: var(--tf-yellow); border-color: var(--tf-yellow); }
 
 /* "NEW!" beside a link, the way it was stamped on anything added that month. */
 .new-flag {

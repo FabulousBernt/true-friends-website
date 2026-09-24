@@ -249,7 +249,7 @@
                 <a class="menu__item " href="../../consulting.html"  data-i18n="ui.dir.consulting">Consulting</a>
                 <a class="menu__item " href="../../studio.html"  data-i18n="ui.dir.studio">Studio</a>
                 <a class="menu__item " href="../../studio.html#gallery"  data-i18n="ui.dir.gallery">Gallery</a>
-                <a class="menu__item " href="../../consulting.html#contact"  data-i18n="ui.dir.guestbook">Guestbook</a>
+                <a class="menu__item " href="../../consulting.html#contact"  data-i18n="nav.contact">Contact</a>
                 <div class="menu__sep"></div>
                 <div class="menu__item" aria-disabled="true" data-i18n="ui.bookmarks.cases">Reference cases</div>
                 <a class="menu__item" href="../../reference-cases/johnny-vigersten/epiroc.html">Epiroc</a>
@@ -337,14 +337,14 @@
 
     <main class="viewport" id="document" aria-label="Document" data-i18n-aria-label="aria.document">
         <article class="page">
-            <div class="masthead masthead--small">
+            <div class="masthead masthead--small" id="top">
                 <a class="masthead__lockup" href="../../index.html">
                     <span class="tflogo masthead__logo"><img class="tflogo__img" src="../../../img/tf-pc-logo-transparent.svg" alt="" width="1955" height="1491" decoding="async"><img class="tflogo__img tflogo__img--hover" src="../../../img/tf-pc-logo-yellow-transparent.svg" alt="" aria-hidden="true" decoding="async"></span>
                     <img class="masthead__word" src="../../../img/tf-archivo-yellow-transparent.svg" alt="True Friends" width="3956" height="484" decoding="async">
                 </a>
             </div>
             <nav class="pagenav" aria-label="Page navigation" data-i18n-aria-label="aria.pagenav">
-                [ <a href="../../index.html" data-i18n="page.nav.home">Home</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html" data-i18n="page.nav.consulting">Consulting</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html" data-i18n="page.nav.studio">Studio</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#contact" data-i18n="page.nav.contact">Contact</a> ]
+                [ <a href="../../consulting.html#top" data-i18n="nav.start">Start</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#about" data-i18n="nav.about">About</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#services" data-i18n="nav.services">Services</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#team" data-i18n="nav.team">Consultants</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#contact" data-i18n="nav.contact">Contact</a> ]
             </nav>
 
             <div class="casebanner">
@@ -380,7 +380,7 @@
                 </div>
                 <p data-i18n="page.updated">Last updated: {year}</p>
                 <div class="badges">
-                    <span class="badge badge--hot" data-i18n="page.badges.motala">Made in Motala, Sweden</span>
+                    <span class="badge" data-i18n="page.badges.motala">Made in Motala, Sweden</span>
                     <span class="badge" data-i18n="page.badges.modem">33.6 kbps friendly</span>
                 </div>
                 <p data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
@@ -442,7 +442,7 @@
     <div class="dlg">
         <div class="titlebar">
             <img class="titlebar__icon" src="../../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
-            <h2 class="titlebar__text" id="dlg-contact-title" data-i18n="ui.dlg.contactTitle">Guestbook Entry</h2>
+            <h2 class="titlebar__text" id="dlg-contact-title" data-i18n="ui.dlg.contactTitle">Say hi!</h2>
             <div class="titlebar__buttons">
                 <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
                     <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
