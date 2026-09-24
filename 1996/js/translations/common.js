@@ -136,7 +136,7 @@ window.TF_TRANSLATIONS = {
         latency: "Latency:",
         security: "Security:",
         insecure: "None (this is a 1996 browser)",
-        note: "Connected via 33.6 kbps dial-up modem.",
+        note: "Connected via dial-up modem.",
       },
 
       start: {
@@ -192,9 +192,7 @@ window.TF_TRANSLATIONS = {
 
         readmeTitle: "README.TXT",
         readmeBody:
-          "True Friends is a creative and technical studio & consulting firm. Consulting covers testing, UX/UI design, web production, software development and cybersecurity. Studio covers web production, design, market communication, photography, video and editing.",
-        readmeBody2:
-          "Based in Motala, Sweden. Available worldwide. Requires 640K of memory and a friend on the other end of the line.",
+          "True Friends is a creative and technical studio & consulting firm. Based in Motala, Sweden. Available worldwide.",
 
         shutDownTitle: "Shut Down",
         shutDownBody: "Do you want to travel back to the future?",
@@ -206,7 +204,7 @@ window.TF_TRANSLATIONS = {
       doom: {
         title: "DOOM",
         keys: "Arrows move · Ctrl fires · Space opens doors · X closes the window",
-        mobile: "Doom is only available on desktop, it's 1996…",
+        mobile: "DOOM is not available on mobile devices, it's 1996…",
       },
 
       shortcuts: {
@@ -226,7 +224,7 @@ window.TF_TRANSLATIONS = {
         res: "Best viewed at 800 × 600",
         handcoded: "Hand-coded, no frames",
         motala: "Made in Motala, Sweden",
-        modem: "33.6 kbps friendly",
+        modem: "Dial-up friendly",
       },
       altOff: "Image not loaded — Auto Load Images is off.",
       travel: "Back to the future ({year} website)",
@@ -430,7 +428,7 @@ window.TF_TRANSLATIONS = {
         latency: "Svarstid:",
         security: "Säkerhet:",
         insecure: "Ingen (det här är en webbläsare från 1996)",
-        note: "Ansluten via 33,6 kbit/s uppringt modem.",
+        note: "Ansluten via uppringt modem.",
       },
 
       start: {
@@ -486,9 +484,7 @@ window.TF_TRANSLATIONS = {
 
         readmeTitle: "LASMIG.TXT",
         readmeBody:
-          "True Friends är en kreativ och teknisk studio och konsultfirma. Konsult omfattar testning, UX/UI-design, webbproduktion, mjukvaruutveckling och cybersäkerhet. Studio omfattar webbproduktion, design, marknadskommunikation, foto, video och redigering.",
-        readmeBody2:
-          "Baserade i Motala, Sverige. Tillgängliga världen över. Kräver 640K minne och en vän i andra änden av linjen.",
+          "True Friends är en kreativ och teknisk studio och konsultfirma. Baserade i Motala, Sverige men tillgängliga världen över.",
 
         shutDownTitle: "Avsluta",
         shutDownBody: "Vill du resa tillbaka till framtiden?",

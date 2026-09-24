@@ -73,7 +73,7 @@ window.TF_TRANSLATIONS = {
        split so the tail can drop on a narrow screen without leaving the
        Swedish phrase hyphenated. */
     era: {
-      classic: "TF Classic",
+      classic: "TF 1996",
       classicTail: "website",
     },
     team: {
@@ -158,7 +158,7 @@ window.TF_TRANSLATIONS = {
       copyright: "© {year} True Friends. All rights reserved.",
     },
     era: {
-      classic: "TF Classic",
+      classic: "TF 1996",
       classicTail: "webbplats",
     },
     team: {
