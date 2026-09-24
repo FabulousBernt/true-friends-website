@@ -73,6 +73,11 @@
 
   --page-max: 790px;
   --taskbar-h: 34px;
+
+  /* How far the window sits from the screen edges. The maximised state and
+     the narrow breakpoint change these two and nothing else. */
+  --desk-pad: 16px;
+  --desk-foot: calc(var(--taskbar-h) + 20px);
 }
 
 /* ---------------------------------------------------------------------------
@@ -117,24 +122,31 @@
    visitor can read lives inside .viewport, which is the only scroller on the
    page — there is nothing out on the teal to scroll to.
    
-   Every height below derives from this one declaration rather than from vh
-   units repeated down the tree. That matters because the window used to be
-   sized in dvh while the page floor was min-height:100vh: wherever those two
-   disagree — a phone with its URL bar showing, most obviously — the document
-   gained exactly that much scrollable height, and clicking a nav anchor
-   scrolled the whole window out of frame. */
+   Two things enforce that, and both are needed.
+   
+   `overflow: clip` rather than `hidden`, because a `hidden` box is still a
+   scroll container: it shows no scrollbar but script and fragment navigation
+   can still scroll it, and the visitor has no way to scroll back. Clicking a
+   nav anchor did exactly that — the window slid up out of the screen and
+   stayed there. `clip` creates no scroll container at all.
+   
+   And the window itself is pinned rather than laid out in the page, so there
+   is no in-flow content for anything to scroll in the first place. Firefox
+   was propagating the document's full height up past .viewport's containment
+   into the root's scrollable area — 2775px of it — where Chrome reported
+   none. Taking .browser out of flow settles the question in every engine
+   instead of relying on each one to contain overflow the same way. */
 html {
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  height: 100%;
+  overflow: clip;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  padding: 16px 16px calc(var(--taskbar-h) + 20px);
+  padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: clip;
   font-family: var(--font-ui);
   font-size: var(--fs-chrome);
   color: var(--w-ink);
@@ -238,11 +250,15 @@ button:focus-visible .tflogo__img--hover { opacity: 1; }
  * ======================================================================== */
 
 .browser {
+  position: fixed;
+  top: var(--desk-pad);
+  left: var(--desk-pad);
+  right: var(--desk-pad);
+  bottom: var(--desk-foot);
   display: flex;
   flex-direction: column;
-  height: 100%;
   max-width: 1180px;
-  margin: 0 auto;
+  margin-inline: auto;
   background: var(--w-face);
   padding: 3px;
   box-shadow:
@@ -253,7 +269,7 @@ button:focus-visible .tflogo__img--hover { opacity: 1; }
     4px 4px 0 0 rgba(0, 0, 0, 0.25);
 }
 
-body.is-maximized { padding: 0 0 var(--taskbar-h); }
+body.is-maximized { --desk-pad: 0px; --desk-foot: var(--taskbar-h); }
 body.is-maximized .browser { max-width: none; }
 
 /* ---------- Title bar ---------- */
@@ -1477,7 +1493,7 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
 body.is-minimized .chrome,
 body.is-minimized .viewport,
 body.is-minimized .statusbar { display: none; }
-body.is-minimized .browser { height: auto; }
+body.is-minimized .browser { bottom: auto; }
 
 /* ===========================================================================
  * Responsive
@@ -1493,7 +1509,7 @@ body.is-minimized .browser { height: auto; }
 }
 
 @media (max-width: 680px) {
-  body { padding: 8px 8px calc(var(--taskbar-h) + 12px); }
+  :root { --desk-pad: 8px; --desk-foot: calc(var(--taskbar-h) + 12px); }
   .toolbar { overflow-x: auto; }
   .tbtn { min-width: 0; padding: 4px 8px 3px; }
   .tbtn__label { display: none; }
@@ -1530,10 +1546,11 @@ body.is-minimized .browser { height: auto; }
 @media print {
   /* Undo the one-screen lock, or the printer gets a single screenful. */
   html, body { height: auto; overflow: visible; }
+  .browser { position: static; inset: auto; }
   body { padding: 0; background: #fff; }
   .titlebar, .chrome, .statusbar, .taskbar, .startmenu, .boot,
   .marquee, .throbber, dialog { display: none !important; }
-  .browser { max-width: none; height: auto; padding: 0; box-shadow: none; }
+  .browser { max-width: none; padding: 0; box-shadow: none; }
   .viewport { background: #fff; padding: 0; box-shadow: none; overflow: visible; }
   .page { max-width: none; padding: 0; }
   .masthead, .page h2, .pagenav, .casebanner { margin-left: 0; margin-right: 0; }
