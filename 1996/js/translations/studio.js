@@ -29,6 +29,8 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Gallery",
+      intro: "A selection of our photography. Click any thumbnail to open it in the image viewer.",
+      count: "{n} images in this folder.",
     },
     services: {
       note: "Our media services are available to both businesses and private individuals.<br>We also collaborate with various partners for larger and more complex projects.",
@@ -85,6 +87,8 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Galleri",
+      intro: "Ett urval av vår fotografi. Klicka på en miniatyr så öppnas den i bildvisaren.",
+      count: "{n} bilder i den här mappen.",
     },
     services: {
       note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi ibland med olika partners.",

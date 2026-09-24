@@ -26,6 +26,9 @@
      canonical address is. The location bar and the URL resolver are built on
      those two facts, so neither has to guess at directory depth. */
   const ROOT = body.dataset.root || "";
+  /* Photos, logos and CVs are shared with the 2026 site and live one level
+     above the 1996 site's own root, so they get their own prefix. */
+  const SHARED = ROOT + "../";
   const SITE_URL = body.dataset.url || "http://www.truefriends.se/";
   const HOST = "www.truefriends.se";
 
@@ -46,6 +49,10 @@
   // rolls over on its own that way.
   const CURRENT_YEAR = new Date().getFullYear();
   const substitute = (s) => s.replace("{year}", CURRENT_YEAR);
+
+  /* The links across to the other era name the current year, so they are
+     written from the clock rather than typed into the markup. */
+  $$("[data-year]").forEach((el) => { el.textContent = String(CURRENT_YEAR); });
 
   let currentLang = DEFAULT_LANG;
 
@@ -658,8 +665,8 @@
 
   if (thumbGrid && viewer) {
     const photos = GALLERY_IMAGES.map((file, i) => ({
-      full: `${ROOT}img/gallery/${file}`,
-      thumb: `${ROOT}img/gallery/thumbs/${file}`,
+      full: `${SHARED}img/gallery/${file}`,
+      thumb: `${SHARED}img/gallery/thumbs/${file}`,
       alt: `Gallery photo ${i + 1}`,
       name: file,
     }));

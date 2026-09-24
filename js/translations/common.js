@@ -1,20 +1,20 @@
-/* True Friends 96 — common translation strings (EN + SV)
+/* True Friends — common translation strings (EN + SV)
  *
- * Strings shared across every page: the browser chrome (menus, toolbar,
- * location bar, directory buttons, status bar, taskbar, dialogs), the
- * document's own furniture (nav strip, footer, counter, badges), the
- * guestbook form, and the status messages. Page prose — the about text, the
- * service descriptions, the client work — lives in the per-page file, which
- * loads AFTER this one and merges in via TF_ADD_TRANSLATIONS at the bottom.
+ * This file holds strings shared across ALL pages: nav, footer, aria,
+ * status messages, the contact modal, and site-wide labels. Page prose
+ * that differs per page — the about section included — lives in the
+ * per-page file instead. Each
+ * per-page file (landing.js, consulting.js, studio.js, epiroc.js,
+ * kopparbergs-brewery.js) loads AFTER this one and adds its own keys
+ * via TF_ADD_TRANSLATIONS below.
  *
  * Keys are referenced from HTML via:
- *   data-i18n              → textContent
- *   data-i18n-html         → innerHTML (trusted markup only)
- *   data-i18n-placeholder  → placeholder attribute
- *   data-i18n-aria-label   → aria-label attribute
- *   data-i18n-content      → content attribute (meta tags)
- *   data-i18n-href         → href attribute (per-language files)
- *   data-i18n-title        → title attribute
+ *   data-i18n           → sets textContent
+ *   data-i18n-html      → sets innerHTML (only for trusted markup like accent spans)
+ *   data-i18n-placeholder → sets placeholder attribute
+ *   data-i18n-aria-label  → sets aria-label attribute
+ *   data-i18n-content     → sets content attribute (meta tags)
+ *   data-i18n-href        → sets href attribute (per-language links/files)
  */
 window.TF_TRANSLATIONS = {
   en: {
@@ -22,255 +22,58 @@ window.TF_TRANSLATIONS = {
       description:
         "True Friends is a creative and technical studio & consulting firm delivering services in software testing, web development, UI/UX design, graphic design, market communication, photography, video production and editing. We are based in Motala, Sweden, but available worldwide.",
     },
-
-    /* ---------- Browser chrome ---------- */
-    ui: {
-      appName: "True Friends 96",
-      title: {
-        start: "True Friends — Welcome — True Friends 96",
-        consulting: "True Friends — Consulting — True Friends 96",
-        studio: "True Friends — Studio — True Friends 96",
-      },
-
-      menu: {
-        file: "File",
-        edit: "Edit",
-        view: "View",
-        go: "Go",
-        bookmarks: "Bookmarks",
-        options: "Options",
-        help: "Help",
-      },
-      file: {
-        openLocation: "Open Location…",
-        saveAs: "Save As…",
-        print: "Print…",
-        exit: "Exit",
-      },
-      edit: {
-        undo: "Undo",
-        cut: "Cut",
-        copy: "Copy",
-        paste: "Paste",
-        selectAll: "Select All",
-        find: "Find in Page…",
-      },
-      view: {
-        reload: "Reload",
-        docInfo: "Document Info…",
-        english: "English",
-        swedish: "Svenska",
-      },
-      go: {
-        back: "Back",
-        forward: "Forward",
-        home: "Home",
-      },
-      bookmarks: {
-        heading: "True Friends",
-        cases: "Reference cases",
-      },
-      options: {
-        toolbar: "Show Toolbar",
-        location: "Show Location",
-        dirbar: "Show Directory Buttons",
-        images: "Auto Load Images",
-        maximize: "Maximize window",
-      },
-      helpMenu: {
-        readme: "Read Me",
-        shortcuts: "Keyboard Shortcuts",
-        about: "About True Friends 96",
-      },
-
-      tb: {
-        back: "Back",
-        forward: "Forward",
-        home: "Home",
-        reload: "Reload",
-        images: "Images",
-        print: "Print",
-        find: "Find",
-        stop: "Stop",
-      },
-
-      location: "Location:",
-      goBtn: "Go",
-
-      dir: {
-        home: "Home",
-        consulting: "Consulting",
-        studio: "Studio",
-        gallery: "Gallery",
-        cases: "Reference Cases",
-        guestbook: "Guestbook",
-      },
-
-      status: {
-        done: "Document: Done",
-        connecting: "Connecting to {host}…",
-        contacted: "Host contacted. Waiting for reply…",
-        transferring: "Transferring data…",
-        stopped: "Transfer interrupted.",
-      },
-      secure: "This document is not encrypted.",
-
-      find: {
-        title: "Find",
-        label: "Find what:",
-        next: "Find Next",
-        count: "Match {n} of {total}.",
-        none: "No match for “{term}”.",
-      },
-
-      docinfo: {
-        title: "Document Info",
-        location: "Location:",
-        docTitle: "Title:",
-        modified: "Last modified:",
-        server: "Server:",
-        protocol: "Protocol:",
-        connStatus: "Status:",
-        online: "ONLINE",
-        latency: "Latency:",
-        security: "Security:",
-        insecure: "None (this is a 1996 browser)",
-        note: "Connected via 33.6 kbps dial-up modem.",
-      },
-
-      start: {
-        label: "Start",
-        consulting: "Consulting",
-        studio: "Studio",
-        home: "Home page",
-        contact: "Sign the guestbook…",
-        readme: "Read Me",
-        shortcuts: "Keyboard Shortcuts",
-        shutDown: "Shut Down…",
-      },
-
-      boot: {
-        dialing: "Dialing 08-555 1996…",
-        negotiating: "Negotiating at 33.6 kbps…",
-      },
-
-      dlg: {
-        ok: "OK",
-        cancel: "Cancel",
-        close: "Close",
-
-        aboutTitle: "About True Friends 96",
-        aboutHeading: "True Friends 96",
-        aboutVersion: "Version 96 (Build 1996.03.12)",
-        aboutBody:
-          "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
-        aboutLicense: "This product is licensed to: a true friend.",
-
-        saveTitle: "Save As",
-        saveBody:
-          "The document could not be saved. Insert a formatted floppy disk in drive A: and try again.",
-
-        exitTitle: "True Friends 96",
-        exitBody:
-          "This program cannot be closed. A true friend does not walk out on you.",
-        exitBody2: "Sign the guestbook instead — we answer faster than a modem.",
-
-        notFoundTitle: "Error 404",
-        notFoundBody: "The requested URL was not found on this server:",
-        notFoundBody2:
-          "Check the spelling, or use the directory buttons above — there are only a handful of pages here and all of them are worth a look.",
-
-        noHostTitle: "Network Error",
-        noHostBody: "True Friends 96 is unable to locate the server:",
-        noHostBody2:
-          "The server does not have a DNS entry. This browser only knows one host, and it is www.truefriends.se.",
-
-        shortcutsTitle: "Keyboard Shortcuts",
-        shortcutsIntro: "While the document has focus:",
-
-        readmeTitle: "README.TXT",
-        readmeBody:
-          "True Friends is a creative and technical studio & consulting firm. Consulting covers testing, UX/UI design, web production, software development and cybersecurity. Studio covers web production, design, market communication, photography, video and editing.",
-        readmeBody2:
-          "Based in Motala, Sweden. Available worldwide. Requires 640K of memory and a friend on the other end of the line.",
-
-        shutDownTitle: "Shut Down",
-        shutDownBody: "It is now safe to email hello@truefriends.se.",
-
-        viewerTitle: "Image Viewer",
-        contactTitle: "Guestbook Entry",
-      },
-
-      shortcuts: {
-        slash: "Jump to the Location field",
-        enter: "Go to the address in the Location field",
-        esc: "Close the open dialog",
-        arrows: "Previous / next photo in the image viewer",
-        tab: "Move between controls",
-      },
-    },
-
-    /* ---------- The document's own furniture ---------- */
-    page: {
-      nav: {
-        home: "Home",
-        consulting: "Consulting",
-        studio: "Studio",
-        gallery: "Gallery",
-        guestbook: "Guestbook",
-      },
-      counter: "You are visitor number",
-      updated: "Last updated: {year}",
-      badges: {
-        res: "Best viewed at 800 × 600",
-        handcoded: "Hand-coded, no frames",
-        motala: "Made in Motala, Sweden",
-        modem: "33.6 kbps friendly",
-      },
-      altOff: "Image not loaded — Auto Load Images is off.",
-    },
-
-    /* ---------- Site-wide labels ---------- */
     nav: {
-      start: "Home",
+      start: "Start",
       about: "About",
       services: "Services",
       team: "Consultants",
       gallery: "Gallery",
-      contact: "Guestbook",
+      contact: "Contact",
     },
     hero: {
       cta: "Say hi",
       consulting: "Consulting",
       studio: "Studio",
+      /* The consulting hero's page name is drawn artwork, so the translation
+         is a different file rather than a different string. Studio needs no
+         equivalent — the word is identical in both languages, so one file
+         serves both. */
+      consultingMark: "img/tf-archivo-consulting-yellow-transparent.svg",
     },
-    services: { label: "Services" },
+    services: {
+      label: "Services",
+    },
     refCase: {
       about: "About",
       myRole: "My role",
       workflow: "Workflow",
-      back: "Back to Consulting",
     },
     contact: {
-      label: "Guestbook",
-      lede: "Find us on our social media channels, reach out via email, or sign the guestbook below and we will write back.",
+      label: "Contact",
+      lede: "Find us on our social media channels, reach out via email or send a message through the form below.",
       placeholders: {
         firstName: "First name",
         lastName: "Last name",
         email: "Email",
         message: "Message",
       },
-      submit: "Sign the guestbook",
+      submit: "Send",
       otherWays: "Other ways to reach us",
     },
     modal: {
-      title: "Guestbook Entry",
-      desc: "Leave your details and a message, and we will get back to you as soon as we can.",
+      title: "Say hi!",
+      desc: "Please fill out the contact form and we will get back to you as soon as we can.",
       close: "Close",
       send: "Send",
     },
     footer: {
       copyright: "© {year} True Friends. All rights reserved.",
+    },
+    /* The other era. The 1996 build lives under /1996/ and the portal that
+       offers both sits at the site root. */
+    era: {
+      to1996: "Time travel to 1996",
+      choose: "Choose your time",
     },
     status: {
       sending: "Sending…",
@@ -282,10 +85,13 @@ window.TF_TRANSLATIONS = {
         "Form endpoint not configured. Email hello@truefriends.se directly.",
     },
     aria: {
-      skip: "Skip to the document",
+      skip: "Skip to content",
       home: "True Friends home",
+      primary: "Primary",
       socialLinks: "Social links",
+      mobileMenu: "Toggle navigation menu",
       langSwitch: "Switch language",
+      backToTop: "Back to top",
       lightbox: "Photo gallery",
       prevPhoto: "Previous photo",
       nextPhoto: "Next photo",
@@ -294,273 +100,60 @@ window.TF_TRANSLATIONS = {
       lastName: "Last name",
       email: "Email",
       message: "Message",
-      minimize: "Minimize",
-      maximize: "Maximize",
-      close: "Close",
-      menubar: "Browser menu",
-      toolbar: "Navigation toolbar",
-      dirbar: "Directory buttons",
-      locationBar: "Location",
-      statusBar: "Status bar",
-      document: "Document",
-      pagenav: "Page navigation",
-      startMenu: "Start menu",
-      taskbar: "Taskbar",
-      boot: "Connecting",
     },
   },
 
   sv: {
     meta: {
       description:
-        "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retusch. Vi är baserade i Motala, Sverige, men tillgängliga världen över.",
+        "True Friends är en kreativ och teknisk studio och konsultbolag som levererar tjänster inom webbutveckling, webbdesign, testning, UI/UX design, grafisk design, marknadskommunikation, fotografering, filmproduktion och redigering/retouch. Vi är baserade i Motala, Sverige, men tillgängliga världen över.",
     },
-
-    ui: {
-      appName: "True Friends 96",
-      title: {
-        start: "True Friends — Välkommen — True Friends 96",
-        consulting: "True Friends — Konsult — True Friends 96",
-        studio: "True Friends — Studio — True Friends 96",
-      },
-
-      menu: {
-        file: "Arkiv",
-        edit: "Redigera",
-        view: "Visa",
-        go: "Gå",
-        bookmarks: "Bokmärken",
-        options: "Alternativ",
-        help: "Hjälp",
-      },
-      file: {
-        openLocation: "Öppna adress…",
-        saveAs: "Spara som…",
-        print: "Skriv ut…",
-        exit: "Avsluta",
-      },
-      edit: {
-        undo: "Ångra",
-        cut: "Klipp ut",
-        copy: "Kopiera",
-        paste: "Klistra in",
-        selectAll: "Markera allt",
-        find: "Sök på sidan…",
-      },
-      view: {
-        reload: "Läs om",
-        docInfo: "Dokumentinfo…",
-        english: "English",
-        swedish: "Svenska",
-      },
-      go: {
-        back: "Bakåt",
-        forward: "Framåt",
-        home: "Hem",
-      },
-      bookmarks: {
-        heading: "True Friends",
-        cases: "Referensuppdrag",
-      },
-      options: {
-        toolbar: "Visa verktygsfält",
-        location: "Visa adressfält",
-        dirbar: "Visa katalogknappar",
-        images: "Läs in bilder automatiskt",
-        maximize: "Maximera fönster",
-      },
-      helpMenu: {
-        readme: "Läs mig",
-        shortcuts: "Kortkommandon",
-        about: "Om True Friends 96",
-      },
-
-      tb: {
-        back: "Bakåt",
-        forward: "Framåt",
-        home: "Hem",
-        reload: "Läs om",
-        images: "Bilder",
-        print: "Skriv ut",
-        find: "Sök",
-        stop: "Stopp",
-      },
-
-      location: "Adress:",
-      goBtn: "Gå",
-
-      dir: {
-        home: "Hem",
-        consulting: "Konsult",
-        studio: "Studio",
-        gallery: "Galleri",
-        cases: "Referensuppdrag",
-        guestbook: "Gästbok",
-      },
-
-      status: {
-        done: "Dokument: Klart",
-        connecting: "Ansluter till {host}…",
-        contacted: "Värden kontaktad. Väntar på svar…",
-        transferring: "Överför data…",
-        stopped: "Överföringen avbröts.",
-      },
-      secure: "Det här dokumentet är inte krypterat.",
-
-      find: {
-        title: "Sök",
-        label: "Sök efter:",
-        next: "Sök nästa",
-        count: "Träff {n} av {total}.",
-        none: "Ingen träff för ”{term}”.",
-      },
-
-      docinfo: {
-        title: "Dokumentinfo",
-        location: "Adress:",
-        docTitle: "Titel:",
-        modified: "Senast ändrad:",
-        server: "Server:",
-        protocol: "Protokoll:",
-        connStatus: "Status:",
-        online: "UPPKOPPLAD",
-        latency: "Svarstid:",
-        security: "Säkerhet:",
-        insecure: "Ingen (det här är en webbläsare från 1996)",
-        note: "Ansluten via 33,6 kbit/s uppringt modem.",
-      },
-
-      start: {
-        label: "Start",
-        consulting: "Konsult",
-        studio: "Studio",
-        home: "Startsida",
-        contact: "Skriv i gästboken…",
-        readme: "Läs mig",
-        shortcuts: "Kortkommandon",
-        shutDown: "Avsluta…",
-      },
-
-      boot: {
-        dialing: "Ringer upp 08-555 1996…",
-        negotiating: "Förhandlar på 33,6 kbit/s…",
-      },
-
-      dlg: {
-        ok: "OK",
-        cancel: "Avbryt",
-        close: "Stäng",
-
-        aboutTitle: "Om True Friends 96",
-        aboutHeading: "True Friends 96",
-        aboutVersion: "Version 96 (Build 1996.03.12)",
-        aboutBody:
-          "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
-        aboutLicense: "Denna produkt är licensierad till: en true friend.",
-
-        saveTitle: "Spara som",
-        saveBody:
-          "Dokumentet kunde inte sparas. Sätt in en formaterad diskett i enhet A: och försök igen.",
-
-        exitTitle: "True Friends 96",
-        exitBody: "Programmet kan inte avslutas. En true friend lämnar dig inte.",
-        exitBody2:
-          "Skriv i gästboken i stället — vi svarar snabbare än ett modem.",
-
-        notFoundTitle: "Fel 404",
-        notFoundBody: "Den begärda adressen finns inte på den här servern:",
-        notFoundBody2:
-          "Kontrollera stavningen, eller använd katalogknapparna ovan — det finns bara en handfull sidor här och alla är värda ett besök.",
-
-        noHostTitle: "Nätverksfel",
-        noHostBody: "True Friends 96 hittar inte servern:",
-        noHostBody2:
-          "Servern saknar DNS-post. Den här webbläsaren känner bara till en värd, och det är www.truefriends.se.",
-
-        shortcutsTitle: "Kortkommandon",
-        shortcutsIntro: "När dokumentet har fokus:",
-
-        readmeTitle: "LASMIG.TXT",
-        readmeBody:
-          "True Friends är en kreativ och teknisk studio och konsultfirma. Konsult omfattar testning, UX/UI-design, webbproduktion, mjukvaruutveckling och cybersäkerhet. Studio omfattar webbproduktion, design, marknadskommunikation, foto, video och redigering.",
-        readmeBody2:
-          "Baserade i Motala, Sverige. Tillgängliga världen över. Kräver 640K minne och en vän i andra änden av linjen.",
-
-        shutDownTitle: "Avsluta",
-        shutDownBody: "Det är nu säkert att mejla hello@truefriends.se.",
-
-        viewerTitle: "Bildvisare",
-        contactTitle: "Gästboksinlägg",
-      },
-
-      shortcuts: {
-        slash: "Hoppa till adressfältet",
-        enter: "Gå till adressen i adressfältet",
-        esc: "Stäng öppen dialogruta",
-        arrows: "Föregående / nästa foto i bildvisaren",
-        tab: "Flytta mellan kontroller",
-      },
-    },
-
-    page: {
-      nav: {
-        home: "Hem",
-        consulting: "Konsult",
-        studio: "Studio",
-        gallery: "Galleri",
-        guestbook: "Gästbok",
-      },
-      counter: "Du är besökare nummer",
-      updated: "Senast uppdaterad: {year}",
-      badges: {
-        res: "Bäst i 800 × 600",
-        handcoded: "Handkodad, inga ramar",
-        motala: "Gjord i Motala, Sverige",
-        modem: "Modemvänlig i 33,6 kbit/s",
-      },
-      altOff: "Bilden är inte inläst — automatisk bildinläsning är av.",
-    },
-
     nav: {
-      start: "Hem",
+      start: "Start",
       about: "Om oss",
       services: "Tjänster",
       team: "Konsulter",
       gallery: "Galleri",
-      contact: "Gästbok",
+      contact: "Kontakt",
     },
     hero: {
       cta: "Säg hej",
       consulting: "Konsult",
       studio: "Studio",
+      consultingMark: "img/tf-archivo-konsult-yellow-transparent.svg",
     },
-    services: { label: "Tjänster" },
+    services: {
+      label: "Tjänster",
+    },
     refCase: {
       about: "Om uppdraget",
       myRole: "Min roll",
       workflow: "Arbetsprocess",
-      back: "Tillbaka till Konsult",
     },
     contact: {
-      label: "Gästbok",
-      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post, eller skriv i gästboken nedan så hör vi av oss.",
+      label: "Kontakt",
+      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post eller skicka ett meddelande via formuläret nedan.",
       placeholders: {
         firstName: "Förnamn",
         lastName: "Efternamn",
         email: "E‑post",
         message: "Meddelande",
       },
-      submit: "Skriv i gästboken",
+      submit: "Skicka",
       otherWays: "Andra sätt att nå oss",
     },
     modal: {
-      title: "Gästboksinlägg",
-      desc: "Lämna dina uppgifter och ett meddelande så återkommer vi så snart vi kan.",
+      title: "Säg hej!",
+      desc: "Fyll i kontaktformuläret så återkommer vi så snart vi kan.",
       close: "Stäng",
       send: "Skicka",
     },
     footer: {
       copyright: "© {year} True Friends. All rights reserved.",
+    },
+    era: {
+      to1996: "Tidsresa till 1996",
+      choose: "Välj din tid",
     },
     status: {
       sending: "Skickar…",
@@ -572,10 +165,13 @@ window.TF_TRANSLATIONS = {
         "Formulärets adress är inte konfigurerad. Mejla hello@truefriends.se direkt.",
     },
     aria: {
-      skip: "Hoppa till dokumentet",
+      skip: "Hoppa till innehåll",
       home: "True Friends startsida",
+      primary: "Huvudnavigation",
       socialLinks: "Sociala kanaler",
+      mobileMenu: "Öppna navigeringsmenyn",
       langSwitch: "Byt språk",
+      backToTop: "Tillbaka till toppen",
       lightbox: "Fotogalleri",
       prevPhoto: "Föregående foto",
       nextPhoto: "Nästa foto",
@@ -584,19 +180,6 @@ window.TF_TRANSLATIONS = {
       lastName: "Efternamn",
       email: "E‑post",
       message: "Meddelande",
-      minimize: "Minimera",
-      maximize: "Maximera",
-      close: "Stäng",
-      menubar: "Webbläsarmeny",
-      toolbar: "Navigeringsverktygsfält",
-      dirbar: "Katalogknappar",
-      locationBar: "Adress",
-      statusBar: "Statusfält",
-      document: "Dokument",
-      pagenav: "Sidnavigering",
-      startMenu: "Startmeny",
-      taskbar: "Aktivitetsfält",
-      boot: "Kopplar upp",
     },
   },
 };

@@ -1,0 +1,525 @@
+/* ============================================================================
+ * True Friends — the time portal
+ *
+ * The front door. Two eras of the same site, side by side, each previewed by
+ * the machine you would have read it on and by a button drawn in that era's
+ * own visual language: a bevelled Windows 95 button on the left, the studio's
+ * yellow-on-black one on the right.
+ *
+ * Both computers are built from divs rather than artwork — a CRT is a fat
+ * rounded rectangle and a flat panel is a thin one — which keeps the page
+ * self-contained, scalable to any size, and cheap to animate.
+ * ========================================================================= */
+
+:root {
+  /* The 1996 half: the desktop teal, the beige of the box, phosphor green. */
+  --p-teal: #008080;
+  --p-beige: #d9d2c4;
+  --p-beige-dark: #b4ac9c;
+  --p-phosphor: #7dffb0;
+  --p-win-face: #c0c0c0;
+
+  /* The present half: the studio's own ground and accent. */
+  --p-ink: #0a0a0a;
+  --p-yellow: #fee440;
+  --p-ember: rgba(255, 140, 60, 0.55);
+
+  --p-fg: #f2f0e8;
+  --p-muted: rgba(242, 240, 232, 0.6);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-win: Tahoma, "MS Sans Serif", Verdana, Geneva, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* How far the unchosen side falls back when the other is hovered. */
+  --dim-rest: 0.62;
+  --dim-away: 0.32;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: #000;
+  color: var(--p-fg);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+a { color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--p-yellow); outline-offset: 4px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ===========================================================================
+ * Layout
+ * ======================================================================== */
+
+.portal {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  isolation: isolate;
+}
+
+/* The seam. A hairline with a soft bloom, so the two halves read as one
+   picture cut down the middle rather than two panels set beside each other. */
+.portal::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 1px;
+  margin-left: -0.5px;
+  background: linear-gradient(180deg,
+    transparent, rgba(255, 255, 255, 0.28) 22%, rgba(255, 255, 255, 0.28) 78%, transparent);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.era__scene, .era__bg, .machine, .era__panel,
+.crt__body, .crt__screen, .crt__glow, .crt__text, .crt__scan,
+.crt__chin, .crt__stand, .crt__base,
+.flat__body, .flat__screen, .flat__aurora, .flat__neck, .flat__base,
+.btn-96, .btn-now, .era__caption, .era__last { display: block; }
+
+.era {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: clamp(1.75rem, 4.5vh, 3rem);
+  padding: clamp(9rem, 24vh, 13rem) clamp(1rem, 4vw, 3rem) clamp(2.5rem, 6vh, 4rem);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* Only the scene dims. The button and its caption stay legible, because a
+   control you have to hover to read is not a control. */
+.era__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: var(--dim-rest);
+  transition: opacity 500ms ease;
+}
+.era:hover .era__scene,
+.era:focus-visible .era__scene { opacity: 1; }
+.portal:has(.era--now:hover) .era--past .era__scene,
+.portal:has(.era--past:hover) .era--now .era__scene { opacity: var(--dim-away); }
+
+.era__bg { position: absolute; inset: 0; }
+
+/* ---------- The 1996 half ---------- */
+
+.era--past .era__bg {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 45%, rgba(0, 128, 128, 0.85), transparent 72%),
+    linear-gradient(180deg, #001a1a 0%, #003535 55%, #001010 100%);
+}
+/* The faint weave of the Windows 95 desktop, kept at the same scale it has
+   everywhere else in the build. */
+.era--past .era__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(45deg,
+    rgba(255, 255, 255, 0.03) 0 2px, transparent 2px 4px);
+}
+
+/* ---------- The present half ---------- */
+
+.era--now .era__bg {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 55%, rgba(20, 25, 50, 0.9), transparent 70%),
+    linear-gradient(180deg, #0a0a0a 0%, #150f08 55%, #0a0a0a 100%);
+}
+/* The hero glow from the studio site, set drifting. It is the only warm thing
+   on the page and it is what makes the right half read as "now". */
+.era--now .era__bg::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse 46% 38% at 50% 50%, var(--p-ember), transparent 68%);
+  animation: drift 19s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate(-12%, 6%) scale(1); }
+  to   { transform: translate(12%, -6%) scale(1.18); }
+}
+
+/* ===========================================================================
+ * The machines
+ *
+ * Every dimension is in em against a font-size the container sets, so each
+ * computer scales as one object with the viewport.
+ * ======================================================================== */
+
+.machine {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  animation: float 9s ease-in-out infinite alternate;
+}
+@keyframes float {
+  from { transform: translateY(-5px); }
+  to   { transform: translateY(5px); }
+}
+
+/* ---------- 1996: a CRT on a beige box ---------- */
+
+.crt { font-size: clamp(5px, 1.45vw, 10px); }
+
+.crt__body {
+  width: 32em;
+  padding: 2.2em 2.2em 0;
+  border-radius: 1.6em 1.6em 0.8em 0.8em;
+  background: linear-gradient(150deg, #e6e0d3 0%, var(--p-beige) 42%, var(--p-beige-dark) 100%);
+  box-shadow:
+    inset 0 0.25em 0 rgba(255, 255, 255, 0.55),
+    inset 0 -0.35em 0.6em rgba(0, 0, 0, 0.18),
+    0 1.4em 3em rgba(0, 0, 0, 0.45);
+}
+
+.crt__screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 1.4em;
+  overflow: hidden;
+  background: #04120c;
+  box-shadow:
+    inset 0 0 0 0.35em #2a2a26,
+    inset 0 0 2.2em rgba(0, 0, 0, 0.9);
+}
+/* The phosphor bloom in the middle of the tube. */
+.crt__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 72% 62% at 50% 48%, rgba(0, 200, 130, 0.42), transparent 74%);
+  animation: flicker 3.4s steps(12, end) infinite;
+}
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  94%           { opacity: 0.88; }
+  96%           { opacity: 1; }
+  98%           { opacity: 0.93; }
+}
+.crt__text {
+  position: absolute;
+  left: 1.8em;
+  top: 1.6em;
+  font-family: var(--font-mono);
+  font-size: 1.5em;
+  letter-spacing: 0.06em;
+  color: var(--p-phosphor);
+  text-shadow: 0 0 0.5em rgba(125, 255, 176, 0.75);
+}
+.crt__cursor {
+  display: inline-block;
+  width: 0.62em; height: 1.05em;
+  vertical-align: -0.15em;
+  background: var(--p-phosphor);
+  box-shadow: 0 0 0.5em rgba(125, 255, 176, 0.8);
+  animation: blink 1.06s steps(2, jump-none) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Fine scanlines, plus one soft band rolling down the tube — the vertical
+   hold never was quite right. */
+.crt__scan {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, transparent 0%, rgba(160, 255, 200, 0.07) 48%, transparent 100%),
+    repeating-linear-gradient(180deg,
+      rgba(0, 0, 0, 0.32) 0 1px, transparent 1px 3px);
+  background-size: 100% 42%, 100% 3px;
+  background-repeat: no-repeat, repeat;
+  animation: roll 6.5s linear infinite;
+}
+@keyframes roll {
+  from { background-position: 0 -45%, 0 0; }
+  to   { background-position: 0 145%, 0 0; }
+}
+
+.crt__chin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9em 0.6em 1.3em;
+}
+.crt__chin b {
+  font-family: var(--font-win);
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #6f685a;
+}
+.crt__led {
+  width: 0.7em; height: 0.7em;
+  border-radius: 50%;
+  background: #35e06a;
+  box-shadow: 0 0 0.8em rgba(53, 224, 106, 0.9);
+}
+.crt__stand {
+  width: 11em; height: 1.8em;
+  background: linear-gradient(180deg, var(--p-beige-dark), #9a9282);
+  border-radius: 0 0 0.5em 0.5em;
+}
+.crt__base {
+  width: 18em; height: 1.2em;
+  border-radius: 0.6em;
+  background: linear-gradient(180deg, var(--p-beige), #8e8677);
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Now: a flat panel ---------- */
+
+.flat { font-size: clamp(5px, 1.45vw, 10px); }
+
+.flat__body {
+  width: 40em;
+  padding: 0.7em 0.7em 1.6em;
+  border-radius: 0.9em;
+  background: linear-gradient(160deg, #3a3a3e 0%, #1e1e21 55%, #121214 100%);
+  box-shadow:
+    inset 0 0.1em 0 rgba(255, 255, 255, 0.14),
+    0 1.6em 3.4em rgba(0, 0, 0, 0.65);
+}
+.flat__screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.35em;
+  overflow: hidden;
+  background: #090909;
+}
+/* The same warm hero gradient the studio site opens on, breathing. */
+.flat__aurora {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(ellipse 42% 40% at 68% 62%, rgba(255, 150, 70, 0.55), transparent 70%),
+    radial-gradient(ellipse 38% 34% at 28% 34%, rgba(90, 110, 255, 0.35), transparent 72%),
+    radial-gradient(ellipse 30% 26% at 50% 80%, rgba(254, 228, 64, 0.22), transparent 70%);
+  animation: aurora 14s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  from { transform: translate(-6%, 4%) scale(1); }
+  to   { transform: translate(6%, -4%) scale(1.22); }
+}
+.flat__mark {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 1.5em;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: rgba(255, 255, 255, 0.82);
+}
+.flat__neck {
+  width: 3.2em; height: 3.4em;
+  background: linear-gradient(180deg, #2a2a2d, #1a1a1c);
+}
+.flat__base {
+  width: 16em; height: 0.9em;
+  border-radius: 0.45em;
+  background: linear-gradient(180deg, #34343a, #17171a);
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.6);
+}
+
+/* ===========================================================================
+ * The choices
+ * ======================================================================== */
+
+.era__panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  text-align: center;
+}
+
+/* Each button is drawn in the language of the site behind it, so the choice
+   is a sample rather than a label. */
+.btn-96 {
+  min-width: 11rem;
+  padding: 0.85rem 2rem;
+  background: var(--p-win-face);
+  color: #000;
+  font-family: var(--font-win);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset -2px -2px 0 0 #000,
+    inset  2px  2px 0 0 #fff,
+    inset -4px -4px 0 0 #808080,
+    inset  4px  4px 0 0 #dfdfdf;
+}
+.era--past:active .btn-96 {
+  box-shadow:
+    inset  2px  2px 0 0 #000,
+    inset -2px -2px 0 0 #fff,
+    inset  4px  4px 0 0 #808080,
+    inset -4px -4px 0 0 #dfdfdf;
+}
+
+.btn-now {
+  min-width: 11rem;
+  padding: 0.9rem 2rem;
+  background: var(--p-yellow);
+  color: var(--p-ink);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), background-color 140ms;
+}
+.era--now:hover .btn-now { transform: translateY(-2px); }
+.era--now:active .btn-now { transform: translateY(1px); background: #e6cf3a; }
+
+.era__caption {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+}
+.era--past .era__caption { font-family: var(--font-win); }
+.era--now .era__caption { font-family: var(--font-mono); }
+
+/* A quiet note on the side you picked last time. Never moves the buttons —
+   the slot is always there, empty until it is earned. */
+.era__last {
+  min-height: 1.1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--p-yellow);
+  opacity: 0;
+}
+.era__last[data-on="true"] { opacity: 0.85; }
+
+/* ===========================================================================
+ * Heading and footer, floating over the seam
+ * ======================================================================== */
+
+.portal__head {
+  position: absolute;
+  top: clamp(1.6rem, 5vh, 3.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: min(92vw, 52rem);
+  text-align: center;
+  pointer-events: none;
+}
+.portal__mark {
+  width: clamp(48px, 7vw, 74px);
+  height: auto;
+  aspect-ratio: 1955 / 1491;
+  margin: 0 auto 0.9rem;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6));
+}
+.portal__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.85);
+}
+.portal__sub {
+  margin: 0.7rem auto 0;
+  max-width: 44rem;
+  text-wrap: balance;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.05em;
+  color: var(--p-muted);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+.portal__foot {
+  position: absolute;
+  bottom: clamp(1rem, 3vh, 1.8rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+.portal__langs { display: flex; align-items: center; gap: 0.5rem; }
+.portal__lang {
+  padding: 0.2rem 0.45rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.portal__lang[aria-pressed="true"] { color: var(--p-yellow); }
+.portal__lang:hover { color: var(--p-fg); }
+.portal__foot-sep { opacity: 0.4; }
+
+/* ===========================================================================
+ * Responsive — the seam turns horizontal
+ * ======================================================================== */
+
+@media (max-width: 760px), (max-height: 520px) {
+  body { overflow: auto; }
+  .portal { grid-template-columns: 1fr; height: auto; min-height: 100%; }
+  .portal::after {
+    top: 50%; bottom: auto; left: 0; right: 0;
+    width: auto; height: 1px;
+    margin: 0;
+    background: linear-gradient(90deg,
+      transparent, rgba(255, 255, 255, 0.28) 22%, rgba(255, 255, 255, 0.28) 78%, transparent);
+  }
+  .era {
+    min-height: 50vh;
+    padding: clamp(10rem, 26vh, 13rem) 1.25rem 2.5rem;
+  }
+  .era--now { padding-top: 3rem; padding-bottom: 5.5rem; }
+  .crt, .flat { font-size: clamp(5px, 2.6vw, 9px); }
+  .portal__head { top: 1.4rem; }
+  .portal__foot { position: static; transform: none; margin: 0 auto 1.4rem; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .machine,
+  .era--now .era__bg::after,
+  .flat__aurora,
+  .crt__glow,
+  .crt__scan,
+  .crt__cursor { animation: none; }
+  .btn-now { transition: none; }
+}

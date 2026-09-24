@@ -876,6 +876,11 @@ body.hide-dirbar .dirbar { display: none; }
   border: 1px solid var(--w-gray);
 }
 
+/* The way across to the other era, in the footer where a 1996 site put its
+   "this page is also available in…" line. */
+.timewarp { font-size: var(--fs-small); }
+.timewarp a { text-decoration: underline; }
+
 .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .badge {
   padding: 3px 8px;
