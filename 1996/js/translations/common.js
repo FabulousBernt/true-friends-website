@@ -147,7 +147,6 @@ window.TF_TRANSLATIONS = {
         readme: "Read Me",
         shortcuts: "Keyboard Shortcuts",
         travel: "Travel to",
-        choose: "Choose your time…",
         shutDown: "Shut Down…",
       },
 
@@ -231,7 +230,6 @@ window.TF_TRANSLATIONS = {
       },
       altOff: "Image not loaded — Auto Load Images is off.",
       travel: "This site also exists in",
-      choose: "Choose your time",
     },
 
     /* ---------- Site-wide labels ---------- */
@@ -443,7 +441,6 @@ window.TF_TRANSLATIONS = {
         readme: "Läs mig",
         shortcuts: "Kortkommandon",
         travel: "Res till",
-        choose: "Välj din tid…",
         shutDown: "Avsluta…",
       },
 
@@ -526,7 +523,6 @@ window.TF_TRANSLATIONS = {
       },
       altOff: "Bilden är inte inläst — automatisk bildinläsning är av.",
       travel: "Den här sidan finns även i",
-      choose: "Välj din tid",
     },
 
     nav: {

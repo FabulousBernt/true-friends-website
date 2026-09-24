@@ -1,4 +1,4 @@
-/* True Friends — landing (home.html) translations
+/* True Friends — landing (index.html) translations
  *
  * Adds landing-only keys onto TF_TRANSLATIONS. The Consulting/Studio
  * button labels come from js/translations/common.js; the lede under the

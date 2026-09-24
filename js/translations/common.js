@@ -69,11 +69,12 @@ window.TF_TRANSLATIONS = {
     footer: {
       copyright: "© {year} True Friends. All rights reserved.",
     },
-    /* The other era. The 1996 build lives under /1996/ and the portal that
-       offers both sits at the site root. */
+    /* The nav button across to the 1996 build under /1996/. The label is
+       split so the tail can drop on a narrow screen without leaving the
+       Swedish phrase hyphenated. */
     era: {
-      to1996: "Time travel to 1996",
-      choose: "Choose your time",
+      classic: "TF Classic",
+      classicTail: "website",
     },
     status: {
       sending: "Sending…",
@@ -152,8 +153,8 @@ window.TF_TRANSLATIONS = {
       copyright: "© {year} True Friends. All rights reserved.",
     },
     era: {
-      to1996: "Tidsresa till 1996",
-      choose: "Välj din tid",
+      classic: "TF Classic",
+      classicTail: "webbplats",
     },
     status: {
       sending: "Skickar…",
