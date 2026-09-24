@@ -1343,6 +1343,45 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
     inset  1px  1px 0 0 var(--w-gray);
 }
 
+/* ---------- DOOM ----------
+ * A DOS window inside a Windows window. The Archive's player wants a 4:3
+ * box and supplies its own chrome inside it, so all this does is give it a
+ * sunken frame to sit in. */
+.doomwin { max-width: 96vw; }
+/* A dialog sizes to its content, and an iframe at width:100% has no content
+   to size from — so the width is stated here and the frame fills it. */
+.doomwin .dlg { width: min(92vw, 880px); }
+.doomwin__screen {
+  margin: 3px;
+  padding: 4px;
+  background: #000;
+  box-shadow:
+    inset -1px -1px 0 0 var(--w-white),
+    inset  1px  1px 0 0 var(--w-gray),
+    inset -2px -2px 0 0 var(--w-face-light),
+    inset  2px  2px 0 0 var(--w-ink);
+}
+.doomwin__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 68vh;
+  border: 0;
+  background: #000;
+}
+.doomwin__keys { position: static; grid-template-columns: minmax(0, 1fr); }
+
+/* Greyed rather than hidden: the entry has to be there to be pressed. */
+.startmenu__item[aria-disabled="true"] {
+  color: var(--w-disabled);
+  text-shadow: 1px 1px 0 var(--w-white);
+}
+.startmenu__item[aria-disabled="true"] .i { opacity: 0.5; }
+.startmenu__item[aria-disabled="true"]:hover {
+  background: none;
+  color: var(--w-disabled);
+}
+
 /* Image viewer */
 .viewer { max-width: min(96vw, 1000px); }
 .viewer__stage {

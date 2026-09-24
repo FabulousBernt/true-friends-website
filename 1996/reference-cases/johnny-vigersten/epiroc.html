@@ -7,7 +7,7 @@
     <title>True Friends &mdash; Epiroc &mdash; True Friends 96</title>
     <meta name="description" content="True Friends is a creative and technical studio delivering visual design, user experience, testing and web development for ambitious projects." data-i18n-content="meta.description">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self' https://formsubmit.co; img-src 'self' data:; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self' https://formsubmit.co; img-src 'self' data:; frame-src https://archive.org https://*.archive.org; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="index,follow">
 
@@ -75,6 +75,20 @@
       <path d="M4 6h4v2.5H4z" fill="#fee440"/>
       <path d="M9 15h4v3H9z" fill="#2a2a2e" stroke="#000"/>
       <path d="M5 18h12v2H5z" fill="#3a3a40" stroke="#000"/>
+    </symbol>
+
+    <!-- The game in the Start menu. The status-bar face is the one piece of
+         DOOM everybody can draw from memory. -->
+    <symbol id="i-doom" viewBox="0 0 24 24">
+      <path d="M4 3h16v18H4z" fill="#6b2b1c"/>
+      <path d="M6 5h12v14H6z" fill="#c07a55"/>
+      <path d="M6 4h12v4H6z" fill="#8a3f22"/>
+      <path d="M5 3h3v3H5zM16 3h3v3h-3z" fill="#4a1c10"/>
+      <path d="M8 9h3v3H8zM13 9h3v3h-3z" fill="#fff"/>
+      <path d="M9 10h1.5v2H9zM14 10h1.5v2H14z" fill="#1a1a1a"/>
+      <path d="M11 13h2v3h-2z" fill="#8a3f22"/>
+      <path d="M8 17h8v2H8z" fill="#7a1010"/>
+      <path d="M9 17h1v2H9zM11.5 17h1v2h-1zM14 17h1v2h-1z" fill="#e8d8c8"/>
     </symbol>
 
     <!-- Message-box glyphs -->
@@ -463,6 +477,9 @@
         <button type="button" class="startmenu__item" data-open-dialog="dlg-readme"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span data-i18n="ui.start.readme">Read Me</span></button>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-shortcuts"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-helpq"/></svg><span data-i18n="ui.start.shortcuts">Keyboard Shortcuts</span></button>
         <div class="menu__sep"></div>
+        <!-- Enabled or greyed at runtime; see the DOOM section of win95.js. -->
+        <button type="button" class="startmenu__item startmenu__item--doom" data-doom-launch><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-doom"/></svg><span data-i18n="ui.start.doom">DOOM</span></button>
+        <div class="menu__sep"></div>
         <a class="startmenu__item" href="../../../index.html"><svg class="i" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-forward"/></svg><span><span data-i18n="ui.start.travel">Travel to</span> <span data-year>2026</span>&hellip;</span></a>
         <div class="menu__sep"></div>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-shutdown"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg><span data-i18n="ui.start.shutDown">Shut Down&hellip;</span></button>
@@ -776,6 +793,52 @@
                 <dt><kbd>&larr;</kbd> <kbd>&rarr;</kbd></dt><dd data-i18n="ui.shortcuts.arrows">Previous / next photo in the image viewer</dd>
                 <dt><kbd>Tab</kbd></dt><dd data-i18n="ui.shortcuts.tab">Move between controls</dd>
             </dl>
+        </div>
+        <div class="dlg__actions">
+            <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
+        </div>
+    </div>
+</dialog>
+<dialog class="doomwin" id="dlg-doom" aria-labelledby="dlg-doom-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-doom-title" data-i18n="ui.doom.title">DOOM</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="doomwin__screen">
+            <!-- src is set on launch and cleared on close, so nothing is
+                 fetched from archive.org until somebody asks for DOOM, and
+                 the emulator stops the moment the window shuts. -->
+            <iframe class="doomwin__frame" id="doom-frame" title="DOOM" data-i18n-title="ui.doom.title"
+                    data-src="https://archive.org/embed/DoomsharewareEpisode"
+                    referrerpolicy="no-referrer" allow="fullscreen"></iframe>
+        </div>
+        <div class="statusbar doomwin__keys">
+            <div class="statusbar__cell"><span data-i18n="ui.doom.keys">Arrows move &middot; Space fires &middot; Esc quits</span></div>
+        </div>
+    </div>
+</dialog>
+<dialog class="" id="dlg-doom-mobile" aria-labelledby="dlg-doom-mobile-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-doom-mobile-title" data-i18n="ui.doom.title">DOOM</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="dlg__body">
+            <div class="dlg__msg">
+                <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-doom"/></svg>
+                <p data-i18n="ui.doom.mobile">Doom is only available on desktop, it's 1996&hellip;</p>
+            </div>
         </div>
         <div class="dlg__actions">
             <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>

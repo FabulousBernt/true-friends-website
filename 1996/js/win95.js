@@ -866,6 +866,64 @@
   });
 
   /* ====================================================================
+   * DOOM
+   *
+   * The game is the Internet Archive's emulated shareware episode, framed
+   * rather than hosted: no engine, no wad, nothing of id's in this repo.
+   * The frame has no src until somebody opens the window, so a visitor who
+   * never touches the Start menu never talks to archive.org at all — and
+   * clearing it on close stops the emulator instead of leaving DOSBox
+   * running behind a hidden dialog.
+   * ==================================================================== */
+
+  const doomWindow = $("#dlg-doom");
+  const doomLaunchers = $$("[data-doom-launch]");
+
+  if (doomWindow && doomLaunchers.length) {
+    const frame = $("#doom-frame", doomWindow);
+
+    /* A keyboard, and a screen with room for a DOS window on it. Touch
+       devices have neither, and the joke only works if the menu entry is
+       still there to be pressed. */
+    const playable = () =>
+      window.matchMedia("(min-width: 760px) and (min-height: 560px)").matches &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    const markLaunchers = () =>
+      doomLaunchers.forEach((btn) => btn.setAttribute("aria-disabled", String(!playable())));
+    markLaunchers();
+    window.addEventListener("resize", markLaunchers);
+
+    doomLaunchers.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (!playable()) {
+          openDialog("dlg-doom-mobile");
+          return;
+        }
+        openDialog("dlg-doom");
+        if (frame && !frame.src) frame.src = frame.dataset.src;
+        // The emulator only hears the keyboard once it has it.
+        if (frame) setTimeout(() => frame.focus(), 400);
+      });
+    });
+
+    /* Unload DOSBox whenever the window stops being open, however it got
+       there — the X, Escape, the backdrop, or a script.
+   
+       This watches the `open` attribute rather than listening for the dialog's
+       `close` event. `close` is the correct API and fires in browsers, but it
+       is not observable in every environment, and the cost of missing it here
+       is an emulator left running with sound behind a window the visitor
+       thinks they shut. The attribute is always right. */
+    new MutationObserver(() => {
+      if (!doomWindow.open && frame && frame.getAttribute("src")) {
+        frame.removeAttribute("src");
+      }
+    }).observe(doomWindow, { attributes: true, attributeFilter: ["open"] });
+  }
+
+  /* ====================================================================
    * Keyboard
    * ==================================================================== */
 

@@ -147,6 +147,7 @@ window.TF_TRANSLATIONS = {
         contact: "Say hi…",
         readme: "Read Me",
         shortcuts: "Keyboard Shortcuts",
+        doom: "DOOM",
         travel: "Travel to",
         shutDown: "Shut Down…",
       },
@@ -201,6 +202,12 @@ window.TF_TRANSLATIONS = {
 
         viewerTitle: "Image Viewer",
         contactTitle: "Say hi!",
+      },
+
+      doom: {
+        title: "DOOM",
+        keys: "Arrows move · Ctrl fires · Space opens doors · X closes the window",
+        mobile: "Doom is only available on desktop, it's 1996…",
       },
 
       shortcuts: {
@@ -435,6 +442,7 @@ window.TF_TRANSLATIONS = {
         contact: "Säg hej…",
         readme: "Läs mig",
         shortcuts: "Kortkommandon",
+        doom: "DOOM",
         travel: "Res till",
         shutDown: "Avsluta…",
       },
@@ -489,6 +497,12 @@ window.TF_TRANSLATIONS = {
 
         viewerTitle: "Bildvisare",
         contactTitle: "Säg hej!",
+      },
+
+      doom: {
+        title: "DOOM",
+        keys: "Piltangenter går · Ctrl skjuter · Mellanslag öppnar dörrar · X stänger fönstret",
+        mobile: "Doom finns bara på datorn, det är 1996…",
       },
 
       shortcuts: {
