@@ -98,7 +98,11 @@
 
   function applyTranslations(lang) {
     const dict = (window.TF_TRANSLATIONS || {})[lang];
-    if (!dict) return;
+    if (!dict) {
+      // No dictionary to apply — reveal rather than sit behind the veil.
+      document.documentElement.removeAttribute("data-tf-translating");
+      return;
+    }
     currentLang = lang;
     document.documentElement.lang = lang;
 
@@ -129,6 +133,10 @@
     paintTrayDate();
     const count = $("[data-gallery-count]");
     if (count) count.textContent = t("gallery.count", { n: GALLERY_IMAGES.length });
+
+    // lang-boot.js hid the page so the English markup would not flash before
+    // this ran. It has run.
+    document.documentElement.removeAttribute("data-tf-translating");
   }
 
   /**

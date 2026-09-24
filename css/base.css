@@ -123,3 +123,12 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   pointer-events: none;
 }
+
+/* Held back by js/lang-boot.js while a Swedish visitor's page is still
+   English in the markup. `visibility` rather than `display` so layout
+   resolves underneath and nothing reflows when it lifts — and the body
+   background still paints, so it reads as the page arriving, not a blank
+   screen. English visitors never get this attribute. */
+html[data-tf-translating] body {
+  visibility: hidden;
+}

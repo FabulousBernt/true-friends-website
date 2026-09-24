@@ -25,6 +25,7 @@ consulting.html               consulting
 studio.html                   studio
 reference-cases/              case pages + template
 css/{tokens,base,components,layout}.css
+js/lang-boot.js               Blocking, in <head> — see "A string"
 js/main.js
 js/translations/              EN + SV, common.js then one per page
 
@@ -33,12 +34,14 @@ js/translations/              EN + SV, common.js then one per page
 1996/studio.html              TF Classic — studio
 1996/reference-cases/         TF Classic — case pages + template
 1996/css/win95.css
+1996/js/lang-boot.js          Blocking, in <head> — see "A string"
 1996/js/win95.js
 1996/js/translations/         EN + SV, common.js then one per page
 
 img/                          SHARED — logos, icons, team, gallery, cases
 cv/                           SHARED — the CVs
 tools/build-gallery.sh        Rebuild gallery thumbnails + copyright stamps
+tools/i18n.js                 Sync + check the inline translation fallbacks
 ```
 
 ## Crossing between the two
@@ -98,6 +101,16 @@ drift from the dictionary and every visitor sees the old wording flash on load.
 `node tools/i18n.js check` fails on any key that is missing from either
 language and on any fallback that no longer matches — worth running before a
 commit that touches copy.
+
+Because the markup is English, a visitor reading Svenska would still catch a
+frame of it before the swap. `js/lang-boot.js` is what stops that: a *blocking*
+script in `<head>`, so it runs before the body exists and nothing can have been
+painted yet. If a Swedish choice is stored it sets `data-tf-translating` on
+`<html>`, which hides the body via one rule in `base.css` / `win95.css` until
+`applyTranslations` removes it again. English visitors never get the attribute
+and are never delayed. Two things to leave alone: the script must not gain
+`defer` or `async`, and it reveals on a 1.5s failsafe timer so a blocked or
+broken script can never stand a page up blank.
 
 **A route (TF Classic only)** — the Location field resolves through the `PAGES` map
 in `1996/js/win95.js`. Add an alias there and it becomes typeable.
