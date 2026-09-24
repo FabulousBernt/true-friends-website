@@ -48,7 +48,6 @@ window.TF_ADD_TRANSLATIONS({
       cv: "Download cv",
       members: {
         johnny: {
-          name: "Johnny Vigersten",
           role: "Tester / UX/UI Designer",
           bio: "I like exploring and investigating software and solving problems for customers. I advocate usability, security and aesthetics.",
           cvHref: "cv/johnny-vigersten-cv-EN.pdf",
@@ -98,7 +97,6 @@ window.TF_ADD_TRANSLATIONS({
       cv: "Ladda ner CV",
       members: {
         johnny: {
-          name: "Johnny Vigersten",
           role: "Testare / Designer",
           bio: "Jag tycker om att utforska och undersöka mjukvara samt att lösa problem åt mina kunder. Jag förespråkar användbarhet, säkerhet och estetik.",
           cvHref: "cv/johnny-vigersten-cv-SE.pdf",

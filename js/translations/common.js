@@ -76,6 +76,11 @@ window.TF_TRANSLATIONS = {
       classic: "TF Classic",
       classicTail: "website",
     },
+    team: {
+      members: {
+        johnny: { name: "Johnny Vigersten" },
+      },
+    },
     status: {
       sending: "Sending…",
       success: "Thanks — we'll be in touch soon.",
@@ -155,6 +160,11 @@ window.TF_TRANSLATIONS = {
     era: {
       classic: "TF Classic",
       classicTail: "webbplats",
+    },
+    team: {
+      members: {
+        johnny: { name: "Johnny Vigersten" },
+      },
     },
     status: {
       sending: "Skickar…",

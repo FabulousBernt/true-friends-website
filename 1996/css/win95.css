@@ -113,12 +113,28 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* The desktop is exactly one screenful and never scrolls. Everything the
+   visitor can read lives inside .viewport, which is the only scroller on the
+   page — there is nothing out on the teal to scroll to.
+   
+   Every height below derives from this one declaration rather than from vh
+   units repeated down the tree. That matters because the window used to be
+   sized in dvh while the page floor was min-height:100vh: wherever those two
+   disagree — a phone with its URL bar showing, most obviously — the document
+   gained exactly that much scrollable height, and clicking a nav anchor
+   scrolled the whole window out of frame. */
+html {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
   padding: 16px 16px calc(var(--taskbar-h) + 20px);
-  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
   font-family: var(--font-ui);
   font-size: var(--fs-chrome);
   color: var(--w-ink);
@@ -224,8 +240,7 @@ button:focus-visible .tflogo__img--hover { opacity: 1; }
 .browser {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--taskbar-h) - 36px);
-  height: calc(100dvh - var(--taskbar-h) - 36px);
+  height: 100%;
   max-width: 1180px;
   margin: 0 auto;
   background: var(--w-face);
@@ -239,11 +254,7 @@ button:focus-visible .tflogo__img--hover { opacity: 1; }
 }
 
 body.is-maximized { padding: 0 0 var(--taskbar-h); }
-body.is-maximized .browser {
-  max-width: none;
-  height: calc(100vh - var(--taskbar-h));
-  height: calc(100dvh - var(--taskbar-h));
-}
+body.is-maximized .browser { max-width: none; }
 
 /* ---------- Title bar ---------- */
 
@@ -1466,7 +1477,7 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
 body.is-minimized .chrome,
 body.is-minimized .viewport,
 body.is-minimized .statusbar { display: none; }
-body.is-minimized .browser { min-height: 0; }
+body.is-minimized .browser { height: auto; }
 
 /* ===========================================================================
  * Responsive
@@ -1517,6 +1528,8 @@ body.is-minimized .browser { min-height: 0; }
  * ======================================================================== */
 
 @media print {
+  /* Undo the one-screen lock, or the printer gets a single screenful. */
+  html, body { height: auto; overflow: visible; }
   body { padding: 0; background: #fff; }
   .titlebar, .chrome, .statusbar, .taskbar, .startmenu, .boot,
   .marquee, .throbber, dialog { display: none !important; }
