@@ -1348,9 +1348,6 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
  * box and supplies its own chrome inside it, so all this does is give it a
  * sunken frame to sit in. */
 .doomwin { max-width: 96vw; }
-/* A dialog sizes to its content, and an iframe at width:100% has no content
-   to size from — so the width is stated here and the frame fills it. */
-.doomwin .dlg { width: min(92vw, 880px); }
 .doomwin__screen {
   margin: 3px;
   padding: 4px;
@@ -1361,11 +1358,18 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
     inset -2px -2px 0 0 var(--w-face-light),
     inset  2px  2px 0 0 var(--w-ink);
 }
+/* DOS DOOM is 320x200 — 16:10, not 4:3. Giving the frame any other shape
+   letterboxes the game inside it, which is where the black bars came from.
+   
+   The height drives and aspect-ratio derives the width, so the box is always
+   exactly the game's shape; setting a width and capping the height instead
+   let the cap win and quietly broke the ratio. The dialog shrink-wraps to
+   whatever comes out. */
 .doomwin__frame {
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 68vh;
+  height: min(66vh, 620px);
+  aspect-ratio: 16 / 10;
+  max-width: 88vw;
   border: 0;
   background: #000;
 }
