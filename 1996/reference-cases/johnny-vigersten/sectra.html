@@ -205,9 +205,9 @@
         <div class="menubar__group">
             <button type="button" class="menubar__item" data-menu="menu-file" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.file">File</button>
             <div class="menu" id="menu-file" hidden>
-                <button type="button" class="menu__item " data-nav="location" data-i18n="ui.file.openLocation">Open Location...</button>
-                <button type="button" class="menu__item " data-open-dialog="dlg-save" data-i18n="ui.file.saveAs">Save As...</button>
-                <button type="button" class="menu__item " data-nav="print" data-i18n="ui.file.print">Print...</button>
+                <button type="button" class="menu__item " data-nav="location" data-i18n="ui.file.openLocation">Open Location…</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-save" data-i18n="ui.file.saveAs">Save As…</button>
+                <button type="button" class="menu__item " data-nav="print" data-i18n="ui.file.print">Print…</button>
                 <div class="menu__sep"></div>
                 <button type="button" class="menu__item " data-open-dialog="dlg-exit" data-i18n="ui.file.exit">Exit</button>
             </div>
@@ -221,14 +221,14 @@
                 <button type="button" class="menu__item " aria-disabled="true" disabled data-i18n="ui.edit.paste">Paste</button>
                 <div class="menu__sep"></div>
                 <button type="button" class="menu__item " data-select-page data-i18n="ui.edit.selectAll">Select All</button>
-                <button type="button" class="menu__item " data-open-dialog="dlg-find" data-i18n="ui.edit.find">Find in Page...</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-find" data-i18n="ui.edit.find">Find in Page…</button>
             </div>
         </div>
         <div class="menubar__group">
             <button type="button" class="menubar__item" data-menu="menu-view" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.view">View</button>
             <div class="menu" id="menu-view" hidden>
                 <button type="button" class="menu__item " data-nav="reload" data-i18n="ui.view.reload">Reload</button>
-                <button type="button" class="menu__item " data-open-dialog="dlg-docinfo" data-i18n="ui.view.docInfo">Document Info...</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-docinfo" data-i18n="ui.view.docInfo">Document Info…</button>
                 <div class="menu__sep"></div>
                 <button type="button" class="menu__item menu__item--check" data-lang="en" aria-pressed="true" data-i18n="ui.view.english">English</button>
                 <button type="button" class="menu__item menu__item--check" data-lang="sv" aria-pressed="false" data-i18n="ui.view.swedish">Svenska</button>
@@ -382,7 +382,7 @@
                 <p data-i18n="page.updated">Last updated: {year}</p>
                 <div class="badges">
                     <span class="badge" data-i18n="page.badges.motala">Made in Motala, Sweden</span>
-                    <span class="badge" data-i18n="page.badges.modem">33.6 kbps friendly</span>
+                    <span class="badge" data-i18n="page.badges.modem">Dial-up friendly</span>
                 </div>
                 <p data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
                 <p class="timewarp">
@@ -429,7 +429,7 @@
         <a class="startmenu__item" href="../../studio.html"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-studio"/></svg><span data-i18n="ui.start.studio">Studio</span></a>
         <a class="startmenu__item" href="../../index.html"><svg class="i" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="ui.start.home">Home page</span></a>
         <div class="menu__sep"></div>
-        <button type="button" class="startmenu__item" data-open-dialog="dlg-contact"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-mail"/></svg><span data-i18n="ui.start.contact">Sign the guestbook&hellip;</span></button>
+        <button type="button" class="startmenu__item" data-open-dialog="dlg-contact"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-mail"/></svg><span data-i18n="ui.start.contact">Say hi…</span></button>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-readme"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span data-i18n="ui.start.readme">Read Me</span></button>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-shortcuts"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-helpq"/></svg><span data-i18n="ui.start.shortcuts">Keyboard Shortcuts</span></button>
         <div class="menu__sep"></div>
@@ -437,7 +437,7 @@
         <button type="button" class="startmenu__item startmenu__item--doom" data-doom-launch><img class="startmenu__icon" src="../../../img/doom-icon.png" alt="" width="256" height="256" decoding="async"><span data-i18n="ui.start.doom">DOOM</span></button>
         <div class="menu__sep"></div>
         <div class="menu__sep"></div>
-        <button type="button" class="startmenu__item" data-open-dialog="dlg-shutdown"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg><span data-i18n="ui.start.shutDown">Shut Down&hellip;</span></button>
+        <button type="button" class="startmenu__item" data-open-dialog="dlg-shutdown"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg><span data-i18n="ui.start.shutDown">Shut Down…</span></button>
     </div>
 </div>
 
@@ -453,7 +453,7 @@
             </div>
         </div>
         <div class="dlg__body">
-            <p data-i18n="modal.desc">Leave your details and a message, and we will get back to you as soon as we can.</p>
+            <p data-i18n="modal.desc">Please fill out the contact form and we will get back to you as soon as we can.</p>
             <form class="form" id="modal-contact-form" novalidate
                   data-endpoint="https://formsubmit.co/ajax/hello@truefriends.se"
                   aria-describedby="modal-form-status">
@@ -537,7 +537,7 @@
                 <dt data-i18n="ui.docinfo.latency">Latency:</dt><dd>42 ms</dd>
                 <dt data-i18n="ui.docinfo.security">Security:</dt><dd data-i18n="ui.docinfo.insecure">None (this is a 1996 browser)</dd>
             </dl>
-            <p class="note" data-i18n="ui.docinfo.note">Connected via 33.6 kbps dial-up modem.</p>
+            <p class="note" data-i18n="ui.docinfo.note">Connected via dial-up modem.</p>
         </div>
         <div class="dlg__actions">
             <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
@@ -561,7 +561,7 @@
                 <div>
                     <p data-i18n="ui.dlg.notFoundBody">The requested URL was not found on this server:</p>
                     <p><strong data-error-url></strong></p>
-                    <p data-i18n="ui.dlg.notFoundBody2">Check the spelling, or use the directory buttons above.</p>
+                    <p data-i18n="ui.dlg.notFoundBody2">Check the spelling, or use the directory buttons above — there are only a handful of pages here and all of them are worth a look.</p>
                 </div>
             </div>
         </div>
@@ -587,7 +587,7 @@
                 <div>
                     <p data-i18n="ui.dlg.noHostBody">True Friends 96 is unable to locate the server:</p>
                     <p><strong data-error-url></strong></p>
-                    <p data-i18n="ui.dlg.noHostBody2">The server does not have a DNS entry.</p>
+                    <p data-i18n="ui.dlg.noHostBody2">The server does not have a DNS entry. This browser only knows one host, and it is www.truefriends.se.</p>
                 </div>
             </div>
         </div>
@@ -613,7 +613,7 @@
                 <div>
                     <p><strong data-i18n="ui.dlg.aboutHeading">True Friends 96</strong><br>
                        <span data-i18n="ui.dlg.aboutVersion">Version 96 (Build 1996.03.12)</span></p>
-                    <p data-i18n="ui.dlg.aboutBody">A creative and technical studio &amp; consulting firm based in Motala, Sweden.</p>
+                    <p data-i18n="ui.dlg.aboutBody">A creative and technical studio &amp; consulting firm based in Motala, Sweden, but available worldwide.</p>
                     <p data-i18n="ui.dlg.aboutLicense">This product is licensed to: a true friend.</p>
                     <p class="note" data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
                 </div>
@@ -662,7 +662,7 @@
                 <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-info"/></svg>
                 <div>
                     <p data-i18n="ui.dlg.exitBody">This program cannot be closed. A true friend does not walk out on you.</p>
-                    <p data-i18n="ui.dlg.exitBody2">Sign the guestbook instead &mdash; we answer faster than a modem.</p>
+                    <p data-i18n="ui.dlg.exitBody2">Say hi instead — we answer faster than a modem.</p>
                 </div>
             </div>
         </div>
@@ -773,7 +773,7 @@
                     referrerpolicy="no-referrer" allow="fullscreen"></iframe>
         </div>
         <div class="statusbar doomwin__keys">
-            <div class="statusbar__cell"><span data-i18n="ui.doom.keys">Arrows move &middot; Space fires &middot; Esc quits</span></div>
+            <div class="statusbar__cell"><span data-i18n="ui.doom.keys">Arrows move · Ctrl fires · Space opens doors · X closes the window</span></div>
         </div>
     </div>
 </dialog>
@@ -791,7 +791,7 @@
         <div class="dlg__body">
             <div class="dlg__msg">
                 <img class="dlg__icon" src="../../../img/doom-icon.png" alt="" width="256" height="256" decoding="async">
-                <p data-i18n="ui.doom.mobile">Doom is only available on desktop, it's 1996&hellip;</p>
+                <p data-i18n="ui.doom.mobile">DOOM is not available on mobile devices, it's 1996…</p>
             </div>
         </div>
         <div class="dlg__actions">

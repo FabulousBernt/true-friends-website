@@ -89,7 +89,15 @@ site you are adding to and follow the comment at the top of the file. Each has
 its own.
 
 **A string** — site-wide labels go in that site's `common.js`; page prose goes
-in its per-page file. Both languages, always.
+in its per-page file. Both languages, always. Then run `node tools/i18n.js sync`,
+which copies the English strings back into the pages as fallback text.
+
+That fallback is not decoration: it is what the browser paints before the
+deferred translation script runs, and what stays if scripting is off. Let it
+drift from the dictionary and every visitor sees the old wording flash on load.
+`node tools/i18n.js check` fails on any key that is missing from either
+language and on any fallback that no longer matches — worth running before a
+commit that touches copy.
 
 **A route (TF Classic only)** — the Location field resolves through the `PAGES` map
 in `1996/js/win95.js`. Add an alias there and it becomes typeable.

@@ -315,7 +315,13 @@
     const showPhoto = (index) => {
       activeIndex = (index + photos.length) % photos.length;
       const photo = photos[activeIndex];
+      // A fresh src leaves the previous frame painted until the new one
+      // decodes, so blank the element before swapping — otherwise reopening
+      // the lightbox flashes whichever photo was shown last. Anything already
+      // in cache is revealed in the same tick, so there is no blink.
+      lbImage.style.visibility = "hidden";
       lbImage.src = photo.full;
+      if (lbImage.complete && lbImage.naturalWidth) lbImage.style.visibility = "";
       lbImage.alt = photo.alt;
       lbCaption.textContent = `${activeIndex + 1} / ${photos.length}`;
       lbThumbs.querySelectorAll(".lightbox__thumb").forEach((thumb, i) => {

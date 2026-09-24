@@ -760,7 +760,13 @@
     const show = (index) => {
       activeIndex = (index + photos.length) % photos.length;
       const photo = photos[activeIndex];
+      // A fresh src leaves the previous frame painted until the new one
+      // decodes, so blank the element before swapping — otherwise reopening
+      // the viewer flashes whichever photo was shown last. Anything already
+      // in cache is revealed in the same tick, so there is no blink.
+      vImg.style.visibility = "hidden";
       vImg.src = photo.full;
+      if (vImg.complete && vImg.naturalWidth) vImg.style.visibility = "";
       vImg.alt = photo.alt;
       vCount.textContent = `${activeIndex + 1} / ${photos.length}`;
       if (vTitle) vTitle.textContent = photo.name;
