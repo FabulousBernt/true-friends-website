@@ -1261,6 +1261,9 @@ body.is-minimized .taskbar__task {
 .startmenu__item:visited { color: var(--w-ink); }
 .startmenu__item:hover { background: var(--w-select); color: var(--w-select-fg); }
 .startmenu__item .i { width: 24px; height: 24px; }
+/* The one raster icon in the build; everything else is drawn in the sprite. */
+.startmenu__icon { width: 24px; height: 24px; flex: none; image-rendering: pixelated; }
+.dlg__icon { width: 32px; height: 32px; flex: none; image-rendering: pixelated; }
 
 /* ===========================================================================
  * Dialogs
@@ -1358,18 +1361,16 @@ mark.find-hit[data-current="true"] { background: var(--doc-active); color: #fff;
     inset -2px -2px 0 0 var(--w-face-light),
     inset  2px  2px 0 0 var(--w-ink);
 }
-/* DOS DOOM is 320x200 — 16:10, not 4:3. Giving the frame any other shape
-   letterboxes the game inside it, which is where the black bars came from.
-   
-   The height drives and aspect-ratio derives the width, so the box is always
-   exactly the game's shape; setting a width and capping the height instead
-   let the cap win and quietly broke the ratio. The dialog shrink-wraps to
-   whatever comes out. */
+/* 640x400 — DOOM's 320x200 at exactly 2x, which is how it was meant to be
+   looked at and the size the emulator renders at natively. A bigger window
+   does not make a bigger game: the player paints its canvas at its own size
+   and leaves the rest black, so the window is sized to the game rather than
+   the other way round. Shrinks proportionally if the screen is narrow, which
+   below 760px cannot happen anyway — the mobile gate has taken over. */
 .doomwin__frame {
   display: block;
-  height: min(66vh, 620px);
+  width: min(640px, 86vw);
   aspect-ratio: 16 / 10;
-  max-width: 88vw;
   border: 0;
   background: #000;
 }

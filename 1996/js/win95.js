@@ -126,6 +126,7 @@
 
     // Anything rendered by JS has to be relabelled in the new language too.
     setStatus(null);
+    paintTrayDate();
     const count = $("[data-gallery-count]");
     if (count) count.textContent = t("gallery.count", { n: GALLERY_IMAGES.length });
   }
@@ -168,6 +169,29 @@
     const lang = detectLanguageSync();
     if (lang !== currentLang) applyTranslations(lang);
   });
+
+  /* ====================================================================
+   * The tray date
+   *
+   * Today's day and month, with the year held at 1996 — the clock is real,
+   * the calendar is not. Formatted through Intl against the active language
+   * so Swedish reads "24 sep 1996" without a table of month names here.
+   * ==================================================================== */
+
+  const trayDate = $("[data-tray-date]");
+
+  function paintTrayDate() {
+    if (!trayDate) return;
+    const now = new Date();
+    const then = new Date(1996, now.getMonth(), now.getDate());
+    try {
+      trayDate.textContent = new Intl.DateTimeFormat(currentLang, {
+        day: "numeric", month: "short", year: "numeric",
+      }).format(then);
+    } catch (e) {
+      trayDate.textContent = "1996";
+    }
+  }
 
   /* ====================================================================
    * Menu bar + Start menu

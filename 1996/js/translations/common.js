@@ -148,7 +148,6 @@ window.TF_TRANSLATIONS = {
         readme: "Read Me",
         shortcuts: "Keyboard Shortcuts",
         doom: "DOOM",
-        travel: "Travel to",
         shutDown: "Shut Down…",
       },
 
@@ -443,7 +442,6 @@ window.TF_TRANSLATIONS = {
         readme: "Läs mig",
         shortcuts: "Kortkommandon",
         doom: "DOOM",
-        travel: "Res till",
         shutDown: "Avsluta…",
       },
 
