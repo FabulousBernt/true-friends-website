@@ -2,8 +2,8 @@
 # Build img/gallery/thumbs/ from the full-size photos, then stamp both the
 # full-size files and the thumbnails with copyright metadata.
 #
-# The grid shows square tiles about 157px wide (1000px container, 6 columns)
-# and the lightbox strip shows 64px ones, so a 400px square covers both at 2x
+# The Studio gallery shows square tiles of roughly 104-140px and the Image
+# Viewer's filmstrip shows 50px ones, so a 400px square covers both at 2x
 # retina. The crop is centred, matching the `object-fit: cover` the CSS would
 # apply anyway.
 #

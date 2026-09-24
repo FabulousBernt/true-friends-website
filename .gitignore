@@ -12,3 +12,6 @@ build/
 *~
 .vscode/
 .idea/
+
+# Design references dropped in while working — not site assets.
+img/17*.jpg
