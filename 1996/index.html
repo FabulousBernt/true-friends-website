@@ -65,7 +65,17 @@
     <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2b7fd4" stroke="#000"/><path d="M12 2c-3 3-3 17 0 20M2 12h20M4 7h16M4 17h16" fill="none" stroke="#bfe3ff"/><path d="M6 8c3 2 6 1 9 3 2 1 2 4 0 6-3-1-5-4-9-4z" fill="#3fa34d" stroke="#0a5c20" stroke-width=".5"/></symbol>
     <symbol id="i-helpq" viewBox="0 0 24 24"><path d="M9 3h6v2h2v5h-2v2h-2v3h-4v-5h3V7H9z" fill="#000080"/><path d="M8 17h4v4H8z" fill="#000080"/><path d="M8 2h6v2h2v5h-2v2h-2v3H8v-5h3V6H8z" fill="#ffd400" stroke="#000" stroke-width=".7"/><path d="M8 16h4v4H8z" fill="#ffd400" stroke="#000" stroke-width=".7"/></symbol>
     <symbol id="i-modem" viewBox="0 0 16 16"><path d="M1 6h14v7H1z" fill="#c0c0c0" stroke="#000"/><path d="M3 8h2v2H3z" fill="#00ff00"/><path d="M6 8h2v2H6z" fill="#ff0000"/><path d="M9 8h5v1H9zM9 10h5v1H9z" fill="#808080"/><path d="M4 2c2-1 6-1 8 0" fill="none" stroke="#000"/><path d="M6 4c1-.6 3-.6 4 0" fill="none" stroke="#000"/></symbol>
-    <symbol id="i-start" viewBox="0 0 16 16"><path d="M1 4l6-2v5H1zM8 2l7-2v7H8zM1 8h6v5l-6-2zM8 8h7v7l-7-2z" fill="#ff3b1f"/><path d="M8 2l7-2v7H8z" fill="#3aa03a"/><path d="M1 8h6v5l-6-2z" fill="#2b7fd4"/><path d="M8 8h7v7l-7-2z" fill="#ffd400"/></symbol>
+
+    <!-- The way out to the current site. A flat panel against a toolbar of
+         CRT-era objects says "somewhere else" faster than any arrow. -->
+    <symbol id="i-travel" viewBox="0 0 22 22">
+      <path d="M1 3h20v12H1z" fill="#2a2a2e" stroke="#000"/>
+      <path d="M3 5h16v8H3z" fill="#0c0a08"/>
+      <path d="M10 6h8v6h-8z" fill="#ff8c3c" opacity=".55"/>
+      <path d="M4 6h4v2.5H4z" fill="#fee440"/>
+      <path d="M9 15h4v3H9z" fill="#2a2a2e" stroke="#000"/>
+      <path d="M5 18h12v2H5z" fill="#3a3a40" stroke="#000"/>
+    </symbol>
 
     <!-- Message-box glyphs -->
     <symbol id="i-warn" viewBox="0 0 32 32"><path d="M16 2l14 26H2z" fill="#ffd400" stroke="#000" stroke-width="1.5"/><path d="M14 11h4v10h-4zM14 23h4v4h-4z" fill="#000"/></symbol>
@@ -321,9 +331,14 @@
             <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-stop"/></svg>
             <span class="tbtn__label" data-i18n="ui.tb.stop">Stop</span>
         </button>
-        <div class="throbber" aria-hidden="true">
-            <img src="../img/tf-pc-logo-yellow-transparent.svg" alt="" width="1955" height="1491" decoding="async">
-        </div>
+        <div class="tbtn__sep" aria-hidden="true"></div>
+        <a class="tbtn tbtn--travel" aria-label="Travel to 2026" data-i18n-aria-label="ui.tb.travelLabel" href="../index.html">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-travel"/></svg>
+            <span class="tbtn__label" data-year>2026</span>
+        </a>
+        <a class="throbber" href="index.html" aria-label="True Friends home" data-i18n-aria-label="aria.home">
+            <span class="tflogo "><img class="tflogo__img" src="../img/tf-pc-logo-transparent.svg" alt="" width="1955" height="1491" decoding="async"><img class="tflogo__img tflogo__img--hover" src="../img/tf-pc-logo-yellow-transparent.svg" alt="" aria-hidden="true" decoding="async"></span>
+        </a>
     </div>
     <form class="locbar" id="location-form" novalidate>
         <label class="locbar__label" for="location-field" data-i18n="ui.location">Location:</label>
@@ -345,8 +360,10 @@
     <main class="viewport" id="document" aria-label="Document" data-i18n-aria-label="aria.document">
         <article class="page">
             <div class="masthead">
-                <img class="masthead__logo" src="../img/tf-pc-logo-yellow-transparent.svg" alt="" width="1955" height="1491" decoding="async">
-                <img class="masthead__word" src="../img/tf-archivo-yellow-transparent.svg" alt="True Friends" width="3956" height="484" decoding="async">
+                <a class="masthead__lockup" href="index.html">
+                    <span class="tflogo masthead__logo"><img class="tflogo__img" src="../img/tf-pc-logo-transparent.svg" alt="" width="1955" height="1491" decoding="async"><img class="tflogo__img tflogo__img--hover" src="../img/tf-pc-logo-yellow-transparent.svg" alt="" aria-hidden="true" decoding="async"></span>
+                    <img class="masthead__word" src="../img/tf-archivo-yellow-transparent.svg" alt="True Friends" width="3956" height="484" decoding="async">
+                </a>
             </div>
             <div class="marquee" aria-hidden="true"><span data-i18n="start.marquee">Welcome to our corner of the World Wide Web</span></div>
             <nav class="pagenav" aria-label="Page navigation" data-i18n-aria-label="aria.pagenav">
@@ -420,7 +437,7 @@
 
 <nav class="taskbar" aria-label="Taskbar" data-i18n-aria-label="aria.taskbar">
     <button type="button" class="taskbar__start" data-menu="startmenu" aria-expanded="false" aria-haspopup="true">
-        <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-start"/></svg>
+        <span class="tflogo taskbar__start-logo"><img class="tflogo__img" src="../img/tf-pc-logo-transparent.svg" alt="" width="1955" height="1491" decoding="async"><img class="tflogo__img tflogo__img--hover" src="../img/tf-pc-logo-yellow-transparent.svg" alt="" aria-hidden="true" decoding="async"></span>
         <span data-i18n="ui.start.label">Start</span>
     </button>
     <div class="taskbar__sep" aria-hidden="true"></div>
@@ -620,7 +637,7 @@
         </div>
         <div class="dlg__body">
             <div class="dlg__msg">
-                <img src="../img/tf-pc-logo-yellow-transparent.svg" alt="" width="64" height="49" class="dlg__logo">
+                <img src="../img/tf-pc-logo-transparent.svg" alt="" width="64" height="49" class="dlg__logo">
                 <div>
                     <p><strong data-i18n="ui.dlg.aboutHeading">True Friends 96</strong><br>
                        <span data-i18n="ui.dlg.aboutVersion">Version 96 (Build 1996.03.12)</span></p>

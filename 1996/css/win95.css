@@ -177,6 +177,46 @@ ul, ol { list-style: none; }
 /* Icons are drawn on a pixel grid, so smoothing them defeats the point. */
 .i { display: block; flex: none; shape-rendering: crispEdges; }
 
+/* ---------------------------------------------------------------------------
+ * The brand mark
+ *
+ * The mark has two states: white-bodied with a yellow screen at rest, and the
+ * inverse — all yellow, white screen — on hover. The yellow one appears
+ * nowhere else, which is what makes it read as a response rather than as a
+ * second logo.
+ *
+ * Both images are stacked and the top one fades in, so the swap needs no
+ * script and never reflows. It only ever sits inside something you can point
+ * at; the About dialog's copy is a plain <img> because a dialog illustration
+ * has nothing to respond to.
+ * ------------------------------------------------------------------------ */
+.tflogo {
+  position: relative;
+  display: block;
+  flex: none;
+  aspect-ratio: 1955 / 1491;
+}
+.tflogo__img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.tflogo__img--hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* Stepped rather than eased: this is a 256-colour operating system. */
+  transition: opacity 90ms steps(2, end);
+}
+/* Written out rather than folded into :where(a, button). The zero-specificity
+   form is correct on paper and matches when asked directly, but Chrome does
+   not reliably invalidate a descendant of it when :hover flips, so the swap
+   silently never happened. Four plain selectors always do. */
+a:hover .tflogo__img--hover,
+a:focus-visible .tflogo__img--hover,
+button:hover .tflogo__img--hover,
+button:focus-visible .tflogo__img--hover { opacity: 1; }
+
 /* ===========================================================================
  * The browser window
  * ======================================================================== */
@@ -397,6 +437,12 @@ body.is-maximized .browser {
   cursor: default;
 }
 .tbtn[aria-disabled="true"] .i { opacity: 0.45; }
+/* The way out to the current site. It is the only toolbar button that leaves
+   1996, so it gets the brand yellow behind it on hover — nothing else in the
+   chrome does. */
+.tbtn--travel:hover,
+.tbtn--travel:focus-visible { background: var(--tf-yellow); }
+
 .tbtn__sep {
   width: 2px;
   margin: 3px 4px;
@@ -422,8 +468,8 @@ body.is-maximized .browser {
     inset -2px -2px 0 0 var(--w-face-light),
     inset  2px  2px 0 0 var(--w-ink);
 }
-.throbber img { width: 28px; height: 22px; object-fit: contain; }
-body.is-loading .throbber img {
+.throbber .tflogo { width: 28px; }
+body.is-loading .throbber .tflogo {
   animation: throb 600ms steps(4, end) infinite;
 }
 @keyframes throb {
@@ -560,16 +606,22 @@ body.hide-dirbar .dirbar { display: none; }
 /* ---------- Masthead ---------- */
 
 .masthead {
-  display: flex;
-  align-items: center;
-  gap: 22px;
   margin: 0 -34px;
   padding: 22px 34px;
   background: linear-gradient(135deg, #000080 0%, #2d2d82 55%, #4a2a6e 100%);
 }
-.masthead__logo { width: 84px; flex: none; }
+/* The lockup is the link home, which is also what gives the mark something
+   to hover against. */
+.masthead__lockup {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  text-decoration: none;
+}
+.masthead__logo { width: 84px; }
 .masthead__word { width: min(300px, 100%); }
-.masthead--small { padding: 14px 34px; gap: 16px; }
+.masthead--small { padding: 14px 34px; }
+.masthead--small .masthead__lockup { gap: 16px; }
 .masthead--small .masthead__logo { width: 52px; }
 .masthead--small .masthead__word { width: min(200px, 100%); }
 
@@ -1046,10 +1098,12 @@ body.no-images .alt-slug { display: inline-flex; }
     inset 0 1px 0 0 var(--w-white),
     inset 0 2px 0 0 var(--w-face-light);
 }
+.taskbar__start-logo { width: 19px; }
+
 .taskbar__start {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 3px 9px 4px 5px;
   border: 0;
   background: var(--w-face);

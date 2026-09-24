@@ -92,6 +92,8 @@ window.TF_TRANSLATIONS = {
         print: "Print",
         find: "Find",
         stop: "Stop",
+        travel: "{year}",
+        travelLabel: "Travel to the {year} site",
       },
 
       location: "Location:",
@@ -386,6 +388,8 @@ window.TF_TRANSLATIONS = {
         print: "Skriv ut",
         find: "Sök",
         stop: "Stopp",
+        travel: "{year}",
+        travelLabel: "Res till {year} års webbplats",
       },
 
       location: "Adress:",

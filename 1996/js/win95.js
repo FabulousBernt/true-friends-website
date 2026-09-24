@@ -31,6 +31,23 @@
   const SHARED = ROOT + "../";
   const SITE_URL = body.dataset.url || "http://www.truefriends.se/";
   const HOST = "www.truefriends.se";
+  /* Where the files actually live, e.g. "/1996/". The Location field and the
+     status bar both advertise truefriends.se, so the real directory has to be
+     stripped off every address before either of them prints it. */
+  const SITE_BASE = new URL(ROOT || ".", window.location.href).pathname;
+
+  /** Rewrite a real URL into the address this browser claims to be showing. */
+  function asSiteUrl(href) {
+    let url;
+    try {
+      url = new URL(href, window.location.href);
+    } catch (e) {
+      return href;
+    }
+    let path = url.pathname;
+    if (path.startsWith(SITE_BASE)) path = "/" + path.slice(SITE_BASE.length);
+    return `http://${HOST}${path}${url.search}${url.hash}`;
+  }
 
   /* ====================================================================
    * i18n
@@ -95,10 +112,10 @@
     });
     for (const [dataAttr, target] of Object.entries(ATTR_MAP)) {
       $$(`[${dataAttr}]`).forEach((el) => {
-        const v = getNested(dict, el.getAttribute(dataAttr));
-        if (typeof v === "string" && el.getAttribute(target) !== v) {
-          el.setAttribute(target, v);
-        }
+        let v = getNested(dict, el.getAttribute(dataAttr));
+        if (typeof v !== "string") return;
+        v = substitute(v);
+        if (el.getAttribute(target) !== v) el.setAttribute(target, v);
       });
     }
 
@@ -438,11 +455,10 @@
     const link = event.target.closest("a[href]");
     if (!link || !statusMsg) return;
     const href = link.getAttribute("href");
-    // Swap the real origin for the one the location bar advertises, so the
-    // preview matches the address above it whether this is running from
-    // localhost, a file:// path or the live host.
+    // Show the address this browser advertises, not the one the file is
+    // served from — the same rewrite the Location field gets.
     if (href.startsWith("#")) setStatus(SITE_URL + href);
-    else setStatus(link.href.replace(/^[a-z]+:\/\/[^/]*/i, `http://${HOST}`));
+    else setStatus(asSiteUrl(link.href));
   });
   document.addEventListener("mouseout", (event) => {
     if (event.target.closest("a[href]")) setStatus(null);
