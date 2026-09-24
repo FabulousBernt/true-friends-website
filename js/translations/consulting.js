@@ -11,16 +11,6 @@ window.TF_ADD_TRANSLATIONS({
     meta: {
       titleConsulting: "True Friends — Consulting",
     },
-    ui: { sys: { modeValue: "Consulting (1996 Edition)" } },
-    /* The visitor's side of the transcript. These are questions, not
-       headings — the section they introduce is the answer below them. */
-    ask: {
-      about: "What is True Friends?",
-      services: "What can you help with?",
-      team: "Who would I be working with?",
-      contact: "How do I get in touch?",
-    },
-    team: { refs: "Reference cases" },
     hero: {
       lede: {
         consulting: "We provide consulting services in testing, ux/ui design, web production, software development and cybersecurity.",
@@ -71,14 +61,6 @@ window.TF_ADD_TRANSLATIONS({
     meta: {
       titleConsulting: "True Friends — Konsult",
     },
-    ui: { sys: { modeValue: "Konsult (1996 Edition)" } },
-    ask: {
-      about: "Vad är True Friends?",
-      services: "Vad kan ni hjälpa till med?",
-      team: "Vem skulle jag jobba med?",
-      contact: "Hur får jag tag på er?",
-    },
-    team: { refs: "Referensuppdrag" },
     hero: {
       lede: {
         consulting: "Vi erbjuder konsulttjänster inom testning, ux/ui-design, webbproduktion, mjukvaruutveckling och cybersäkerhet.",

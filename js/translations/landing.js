@@ -1,45 +1,44 @@
-/* True Friends 96 — start page (index.html) translations
+/* True Friends 96 — front page (index.html) translations
  *
- * The start page is the shortest conversation on the site: a handshake, one
- * question, and the two doors. Everything else here lives in
- * js/translations/common.js.
+ * The welcome page: a masthead, a marquee, two doors. Everything else it
+ * shows comes from js/translations/common.js.
  */
 window.TF_ADD_TRANSLATIONS({
   en: {
-    meta: { title: "True Friends 96" },
-    ui: { sys: { modeValue: "Start (1996 Edition)" } },
-    ask: {
-      who: "What is True Friends?",
-      where: "Where do I go from here?",
-    },
     start: {
+      heading: "Welcome to True Friends",
+      tagline: "A creative and technical studio & consulting firm — Motala, Sweden",
+      marquee:
+        "Welcome to our corner of the World Wide Web \u00b7 Two halves, one company \u00b7 Consulting and Studio \u00b7 Available worldwide \u00b7 hello@truefriends.se",
       lede: "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
-      answer:
-        "We are two halves of the same company. Consulting puts senior people inside your team — testing, UX and UI design, web production, software development and cybersecurity. Studio takes on the production itself — web, design, market communication, photography, video and editing.",
-      pick: "Pick a door. Both of them lead to the same friends.",
-      consultingDesc: "Testing · UX/UI · Web · Security",
-      studioDesc: "Web · Design · Photo · Video",
-      footer:
-        "Or skip the menu entirely and write to hello@truefriends.se — that reaches a human in Motala either way.",
+      body:
+        "We are two halves of the same company. Consulting puts senior people inside your team \u2014 testing, UX and UI design, web production, software development and cybersecurity. Studio takes on the production itself \u2014 web, design, market communication, photography, video and editing.",
+      pickHeading: "Where would you like to go?",
+      consultingDesc:
+        "Senior testers and designers working inside your team. Testing, UX/UI, web production, software development, cybersecurity.",
+      studioDesc:
+        "Production from idea to delivery. Web, graphic design, market communication, photography, video and editing.",
+      closing:
+        "Or skip the menu entirely and write to hello@truefriends.se \u2014 that reaches a human in Motala either way.",
     },
   },
 
   sv: {
-    meta: { title: "True Friends 96" },
-    ui: { sys: { modeValue: "Start (1996 Edition)" } },
-    ask: {
-      who: "Vad är True Friends?",
-      where: "Vart går jag härifrån?",
-    },
     start: {
-      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
-      answer:
-        "Vi är två halvor av samma företag. Konsult sätter seniora personer i ert team — testning, UX- och UI-design, webbproduktion, mjukvaruutveckling och cybersäkerhet. Studio tar hand om själva produktionen — webb, design, marknadskommunikation, foto, video och redigering.",
-      pick: "Välj en dörr. Båda leder till samma vänner.",
-      consultingDesc: "Testning · UX/UI · Webb · Säkerhet",
-      studioDesc: "Webb · Design · Foto · Video",
-      footer:
-        "Eller strunta i menyn och skriv till hello@truefriends.se — det når en människa i Motala oavsett.",
+      heading: "V\u00e4lkommen till True Friends",
+      tagline: "En kreativ och teknisk studio & konsultfirma \u2014 Motala, Sverige",
+      marquee:
+        "V\u00e4lkommen till v\u00e5rt h\u00f6rn av World Wide Web \u00b7 Tv\u00e5 halvor, ett f\u00f6retag \u00b7 Konsult och Studio \u00b7 Tillg\u00e4ngliga v\u00e4rlden \u00f6ver \u00b7 hello@truefriends.se",
+      lede: "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillg\u00e4nglig v\u00e4rlden \u00f6ver.",
+      body:
+        "Vi \u00e4r tv\u00e5 halvor av samma f\u00f6retag. Konsult s\u00e4tter seniora personer i ert team \u2014 testning, UX- och UI-design, webbproduktion, mjukvaruutveckling och cybers\u00e4kerhet. Studio tar hand om sj\u00e4lva produktionen \u2014 webb, design, marknadskommunikation, foto, video och redigering.",
+      pickHeading: "Vart vill du g\u00e5?",
+      consultingDesc:
+        "Seniora testare och designers i ert team. Testning, UX/UI, webbproduktion, mjukvaruutveckling, cybers\u00e4kerhet.",
+      studioDesc:
+        "Produktion fr\u00e5n id\u00e9 till leverans. Webb, grafisk design, marknadskommunikation, foto, video och redigering.",
+      closing:
+        "Eller strunta i menyn och skriv till hello@truefriends.se \u2014 det n\u00e5r en m\u00e4nniska i Motala oavsett.",
     },
   },
 });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#008080">
-    <title>True Friends 96 &mdash; Sectra</title>
+    <title>True Friends &mdash; Sectra &mdash; True Friends 96</title>
     <meta name="description" content="True Friends is a creative and technical studio delivering visual design, user experience, testing and web development for ambitious projects." data-i18n-content="meta.description">
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self' https://formsubmit.co; img-src 'self' data:; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';">
@@ -14,7 +14,9 @@
     <link rel="icon" type="image/svg+xml" href="../../img/tf-pc-favicon.svg">
     <link rel="stylesheet" href="../../css/win95.css">
 </head>
-<body>
+<!-- data-root says where the site root is from here; data-url is the address
+     the Location field shows. The URL resolver is built on both. -->
+<body data-root="../../" data-url="http://www.truefriends.se/reference-cases/johnny-vigersten/sectra.html">
 
 <!-- Win95 icon set, drawn on a pixel grid. One sprite, referenced with <use>.
      Kept inline rather than in an external file so it works over file:// and
@@ -152,6 +154,18 @@
       <path d="M12 23l1-3 2 2z" fill="#c0c0c0" stroke="#000"/>
     </symbol>
 
+    <!-- Navigation toolbar. Navigator's buttons were flat arrows and simple
+         objects at 22px; these follow the same grammar. -->
+    <symbol id="i-back" viewBox="0 0 22 22"><path d="M10 3L2 11l8 8v-5h10V8H10z" fill="#2b7fd4" stroke="#000"/></symbol>
+    <symbol id="i-forward" viewBox="0 0 22 22"><path d="M12 3l8 8-8 8v-5H2V8h10z" fill="#2b7fd4" stroke="#000"/></symbol>
+    <symbol id="i-home" viewBox="0 0 22 22"><path d="M11 2l9 8h-3v10H5V10H2z" fill="#ffd54a" stroke="#000"/><path d="M9 13h4v7H9z" fill="#8b4a1a" stroke="#000"/></symbol>
+    <symbol id="i-reload" viewBox="0 0 22 22"><path d="M11 3a8 8 0 107.5 10.5" fill="none" stroke="#2b7fd4" stroke-width="3"/><path d="M11 0v6l5-3z" fill="#2b7fd4" stroke="#000" stroke-width=".6"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 22 22"><path d="M7 2h8l5 5v8l-5 5H7l-5-5V7z" fill="#d40000" stroke="#000"/><path d="M6 10h10v3H6z" fill="#fff"/></symbol>
+    <symbol id="i-find" viewBox="0 0 22 22"><circle cx="9" cy="9" r="6" fill="#bfe3ff" stroke="#000"/><path d="M13.5 13.5L21 21" stroke="#000" stroke-width="3"/></symbol>
+    <symbol id="i-images" viewBox="0 0 22 22"><path d="M1 3h20v14H1z" fill="#fff" stroke="#000"/><path d="M2 4h18v12H2z" fill="#8fd0ff"/><circle cx="6" cy="7" r="1.8" fill="#ffe000"/><path d="M2 16l6-7 4 5 3-3 5 5z" fill="#2e7d32"/></symbol>
+    <symbol id="i-lock-open" viewBox="0 0 16 16"><path d="M4 7h8v7H4z" fill="#ffd400" stroke="#000"/><path d="M6 7V5a2.5 2.5 0 015 0" fill="none" stroke="#000" stroke-width="1.4"/><path d="M7 9h2v3H7z" fill="#000"/></symbol>
+    <symbol id="i-broken" viewBox="0 0 16 16"><path d="M1 2h14v12H1z" fill="#fff" stroke="#000"/><path d="M2 3h5v10H2z" fill="#e8e8e8"/><path d="M3 5l2 3-2 3M9 3l6 5-6 5" fill="none" stroke="#808080"/><path d="M11 5l3 3-3 3" fill="#d40000" stroke="#000" stroke-width=".7"/></symbol>
+
     <!-- Socials, carried over unchanged from the previous build -->
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.38-1.86 3.61 0 4.27 2.38 4.27 5.47v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.28V1.72C24 .77 23.21 0 22.22 0z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.67 1.34 1.07 2.13 1.38.76.29 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56.79-.31 1.46-.72 2.13-1.38.67-.67 1.07-1.34 1.38-2.13.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63 19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-10.4a1.44 1.44 0 100-2.88 1.44 1.44 0 000 2.88z"/></symbol>
@@ -159,11 +173,11 @@
   </defs>
 </svg>
 
-<a href="#transcript" class="sr-only" data-i18n="aria.skip">Skip to conversation</a>
-<div class="window">
+<a href="#document" class="sr-only" data-i18n="aria.skip">Skip to the document</a>
+<div class="browser">
     <div class="titlebar">
         <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
-        <h1 class="titlebar__text">True Friends 96 &mdash; Sectra</h1>
+        <h1 class="titlebar__text">True Friends &mdash; Sectra &mdash; True Friends 96</h1>
         <div class="titlebar__buttons">
             <button type="button" class="titlebar__btn" data-window="min" aria-label="Minimize" data-i18n-aria-label="aria.minimize" aria-pressed="false">
                 <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-min"/></svg>
@@ -176,53 +190,82 @@
             </button>
         </div>
     </div>
-    <nav class="menubar" aria-label="Application menu" data-i18n-aria-label="aria.menubar">
+    <div class="chrome">
+    <nav class="menubar" aria-label="Browser menu" data-i18n-aria-label="aria.menubar">
         <div class="menubar__group">
-            <button type="button" class="menubar__item" data-menu="menu-file" aria-expanded="false" aria-haspopup="true"><span data-i18n="ui.menu.file">File</span></button>
+            <button type="button" class="menubar__item" data-menu="menu-file" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.file">File</button>
             <div class="menu" id="menu-file" hidden>
-                <a class="menu__item " href="../../index.html"  data-i18n="ui.file.newChat">New Chat</a>
-                <a class="menu__item " href="../../consulting.html"  data-i18n="ui.file.openConsulting">Open Consulting</a>
-                <a class="menu__item " href="../../studio.html"  data-i18n="ui.file.openStudio">Open Studio</a>
-                <div class="menu__sep"></div>
-                <button type="button" class="menu__item " data-open-dialog="dlg-save" data-i18n="ui.file.save">Save Conversation...</button>
-                <button type="button" class="menu__item " data-print data-i18n="ui.file.print">Print...</button>
+                <button type="button" class="menu__item " data-nav="location" data-i18n="ui.file.openLocation">Open Location...</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-save" data-i18n="ui.file.saveAs">Save As...</button>
+                <button type="button" class="menu__item " data-nav="print" data-i18n="ui.file.print">Print...</button>
                 <div class="menu__sep"></div>
                 <button type="button" class="menu__item " data-open-dialog="dlg-exit" data-i18n="ui.file.exit">Exit</button>
             </div>
         </div>
         <div class="menubar__group">
-            <button type="button" class="menubar__item" data-menu="menu-edit" aria-expanded="false" aria-haspopup="true"><span data-i18n="ui.menu.edit">Edit</span></button>
+            <button type="button" class="menubar__item" data-menu="menu-edit" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.edit">Edit</button>
             <div class="menu" id="menu-edit" hidden>
                 <button type="button" class="menu__item " aria-disabled="true" disabled data-i18n="ui.edit.undo">Undo</button>
                 <button type="button" class="menu__item " aria-disabled="true" disabled data-i18n="ui.edit.cut">Cut</button>
                 <button type="button" class="menu__item " aria-disabled="true" disabled data-i18n="ui.edit.copy">Copy</button>
                 <button type="button" class="menu__item " aria-disabled="true" disabled data-i18n="ui.edit.paste">Paste</button>
                 <div class="menu__sep"></div>
-                <button type="button" class="menu__item " data-select-transcript data-i18n="ui.edit.selectAll">Select All</button>
+                <button type="button" class="menu__item " data-select-page data-i18n="ui.edit.selectAll">Select All</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-find" data-i18n="ui.edit.find">Find in Page...</button>
             </div>
         </div>
         <div class="menubar__group">
-            <button type="button" class="menubar__item" data-menu="menu-view" aria-expanded="false" aria-haspopup="true"><span data-i18n="ui.menu.view">View</span></button>
+            <button type="button" class="menubar__item" data-menu="menu-view" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.view">View</button>
             <div class="menu" id="menu-view" hidden>
+                <button type="button" class="menu__item " data-nav="reload" data-i18n="ui.view.reload">Reload</button>
+                <button type="button" class="menu__item " data-open-dialog="dlg-docinfo" data-i18n="ui.view.docInfo">Document Info...</button>
+                <div class="menu__sep"></div>
                 <button type="button" class="menu__item menu__item--check" data-lang="en" aria-pressed="true" data-i18n="ui.view.english">English</button>
                 <button type="button" class="menu__item menu__item--check" data-lang="sv" aria-pressed="false" data-i18n="ui.view.swedish">Svenska</button>
-                <div class="menu__sep"></div>
-                <button type="button" class="menu__item " data-window="max" data-i18n="ui.view.maximize">Maximize window</button>
-                <button type="button" class="menu__item " data-scroll-top data-i18n="ui.view.top">Top of page</button>
             </div>
         </div>
         <div class="menubar__group">
-            <button type="button" class="menubar__item" data-menu="menu-conv" aria-expanded="false" aria-haspopup="true"><span data-i18n="ui.menu.conversation">Conversation</span></button>
-            <div class="menu" id="menu-conv" hidden>
-                <a class="menu__item " href="#about" data-i18n="refCase.about">About</a>
-                <a class="menu__item " href="#my-role" data-i18n="refCase.myRole">My role</a>
+            <button type="button" class="menubar__item" data-menu="menu-go" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.go">Go</button>
+            <div class="menu" id="menu-go" hidden>
+                <button type="button" class="menu__item " data-nav="back" data-i18n="ui.go.back">Back</button>
+                <button type="button" class="menu__item " data-nav="forward" data-i18n="ui.go.forward">Forward</button>
                 <div class="menu__sep"></div>
-                <button type="button" class="menu__item " data-clear-mine data-i18n="ui.conv.clear">Clear my messages</button>
+                <a class="menu__item " href="../../index.html"  data-i18n="ui.go.home">Home</a>
             </div>
         </div>
         <div class="menubar__group">
-            <button type="button" class="menubar__item" data-menu="menu-help" aria-expanded="false" aria-haspopup="true"><span data-i18n="ui.menu.help">Help</span></button>
-            <div class="menu" id="menu-help" hidden>
+            <button type="button" class="menubar__item" data-menu="menu-book" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.bookmarks">Bookmarks</button>
+            <div class="menu" id="menu-book" hidden>
+                <a class="menu__item " href="../../index.html"  data-i18n="ui.dir.home">Home</a>
+                <a class="menu__item " href="../../consulting.html"  data-i18n="ui.dir.consulting">Consulting</a>
+                <a class="menu__item " href="../../studio.html"  data-i18n="ui.dir.studio">Studio</a>
+                <a class="menu__item " href="../../studio.html#gallery"  data-i18n="ui.dir.gallery">Gallery</a>
+                <a class="menu__item " href="../../consulting.html#contact"  data-i18n="ui.dir.guestbook">Guestbook</a>
+                <div class="menu__sep"></div>
+                <div class="menu__item" aria-disabled="true" data-i18n="ui.bookmarks.cases">Reference cases</div>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/epiroc.html">Epiroc</a>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/bufab.html">BUFAB</a>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/avarn.html">Avarn</a>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/kopparbergs-brewery.html">Kopparbergs</a>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/ske-kraft.html">Skellefte&aring; Kraft</a>
+                <a class="menu__item" href="../../reference-cases/johnny-vigersten/sectra.html">Sectra</a>
+            </div>
+        </div>
+        <div class="menubar__group">
+            <button type="button" class="menubar__item" data-menu="menu-opt" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.options">Options</button>
+            <div class="menu" id="menu-opt" hidden>
+                <button type="button" class="menu__item menu__item--check" data-option="toolbar" aria-pressed="true" data-i18n="ui.options.toolbar">Show Toolbar</button>
+                <button type="button" class="menu__item menu__item--check" data-option="location" aria-pressed="true" data-i18n="ui.options.location">Show Location</button>
+                <button type="button" class="menu__item menu__item--check" data-option="dirbar" aria-pressed="true" data-i18n="ui.options.dirbar">Show Directory Buttons</button>
+                <div class="menu__sep"></div>
+                <button type="button" class="menu__item menu__item--check" data-option="images" aria-pressed="true" data-i18n="ui.options.images">Auto Load Images</button>
+                <div class="menu__sep"></div>
+                <button type="button" class="menu__item menu__item--check" data-window="max" data-option="maximize" aria-pressed="false" data-i18n="ui.options.maximize">Maximize window</button>
+            </div>
+        </div>
+        <div class="menubar__group">
+            <button type="button" class="menubar__item" data-menu="menu-help" aria-expanded="false" aria-haspopup="true" data-i18n="ui.menu.help">Help</button>
+            <div class="menu menu--right" id="menu-help" hidden>
                 <button type="button" class="menu__item " data-open-dialog="dlg-readme" data-i18n="ui.helpMenu.readme">Read Me</button>
                 <button type="button" class="menu__item " data-open-dialog="dlg-shortcuts" data-i18n="ui.helpMenu.shortcuts">Keyboard Shortcuts</button>
                 <div class="menu__sep"></div>
@@ -230,252 +273,142 @@
             </div>
         </div>
     </nav>
-    <div class="toolbar" role="toolbar" aria-label="Toolbar" data-i18n-aria-label="aria.toolbar">
+    <div class="toolbar" role="toolbar" aria-label="Navigation toolbar" data-i18n-aria-label="aria.toolbar">
+        <button type="button" class="tbtn" data-nav="back">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-back"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.back">Back</span>
+        </button>
+        <button type="button" class="tbtn" data-nav="forward">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-forward"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.forward">Forward</span>
+        </button>
         <a class="tbtn" href="../../index.html">
-            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-newchat"/></svg>
-            <span class="tbtn__label" data-i18n="ui.tb.newChat">New Chat</span>
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-home"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.home">Home</span>
         </a>
+        <button type="button" class="tbtn" data-nav="reload">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-reload"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.reload">Reload</span>
+        </button>
         <div class="tbtn__sep" aria-hidden="true"></div>
-        <button type="button" class="tbtn" data-focus-prompt>
-            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-ask"/></svg>
-            <span class="tbtn__label" data-i18n="ui.tb.ask">Ask</span>
+        <button type="button" class="tbtn" data-option="images" aria-pressed="true">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-images"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.images">Images</span>
         </button>
-        <button type="button" class="tbtn" data-open-dialog="dlg-save">
-            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-save"/></svg>
-            <span class="tbtn__label" data-i18n="ui.tb.save">Save</span>
-        </button>
-        <button type="button" class="tbtn" data-print>
+        <button type="button" class="tbtn" data-nav="print">
             <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-print"/></svg>
             <span class="tbtn__label" data-i18n="ui.tb.print">Print</span>
         </button>
-        <div class="tbtn__sep" aria-hidden="true"></div>
-        <button type="button" class="tbtn" data-open-dialog="dlg-about">
-            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-about"/></svg>
-            <span class="tbtn__label" data-i18n="ui.tb.about">About</span>
+        <button type="button" class="tbtn" data-open-dialog="dlg-find">
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-find"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.find">Find</span>
         </button>
+        <button type="button" class="tbtn" data-nav="stop" aria-disabled="true" disabled>
+            <svg class="i" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-stop"/></svg>
+            <span class="tbtn__label" data-i18n="ui.tb.stop">Stop</span>
+        </button>
+        <div class="throbber" aria-hidden="true">
+            <img src="../../img/tf-pc-logo-yellow-transparent.svg" alt="" width="1955" height="1491" decoding="async">
+        </div>
     </div>
-    <div class="workspace">
-        <aside class="rail rail--left">
-            <div class="plate">
-                <img class="plate__logo" src="../../img/tf-pc-logo-yellow-transparent.svg" alt="" width="1955" height="1491" decoding="async">
-                <div>
-                    <div class="plate__name">True Friends</div>
-                    <div class="plate__version">Version 96</div>
-                </div>
+    <form class="locbar" id="location-form" novalidate>
+        <label class="locbar__label" for="location-field" data-i18n="ui.location">Location:</label>
+        <input class="locbar__field" id="location-field" type="text" value="http://www.truefriends.se/reference-cases/johnny-vigersten/sectra.html"
+               spellcheck="false" autocomplete="off" autocapitalize="off"
+               aria-label="Location" data-i18n-aria-label="aria.locationBar">
+        <button type="submit" class="btn locbar__go" data-i18n="ui.goBtn">Go</button>
+    </form>
+    <nav class="dirbar" aria-label="Directory buttons" data-i18n-aria-label="aria.dirbar">
+        <a class="dirbtn" href="../../index.html" data-i18n="ui.dir.home">Home</a>
+        <a class="dirbtn" href="../../consulting.html" data-i18n="ui.dir.consulting">Consulting</a>
+        <a class="dirbtn" href="../../studio.html" data-i18n="ui.dir.studio">Studio</a>
+        <a class="dirbtn" href="../../studio.html#gallery" data-i18n="ui.dir.gallery">Gallery</a>
+        <a class="dirbtn" href="../../consulting.html#team" data-i18n="ui.dir.cases">Reference Cases</a>
+        <a class="dirbtn" href="../../consulting.html#contact" data-i18n="ui.dir.guestbook">Guestbook</a>
+    </nav>
+    </div>
+
+    <main class="viewport" id="document" aria-label="Document" data-i18n-aria-label="aria.document">
+        <article class="page">
+            <div class="masthead masthead--small">
+                <img class="masthead__logo" src="../../img/tf-pc-logo-yellow-transparent.svg" alt="" width="1955" height="1491" decoding="async">
+                <img class="masthead__word" src="../../img/tf-archivo-yellow-transparent.svg" alt="True Friends" width="3956" height="484" decoding="async">
             </div>
-
-            <nav class="tree" aria-label="Site contents" data-i18n-aria-label="aria.tree">
-                <div class="tree__root">
-                    <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-computer"/></svg>
-                    <span data-i18n="ui.tree.myComputer">My Computer</span>
-                </div>
-
-                <div class="tree__group">
-                    <div class="tree__branch">
-                        <button type="button" class="tree__twisty" data-twisty="tree-convo" aria-expanded="true" aria-label="Collapse" data-i18n-aria-label="ui.tree.collapse">&#8722;</button>
-                        <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-folder"/></svg>
-                        <span data-i18n="ui.tree.conversations">Conversations</span>
-                    </div>
-                    <ul class="tree__children" id="tree-convo">
-                    <li><a class="tree__link" href="#about"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>about.txt</span></a></li>
-                    <li><a class="tree__link" href="#my-role"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>myrole.txt</span></a></li>
-                    </ul>
-                </div>
-
-                <div class="tree__group">
-                    <div class="tree__branch">
-                        <button type="button" class="tree__twisty" data-twisty="tree-cases" aria-expanded="false" aria-label="Expand" data-i18n-aria-label="ui.tree.expand">+</button>
-                        <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-folder"/></svg>
-                        <span data-i18n="ui.tree.cases">Reference cases</span>
-                    </div>
-                    <ul class="tree__children" id="tree-cases" hidden>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/epiroc.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>epiroc.htm</span></a></li>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/bufab.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>bufab.htm</span></a></li>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/avarn.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>avarn.htm</span></a></li>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/kopparbergs-brewery.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>kopparbg.htm</span></a></li>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/ske-kraft.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>skekraft.htm</span></a></li>
-                    <li><a class="tree__link" href="../../reference-cases/johnny-vigersten/sectra.html"><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span>sectra.htm</span></a></li>
-                    </ul>
-                </div>
-
-                <div class="tree__group">
-                    <div class="tree__branch">
-                        <button type="button" class="tree__twisty" data-twisty="tree-files" aria-expanded="false" aria-label="Expand" data-i18n-aria-label="ui.tree.expand">+</button>
-                        <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-folder"/></svg>
-                        <span data-i18n="ui.tree.files">Files</span>
-                    </div>
-                    <ul class="tree__children" id="tree-files" hidden>
-                        <li><a class="tree__link" href="../../cv/johnny-vigersten-cv-EN.pdf" download><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span data-i18n="ui.tree.cvEn">cv-english.pdf</span></a></li>
-                        <li><a class="tree__link" href="../../cv/johnny-vigersten-cv-SE.pdf" download><svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span data-i18n="ui.tree.cvSv">cv-svenska.pdf</span></a></li>
-                    </ul>
-                </div>
+            <nav class="pagenav" aria-label="Page navigation" data-i18n-aria-label="aria.pagenav">
+                [ <a href="../../index.html" data-i18n="page.nav.home">Home</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html" data-i18n="page.nav.consulting">Consulting</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html" data-i18n="page.nav.studio">Studio</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../studio.html#gallery" data-i18n="page.nav.gallery">Gallery</a><span class="pagenav__sep" aria-hidden="true">|</span><a href="../../consulting.html#contact" data-i18n="page.nav.guestbook">Guestbook</a> ]
             </nav>
 
-            <div class="rule" aria-hidden="true"></div>
-
-            <label class="combo-label" for="location-combo" data-i18n="ui.location">Location:</label>
-            <div class="combo-wrap">
-                <select class="combo" id="location-combo">
-                <option value="../../index.html" data-i18n="ui.loc.start">Start</option>
-                <option value="../../consulting.html" selected data-i18n="ui.loc.consulting">Consulting</option>
-                <option value="../../studio.html" data-i18n="ui.loc.studio">Studio</option>
-                </select>
+            <div class="casebanner">
+                <img class="casebanner__photo" src="../../img/reference-cases/johnny-vigersten/sectra/sectra-bg.webp" alt="" loading="lazy">
+                <img class="casebanner__logo" src="../../img/reference-cases/johnny-vigersten/sectra/sectra-logo.webp" alt="Sectra">
             </div>
 
-            <div class="rule" aria-hidden="true"></div>
+            <h1>Sectra</h1>
+            <p class="backlink"><a href="../../consulting.html">&laquo; <span data-i18n="refCase.back">Back to Consulting</span></a></p>
 
-            <div class="tip">
-                <span class="tip__title" data-i18n="ui.tipTitle">Tip:</span>
-                <p data-i18n="ui.tip">Type a message below and press Send.</p>
+            <h2 id="about" data-i18n="refCase.about">About</h2>
+
+            <p data-i18n="refCases.sectra.about.body1">Sectra Communications enhances cybersecurity by enabling secure information exchange for critical social functions, government officials, military and diplomats, protecting society’s most sensitive data and communications.</p>
+
+            <h2 id="my-role" data-i18n="refCase.myRole">My role</h2>
+
+            <p data-i18n="refCases.sectra.myRole.body1">My consultancy role is ongoing at Sectra and due to security restrictions I can't share specific project information. At Sectra Communications I consult in both design and testing. My responsibilities vary from:</p>
+            <ul class="section__list" role="list">
+            <li data-i18n="refCases.sectra.myRole.item1">Designing the user interface and user experience of products</li>
+            <li data-i18n="refCases.sectra.myRole.item2">Prototyping ideas</li>
+            <li data-i18n="refCases.sectra.myRole.item3">Conducting user testing on prototypes and wireframes</li>
+            <li data-i18n="refCases.sectra.myRole.item4">Testing servers, VPN, Android and software</li>
+            <li data-i18n="refCases.sectra.myRole.item5">Analysing network traffic</li>
+            </ul>
+
+            <hr class="rule">
+
+            <div class="pagefoot">
+                <p><a href="mailto:hello@truefriends.se">hello@truefriends.se</a> &middot; +46 705 424 677 &middot; Lugngatan 15C, 59160 Motala, Sweden</p>
+                <div class="counter">
+                    <span data-i18n="page.counter">You are visitor number</span>
+                    <span class="counter__digits" data-counter aria-hidden="true"></span>
+                </div>
+                <p data-i18n="page.updated">Last updated: {year}</p>
+                <div class="badges">
+                    <span class="badge" data-i18n="page.badges.res">Best viewed at 800 &times; 600</span>
+                    <span class="badge" data-i18n="page.badges.handcoded">Hand-coded, no frames</span>
+                    <span class="badge badge--hot" data-i18n="page.badges.motala">Made in Motala, Sweden</span>
+                    <span class="badge" data-i18n="page.badges.modem">33.6 kbps friendly</span>
+                </div>
+                <p data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
             </div>
-        </aside>
-        <main class="transcript" id="transcript">
-      <article class="doc">
-        <header class="doc__banner">
-          <img class="doc__banner-photo" src="../../img/reference-cases/johnny-vigersten/sectra/sectra-bg.webp" alt="" loading="lazy">
-          <img class="doc__banner-logo" src="../../img/reference-cases/johnny-vigersten/sectra/sectra-logo.webp" alt="Sectra">
-        </header>
+        </article>
+    </main>
 
-        <p class="doc__crumb"><a href="../../consulting.html" data-i18n="refCase.back">Back to Consulting</a></p>
-
-      <section class="doc__section" id="about">
-        <h2 class="doc__head" data-i18n="refCase.about">About</h2>
-
-        <p data-i18n="refCases.sectra.about.body1">Sectra Communications enhances cybersecurity by enabling secure information exchange for critical social functions, government officials, military and diplomats, protecting society’s most sensitive data and communications.</p>
-      </section>
-
-      <section class="doc__section" id="my-role">
-        <h2 class="doc__head" data-i18n="refCase.myRole">My role</h2>
-
-        <p data-i18n="refCases.sectra.myRole.body1">My consultancy role is ongoing at Sectra and due to security restrictions I can't share specific project information. At Sectra Communications I consult in both design and testing. My responsibilities vary from:</p>
-        <ul class="section__list" role="list">
-        <li data-i18n="refCases.sectra.myRole.item1">Designing the user interface and user experience of products</li>
-        <li data-i18n="refCases.sectra.myRole.item2">Prototyping ideas</li>
-        <li data-i18n="refCases.sectra.myRole.item3">Conducting user testing on prototypes and wireframes</li>
-        <li data-i18n="refCases.sectra.myRole.item4">Testing servers, VPN, Android and software</li>
-        <li data-i18n="refCases.sectra.myRole.item5">Analysing network traffic</li>
-        </ul>
-      </section>
-
-      </article>
-        </main>
-        <aside class="rail rail--right">
-            <fieldset class="group">
-                <legend class="group__legend" data-i18n="ui.conn.legend">Connection</legend>
-                <div class="group__row">
-                    <svg class="i group__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-globe"/></svg>
-                    <dl>
-                        <dt data-i18n="ui.conn.server">Server:</dt><dd>truefriends.se</dd>
-                        <dt data-i18n="ui.conn.protocol">Protocol:</dt><dd>HTTPS</dd>
-                        <dt data-i18n="ui.conn.status">Status:</dt><dd class="group__ok" data-i18n="ui.conn.online">ONLINE</dd>
-                        <dt data-i18n="ui.conn.latency">Latency:</dt><dd>42 ms</dd>
-                    </dl>
-                </div>
-                <p class="group__note" data-i18n="ui.conn.note">Connected via 33.6 kbps dial-up modem.</p>
-            </fieldset>
-
-            <fieldset class="group">
-                <legend class="group__legend" data-i18n="ui.session.legend">Session</legend>
-                <dl>
-                    <dt data-i18n="ui.session.user">User:</dt><dd data-i18n="ui.session.guest">guest</dd>
-                    <dt data-i18n="ui.session.messages">Messages:</dt><dd data-message-count>0</dd>
-                    <dt data-i18n="ui.session.memory">Memory:</dt><dd data-i18n="ui.session.memoryOk">640K OK</dd>
-                    <dt data-i18n="ui.session.mode">Mode:</dt><dd>Sectra</dd>
-                </dl>
-            </fieldset>
-
-            <fieldset class="group">
-                <legend class="group__legend" data-i18n="ui.options.legend">Options</legend>
-                <label class="check">
-                    <input type="checkbox" data-option="autoscroll" checked>
-                    <span class="check__box" aria-hidden="true"></span>
-                    <span data-i18n="ui.options.autoScroll">Auto scroll</span>
-                </label>
-                <label class="check">
-                    <input type="checkbox" data-option="plaintext">
-                    <span class="check__box" aria-hidden="true"></span>
-                    <span data-i18n="ui.options.plainText">Plain text</span>
-                </label>
-                <label class="check">
-                    <input type="checkbox" data-option="showsystem" checked>
-                    <span class="check__box" aria-hidden="true"></span>
-                    <span data-i18n="ui.options.showSystem">Show system</span>
-                </label>
-
-                <div class="rule" aria-hidden="true"></div>
-
-                <div role="group" aria-label="Switch language" data-i18n-aria-label="aria.langSwitch">
-                    <label class="check check--radio">
-                        <input type="radio" name="lang" data-lang="en" checked>
-                        <span class="check__box" aria-hidden="true"></span>
-                        <span>English</span>
-                    </label>
-                    <label class="check check--radio">
-                        <input type="radio" name="lang" data-lang="sv">
-                        <span class="check__box" aria-hidden="true"></span>
-                        <span>Svenska</span>
-                    </label>
-                </div>
-            </fieldset>
-
-            <fieldset class="group">
-                <legend class="group__legend" data-i18n="ui.helpBox.legend">Help</legend>
-                <div class="group__row">
-                    <svg class="i group__icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-helpq"/></svg>
-                    <div class="group__links">
-                        <a href="#" data-open-dialog="dlg-readme" data-i18n="ui.helpMenu.readme">Read Me</a>
-                        <a href="#" data-open-dialog="dlg-shortcuts" data-i18n="ui.helpMenu.shortcuts">Keyboard Shortcuts</a>
-                        <a href="../../consulting.html" data-i18n="hero.consulting">Consulting</a>
-                        <a href="../../studio.html" data-i18n="hero.studio">Studio</a>
-                        <a href="mailto:hello@truefriends.se">hello@truefriends.se</a>
-                    </div>
-                </div>
-            </fieldset>
-        </aside>
-    </div>
-    <div class="statusbar">
-        <div class="statusbar__cell statusbar__cell--ready" data-i18n="ui.ready">Ready</div>
-
-        <form class="prompt" id="prompt-form" novalidate>
-            <label class="sr-only" for="prompt-input" data-i18n="ui.promptLabel">Message</label>
-            <input class="prompt__input" id="prompt-input" type="text" autocomplete="off" maxlength="300"
-                   placeholder="Type a message and press Send&hellip;" data-i18n-placeholder="ui.promptPlaceholder">
-            <button type="submit" class="btn prompt__send"><span data-i18n="ui.send">Send</span> <span aria-hidden="true">&gt;</span></button>
-        </form>
-
-        <div class="statusbar__cell statusbar__cell--modem" aria-hidden="true">
-            <svg class="i" width="16" height="16" viewBox="0 0 16 16"><use href="#i-modem"/></svg>
+    <div class="statusbar" aria-label="Status bar" data-i18n-aria-label="aria.statusBar">
+        <div class="statusbar__cell statusbar__cell--secure" title="This document is not encrypted." data-i18n-title="ui.secure">
+            <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-lock-open"/></svg>
         </div>
-        <div class="statusbar__cell statusbar__cell--clock">
-            <span data-clock-time>12:00 PM</span><br>
-            <span data-clock-date>Mar 12, 1996</span>
+        <div class="statusbar__cell statusbar__msg" data-status role="status" aria-live="polite">Document: Done</div>
+        <div class="statusbar__cell meter">
+            <div class="meter__bar"><div class="meter__fill" data-meter></div></div>
+        </div>
+        <div class="statusbar__cell statusbar__cell--mail" aria-hidden="true">
+            <svg class="i" width="16" height="16" viewBox="0 0 16 16"><use href="#i-modem"/></svg>
         </div>
     </div>
 </div>
 
-<nav class="taskbar" aria-label="Taskbar">
+<nav class="taskbar" aria-label="Taskbar" data-i18n-aria-label="aria.taskbar">
     <button type="button" class="taskbar__start" data-menu="startmenu" aria-expanded="false" aria-haspopup="true">
         <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-start"/></svg>
         <span data-i18n="ui.start.label">Start</span>
     </button>
     <div class="taskbar__sep" aria-hidden="true"></div>
-    <div class="taskbar__tasks" aria-label="Open windows" data-i18n-aria-label="aria.openWindows">
-            <a class="taskbar__task" href="../../index.html">
-                <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-computer"/></svg>
-                <span data-i18n="ui.start.home">Start page</span>
-            </a>
-            <a class="taskbar__task" href="../../consulting.html" aria-current="page">
-                <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg>
-                <span data-i18n="ui.loc.consulting">Consulting</span>
-            </a>
-            <a class="taskbar__task" href="../../studio.html">
-                <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-pic"/></svg>
-                <span data-i18n="ui.loc.studio">Studio</span>
-            </a>
+    <div class="taskbar__tasks">
+        <button type="button" class="taskbar__task">
+            <img src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <span>True Friends &mdash; Sectra &mdash; True Friends 96</span>
+        </button>
     </div>
     <div class="taskbar__tray">
         <svg class="i" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-modem"/></svg>
-        <span data-tray-clock>12:00 PM</span>
     </div>
 </nav>
 
@@ -484,9 +417,9 @@
     <div class="startmenu__list">
         <a class="startmenu__item" href="../../consulting.html"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-consult"/></svg><span data-i18n="ui.start.consulting">Consulting</span></a>
         <a class="startmenu__item" href="../../studio.html"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-studio"/></svg><span data-i18n="ui.start.studio">Studio</span></a>
-        <a class="startmenu__item" href="../../index.html"><svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-sys"/></svg><span data-i18n="ui.start.home">Start page</span></a>
+        <a class="startmenu__item" href="../../index.html"><svg class="i" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="ui.start.home">Home page</span></a>
         <div class="menu__sep"></div>
-        <button type="button" class="startmenu__item" data-open-dialog="dlg-contact"><svg class="i" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-ask"/></svg><span data-i18n="ui.start.contact">Say hi&hellip;</span></button>
+        <button type="button" class="startmenu__item" data-open-dialog="dlg-contact"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-mail"/></svg><span data-i18n="ui.start.contact">Sign the guestbook&hellip;</span></button>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-readme"><svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-doc"/></svg><span data-i18n="ui.start.readme">Read Me</span></button>
         <button type="button" class="startmenu__item" data-open-dialog="dlg-shortcuts"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-helpq"/></svg><span data-i18n="ui.start.shortcuts">Keyboard Shortcuts</span></button>
         <div class="menu__sep"></div>
@@ -498,7 +431,7 @@
     <div class="dlg">
         <div class="titlebar">
             <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
-            <h2 class="titlebar__text" id="dlg-contact-title" data-i18n="ui.dlg.contactTitle">New Message</h2>
+            <h2 class="titlebar__text" id="dlg-contact-title" data-i18n="ui.dlg.contactTitle">Guestbook Entry</h2>
             <div class="titlebar__buttons">
                 <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
                     <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
@@ -506,14 +439,14 @@
             </div>
         </div>
         <div class="dlg__body">
-            <p data-i18n="modal.desc">Please fill out the contact form and we will get back to you as soon as we can.</p>
+            <p data-i18n="modal.desc">Leave your details and a message, and we will get back to you as soon as we can.</p>
             <form class="form" id="modal-contact-form" novalidate
                   data-endpoint="https://formsubmit.co/ajax/hello@truefriends.se"
                   aria-describedby="modal-form-status">
                 <div class="field-row">
                     <label class="field">
                         <span class="field__label" data-i18n="contact.placeholders.firstName">First name</span>
-                        <input class="input" type="text" name="firstName" autocomplete="given-name" maxlength="50" required>
+                        <input class="input" type="text" name="firstName" autocomplete="given-name" maxlength="50" required data-autofocus>
                     </label>
                     <label class="field">
                         <span class="field__label" data-i18n="contact.placeholders.lastName">Last name</span>
@@ -531,13 +464,121 @@
                 <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot">
                 <input type="hidden" name="_captcha" value="true">
                 <input type="hidden" name="_template" value="table">
-
                 <p class="form__status" id="modal-form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
         <div class="dlg__actions">
             <button type="button" class="btn" data-close-dialog data-i18n="ui.dlg.cancel">Cancel</button>
             <button type="submit" class="btn btn--default" form="modal-contact-form" data-i18n="modal.send">Send</button>
+        </div>
+    </div>
+</dialog>
+<dialog class="" id="dlg-find" aria-labelledby="dlg-find-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-find-title" data-i18n="ui.find.title">Find</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="dlg__body">
+            <form id="find-form" novalidate>
+                <div class="find-row">
+                    <label class="field">
+                        <span class="field__label" data-i18n="ui.find.label">Find what:</span>
+                        <input class="input" id="find-input" type="text" autocomplete="off" data-autofocus>
+                    </label>
+                    <button type="submit" class="btn btn--default" data-i18n="ui.find.next">Find Next</button>
+                </div>
+                <p class="form__status" data-find-status role="status" aria-live="polite"></p>
+            </form>
+        </div>
+        <div class="dlg__actions">
+            <button type="button" class="btn" data-close-dialog data-i18n="ui.dlg.close">Close</button>
+        </div>
+    </div>
+</dialog>
+<dialog class="" id="dlg-docinfo" aria-labelledby="dlg-docinfo-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-docinfo-title" data-i18n="ui.docinfo.title">Document Info</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="dlg__body">
+            <dl class="info-grid">
+                <dt data-i18n="ui.docinfo.location">Location:</dt><dd data-doc-url>http://www.truefriends.se/</dd>
+                <dt data-i18n="ui.docinfo.docTitle">Title:</dt><dd data-doc-title>True Friends</dd>
+                <dt data-i18n="ui.docinfo.modified">Last modified:</dt><dd data-doc-modified>&mdash;</dd>
+                <dt data-i18n="ui.docinfo.server">Server:</dt><dd>truefriends.se</dd>
+                <dt data-i18n="ui.docinfo.protocol">Protocol:</dt><dd>HTTP/1.0</dd>
+                <dt data-i18n="ui.docinfo.connStatus">Status:</dt><dd class="ok" data-i18n="ui.docinfo.online">ONLINE</dd>
+                <dt data-i18n="ui.docinfo.latency">Latency:</dt><dd>42 ms</dd>
+                <dt data-i18n="ui.docinfo.security">Security:</dt><dd data-i18n="ui.docinfo.insecure">None (this is a 1996 browser)</dd>
+            </dl>
+            <p class="note" data-i18n="ui.docinfo.note">Connected via 33.6 kbps dial-up modem.</p>
+        </div>
+        <div class="dlg__actions">
+            <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
+        </div>
+    </div>
+</dialog>
+<dialog class="" id="dlg-404" aria-labelledby="dlg-404-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-404-title" data-i18n="ui.dlg.notFoundTitle">Error 404</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="dlg__body">
+            <div class="dlg__msg">
+                <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg>
+                <div>
+                    <p data-i18n="ui.dlg.notFoundBody">The requested URL was not found on this server:</p>
+                    <p><strong data-error-url></strong></p>
+                    <p data-i18n="ui.dlg.notFoundBody2">Check the spelling, or use the directory buttons above.</p>
+                </div>
+            </div>
+        </div>
+        <div class="dlg__actions">
+            <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
+        </div>
+    </div>
+</dialog>
+<dialog class="" id="dlg-nohost" aria-labelledby="dlg-nohost-title">
+    <div class="dlg">
+        <div class="titlebar">
+            <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
+            <h2 class="titlebar__text" id="dlg-nohost-title" data-i18n="ui.dlg.noHostTitle">Network Error</h2>
+            <div class="titlebar__buttons">
+                <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
+                    <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="dlg__body">
+            <div class="dlg__msg">
+                <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg>
+                <div>
+                    <p data-i18n="ui.dlg.noHostBody">True Friends 96 is unable to locate the server:</p>
+                    <p><strong data-error-url></strong></p>
+                    <p data-i18n="ui.dlg.noHostBody2">The server does not have a DNS entry.</p>
+                </div>
+            </div>
+        </div>
+        <div class="dlg__actions">
+            <button type="button" class="btn btn--default" data-close-dialog data-i18n="ui.dlg.ok">OK</button>
         </div>
     </div>
 </dialog>
@@ -558,7 +599,7 @@
                 <div>
                     <p><strong data-i18n="ui.dlg.aboutHeading">True Friends 96</strong><br>
                        <span data-i18n="ui.dlg.aboutVersion">Version 96 (Build 1996.03.12)</span></p>
-                    <p data-i18n="ui.dlg.aboutBody">A creative and technical studio &amp; consulting firm based in Motala, Sweden, but available worldwide.</p>
+                    <p data-i18n="ui.dlg.aboutBody">A creative and technical studio &amp; consulting firm based in Motala, Sweden.</p>
                     <p data-i18n="ui.dlg.aboutLicense">This product is licensed to: a true friend.</p>
                     <p class="note" data-i18n="footer.copyright">&copy; True Friends. All rights reserved.</p>
                 </div>
@@ -573,7 +614,7 @@
     <div class="dlg">
         <div class="titlebar">
             <img class="titlebar__icon" src="../../img/tf-pc-favicon.svg" alt="" width="16" height="16">
-            <h2 class="titlebar__text" id="dlg-save-title" data-i18n="ui.dlg.saveTitle">Save Conversation</h2>
+            <h2 class="titlebar__text" id="dlg-save-title" data-i18n="ui.dlg.saveTitle">Save As</h2>
             <div class="titlebar__buttons">
                 <button type="button" class="titlebar__btn" data-close-dialog aria-label="Close" data-i18n-aria-label="aria.close">
                     <svg class="i" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><use href="#i-close"/></svg>
@@ -583,7 +624,7 @@
         <div class="dlg__body">
             <div class="dlg__msg">
                 <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-warn"/></svg>
-                <p data-i18n="ui.dlg.saveBody">The conversation could not be saved. Insert a formatted floppy disk in drive A: and try again.</p>
+                <p data-i18n="ui.dlg.saveBody">The document could not be saved. Insert a formatted floppy disk in drive A: and try again.</p>
             </div>
         </div>
         <div class="dlg__actions">
@@ -607,7 +648,7 @@
                 <svg class="i" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-info"/></svg>
                 <div>
                     <p data-i18n="ui.dlg.exitBody">This program cannot be closed. A true friend does not walk out on you.</p>
-                    <p data-i18n="ui.dlg.exitBody2">Send a message instead &mdash; we answer faster than a modem.</p>
+                    <p data-i18n="ui.dlg.exitBody2">Sign the guestbook instead &mdash; we answer faster than a modem.</p>
                 </div>
             </div>
         </div>
@@ -684,12 +725,12 @@
             </div>
         </div>
         <div class="dlg__body">
-            <p data-i18n="ui.dlg.shortcutsIntro">While the window has focus:</p>
+            <p data-i18n="ui.dlg.shortcutsIntro">While the document has focus:</p>
             <dl class="keys">
-                <dt><kbd>/</kbd></dt><dd data-i18n="ui.shortcuts.slash">Jump to the prompt line</dd>
-                <dt><kbd>Enter</kbd></dt><dd data-i18n="ui.shortcuts.enter">Send the message in the prompt line</dd>
+                <dt><kbd>/</kbd></dt><dd data-i18n="ui.shortcuts.slash">Jump to the Location field</dd>
+                <dt><kbd>Enter</kbd></dt><dd data-i18n="ui.shortcuts.enter">Go to the address in the Location field</dd>
                 <dt><kbd>Esc</kbd></dt><dd data-i18n="ui.shortcuts.esc">Close the open dialog</dd>
-                <dt><kbd>&larr;</kbd> <kbd>&rarr;</kbd></dt><dd data-i18n="ui.shortcuts.arrows">Previous / next photo in the viewer</dd>
+                <dt><kbd>&larr;</kbd> <kbd>&rarr;</kbd></dt><dd data-i18n="ui.shortcuts.arrows">Previous / next photo in the image viewer</dd>
                 <dt><kbd>Tab</kbd></dt><dd data-i18n="ui.shortcuts.tab">Move between controls</dd>
             </dl>
         </div>

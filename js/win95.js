@@ -1,22 +1,33 @@
 /* ============================================================================
- * True Friends 96 — page behaviour
+ * True Friends 96 — browser behaviour
  *
- * One file, because the whole site is one window. Sections below, in order:
- *   i18n            translation swap, EN/SV, no locale guessing
- *   chrome          menu bar, Start menu, title-bar buttons, taskbar
- *   tree            the Explorer-style contents rail
- *   services        the [+] accordion
- *   gallery         thumbnails + the Image Viewer dialog
- *   prompt          the live chat line and its canned replies
- *   status          clock, message counter, Options checkboxes
- *   dialogs         About / Save / Exit / Read Me / Shortcuts
- *   forms           sanitising, rate limiting, submit
+ * One file, because the site is one browser. Sections below, in order:
+ *   i18n        translation swap, EN/SV, no locale guessing
+ *   menus       menu bar and Start menu
+ *   window      minimize / maximize / close, taskbar
+ *   browser     location bar, history buttons, throbber, progress, status bar
+ *   options     Auto Load Images and the three chrome rows, persisted
+ *   find        Find in Page, over the document only
+ *   gallery     thumbnails and the image viewer
+ *   counter     the visitor's own page-view count
+ *   dialogs     About / Save / Exit / Read Me / Shortcuts / Document Info
+ *   boot        the dial-up handshake, once per session
+ *   forms       sanitising, rate limiting, submit
  * ========================================================================= */
 (function () {
   "use strict";
 
   const $ = (sel, root) => (root || document).querySelector(sel);
   const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+  const body = document.body;
+  const pageEl = $(".page");
+  /* Every page states where the site root is relative to itself and what its
+     canonical address is. The location bar and the URL resolver are built on
+     those two facts, so neither has to guess at directory depth. */
+  const ROOT = body.dataset.root || "";
+  const SITE_URL = body.dataset.url || "http://www.truefriends.se/";
+  const HOST = "www.truefriends.se";
 
   /* ====================================================================
    * i18n
@@ -59,7 +70,6 @@
     "data-i18n-href": "href",
     "data-i18n-alt": "alt",
     "data-i18n-title": "title",
-    "data-i18n-value": "value",
   };
 
   function applyTranslations(lang) {
@@ -85,16 +95,15 @@
       });
     }
 
-    // Language switchers: the View menu's check items and the Options radios.
+    // Language switchers: the View menu's check items.
     $$("[data-lang]").forEach((el) => {
-      const on = el.getAttribute("data-lang") === lang;
-      if (el.type === "radio") el.checked = on;
-      else el.setAttribute("aria-pressed", String(on));
+      el.setAttribute("aria-pressed", String(el.getAttribute("data-lang") === lang));
     });
 
-    // Anything already rendered by JS has to be re-rendered in the new
-    // language: the gallery count line and any replies the visitor triggered.
-    if (typeof window.TF_RELABEL === "function") window.TF_RELABEL();
+    // Anything rendered by JS has to be relabelled in the new language too.
+    setStatus(null);
+    const count = $("[data-gallery-count]");
+    if (count) count.textContent = t("gallery.count", { n: GALLERY_IMAGES.length });
   }
 
   /**
@@ -122,14 +131,9 @@
     applyTranslations(lang);
   }
 
-  applyTranslations(detectLanguageSync());
-
   document.addEventListener("click", (event) => {
     const el = event.target.closest("[data-lang]");
-    if (el && el.type !== "radio") setLanguage(el.getAttribute("data-lang"));
-  });
-  $$('input[data-lang]').forEach((radio) => {
-    radio.addEventListener("change", () => setLanguage(radio.getAttribute("data-lang")));
+    if (el) setLanguage(el.getAttribute("data-lang"));
   });
 
   // A page restored from the back/forward cache keeps its frozen DOM — none
@@ -178,17 +182,18 @@
     // Once a menu is open, sliding along the bar switches menus without a
     // second click — exactly how a menu bar has always behaved.
     trigger.addEventListener("mouseenter", () => {
-      const anyOpen = menuTriggers.some(
-        (m) => m.getAttribute("aria-expanded") === "true",
-      );
+      const anyOpen = menuTriggers.some((m) => m.getAttribute("aria-expanded") === "true");
       if (!anyOpen || trigger.getAttribute("aria-expanded") === "true") return;
       closeAllMenus(trigger);
       menu.hidden = false;
       trigger.setAttribute("aria-expanded", "true");
     });
 
+    // Checkable items stay put while you flip several in a row; everything
+    // else dismisses the menu.
     menu.addEventListener("click", (event) => {
-      if (event.target.closest(".menu__item")) closeAllMenus();
+      const item = event.target.closest(".menu__item");
+      if (item && !item.classList.contains("menu__item--check")) closeAllMenus();
     });
   });
 
@@ -203,10 +208,8 @@
   });
 
   /* ====================================================================
-   * Window chrome: minimize, maximize, close, taskbar
+   * Window chrome
    * ==================================================================== */
-
-  const body = document.body;
 
   const setMinimized = (on) => {
     body.classList.toggle("is-minimized", on);
@@ -223,84 +226,413 @@
         const on = !body.classList.contains("is-maximized");
         body.classList.toggle("is-maximized", on);
         btn.setAttribute("aria-pressed", String(on));
+        $$("[data-option='maximize']").forEach((o) => o.setAttribute("aria-pressed", String(on)));
       } else if (action === "close") {
         openDialog("dlg-exit");
       }
     });
   });
 
-  // The taskbar button for the current page restores a minimized window,
-  // which is the only way back once it is rolled up.
-  const ownTask = $(".taskbar__task[aria-current='page']");
-  if (ownTask) {
-    ownTask.addEventListener("click", (event) => {
-      if (!body.classList.contains("is-minimized")) return;
+  // The taskbar button is the only way back once the window is rolled up.
+  const task = $(".taskbar__task");
+  if (task) task.addEventListener("click", () => setMinimized(false));
+
+  /* ====================================================================
+   * Browser: location bar, history, throbber, progress, status
+   * ==================================================================== */
+
+  const statusMsg = $("[data-status]");
+  const meterFill = $("[data-meter]");
+  const locField = $("#location-field");
+  const stopBtn = $("[data-nav='stop']");
+
+  let defaultStatus = "";
+
+  /** Passing null restores the resting message, which is language-dependent. */
+  function setStatus(text) {
+    if (!statusMsg) return;
+    if (text === null) {
+      defaultStatus = t("ui.status.done");
+      statusMsg.textContent = defaultStatus;
+    } else {
+      statusMsg.textContent = text;
+    }
+  }
+
+  function setProgress(pct) {
+    if (meterFill) meterFill.style.width = `${pct}%`;
+  }
+
+  function setLoading(on) {
+    body.classList.toggle("is-loading", on);
+    if (stopBtn) {
+      stopBtn.setAttribute("aria-disabled", String(!on));
+      stopBtn.disabled = !on;
+    }
+  }
+
+  /* The load sequence. Navigator narrated every step of a request because
+     over a modem each one could take seconds, and watching the messages was
+     how you knew the connection had not died. Here it is theatre, but it is
+     the theatre that makes the chrome read as a browser. */
+  let loadTimers = [];
+  function playLoad() {
+    loadTimers.forEach(clearTimeout);
+    loadTimers = [];
+    setLoading(true);
+    const steps = [
+      [0, "ui.status.connecting", 8],
+      [260, "ui.status.contacted", 34],
+      [560, "ui.status.transferring", 72],
+      [900, null, 100],
+    ];
+    steps.forEach(([delay, key, pct]) => {
+      loadTimers.push(
+        setTimeout(() => {
+          setProgress(pct);
+          if (key) setStatus(t(key, { host: HOST }));
+          else {
+            setStatus(null);
+            setLoading(false);
+            loadTimers.push(setTimeout(() => setProgress(0), 400));
+          }
+        }, delay),
+      );
+    });
+  }
+
+  function stopLoad() {
+    loadTimers.forEach(clearTimeout);
+    loadTimers = [];
+    setLoading(false);
+    setProgress(0);
+    setStatus(t("ui.status.stopped"));
+  }
+
+  /**
+   * Turn whatever was typed in the Location field into somewhere to go.
+   *
+   * Accepts the full address, the bare host, a path, or just a page name —
+   * "http://www.truefriends.se/studio.html", "truefriends.se/studio",
+   * "/studio.html" and "studio" all land in the same place. Returns a URL to
+   * navigate to, or an error code for the dialog to report.
+   */
+  const PAGES = {
+    "": "index.html",
+    "index.html": "index.html",
+    "index": "index.html",
+    "home": "index.html",
+    "start": "index.html",
+    "consulting.html": "consulting.html",
+    "consulting": "consulting.html",
+    "konsult": "consulting.html",
+    "studio.html": "studio.html",
+    "studio": "studio.html",
+    "gallery": "studio.html#gallery",
+    "galleri": "studio.html#gallery",
+    "photos": "studio.html#gallery",
+    "services": "consulting.html#services",
+    "about": "consulting.html#about",
+    "contact": "consulting.html#contact",
+    "guestbook": "consulting.html#contact",
+    "kontakt": "consulting.html#contact",
+    "cases": "consulting.html#team",
+    "reference-cases": "consulting.html#team",
+  };
+
+  const CASES = [
+    "epiroc", "bufab", "avarn", "kopparbergs-brewery", "ske-kraft", "sectra",
+  ];
+
+  function resolveLocation(raw) {
+    let input = String(raw).trim();
+    if (!input) return { error: "notfound" };
+
+    if (/^mailto:/i.test(input)) return { href: input };
+
+    // Strip the scheme, then the host if one was typed at all.
+    input = input.replace(/^[a-z]+:\/\//i, "");
+    const slash = input.indexOf("/");
+    const maybeHost = (slash === -1 ? input : input.slice(0, slash)).toLowerCase();
+
+    if (/[a-z0-9-]+\.[a-z]{2,}$/i.test(maybeHost)) {
+      const known = ["truefriends.se", "www.truefriends.se", "localhost"];
+      if (!known.includes(maybeHost.split(":")[0])) return { error: "host", host: maybeHost };
+      input = slash === -1 ? "" : input.slice(slash + 1);
+    }
+
+    let path = input.replace(/^\/+/, "").toLowerCase();
+    const hash = path.includes("#") ? path.slice(path.indexOf("#")) : "";
+    if (hash) path = path.slice(0, path.indexOf("#"));
+    path = path.replace(/\/+$/, "");
+
+    const caseMatch = path.match(/^(?:reference-cases\/[a-z-]+\/)?([a-z-]+)\.html?$/);
+    if (caseMatch && CASES.includes(caseMatch[1])) {
+      return { href: `${ROOT}reference-cases/johnny-vigersten/${caseMatch[1]}.html` };
+    }
+    if (CASES.includes(path)) {
+      return { href: `${ROOT}reference-cases/johnny-vigersten/${path}.html` };
+    }
+    if (path in PAGES) return { href: ROOT + PAGES[path] + hash };
+
+    return { error: "notfound", path: "/" + path };
+  }
+
+  const locForm = $("#location-form");
+  if (locForm && locField) {
+    locForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      setMinimized(false);
+      const result = resolveLocation(locField.value);
+
+      if (result.href) {
+        playLoad();
+        window.location.href = result.href;
+        return;
+      }
+
+      // Navigator's two failure modes, and they read very differently: a bad
+      // host never resolved, a bad path came back from a server that did.
+      const dialog = document.getElementById(
+        result.error === "host" ? "dlg-nohost" : "dlg-404",
+      );
+      const slot = dialog && $("[data-error-url]", dialog);
+      if (slot) slot.textContent = result.host || locField.value.trim();
+      openDialog(result.error === "host" ? "dlg-nohost" : "dlg-404");
+      locField.value = SITE_URL;
     });
+
+    // Clicking into the field selects the whole address, the way it has
+    // worked in every browser since.
+    locField.addEventListener("focus", () => locField.select());
   }
 
-  /* ====================================================================
-   * Contents tree + location combo
-   * ==================================================================== */
-
-  $$("[data-twisty]").forEach((btn) => {
-    const target = document.getElementById(btn.getAttribute("data-twisty"));
-    if (!target) return;
-    btn.addEventListener("click", () => {
-      const open = !target.hidden;
-      target.hidden = open;
-      btn.textContent = open ? "+" : "−";
-      btn.setAttribute("aria-expanded", String(!open));
+  $$("[data-nav]").forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      const action = btn.getAttribute("data-nav");
+      if (action === "back") window.history.back();
+      else if (action === "forward") window.history.forward();
+      else if (action === "reload") { playLoad(); window.location.reload(); }
+      else if (action === "stop") stopLoad();
+      else if (action === "print") window.print();
+      else if (action === "location") {
+        if (!locField) return;
+        body.classList.remove("hide-location");
+        applyOptions();
+        locField.focus();
+      }
     });
   });
 
-  const locationCombo = $("#location-combo");
-  if (locationCombo) {
-    locationCombo.addEventListener("change", () => {
-      const url = locationCombo.value;
-      if (url && url !== "#") window.location.href = url;
+  /* The status bar doubles as the link preview. Printing the destination of
+     whatever the pointer is over is the single most browser-ish behaviour
+     there is, and it costs two listeners. */
+  document.addEventListener("mouseover", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link || !statusMsg) return;
+    const href = link.getAttribute("href");
+    // Swap the real origin for the one the location bar advertises, so the
+    // preview matches the address above it whether this is running from
+    // localhost, a file:// path or the live host.
+    if (href.startsWith("#")) setStatus(SITE_URL + href);
+    else setStatus(link.href.replace(/^[a-z]+:\/\/[^/]*/i, `http://${HOST}`));
+  });
+  document.addEventListener("mouseout", (event) => {
+    if (event.target.closest("a[href]")) setStatus(null);
+  });
+
+  // A link click starts a real navigation, so narrate it the way the
+  // location bar does.
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#") || href.startsWith("mailto:") || link.hasAttribute("download")) return;
+    playLoad();
+  });
+
+  /* ====================================================================
+   * Options
+   *
+   * Navigator's Options menu, and the four entries that mattered: the three
+   * chrome rows you could hide to win back screen space, and Auto Load
+   * Images, which is why people wrote alt text.
+   * ==================================================================== */
+
+  const OPTION_KEY = "tf_options";
+  const OPTION_CLASS = {
+    toolbar: "hide-toolbar",
+    location: "hide-location",
+    dirbar: "hide-dirbar",
+    images: "no-images",
+  };
+
+  let options = {};
+  try {
+    options = JSON.parse(localStorage.getItem(OPTION_KEY) || "{}");
+  } catch (e) {
+    options = {};
+  }
+
+  const optionButtons = $$("[data-option]");
+
+  /**
+   * With images off the browser drew a broken-image icon followed by the
+   * alt text, which is the whole reason alt text was written carefully. The
+   * placeholders are generated from each image's own alt rather than written
+   * into the markup, so decorative images (alt="") correctly show nothing.
+   */
+  function syncAltSlugs(imagesOn) {
+    if (!pageEl) return;
+    if (imagesOn) {
+      $$(".alt-slug[data-generated]", pageEl).forEach((el) => el.remove());
+      return;
+    }
+    $$("img[alt]", pageEl).forEach((img) => {
+      const text = img.getAttribute("alt").trim();
+      if (!text) return;
+      const next = img.nextElementSibling;
+      if (next && next.classList.contains("alt-slug")) return;
+      const slug = document.createElement("span");
+      slug.className = "alt-slug";
+      slug.dataset.generated = "true";
+      slug.innerHTML =
+        '<svg class="i" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-broken"/></svg>';
+      slug.appendChild(document.createTextNode(text));
+      img.after(slug);
     });
   }
 
-  // Tree links that point at a turn in this page highlight the one currently
-  // on screen, so the rail doubles as a position indicator.
-  const treeLinks = $$(".tree__link[href^='#']");
-  const targets = treeLinks
-    .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
-    .filter(Boolean);
+  function applyOptions() {
+    optionButtons.forEach((btn) => {
+      const name = btn.getAttribute("data-option");
+      if (name === "maximize") return;
+      // Every option is on by default; "images" is the odd one out because
+      // its class is a negation.
+      const on = name in options ? !!options[name] : true;
+      btn.setAttribute("aria-pressed", String(on));
+      body.classList.toggle(OPTION_CLASS[name], !on);
+      if (name === "images") syncAltSlugs(on);
+    });
+  }
 
-  if (targets.length && "IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          treeLinks.forEach((link) => {
-            link.setAttribute(
-              "aria-current",
-              String(link.getAttribute("href") === `#${entry.target.id}`),
-            );
-          });
-        });
+  optionButtons.forEach((btn) => {
+    const name = btn.getAttribute("data-option");
+    if (name === "maximize") return;
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const on = btn.getAttribute("aria-pressed") === "true";
+      options[name] = !on;
+      try {
+        localStorage.setItem(OPTION_KEY, JSON.stringify(options));
+      } catch (e) {}
+      applyOptions();
+    });
+  });
+  applyOptions();
+
+  /* ====================================================================
+   * Find in Page
+   *
+   * Searches the document only, never the chrome — the same scope the
+   * browser's own Find had. Matches are wrapped in <mark> and unwrapped
+   * again on the next search, so the page is left exactly as it was.
+   * ==================================================================== */
+
+  const findDialog = $("#dlg-find");
+
+  function clearFind() {
+    if (!pageEl) return;
+    $$("mark.find-hit", pageEl).forEach((mark) => {
+      const parent = mark.parentNode;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+  }
+
+  function runFind(term) {
+    clearFind();
+    if (!pageEl || !term) return [];
+
+    const needle = term.toLowerCase();
+    const walker = document.createTreeWalker(pageEl, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue.toLowerCase().includes(needle)) return NodeFilter.FILTER_REJECT;
+        // Skip anything inside a control — matching the label of a button is
+        // not what anyone means by "find in page".
+        if (node.parentElement.closest("button, select, textarea, input, script, style")) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
       },
-      { rootMargin: "-20% 0px -65% 0px" },
-    );
-    targets.forEach((el) => observer.observe(el));
+    });
+
+    const targets = [];
+    let node;
+    while ((node = walker.nextNode())) targets.push(node);
+
+    const hits = [];
+    targets.forEach((textNode) => {
+      let rest = textNode;
+      let index = rest.nodeValue.toLowerCase().indexOf(needle);
+      while (index !== -1) {
+        const match = rest.splitText(index);
+        rest = match.splitText(term.length);
+        const mark = document.createElement("mark");
+        mark.className = "find-hit";
+        mark.textContent = match.nodeValue;
+        match.parentNode.replaceChild(mark, match);
+        hits.push(mark);
+        index = rest.nodeValue.toLowerCase().indexOf(needle);
+      }
+    });
+    return hits;
   }
 
-  /* ====================================================================
-   * Service accordion — one open at a time
-   * ==================================================================== */
+  if (findDialog) {
+    const findInput = $("#find-input", findDialog);
+    const findStatus = $("[data-find-status]", findDialog);
+    let hits = [];
+    let hitIndex = -1;
+    let lastTerm = "";
 
-  const services = $$(".svc");
-  services.forEach((item) => {
-    item.addEventListener("toggle", () => {
-      if (!item.open) return;
-      services.forEach((other) => {
-        if (other !== item) other.open = false;
+    const goToHit = (i) => {
+      if (!hits.length) return;
+      hits.forEach((m) => m.removeAttribute("data-current"));
+      hitIndex = (i + hits.length) % hits.length;
+      const mark = hits[hitIndex];
+      mark.setAttribute("data-current", "true");
+      mark.scrollIntoView({ block: "center", behavior: "smooth" });
+      findStatus.textContent = t("ui.find.count", {
+        n: hitIndex + 1,
+        total: hits.length,
       });
+    };
+
+    $("#find-form", findDialog).addEventListener("submit", (event) => {
+      event.preventDefault();
+      const term = findInput.value.trim();
+      if (!term) return;
+      if (term !== lastTerm) {
+        hits = runFind(term);
+        lastTerm = term;
+        hitIndex = -1;
+      }
+      if (!hits.length) {
+        findStatus.textContent = t("ui.find.none", { term });
+        return;
+      }
+      goToHit(hitIndex + 1);
     });
-  });
+
+    findDialog.addEventListener("close", () => {
+      clearFind();
+      hits = [];
+      lastTerm = "";
+      findStatus.textContent = "";
+    });
+  }
 
   /* ====================================================================
    * Gallery + Image Viewer
@@ -326,9 +658,10 @@
 
   if (thumbGrid && viewer) {
     const photos = GALLERY_IMAGES.map((file, i) => ({
-      full: `img/gallery/${file}`,
-      thumb: `img/gallery/thumbs/${file}`,
+      full: `${ROOT}img/gallery/${file}`,
+      thumb: `${ROOT}img/gallery/thumbs/${file}`,
       alt: `Gallery photo ${i + 1}`,
+      name: file,
     }));
 
     // A missing file would otherwise show a broken-image glyph; hiding the
@@ -374,6 +707,7 @@
 
     const vImg = $(".viewer__img", viewer);
     const vCount = $("[data-viewer-count]", viewer);
+    const vTitle = $("[data-viewer-name]", viewer);
     let activeIndex = 0;
 
     const show = (index) => {
@@ -382,6 +716,7 @@
       vImg.src = photo.full;
       vImg.alt = photo.alt;
       vCount.textContent = `${activeIndex + 1} / ${photos.length}`;
+      if (vTitle) vTitle.textContent = photo.name;
       $$("button", strip).forEach((btn, i) => {
         const on = i === activeIndex;
         btn.setAttribute("aria-current", String(on));
@@ -418,220 +753,31 @@
   }
 
   /* ====================================================================
-   * The prompt line
+   * Hit counter
    *
-   * Everything here runs offline against a keyword table. It is a toy, and
-   * it says so: anything it cannot match answers with the email address
-   * rather than inventing something. The replies live in the translation
-   * files so Swedish visitors get Swedish ones.
+   * A real number, counted honestly: this visitor's own page views, kept in
+   * their browser and sent nowhere. The 1996 part is the odometer and the
+   * seed — every counter on the web started at a flattering figure.
    * ==================================================================== */
 
-  // Ordered — the first table whose words appear in the message wins, so the
-  // specific topics sit above the general ones.
-  const INTENTS = [
-    ["price", ["price", "cost", "rate", "budget", "how much", "quote", "charge", "charges", "pris", "kostar", "kostnad", "offert", "timpris"]],
-    ["services", ["service", "offer", "do you do", "what can you", "testing", "design", "ux", "ui", "web", "photo", "video", "tjänst", "erbjuder", "testning", "webb", "foto", "film"]],
-    ["gallery", ["gallery", "portfolio", "photos", "pictures", "work", "galleri", "bilder", "portfölj", "jobb"]],
-    ["contact", ["contact", "email", "mail", "phone", "call", "reach", "address", "where are you", "kontakt", "mejl", "telefon", "ring", "adress", "var finns"]],
-    ["hire", ["hire", "available", "assignment", "project", "freelance", "consultant", "anlita", "uppdrag", "projekt", "konsult", "ledig"]],
-    ["who", ["who are you", "about", "what is true friends", "company", "vilka är", "om er", "vad är true friends", "företag"]],
-    ["joke", ["joke", "funny", "skämt", "rolig"]],
-    ["thanks", ["thank", "thanks", "cheers", "tack"]],
-    ["hello", ["hello", "hi ", "hey", "yo", "hej", "tjena", "hallå", "god dag"]],
-  ];
-
-  const resolveIntent = (text) => {
-    const needle = ` ${text.toLowerCase()} `;
-    for (const [intent, words] of INTENTS) {
-      if (words.some((w) => needle.includes(w))) return intent;
-    }
-    return "fallback";
-  };
-
-  const transcript = $("#transcript");
-  const promptForm = $("#prompt-form");
-  const promptInput = $("#prompt-input");
-
-  // The TrueFriends avatar is the brand logo, not a sprite symbol, so its
-  // path is read off a turn already in the page rather than hard-coded —
-  // that keeps it correct at any directory depth.
-  const TF_AVATAR = (() => {
-    const existing = $(".msg--tf img.msg__avatar");
-    return existing ? existing.getAttribute("src") : "img/tf-pc-logo-yellow-transparent.svg";
-  })();
-
-  /** Build one speaker turn. `who` is "you" or "tf". */
-  function buildMessage(who, text) {
-    const row = document.createElement("article");
-    row.className = `msg msg--${who} msg--new`;
-
-    let icon;
-    if (who === "tf") {
-      icon = document.createElement("img");
-      icon.className = "msg__avatar";
-      icon.src = TF_AVATAR;
-      icon.alt = "";
-      icon.setAttribute("aria-hidden", "true");
-    } else {
-      icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      icon.setAttribute("class", "i msg__avatar");
-      icon.setAttribute("viewBox", "0 0 32 32");
-      icon.setAttribute("aria-hidden", "true");
-      const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-      use.setAttribute("href", "#i-you");
-      icon.appendChild(use);
-    }
-
-    const name = document.createElement("h2");
-    name.className = "msg__who";
-    name.dataset.i18n = who === "you" ? "ui.who.you" : "ui.who.tf";
-    name.textContent = t(who === "you" ? "ui.who.you" : "ui.who.tf");
-
-    const bodyEl = document.createElement("div");
-    bodyEl.className = "msg__body";
-    const p = document.createElement("p");
-    p.textContent = text;
-    bodyEl.appendChild(p);
-
-    row.append(icon, name, bodyEl);
-    return row;
-  }
-
-  if (promptForm && promptInput && transcript) {
-    // Replies the visitor triggered have to survive a language switch, so
-    // each one remembers the intent key that produced it.
-    const replay = [];
-
-    promptForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const text = promptInput.value.trim().slice(0, 300);
-      if (!text) return;
-
-      const intent = resolveIntent(text);
-      const yours = buildMessage("you", text);
-      const ours = buildMessage("tf", t(`chat.${intent}`));
-      ours.dataset.intent = intent;
-      yours.dataset.mine = "true";
-      ours.dataset.mine = "true";
-      replay.push(ours);
-
-      transcript.append(yours, ours);
-      promptInput.value = "";
-      updateMessageCount();
-
-      if (optionOn("autoscroll")) {
-        ours.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      promptInput.focus();
-    });
-
-    // Re-render the canned replies when the language changes.
-    window.TF_RELABEL = () => {
-      replay.forEach((row) => {
-        const p = $(".msg__body p", row);
-        if (p) p.textContent = t(`chat.${row.dataset.intent}`);
-      });
-      const countLine = $("[data-gallery-count]");
-      if (countLine) countLine.textContent = t("gallery.count", { n: GALLERY_IMAGES.length });
-    };
-
-    // "/" is the universal jump-to-the-prompt key, as long as the visitor is
-    // not already typing somewhere.
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "/" || event.metaKey || event.ctrlKey) return;
-      const tag = (document.activeElement.tagName || "").toLowerCase();
-      if (tag === "input" || tag === "textarea" || tag === "select") return;
-      event.preventDefault();
-      promptInput.focus();
-    });
-  }
-
-  $$("[data-focus-prompt]").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (!promptInput) return;
-      promptInput.scrollIntoView({ behavior: "smooth", block: "center" });
-      promptInput.focus();
-    });
-  });
-
-  const clearBtn = $("[data-clear-mine]");
-  if (clearBtn && transcript) {
-    clearBtn.addEventListener("click", () => {
-      $$("[data-mine='true']", transcript).forEach((row) => row.remove());
-      updateMessageCount();
-    });
-  }
-
-  /* ====================================================================
-   * Status panels: message counter, clock, Options
-   * ==================================================================== */
-
-  const countCell = $("[data-message-count]");
-  function updateMessageCount() {
-    if (countCell) countCell.textContent = String($$(".msg", transcript || document).length);
-  }
-  updateMessageCount();
-
-  // Real time, 1996 formatting: 12-hour clock in the status bar, 24-hour in
-  // the tray, both with a fixed date because the window is dated 1996 and
-  // pretending otherwise spoils it.
-  const clockTime = $("[data-clock-time]");
-  const clockDate = $("[data-clock-date]");
-  const trayClock = $("[data-tray-clock]");
-
-  function tick() {
-    const now = new Date();
-    const h24 = now.getHours();
-    const h12 = h24 % 12 || 12;
-    const mm = String(now.getMinutes()).padStart(2, "0");
-    if (clockTime) clockTime.textContent = `${h12}:${mm} ${h24 < 12 ? "AM" : "PM"}`;
-    if (trayClock) trayClock.textContent = `${h12}:${mm} ${h24 < 12 ? "AM" : "PM"}`;
-    if (clockDate) {
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      clockDate.textContent = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
-    }
-  }
-  tick();
-  setInterval(tick, 15000);
-
-  /* Options — all three do something real rather than decorating the panel. */
-  const OPTION_KEY = "tf_options";
-  const optionInputs = $$("[data-option]");
-
-  const readOptions = () => {
+  const counter = $("[data-counter]");
+  if (counter) {
+    let views = 0;
     try {
-      return JSON.parse(localStorage.getItem(OPTION_KEY) || "{}");
+      views = parseInt(localStorage.getItem("tf_hits") || "0", 10) || 0;
+      views += 1;
+      localStorage.setItem("tf_hits", String(views));
     } catch (e) {
-      return {};
+      views = 1;
     }
-  };
-  let options = readOptions();
-
-  function optionOn(name) {
-    const input = optionInputs.find((i) => i.getAttribute("data-option") === name);
-    return input ? input.checked : true;
+    const digits = String(1995 + views).padStart(6, "0");
+    counter.textContent = "";
+    for (const d of digits) {
+      const span = document.createElement("span");
+      span.textContent = d;
+      counter.appendChild(span);
+    }
   }
-
-  function applyOptions() {
-    optionInputs.forEach((input) => {
-      const name = input.getAttribute("data-option");
-      if (name in options) input.checked = !!options[name];
-      if (name === "plaintext") body.classList.toggle("is-plaintext", input.checked);
-      if (name === "showsystem") body.classList.toggle("hide-system", !input.checked);
-    });
-  }
-  applyOptions();
-
-  optionInputs.forEach((input) => {
-    input.addEventListener("change", () => {
-      options[input.getAttribute("data-option")] = input.checked;
-      try {
-        localStorage.setItem(OPTION_KEY, JSON.stringify(options));
-      } catch (e) {}
-      applyOptions();
-    });
-  });
 
   /* ====================================================================
    * Dialogs
@@ -643,6 +789,8 @@
     closeAllMenus();
     if (typeof dialog.showModal === "function") dialog.showModal();
     else dialog.setAttribute("open", "");
+    const focusTarget = dialog.querySelector("[data-autofocus]");
+    if (focusTarget) focusTarget.focus();
   }
 
   $$("[data-open-dialog]").forEach((trigger) => {
@@ -666,42 +814,54 @@
     });
   });
 
-  // Clicking the shaded area outside a dialog closes it, the way clicking
-  // away from a modal has worked since long after 1996.
+  // Clicking the shaded area outside a dialog closes it.
   $$("dialog").forEach((dialog) => {
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });
   });
 
-  $$("[data-print]").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      window.print();
-    });
-  });
+  // View → Document Info. A real Navigator feature, and the natural home for
+  // the connection details the old build kept in a side panel.
+  const infoUrl = $("[data-doc-url]");
+  if (infoUrl) infoUrl.textContent = SITE_URL;
+  const infoTitle = $("[data-doc-title]");
+  if (infoTitle) infoTitle.textContent = document.title;
+  const infoModified = $("[data-doc-modified]");
+  if (infoModified) infoModified.textContent = document.lastModified;
 
-  $$("[data-select-transcript]").forEach((btn) => {
+  $$("[data-select-page]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-      if (!transcript) return;
+      if (!pageEl) return;
       const range = document.createRange();
-      range.selectNodeContents(transcript);
+      range.selectNodeContents(pageEl);
       const selection = window.getSelection();
       selection.removeAllRanges();
       selection.addRange(range);
     });
   });
 
-  $$("[data-scroll-top]").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
+  /* ====================================================================
+   * Keyboard
+   * ==================================================================== */
+
+  document.addEventListener("keydown", (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    const tag = (document.activeElement.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select") return;
+    if ($$("dialog").some((d) => d.open)) return;
+
+    if (event.key === "/") {
       event.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+      body.classList.remove("hide-location");
+      applyOptions();
+      if (locField) locField.focus();
+    }
   });
 
   /* ====================================================================
-   * Boot splash — the dial-up handshake, once per browser session
+   * Connecting splash — once per browser session
    * ==================================================================== */
 
   const boot = $("#boot");
@@ -768,10 +928,11 @@
 
   $$("form[data-endpoint]").forEach((form) => {
     const status = $(".form__status", form);
-    const submitBtn = $('button[type="submit"]', form);
+    const submitBtn = form.querySelector('button[type="submit"]')
+      || document.querySelector(`button[type="submit"][form="${form.id}"]`);
     let lastSubmitAt = 0;
 
-    const setStatus = (text, state) => {
+    const setFormStatus = (text, state) => {
       if (!status) return;
       status.textContent = text;
       if (state) status.setAttribute("data-state", state);
@@ -784,7 +945,7 @@
       const now = Date.now();
       if (now - lastSubmitAt < RATE_LIMIT_MS) {
         const wait = Math.ceil((RATE_LIMIT_MS - (now - lastSubmitAt)) / 1000);
-        setStatus(t("status.rateLimited", { wait }), "error");
+        setFormStatus(t("status.rateLimited", { wait }), "error");
         return;
       }
 
@@ -792,7 +953,7 @@
 
       const endpoint = form.dataset.endpoint;
       if (!endpoint) {
-        setStatus(t("status.notConfigured"), "error");
+        setFormStatus(t("status.notConfigured"), "error");
         return;
       }
 
@@ -801,7 +962,7 @@
       // Honeypot — silently succeed if a bot filled the hidden field.
       if (raw._honey && String(raw._honey).trim() !== "") {
         form.reset();
-        setStatus(t("status.success"), "success");
+        setFormStatus(t("status.success"), "success");
         lastSubmitAt = now;
         return;
       }
@@ -813,8 +974,8 @@
       const payload = { ...raw, ...sanitized };
       delete payload._honey;
 
-      submitBtn.disabled = true;
-      setStatus(t("status.sending"));
+      if (submitBtn) submitBtn.disabled = true;
+      setFormStatus(t("status.sending"));
       lastSubmitAt = now;
 
       try {
@@ -828,15 +989,24 @@
 
         if (response.ok && data.success !== "false") {
           form.reset();
-          setStatus(t("status.success"), "success");
+          setFormStatus(t("status.success"), "success");
         } else {
-          setStatus(data.message || t("status.error"), "error");
+          setFormStatus(data.message || t("status.error"), "error");
         }
       } catch (err) {
-        setStatus(t("status.network"), "error");
+        setFormStatus(t("status.network"), "error");
       } finally {
-        submitBtn.disabled = false;
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   });
+
+  /* ====================================================================
+   * Go
+   * ==================================================================== */
+
+  applyTranslations(detectLanguageSync());
+  if (locField) locField.value = SITE_URL;
+  setStatus(null);
+  playLoad();
 })();

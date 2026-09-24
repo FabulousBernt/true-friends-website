@@ -1,11 +1,11 @@
 /* True Friends 96 — common translation strings (EN + SV)
  *
- * Strings shared across every page: the window chrome (menus, toolbar, tree,
- * status panels, taskbar, dialogs), the contact form, and the canned replies
- * the prompt line gives back. Page prose — the about text, the service
- * descriptions, the questions in the transcript — lives in the per-page file
- * instead. Each per-page file loads AFTER this one and merges its own keys in
- * via TF_ADD_TRANSLATIONS at the bottom.
+ * Strings shared across every page: the browser chrome (menus, toolbar,
+ * location bar, directory buttons, status bar, taskbar, dialogs), the
+ * document's own furniture (nav strip, footer, counter, badges), the
+ * guestbook form, and the status messages. Page prose — the about text, the
+ * service descriptions, the client work — lives in the per-page file, which
+ * loads AFTER this one and merges in via TF_ADD_TRANSLATIONS at the bottom.
  *
  * Keys are referenced from HTML via:
  *   data-i18n              → textContent
@@ -23,25 +23,27 @@ window.TF_TRANSLATIONS = {
         "True Friends is a creative and technical studio & consulting firm delivering services in software testing, web development, UI/UX design, graphic design, market communication, photography, video production and editing. We are based in Motala, Sweden, but available worldwide.",
     },
 
-    /* ---------- Window chrome ---------- */
+    /* ---------- Browser chrome ---------- */
     ui: {
       appName: "True Friends 96",
-      titleStart: "True Friends 96",
-      titleConsulting: "True Friends 96 — Consulting",
-      titleStudio: "True Friends 96 — Studio",
+      title: {
+        start: "True Friends — Welcome — True Friends 96",
+        consulting: "True Friends — Consulting — True Friends 96",
+        studio: "True Friends — Studio — True Friends 96",
+      },
 
       menu: {
         file: "File",
         edit: "Edit",
         view: "View",
-        conversation: "Conversation",
+        go: "Go",
+        bookmarks: "Bookmarks",
+        options: "Options",
         help: "Help",
       },
       file: {
-        newChat: "New Chat",
-        openConsulting: "Open Consulting",
-        openStudio: "Open Studio",
-        save: "Save Conversation…",
+        openLocation: "Open Location…",
+        saveAs: "Save As…",
         print: "Print…",
         exit: "Exit",
       },
@@ -51,15 +53,29 @@ window.TF_TRANSLATIONS = {
         copy: "Copy",
         paste: "Paste",
         selectAll: "Select All",
+        find: "Find in Page…",
       },
       view: {
+        reload: "Reload",
+        docInfo: "Document Info…",
         english: "English",
         swedish: "Svenska",
-        maximize: "Maximize window",
-        top: "Top of page",
       },
-      conv: {
-        clear: "Clear my messages",
+      go: {
+        back: "Back",
+        forward: "Forward",
+        home: "Home",
+      },
+      bookmarks: {
+        heading: "True Friends",
+        cases: "Reference cases",
+      },
+      options: {
+        toolbar: "Show Toolbar",
+        location: "Show Location",
+        dirbar: "Show Directory Buttons",
+        images: "Auto Load Images",
+        maximize: "Maximize window",
       },
       helpMenu: {
         readme: "Read Me",
@@ -68,96 +84,74 @@ window.TF_TRANSLATIONS = {
       },
 
       tb: {
-        newChat: "New Chat",
-        ask: "Ask",
-        save: "Save",
+        back: "Back",
+        forward: "Forward",
+        home: "Home",
+        reload: "Reload",
+        images: "Images",
         print: "Print",
-        about: "About",
-      },
-
-      tree: {
-        myComputer: "My Computer",
-        conversations: "Conversations",
-        cases: "Reference cases",
-        files: "Files",
-        cvEn: "cv-english.pdf",
-        cvSv: "cv-svenska.pdf",
-        collapse: "Collapse",
-        expand: "Expand",
+        find: "Find",
+        stop: "Stop",
       },
 
       location: "Location:",
-      loc: {
-        start: "Start",
+      goBtn: "Go",
+
+      dir: {
+        home: "Home",
         consulting: "Consulting",
         studio: "Studio",
+        gallery: "Gallery",
+        cases: "Reference Cases",
+        guestbook: "Guestbook",
       },
 
-      tipTitle: "Tip:",
-      tip: "Type a message below and press Send.",
+      status: {
+        done: "Document: Done",
+        connecting: "Connecting to {host}…",
+        contacted: "Host contacted. Waiting for reply…",
+        transferring: "Transferring data…",
+        stopped: "Transfer interrupted.",
+      },
+      secure: "This document is not encrypted.",
 
-      conn: {
-        legend: "Connection",
+      find: {
+        title: "Find",
+        label: "Find what:",
+        next: "Find Next",
+        count: "Match {n} of {total}.",
+        none: "No match for “{term}”.",
+      },
+
+      docinfo: {
+        title: "Document Info",
+        location: "Location:",
+        docTitle: "Title:",
+        modified: "Last modified:",
         server: "Server:",
         protocol: "Protocol:",
-        status: "Status:",
-        latency: "Latency:",
+        connStatus: "Status:",
         online: "ONLINE",
+        latency: "Latency:",
+        security: "Security:",
+        insecure: "None (this is a 1996 browser)",
         note: "Connected via 33.6 kbps dial-up modem.",
-      },
-      session: {
-        legend: "Session",
-        user: "User:",
-        guest: "guest",
-        messages: "Messages:",
-        memory: "Memory:",
-        memoryOk: "640K OK",
-        mode: "Mode:",
-      },
-      options: {
-        legend: "Options",
-        autoScroll: "Auto scroll",
-        plainText: "Plain text",
-        showSystem: "Show system",
-        language: "Language",
-      },
-      helpBox: { legend: "Help" },
-
-      ready: "Ready",
-      send: "Send",
-      promptLabel: "Message",
-      promptPlaceholder: "Type a message and press Send…",
-
-      /* The opening SYSTEM turn. Every page prints the same handshake; only
-         the mode line differs, and that comes from the per-page file. */
-      boot: {
-        dialing: "Dialing 08-555 1996…",
-        negotiating: "Negotiating at 33.6 kbps…",
-      },
-
-      sys: {
-        welcome: "Welcome to True Friends 96.",
-        connected: "Connected to the truefriends.se network via modem…",
-        status: "Status:",
-        ready: "READY",
-        mode: "Mode:",
-      },
-
-      who: {
-        system: "SYSTEM",
-        you: "YOU",
-        tf: "TRUEFRIENDS",
       },
 
       start: {
         label: "Start",
         consulting: "Consulting",
         studio: "Studio",
-        home: "Start page",
-        contact: "Say hi…",
+        home: "Home page",
+        contact: "Sign the guestbook…",
         readme: "Read Me",
         shortcuts: "Keyboard Shortcuts",
         shutDown: "Shut Down…",
+      },
+
+      boot: {
+        dialing: "Dialing 08-555 1996…",
+        negotiating: "Negotiating at 33.6 kbps…",
       },
 
       dlg: {
@@ -172,17 +166,27 @@ window.TF_TRANSLATIONS = {
           "A creative and technical studio & consulting firm based in Motala, Sweden, but available worldwide.",
         aboutLicense: "This product is licensed to: a true friend.",
 
-        saveTitle: "Save Conversation",
+        saveTitle: "Save As",
         saveBody:
-          "The conversation could not be saved. Insert a formatted floppy disk in drive A: and try again.",
+          "The document could not be saved. Insert a formatted floppy disk in drive A: and try again.",
 
         exitTitle: "True Friends 96",
         exitBody:
           "This program cannot be closed. A true friend does not walk out on you.",
-        exitBody2: "Send a message instead — we answer faster than a modem.",
+        exitBody2: "Sign the guestbook instead — we answer faster than a modem.",
+
+        notFoundTitle: "Error 404",
+        notFoundBody: "The requested URL was not found on this server:",
+        notFoundBody2:
+          "Check the spelling, or use the directory buttons above — there are only a handful of pages here and all of them are worth a look.",
+
+        noHostTitle: "Network Error",
+        noHostBody: "True Friends 96 is unable to locate the server:",
+        noHostBody2:
+          "The server does not have a DNS entry. This browser only knows one host, and it is www.truefriends.se.",
 
         shortcutsTitle: "Keyboard Shortcuts",
-        shortcutsIntro: "While the window has focus:",
+        shortcutsIntro: "While the document has focus:",
 
         readmeTitle: "README.TXT",
         readmeBody:
@@ -194,46 +198,46 @@ window.TF_TRANSLATIONS = {
         shutDownBody: "It is now safe to email hello@truefriends.se.",
 
         viewerTitle: "Image Viewer",
-        contactTitle: "New Message",
+        contactTitle: "Guestbook Entry",
       },
 
       shortcuts: {
-        enter: "Send the message in the prompt line",
-        slash: "Jump to the prompt line",
+        slash: "Jump to the Location field",
+        enter: "Go to the address in the Location field",
         esc: "Close the open dialog",
-        arrows: "Previous / next photo in the viewer",
+        arrows: "Previous / next photo in the image viewer",
         tab: "Move between controls",
       },
     },
 
-    /* ---------- What the prompt line answers with ---------- */
-    chat: {
-      thinking: "Connecting…",
-      hello: "Hello. Nice of you to dial in. Ask about our services, our people, our prices, or just say hi — hello@truefriends.se reaches a human either way.",
-      services:
-        "Consulting: testing, UX design, UI design. Studio: web production, graphic design, market communication, photography, video and editing. Open one of the service lines above for the full description.",
-      contact:
-        "Easiest: hello@truefriends.se or +46 705 424 677. There is also a form further up this conversation, and a postbox at Lugngatan 15C, 59160 Motala, Sweden.",
-      price:
-        "It depends on scope, length and whether you need one pair of hands or a whole team. Tell us what you are building and we will come back with a real number rather than a guessed one.",
-      gallery:
-        "The photography is on the Studio page — click any thumbnail to open it in the image viewer.",
-      who: "True Friends is a creative and technical studio & consulting firm in Motala, Sweden. Small, senior, and available worldwide. Ask about a specific service if you want detail.",
-      hire: "Yes — we take on both consulting assignments and studio productions, for companies, organisations and private individuals. Mail hello@truefriends.se with roughly what you need and when.",
-      thanks: "Any time. That is rather the whole idea behind the name.",
-      joke: "Error 1996: humour module not installed. Insert disk 7 of 12 and try again.",
-      fallback:
-        "This build runs offline, so that one is beyond it — but a human is not. Write to hello@truefriends.se and you will get a real answer from a real person.",
+    /* ---------- The document's own furniture ---------- */
+    page: {
+      nav: {
+        home: "Home",
+        consulting: "Consulting",
+        studio: "Studio",
+        gallery: "Gallery",
+        guestbook: "Guestbook",
+      },
+      counter: "You are visitor number",
+      updated: "Last updated: {year}",
+      badges: {
+        res: "Best viewed at 800 × 600",
+        handcoded: "Hand-coded, no frames",
+        motala: "Made in Motala, Sweden",
+        modem: "33.6 kbps friendly",
+      },
+      altOff: "Image not loaded — Auto Load Images is off.",
     },
 
     /* ---------- Site-wide labels ---------- */
     nav: {
-      start: "Start",
+      start: "Home",
       about: "About",
       services: "Services",
       team: "Consultants",
       gallery: "Gallery",
-      contact: "Contact",
+      contact: "Guestbook",
     },
     hero: {
       cta: "Say hi",
@@ -248,20 +252,20 @@ window.TF_TRANSLATIONS = {
       back: "Back to Consulting",
     },
     contact: {
-      label: "Contact",
-      lede: "Find us on our social media channels, reach out via email or send a message through the form below.",
+      label: "Guestbook",
+      lede: "Find us on our social media channels, reach out via email, or sign the guestbook below and we will write back.",
       placeholders: {
         firstName: "First name",
         lastName: "Last name",
         email: "Email",
         message: "Message",
       },
-      submit: "Send",
+      submit: "Sign the guestbook",
       otherWays: "Other ways to reach us",
     },
     modal: {
-      title: "Say hi!",
-      desc: "Please fill out the contact form and we will get back to you as soon as we can.",
+      title: "Guestbook Entry",
+      desc: "Leave your details and a message, and we will get back to you as soon as we can.",
       close: "Close",
       send: "Send",
     },
@@ -278,12 +282,10 @@ window.TF_TRANSLATIONS = {
         "Form endpoint not configured. Email hello@truefriends.se directly.",
     },
     aria: {
-      skip: "Skip to conversation",
+      skip: "Skip to the document",
       home: "True Friends home",
-      primary: "Primary",
       socialLinks: "Social links",
       langSwitch: "Switch language",
-      backToTop: "Top of page",
       lightbox: "Photo gallery",
       prevPhoto: "Previous photo",
       nextPhoto: "Next photo",
@@ -295,12 +297,15 @@ window.TF_TRANSLATIONS = {
       minimize: "Minimize",
       maximize: "Maximize",
       close: "Close",
-      transcript: "Conversation",
-      toolbar: "Toolbar",
-      menubar: "Application menu",
-      tree: "Site contents",
+      menubar: "Browser menu",
+      toolbar: "Navigation toolbar",
+      dirbar: "Directory buttons",
+      locationBar: "Location",
+      statusBar: "Status bar",
+      document: "Document",
+      pagenav: "Page navigation",
       startMenu: "Start menu",
-      openWindows: "Open windows",
+      taskbar: "Taskbar",
       boot: "Connecting",
     },
   },
@@ -313,22 +318,24 @@ window.TF_TRANSLATIONS = {
 
     ui: {
       appName: "True Friends 96",
-      titleStart: "True Friends 96",
-      titleConsulting: "True Friends 96 — Konsult",
-      titleStudio: "True Friends 96 — Studio",
+      title: {
+        start: "True Friends — Välkommen — True Friends 96",
+        consulting: "True Friends — Konsult — True Friends 96",
+        studio: "True Friends — Studio — True Friends 96",
+      },
 
       menu: {
         file: "Arkiv",
         edit: "Redigera",
         view: "Visa",
-        conversation: "Konversation",
+        go: "Gå",
+        bookmarks: "Bokmärken",
+        options: "Alternativ",
         help: "Hjälp",
       },
       file: {
-        newChat: "Ny chatt",
-        openConsulting: "Öppna Konsult",
-        openStudio: "Öppna Studio",
-        save: "Spara konversation…",
+        openLocation: "Öppna adress…",
+        saveAs: "Spara som…",
         print: "Skriv ut…",
         exit: "Avsluta",
       },
@@ -338,15 +345,29 @@ window.TF_TRANSLATIONS = {
         copy: "Kopiera",
         paste: "Klistra in",
         selectAll: "Markera allt",
+        find: "Sök på sidan…",
       },
       view: {
+        reload: "Läs om",
+        docInfo: "Dokumentinfo…",
         english: "English",
         swedish: "Svenska",
-        maximize: "Maximera fönster",
-        top: "Högst upp",
       },
-      conv: {
-        clear: "Rensa mina meddelanden",
+      go: {
+        back: "Bakåt",
+        forward: "Framåt",
+        home: "Hem",
+      },
+      bookmarks: {
+        heading: "True Friends",
+        cases: "Referensuppdrag",
+      },
+      options: {
+        toolbar: "Visa verktygsfält",
+        location: "Visa adressfält",
+        dirbar: "Visa katalogknappar",
+        images: "Läs in bilder automatiskt",
+        maximize: "Maximera fönster",
       },
       helpMenu: {
         readme: "Läs mig",
@@ -355,83 +376,58 @@ window.TF_TRANSLATIONS = {
       },
 
       tb: {
-        newChat: "Ny chatt",
-        ask: "Fråga",
-        save: "Spara",
+        back: "Bakåt",
+        forward: "Framåt",
+        home: "Hem",
+        reload: "Läs om",
+        images: "Bilder",
         print: "Skriv ut",
-        about: "Om",
+        find: "Sök",
+        stop: "Stopp",
       },
 
-      tree: {
-        myComputer: "Den här datorn",
-        conversations: "Konversationer",
-        cases: "Referensuppdrag",
-        files: "Filer",
-        cvEn: "cv-english.pdf",
-        cvSv: "cv-svenska.pdf",
-        collapse: "Fäll ihop",
-        expand: "Fäll ut",
-      },
+      location: "Adress:",
+      goBtn: "Gå",
 
-      location: "Plats:",
-      loc: {
-        start: "Start",
+      dir: {
+        home: "Hem",
         consulting: "Konsult",
         studio: "Studio",
+        gallery: "Galleri",
+        cases: "Referensuppdrag",
+        guestbook: "Gästbok",
       },
 
-      tipTitle: "Tips:",
-      tip: "Skriv ett meddelande nedan och tryck Skicka.",
+      status: {
+        done: "Dokument: Klart",
+        connecting: "Ansluter till {host}…",
+        contacted: "Värden kontaktad. Väntar på svar…",
+        transferring: "Överför data…",
+        stopped: "Överföringen avbröts.",
+      },
+      secure: "Det här dokumentet är inte krypterat.",
 
-      conn: {
-        legend: "Anslutning",
+      find: {
+        title: "Sök",
+        label: "Sök efter:",
+        next: "Sök nästa",
+        count: "Träff {n} av {total}.",
+        none: "Ingen träff för ”{term}”.",
+      },
+
+      docinfo: {
+        title: "Dokumentinfo",
+        location: "Adress:",
+        docTitle: "Titel:",
+        modified: "Senast ändrad:",
         server: "Server:",
         protocol: "Protokoll:",
-        status: "Status:",
-        latency: "Svarstid:",
+        connStatus: "Status:",
         online: "UPPKOPPLAD",
+        latency: "Svarstid:",
+        security: "Säkerhet:",
+        insecure: "Ingen (det här är en webbläsare från 1996)",
         note: "Ansluten via 33,6 kbit/s uppringt modem.",
-      },
-      session: {
-        legend: "Session",
-        user: "Användare:",
-        guest: "gäst",
-        messages: "Meddelanden:",
-        memory: "Minne:",
-        memoryOk: "640K OK",
-        mode: "Läge:",
-      },
-      options: {
-        legend: "Alternativ",
-        autoScroll: "Autoskrolla",
-        plainText: "Ren text",
-        showSystem: "Visa system",
-        language: "Språk",
-      },
-      helpBox: { legend: "Hjälp" },
-
-      ready: "Klar",
-      send: "Skicka",
-      promptLabel: "Meddelande",
-      promptPlaceholder: "Skriv ett meddelande och tryck Skicka…",
-
-      boot: {
-        dialing: "Ringer upp 08-555 1996…",
-        negotiating: "Förhandlar på 33,6 kbit/s…",
-      },
-
-      sys: {
-        welcome: "Välkommen till True Friends 96.",
-        connected: "Ansluten till nätverket truefriends.se via modem…",
-        status: "Status:",
-        ready: "KLAR",
-        mode: "Läge:",
-      },
-
-      who: {
-        system: "SYSTEM",
-        you: "DU",
-        tf: "TRUEFRIENDS",
       },
 
       start: {
@@ -439,10 +435,15 @@ window.TF_TRANSLATIONS = {
         consulting: "Konsult",
         studio: "Studio",
         home: "Startsida",
-        contact: "Säg hej…",
+        contact: "Skriv i gästboken…",
         readme: "Läs mig",
         shortcuts: "Kortkommandon",
         shutDown: "Avsluta…",
+      },
+
+      boot: {
+        dialing: "Ringer upp 08-555 1996…",
+        negotiating: "Förhandlar på 33,6 kbit/s…",
       },
 
       dlg: {
@@ -457,18 +458,27 @@ window.TF_TRANSLATIONS = {
           "En kreativ och teknisk studio & konsultfirma baserad i Motala, Sverige, men tillgänglig världen över.",
         aboutLicense: "Denna produkt är licensierad till: en true friend.",
 
-        saveTitle: "Spara konversation",
+        saveTitle: "Spara som",
         saveBody:
-          "Konversationen kunde inte sparas. Sätt in en formaterad diskett i enhet A: och försök igen.",
+          "Dokumentet kunde inte sparas. Sätt in en formaterad diskett i enhet A: och försök igen.",
 
         exitTitle: "True Friends 96",
-        exitBody:
-          "Programmet kan inte avslutas. En true friend lämnar dig inte.",
+        exitBody: "Programmet kan inte avslutas. En true friend lämnar dig inte.",
         exitBody2:
-          "Skicka ett meddelande i stället — vi svarar snabbare än ett modem.",
+          "Skriv i gästboken i stället — vi svarar snabbare än ett modem.",
+
+        notFoundTitle: "Fel 404",
+        notFoundBody: "Den begärda adressen finns inte på den här servern:",
+        notFoundBody2:
+          "Kontrollera stavningen, eller använd katalogknapparna ovan — det finns bara en handfull sidor här och alla är värda ett besök.",
+
+        noHostTitle: "Nätverksfel",
+        noHostBody: "True Friends 96 hittar inte servern:",
+        noHostBody2:
+          "Servern saknar DNS-post. Den här webbläsaren känner bara till en värd, och det är www.truefriends.se.",
 
         shortcutsTitle: "Kortkommandon",
-        shortcutsIntro: "När fönstret har fokus:",
+        shortcutsIntro: "När dokumentet har fokus:",
 
         readmeTitle: "LASMIG.TXT",
         readmeBody:
@@ -480,44 +490,44 @@ window.TF_TRANSLATIONS = {
         shutDownBody: "Det är nu säkert att mejla hello@truefriends.se.",
 
         viewerTitle: "Bildvisare",
-        contactTitle: "Nytt meddelande",
+        contactTitle: "Gästboksinlägg",
       },
 
       shortcuts: {
-        enter: "Skicka meddelandet i promptraden",
-        slash: "Hoppa till promptraden",
+        slash: "Hoppa till adressfältet",
+        enter: "Gå till adressen i adressfältet",
         esc: "Stäng öppen dialogruta",
         arrows: "Föregående / nästa foto i bildvisaren",
         tab: "Flytta mellan kontroller",
       },
     },
 
-    chat: {
-      thinking: "Kopplar upp…",
-      hello: "Hej! Kul att du ringde upp. Fråga om våra tjänster, våra konsulter, priser — eller säg bara hej. hello@truefriends.se når en människa oavsett.",
-      services:
-        "Konsult: testning, UX-design, UI-design. Studio: webbproduktion, grafisk design, marknadskommunikation, foto, video och redigering. Fäll ut en tjänsterad ovan för hela beskrivningen.",
-      contact:
-        "Enklast: hello@truefriends.se eller +46 705 424 677. Det finns även ett formulär längre upp i konversationen, och en brevlåda på Lugngatan 15C, 59160 Motala.",
-      price:
-        "Det beror på omfattning, längd och om ni behöver ett par händer eller ett helt team. Berätta vad ni bygger så återkommer vi med en riktig siffra i stället för en gissad.",
-      gallery:
-        "Fotografierna finns på Studio-sidan — klicka på en miniatyr så öppnas den i bildvisaren.",
-      who: "True Friends är en kreativ och teknisk studio och konsultfirma i Motala. Liten, senior och tillgänglig världen över. Fråga om en specifik tjänst om du vill ha detaljer.",
-      hire: "Ja — vi tar både konsultuppdrag och studioproduktioner, för företag, organisationer och privatpersoner. Mejla hello@truefriends.se med ungefär vad ni behöver och när.",
-      thanks: "När som helst. Det är liksom hela poängen med namnet.",
-      joke: "Fel 1996: humormodulen är inte installerad. Sätt in diskett 7 av 12 och försök igen.",
-      fallback:
-        "Den här versionen kör offline, så den frågan är för svår för den — men inte för en människa. Skriv till hello@truefriends.se så får du ett riktigt svar.",
+    page: {
+      nav: {
+        home: "Hem",
+        consulting: "Konsult",
+        studio: "Studio",
+        gallery: "Galleri",
+        guestbook: "Gästbok",
+      },
+      counter: "Du är besökare nummer",
+      updated: "Senast uppdaterad: {year}",
+      badges: {
+        res: "Bäst i 800 × 600",
+        handcoded: "Handkodad, inga ramar",
+        motala: "Gjord i Motala, Sverige",
+        modem: "Modemvänlig i 33,6 kbit/s",
+      },
+      altOff: "Bilden är inte inläst — automatisk bildinläsning är av.",
     },
 
     nav: {
-      start: "Start",
+      start: "Hem",
       about: "Om oss",
       services: "Tjänster",
       team: "Konsulter",
       gallery: "Galleri",
-      contact: "Kontakt",
+      contact: "Gästbok",
     },
     hero: {
       cta: "Säg hej",
@@ -532,20 +542,20 @@ window.TF_TRANSLATIONS = {
       back: "Tillbaka till Konsult",
     },
     contact: {
-      label: "Kontakt",
-      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post eller skicka ett meddelande via formuläret nedan.",
+      label: "Gästbok",
+      lede: "Hitta oss i våra sociala kanaler, kontakta oss via e‑post, eller skriv i gästboken nedan så hör vi av oss.",
       placeholders: {
         firstName: "Förnamn",
         lastName: "Efternamn",
         email: "E‑post",
         message: "Meddelande",
       },
-      submit: "Skicka",
+      submit: "Skriv i gästboken",
       otherWays: "Andra sätt att nå oss",
     },
     modal: {
-      title: "Säg hej!",
-      desc: "Fyll i kontaktformuläret så återkommer vi så snart vi kan.",
+      title: "Gästboksinlägg",
+      desc: "Lämna dina uppgifter och ett meddelande så återkommer vi så snart vi kan.",
       close: "Stäng",
       send: "Skicka",
     },
@@ -562,12 +572,10 @@ window.TF_TRANSLATIONS = {
         "Formulärets adress är inte konfigurerad. Mejla hello@truefriends.se direkt.",
     },
     aria: {
-      skip: "Hoppa till konversationen",
+      skip: "Hoppa till dokumentet",
       home: "True Friends startsida",
-      primary: "Huvudnavigation",
       socialLinks: "Sociala kanaler",
       langSwitch: "Byt språk",
-      backToTop: "Högst upp",
       lightbox: "Fotogalleri",
       prevPhoto: "Föregående foto",
       nextPhoto: "Nästa foto",
@@ -579,12 +587,15 @@ window.TF_TRANSLATIONS = {
       minimize: "Minimera",
       maximize: "Maximera",
       close: "Stäng",
-      transcript: "Konversation",
-      toolbar: "Verktygsfält",
-      menubar: "Programmeny",
-      tree: "Innehåll",
+      menubar: "Webbläsarmeny",
+      toolbar: "Navigeringsverktygsfält",
+      dirbar: "Katalogknappar",
+      locationBar: "Adress",
+      statusBar: "Statusfält",
+      document: "Dokument",
+      pagenav: "Sidnavigering",
       startMenu: "Startmeny",
-      openWindows: "Öppna fönster",
+      taskbar: "Aktivitetsfält",
       boot: "Kopplar upp",
     },
   },

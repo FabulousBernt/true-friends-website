@@ -11,14 +11,6 @@ window.TF_ADD_TRANSLATIONS({
     meta: {
       title: "True Friends — Creative & Technical Studio",
     },
-    ui: { sys: { modeValue: "Studio (1996 Edition)" } },
-    ask: {
-      about: "What is True Friends?",
-      services: "What can you help with?",
-      gallery: "Can I see some of your work?",
-      contact: "How do I get in touch?",
-    },
-    gallery: { intro: "Here is a selection. Click any thumbnail to open it in the image viewer.", count: "{n} images in this folder." },
     hero: {
       lede: {
         studio: "We offer services in web development, design, marketing, photo, video and editing.",
@@ -37,6 +29,8 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Gallery",
+      intro: "A selection of our photography. Click any thumbnail to open it in the image viewer.",
+      count: "{n} images in this folder.",
     },
     services: {
       note: "Our media services are available to both businesses and private individuals.<br>We also collaborate with various partners for larger and more complex projects.",
@@ -73,14 +67,6 @@ window.TF_ADD_TRANSLATIONS({
     meta: {
       title: "True Friends — Kreativ & Teknisk Studio",
     },
-    ui: { sys: { modeValue: "Studio (1996 Edition)" } },
-    ask: {
-      about: "Vad är True Friends?",
-      services: "Vad kan ni hjälpa till med?",
-      gallery: "Får jag se något ni gjort?",
-      contact: "Hur får jag tag på er?",
-    },
-    gallery: { intro: "Här är ett urval. Klicka på en miniatyr så öppnas den i bildvisaren.", count: "{n} bilder i den här mappen." },
     hero: {
       lede: {
         studio: "Vi erbjuder tjänster inom webbproduktion, design, marknadsföring, foto, video och redigering.",
@@ -101,6 +87,8 @@ window.TF_ADD_TRANSLATIONS({
     },
     gallery: {
       label: "Galleri",
+      intro: "Ett urval av vår fotografi. Klicka på en miniatyr så öppnas den i bildvisaren.",
+      count: "{n} bilder i den här mappen.",
     },
     services: {
       note: "Våra mediatjänster är tillgängliga för både företag och privatpersoner.<br>Vid större och mer komplexa projekt samarbetar vi ibland med olika partners.",
